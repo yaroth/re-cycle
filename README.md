@@ -5,7 +5,7 @@ Web Programming BFH HS 2018
 
 
 ### Project setup
-To make the project run, you need to install npm: https://nodejs.org/en/
+To make the project run, you need to install nodeJS: https://nodejs.org/en/
 
 Then make sure the two packages:
 - gulp and 
