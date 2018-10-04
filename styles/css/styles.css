@@ -1,0 +1,27 @@
+* {
+  background-color: cornflowerblue; }
+
+body {
+  margin: 0; }
+  body .header {
+    background-color: #aaffaa;
+    padding: 10px; }
+  body .nav {
+    background-color: #009926;
+    padding: 10px;
+    text-align: center; }
+  body .inpagenav {
+    width: 25%;
+    background-color: yellowgreen;
+    float: left;
+    padding: 10px; }
+  body .main {
+    position: relative;
+    float: left;
+    width: 70%;
+    background-color: lightblue;
+    padding: 10px; }
+  body .footer {
+    clear: both;
+    padding: 10px;
+    background-color: #ffdddd; }
