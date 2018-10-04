@@ -1,6 +1,6 @@
 # re-cycle
 
-## Easily sell / buy a 2nd-hand bicycle
+## Easily sell & buy a 2nd-hand bicycle
 Web Programming BFH HS 2018
 
 
