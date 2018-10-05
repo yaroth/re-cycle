@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/css/styles.css"/>
-    <link rel="script" href="../scripts/main.js"/>
+    <script type="text/javascript" src="../scripts/main.js"></script>
     <title>Re-cycle</title>
 </head>
 <body>

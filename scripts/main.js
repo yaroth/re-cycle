@@ -1,3 +1,4 @@
-document.ready(function () {
+setTimeout(function () {
     alert("js works!");
-})
+}, 500);
+
