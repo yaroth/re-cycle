@@ -2,10 +2,8 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-// var cssmin = require('gulp-cssmin');
-// var rename = require('gulp-rename');
 
-var path = '../styles';
+var path = 'styles';
 
 // convert SCSS to CSS
 gulp.task('sass', function () {

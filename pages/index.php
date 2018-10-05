@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/css/styles.css" />
+    <link rel="stylesheet" href="../styles/css/styles.css"/>
+    <link rel="script" href="../scripts/main.js"/>
     <title>Re-cycle</title>
 </head>
 <body>
@@ -13,10 +14,10 @@
 <div class="inpagenav">in page nav</div>
 <div class="main">main</div>
 <div class="footer">footer
-<?php
+    <?php
     $yann = "yann";
     echo $yann
-?>
+    ?>
 
 </div>
 </body>
