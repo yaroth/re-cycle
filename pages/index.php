@@ -7,9 +7,17 @@
 </head>
 <body>
 <div class="header">header</div>
-<div class="nav">main navigation</div>
+<div class="nav">main navigation
+    <a href="subpage.php">Link to subpage</a>
+</div>
 <div class="inpagenav">in page nav</div>
 <div class="main">main</div>
-<div class="footer">footer</div>
+<div class="footer">footer
+<?php
+    $yann = "yann";
+    echo $yann
+?>
+
+</div>
 </body>
 </html>
