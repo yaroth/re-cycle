@@ -17,7 +17,11 @@
     <div class="nav">
         <p>main navigation</p>
         <a href="subpage.php">Link to subpage</a>
-    </div>
+        <?php include 'nav.php';?>
+
+      </div>
+
+
 </div>
 <div class="main">
     <h2>main</h2>
