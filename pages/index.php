@@ -17,9 +17,19 @@
     <div class="nav">
         <p>main navigation</p>
         <a href="subpage.php">Link to subpage</a>
-        <?php include 'nav.php';?>
-
-      </div>
+        <?php include 'nav.php' ?>
+        <?php
+        $directory = __DIR__;
+        echo $directory."<br />";
+        $files = scandir($directory);
+        echo count($files)."<br />";
+        foreach($files as $file) {
+            if (is_file($file))echo $file."<br />";
+        }
+        ?>
+        <br>
+<!--        --><?php /*echo __FILE__ */?>
+    </div>
 
 
 </div>
