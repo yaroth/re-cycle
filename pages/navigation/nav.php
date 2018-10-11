@@ -8,7 +8,7 @@ $files = scandir($parentDirectory);
 $files = glob("*.php");
 foreach ($files as $file) {
     if (is_file($file)) {
-        echo '<li><a href="' . $file . '">' .$file . '</a></li>';
+        echo '<li><a href="' . $file . '">' .basename($file, '.php') . '</a></li>';
     }
 }
 echo '</ul>';
