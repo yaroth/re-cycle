@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="header">
-    <div class="logo"><img src="../img/logo.png"></div>
+    <div class="logo"><a href="index.php"><img src="../img/logo.png"></a></div>
     <div class="page title">
         <h1>Re-cycle</h1>
         <h2>Resell you bicycle!</h2>
