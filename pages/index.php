@@ -8,16 +8,13 @@
 </head>
 <body>
 <div class="header">
-    <div class="logo"><img src="../img/logo.png"></div>
+    <div class="logo"><a href="index.php"><img src="../img/logo.png"></a></div>
     <div class="page title">
         <h1>Re-cycle</h1>
         <h2>Resell you bicycle!</h2>
         <h2>Find your perfect matching bicycle!</h2>
     </div>
-    <div class="nav">
-        <p>main navigation</p>
-        <a href="subpage.php">Link to subpage</a>
-    </div>
+    <?php include 'navigation/nav.php' ?>
 </div>
 <div class="main">
     <h2>main</h2>

@@ -16,6 +16,24 @@ body {
       background-color: #009926;
       padding: 10px;
       text-align: center; }
+      body .header .nav ul {
+        font-size: 20px;
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        margin-top: 20px; }
+        body .header .nav ul li {
+          margin-right: 20px;
+          display: inline; }
+          body .header .nav ul li a {
+            color: orange;
+            background: #999;
+            margin: 0px;
+            padding: 5px;
+            text-decoration: none; }
+            body .header .nav ul li a :hover {
+              background: #222;
+              color: #fff; }
   body .inpagenav {
     width: 25%;
     background-color: yellowgreen;
