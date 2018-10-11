@@ -1,8 +1,17 @@
 <?php
-$array = array("home", "contacts", "about");
+echo '<div class="nav">';
+echo '<p>main navigation</p>';
 echo '<ul>';
-foreach ($array as $key => $value) {
-    echo '<li><a href="' . $value . '.php">' . $value . '</a></li>';
+$directory = __DIR__;
+$parentDirectory = dirname($directory);
+$files = scandir($parentDirectory);
+$files = glob("*.php");
+foreach ($files as $file) {
+    if (is_file($file)) {
+        echo '<li><a href="' . $file . '">' .$file . '</a></li>';
+    }
 }
 echo '</ul>';
+echo '</div>';
 ?>
+
