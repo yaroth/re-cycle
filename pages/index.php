@@ -4,46 +4,35 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/css/styles.css"/>
     <script type="text/javascript" src="../scripts/main.js"></script>
+    <?php $pageTitle = "homYe" ?>
     <title>Re-cycle</title>
 </head>
 <body>
-<div class="header">
-    <div class="logo"><a href="index.php"><img src="../img/logo.png"></a></div>
-    <div class="page title">
-        <h1>Re-cycle</h1>
-        <h2>Find your perfect matching bicycle!</h2>
-    </div>
-    <?php include 'navigation/nav.php' ?>
-</div>
+<?php include 'areas/header.php' ?>
 <div class="main">
-    <h2>main</h2>
-    <div class="item wrapper">
-        <div>some bike</div>
+    <h2>Your match!</h2>
+    <?php include 'components/userInfo.php' ?>
+    <?php include 'components/breadcrumb.php' ?>
+
+    <?php include '../data/bikes.php';
+    foreach ($bikesToSell as $key => $bike) {
+        echo $key . "<br>";
+        foreach ($bike as $key => $value) {
+            echo $key . ": " . $value . "<br>";
+        }
+        echo "<br>";
+
+    }
+    ?>
+
+    <div class="items">
+        <?php
+        for ($x = 0; $x < count($bikesToSell); $x++) {
+            include 'components/itemTeaser.php';
+        }
+        ?>
     </div>
-    <div class="item wrapper">
-        <div>some bike</div>
-    </div>
-    <div class="item wrapper">
-        <div>some bike</div>
-    </div>
-    <div class="item wrapper">
-        <div>some bike</div>
-    </div>
-    <div class="item wrapper">
-        <div>some bike</div>
-    </div>
-    <div class="item wrapper">
-        <div>some bike</div>
-    </div>
-    <div class="item wrapper">
-        <div>some bike</div>
-    </div>
-    <div class="item wrapper">
-        <div>some bike</div>
-    </div>
-    <div class="item wrapper">
-        <div>some bike</div>
-    </div>
+
 </div>
 <div class="footer">footer
     <?php

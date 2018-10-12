@@ -19,7 +19,8 @@ body {
       background-color: #009926;
       padding: 10px;
       text-align: center;
-      vertical-align: top; }
+      vertical-align: top;
+      float: right; }
       body .header .nav ul {
         font-size: 20px;
         margin: 0px;
@@ -47,13 +48,38 @@ body {
     background-color: lightblue;
     padding: 10px;
     overflow: hidden; }
-    body .main .item.wrapper {
-      float: left;
-      margin-right: 5px;
-      margin-bottom: 5px;
-      height: 300px;
-      width: 200px;
-      border: 1px crimson solid; }
+    body .main h2 {
+      width: 80%;
+      display: inline-block; }
+    body .main .userInfo {
+      display: inline-block;
+      float: right; }
+      body .main .userInfo p {
+        margin: 0 5px;
+        padding: 1px 5px; }
+    body .main .items {
+      margin: 20px 0; }
+      body .main .items .item.wrapper {
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        padding: 10px;
+        width: 250px;
+        min-width: 200px;
+        max-width: 300px;
+        border: 1px crimson solid;
+        border-radius: 3px;
+        overflow: hidden; }
+        body .main .items .item.wrapper .title {
+          text-align: center; }
+        body .main .items .item.wrapper .image {
+          width: 100%;
+          overflow: hidden; }
+          body .main .items .item.wrapper .image img {
+            width: 100%; }
+        body .main .items .item.wrapper .specs {
+          color: darkblue;
+          line-height: .3em; }
   body .footer {
     clear: both;
     padding: 10px;

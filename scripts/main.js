@@ -1,4 +1,4 @@
 setTimeout(function () {
-    console.log("js works!");
+    // console.log("js works!");
 }, 500);
 

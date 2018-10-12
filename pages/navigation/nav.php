@@ -2,16 +2,13 @@
 echo '<div class="nav">';
 echo '<p>main navigation</p>';
 echo '<ul>';
-$directory = __DIR__;
-$parentDirectory = dirname($directory);
-$files = scandir($parentDirectory);
-$files = glob("*.php");
-foreach ($files as $file) {
+$fileNamesArray = glob("*.php");
+foreach ($fileNamesArray as $file) {
     if (is_file($file)) {
-        echo '<li><a href="' . $file . '">' .basename($file, '.php') . '</a></li>';
+//        $navName = file($file) -> $pageTitle;
+        echo '<li><a href="' . $file . '">' . basename($file, '.php'). '</a></li>';
     }
 }
 echo '</ul>';
 echo '</div>';
-?>
 

@@ -24,6 +24,7 @@ body {
       padding: 10px;
       text-align: center;
       vertical-align: top;
+      float: right;
       ul {
         font-size: 20px;
         margin: 0px;
@@ -47,8 +48,6 @@ body {
         }
       }
 
-
-
     }
   }
   .inpagenav {
@@ -61,14 +60,49 @@ body {
     background-color: lightblue;
     padding: 10px;
     overflow: hidden;
-    .item.wrapper {
-      float: left;
-      margin-right: 5px;
-      margin-bottom: 5px;
-      height: 300px;
-      width: 200px;
-      border: 1px crimson solid;
+    h2 {
+      width: 80%;
+      display: inline-block;
     }
+    .userInfo {
+      display: inline-block;
+      float: right;
+      p {
+        margin: 0 5px;
+        padding: 1px 5px;
+      }
+    }
+    .items {
+      margin: 20px 0;
+      .item.wrapper {
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        padding: 10px;
+        //height: 300px;
+        width: 250px;
+        min-width: 200px;
+        max-width: 300px;
+        border: 1px crimson solid;
+        border-radius: 3px;
+        overflow: hidden;
+        .title {
+          text-align: center;
+        }
+        .image {
+          width: 100%;
+          overflow: hidden;
+          img {
+            width: 100%;
+          }
+        }
+        .specs {
+          color: darkblue;
+          line-height: .3em;
+        }
+      }
+    }
+
   }
   .footer {
     clear: both;
