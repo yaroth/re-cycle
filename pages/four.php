@@ -8,9 +8,14 @@
 </head>
 <body>
 <?php include 'areas/header.php' ?>
-<div class="nav">main navigation subpage </div>
-<div class="inpagenav">in page nav subpage </div>
-<div class="main">main subpage </div>
+<div class="main">
+    <h2>Your match!</h2>
+    <?php include 'components/userInfo.php' ?>
+    <?php include 'components/breadcrumb.php' ?>
+
+
+
+</div>
 <div class="footer">footer subpage</div>
 </body>
 </html>

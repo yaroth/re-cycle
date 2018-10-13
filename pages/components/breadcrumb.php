@@ -1,5 +1,3 @@
 <?php
-// TODO: show correct breadcrumb path!
-$location = __FILE__;
+echo '<div class="breadcrumb">Location: ' . $_SERVER['PHP_SELF'] . '</div>';
 ?>
-<div class="breadcrumb">Location: <?php echo $location ?></div>

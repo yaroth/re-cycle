@@ -1,3 +1,9 @@
+<?php
+include "functions.php";
+$language = get_param('lang', 'de');
+$pageId = get_param('id', 0);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,31 +20,14 @@
     <?php include 'components/userInfo.php' ?>
     <?php include 'components/breadcrumb.php' ?>
 
-    <?php include '../data/bikes.php';
-    foreach ($bikesToSell as $key => $bike) {
-        echo $key . "<br>";
-        foreach ($bike as $key => $value) {
-            echo $key . ": " . $value . "<br>";
-        }
-        echo "<br>";
-
-    }
-    ?>
-
+    <?php include '../data/bikes.php'; ?>
     <div class="items">
-        <?php
-        for ($x = 0; $x < count($bikesToSell); $x++) {
-            include 'components/itemTeaser.php';
-        }
-        ?>
+        <?php listProducts(); ?>
     </div>
+
 
 </div>
 <div class="footer">footer
-    <?php
-    $yann = "yann";
-    echo $yann
-    ?>
 
 </div>
 </body>
