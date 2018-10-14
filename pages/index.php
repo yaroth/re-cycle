@@ -1,7 +1,5 @@
 <?php
-include "functions.php";
-$language = get_param('lang', 'de');
-$pageId = get_param('id', 0);
+    include "functions.php";
 ?>
 
 <!DOCTYPE html>
