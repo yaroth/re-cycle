@@ -14,11 +14,18 @@ $pageId = get_param('id', 0);
     <title>Re-cycle</title>
 </head>
 <body>
-<?php include 'areas/header.php' ?>
+<?php include 'areas/header.php';?>
+
+
+
+
 <div class="main">
     <h2>Your match!</h2>
     <?php include 'components/userInfo.php' ?>
     <?php include 'components/breadcrumb.php' ?>
+
+    <?php include 'form/loginButton.php'; ?>
+   <?php  include 'form/createAccountButton.php' ?>
 
     <?php include '../data/bikes.php'; ?>
     <div class="items">
