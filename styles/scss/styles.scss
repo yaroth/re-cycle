@@ -33,7 +33,12 @@ body {
         margin-top: 20px;
         li {
           margin-right: 20px;
-          display: inline;
+          &.nav-item {
+            display: block;
+          }
+          &.lang {
+            display: inline;
+          }
           a {
             color: orange;
             background: #999;
