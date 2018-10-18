@@ -16,8 +16,8 @@
 
     function listProducts() {
         global $bikesToSell;
-        for ($x = 0; $x < count($bikesToSell); $x++) {
-            listItem($x);
+        for ($bikeID = 0; $bikeID < count($bikesToSell); $bikeID++) {
+            listItem($bikeID);
         }
     }
 
@@ -42,6 +42,5 @@
                 <p>Wheels: 28"</p>
             </div>
         </div>';
-
         echo $item;
     }

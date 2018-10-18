@@ -4,7 +4,8 @@
         <h1>Re-cycle</h1>
         <h2><?php
                 $language = $_GET["lang"];
-                content($_GET["id"]) ?></h2>
+                echo translate("welcome");
+                echo $_GET["id"]; ?></h2>
     </div>
     <?php include 'navigation/nav.php' ?>
 </div>
