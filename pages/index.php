@@ -12,9 +12,7 @@
     <title>Re-cycle</title>
 </head>
 <body>
-<?php include 'areas/header.php';?>
-
-
+<?php include 'areas/header.php'; ?>
 
 
 <div class="main">
@@ -23,8 +21,8 @@
     <?php include 'components/breadcrumb.php' ?>
 
     <?php include 'form/loginButton.php'; ?>
-   <?php  include 'form/createAccountButton.php' ?>
-    <?php  include 'form/bikePropertiesButton.php' ?>
+    <?php include 'form/createAccountButton.php' ?>
+    <?php include 'form/bikePropertiesButton.php' ?>
 
     <?php include '../data/bikes.php'; ?>
     <div class="items">
