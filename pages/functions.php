@@ -19,7 +19,7 @@
         for ($i = 0; $i <= 5; $i++) {
             $url = add_param($urlbase, "id", $i);
             $class = $pageId == $i ? 'active' : 'inactive';
-            echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . t('page') . " $i</a></li>";
+            echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . translate('page') . " $i</a></li>";
         }
     }
 
@@ -35,17 +35,17 @@
     }
 
     function content($pageId) {
-        echo t('content') . " $pageId";
+        echo translate('content') . " $pageId";
     }
 
-    function t($key) {
+    function translate($key) {
         global $language;
         $texts = array(
             'page' => array(
                 'de' => 'Seite',
                 'fr' => 'Page',
                 'en' => 'Page'),
-            'content' => array(
+            'welcome' => array(
                 'de' => 'Willkommen auf der Seite ',
                 'fr' => 'Bienvenue à la page ',
                 'en' => 'Welcome to the page ')
