@@ -65,6 +65,9 @@ body {
     background-color: lightblue;
     padding: 10px;
     overflow: hidden;
+    input:focus {
+      background-color: yellow;
+    }
     h2 {
       width: 80%;
       display: inline-block;
