@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <body>
+  <style>
+input:focus {
+    background-color: yellow;
+}
+</style>
   <form action="/action_page.php">
     <fieldset>
       <legend> SelectGender </legend>
