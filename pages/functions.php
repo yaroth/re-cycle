@@ -19,7 +19,7 @@
         for ($i = 0; $i <= 5; $i++) {
             $url = add_param($urlbase, "id", $i);
             $class = $pageId == $i ? 'active' : 'inactive';
-            echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . t('page') . " $i</a></li>";
+            echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . translate('page') . " $i</a></li>";
         }
     }
 
@@ -35,20 +35,37 @@
     }
 
     function content($pageId) {
-        echo t('content') . " $pageId";
+        echo translate('content') . " $pageId";
     }
 
-    function t($key) {
+    function translate($key) {
         global $language;
         $texts = array(
             'page' => array(
                 'de' => 'Seite',
                 'fr' => 'Page',
                 'en' => 'Page'),
-            'content' => array(
+            'welcome' => array(
                 'de' => 'Willkommen auf der Seite ',
                 'fr' => 'Bienvenue à la page ',
-                'en' => 'Welcome to the page ')
+                'en' => 'Welcome to the page '),
+            'personal-info' => array(
+                'de' => 'Angaben ',
+                'fr' => 'Données ',
+                'en' => 'Personal information ')
         );
         return $texts[$key][$language] ?? "[$key][$language]";
+    }
+
+    function getLang(){
+        if (!isset($_GET["lang"]))
+            $language = 'de';
+        else $language = $_GET["lang"];
+        return $language;
+    }
+    function getId(){
+        if (!isset($_GET["id"]))
+            $id = 0;
+        else $id = $_GET["id"];
+        return $id;
     }

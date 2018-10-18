@@ -17,6 +17,7 @@
   return true;
   }
 
+<<<<<<< HEAD
   </script>
 </head>
 <body>
@@ -32,6 +33,15 @@ Name: <br><input type="text" name="name" value="Name" placeholder="Name" autofoc
 E-mail: <br><input type="text" name="email" value="Email" placeholder="email" required><br>
 <input type="submit">
 </fieldset>
+=======
+<form action="welcome.php" method="post">
+    <fieldset>
+        <legend>Login information:</legend>
+        Name: <br><input type="text" name="name" value="Name"><br>
+        E-mail: <br><input type="text" name="email" value="Email"><br>
+        <input type="submit">
+    </fieldset>
+>>>>>>> b2ac21301203f574a8d5478bef9d24a9dede432f
 </form>
 
 </body>
