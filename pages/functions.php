@@ -19,7 +19,7 @@
         for ($i = 0; $i <= 5; $i++) {
             $url = add_param($urlbase, "id", $i);
             $class = $pageId == $i ? 'active' : 'inactive';
-            echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . translate('page') . " $i</a></li>";
+            echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . translate('nav-title') . "</a></li>";
         }
     }
 
@@ -55,6 +55,17 @@
                 'en' => 'Personal information ')
         );
         return $texts[$key][$language] ?? "[$key][$language]";
+    }
+
+    function navtitles($key) {
+        global $language;
+        $titles = array(
+            'page' => array(
+                'de' => array("Start", "register", "Login"),
+                'fr' => 'Page',
+                'en' => 'Page')
+        );
+        return $titles[$key][$language] ?? "[$key][$language]";
     }
 
     function getLang(){

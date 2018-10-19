@@ -1,7 +1,3 @@
-<html>
-<head>
-</head>
-<body>
 <form action="welcome.php" method="post" name="p-data" onsubmit="return validateLogin();">
     <fieldset>
         <legend>Login information:</legend>
@@ -9,5 +5,4 @@
         E-mail: <br><input type="text" name="email" value="Email" placeholder="Email" required><br>
         <input type="submit">
     </fieldset>
-</body>
-</html>
+</form>
