@@ -33,9 +33,10 @@ body {
             display: block; }
           body .header .nav ul li.lang {
             display: inline; }
+          body .header .nav ul li .active {
+            color: darkorange; }
           body .header .nav ul li a {
-            color: orange;
-            background: #999;
+            color: darkblue;
             margin: 0px;
             padding: 5px;
             text-decoration: none; }

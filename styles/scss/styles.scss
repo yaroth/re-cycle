@@ -39,9 +39,11 @@ body {
           &.lang {
             display: inline;
           }
+          .active {
+            color: darkorange;
+          }
           a {
-            color: orange;
-            background: #999;
+            color: darkblue;
             margin: 0px;
             padding: 5px;
             text-decoration: none;
