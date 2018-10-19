@@ -19,7 +19,7 @@
         for ($i = 0; $i <= 5; $i++) {
             $url = add_param($urlbase, "id", $i);
             $class = $pageId == $i ? 'active' : 'inactive';
-            echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . translate('nav-title') . "</a></li>";
+            echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . navtitles('page', $i) . "</a></li>";
         }
     }
 
@@ -57,24 +57,25 @@
         return $texts[$key][$language] ?? "[$key][$language]";
     }
 
-    function navtitles($key) {
+    function navtitles($key, $id) {
         global $language;
         $titles = array(
             'page' => array(
-                'de' => array("Start", "register", "Login"),
-                'fr' => 'Page',
-                'en' => 'Page')
-        );
-        return $titles[$key][$language] ?? "[$key][$language]";
+                'de' => array("Start", "register", "Login", "Seite 3", "Seite 4", "letzte Seite"),
+                'fr' => array("Départ", "S'enregistrer", "Se loguer", "page 3", "page 4", "Dernière page"),
+                'en' => array("Start", "register EN", "Login EN", "Page 3 EN", "Page 4 EN", "Last page")
+            ));
+        return $titles[$key][$language][$id] ?? "[$key][$language][$id]";
     }
 
-    function getLang(){
+    function getLang() {
         if (!isset($_GET["lang"]))
             $language = 'de';
         else $language = $_GET["lang"];
         return $language;
     }
-    function getId(){
+
+    function getId() {
         if (!isset($_GET["id"]))
             $id = 0;
         else $id = $_GET["id"];
