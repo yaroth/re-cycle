@@ -35,14 +35,15 @@ body {
             display: inline; }
           body .header .nav ul li .active {
             color: darkorange; }
+            body .header .nav ul li .active:hover {
+              color: darkorange; }
           body .header .nav ul li a {
             color: darkblue;
             margin: 0px;
             padding: 5px;
             text-decoration: none; }
-            body .header .nav ul li a :hover {
-              background: #222;
-              color: #fff; }
+            body .header .nav ul li a:hover {
+              color: blue; }
   body .inpagenav {
     width: 25%;
     background-color: yellowgreen;

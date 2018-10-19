@@ -41,15 +41,17 @@ body {
           }
           .active {
             color: darkorange;
+            &:hover {
+              color: darkorange;
+            }
           }
           a {
             color: darkblue;
             margin: 0px;
             padding: 5px;
             text-decoration: none;
-            :hover {
-              background: #222;
-              color: #fff
+            &:hover {
+              color: blue;
             }
           }
         }
