@@ -7,11 +7,14 @@
      */
 
     $bikesToSell = array(
-        ["title" => "Koga", "price" => 560, "match" => 90, "color" => "red"],
+        ["title" => "Koga", "price" => 560, "match" => 20, "color" => "red"],
         ["title" => "Velotraum", "price" => 400, "match" => 76, "color" => "blue"],
         ["title" => "Cilo", "price" => 1560, "match" => 50, "color" => "green"],
-        ["title" => "MTB", "price" => 2400, "match" => 10, "color" => "yellow"]
+        ["title" => "MTB", "price" => 2400, "match" => 80, "color" => "yellow"]
     );
+    usort($bikesToSell, function ($item1, $item2) {
+        return $item2['match'] <=> $item1['match'];
+    });
 
 
     function listProducts() {
