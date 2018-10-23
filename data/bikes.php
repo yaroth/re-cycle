@@ -41,6 +41,7 @@
                 <p>Brakes: rims</p>
                 <p>Wheels: 28"</p>
             </div>
+            <div>  <a href="url">BUy NOv</a> </div>
         </div>';
         echo $item;
     }
