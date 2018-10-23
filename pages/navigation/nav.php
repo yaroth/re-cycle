@@ -1,6 +1,5 @@
 <?php
     echo '<div class="nav">';
-    echo '<p>main navigation</p>';
     echo '<ul>';
     $language = getLang();
     $id = getId();

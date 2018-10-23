@@ -61,9 +61,9 @@
         global $language;
         $titles = array(
             'page' => array(
-                'de' => array("Start", "register", "Login", "Seite 3", "Seite 4", "letzte Seite"),
+                'de' => array("Start", "Konto erstellen", "Login", "Seite 3", "Seite 4", "letzte Seite"),
                 'fr' => array("Départ", "S'enregistrer", "Se loguer", "page 3", "page 4", "Dernière page"),
-                'en' => array("Start", "register EN", "Login EN", "Page 3 EN", "Page 4 EN", "Last page")
+                'en' => array("Start", "Create account", "Login EN", "Page 3 EN", "Page 4 EN", "Last page")
             ));
         return $titles[$key][$language][$id] ?? "[$key][$language][$id]";
     }

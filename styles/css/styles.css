@@ -27,21 +27,25 @@ body {
         padding: 0px;
         list-style: none;
         margin-top: 20px; }
+        body .header .nav ul:first-child {
+          margin-top: 0; }
         body .header .nav ul li {
           margin-right: 20px; }
           body .header .nav ul li.nav-item {
             display: block; }
           body .header .nav ul li.lang {
             display: inline; }
+          body .header .nav ul li .active {
+            color: darkorange; }
+            body .header .nav ul li .active:hover {
+              color: darkorange; }
           body .header .nav ul li a {
-            color: orange;
-            background: #999;
+            color: darkblue;
             margin: 0px;
             padding: 5px;
             text-decoration: none; }
-            body .header .nav ul li a :hover {
-              background: #222;
-              color: #fff; }
+            body .header .nav ul li a:hover {
+              color: blue; }
   body .inpagenav {
     width: 25%;
     background-color: yellowgreen;

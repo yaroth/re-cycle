@@ -1,6 +1,6 @@
 <?php
 include "../data/users.php";
-$user = $users[0];
+$user = $users[1];
 ?>
 <div class="userInfo">
     <p><?php echo $user['fname'] . " " .     $user['lname'] . " (ID: " . $user['userId'] . ")" ?></p>
