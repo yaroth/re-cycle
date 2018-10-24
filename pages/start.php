@@ -5,6 +5,7 @@
 <?php include 'form/createAccountButton.php' ?>
 <?php include 'form/bikePropertiesButton.php' ?>
 <?php include '../upload/uploadFile.php' ?>
+<?php include '../translate/translate.php' ?>
 
 <?php include '../data/bikes.php'; ?>
 <div class="items">
