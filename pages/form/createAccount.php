@@ -1,4 +1,4 @@
-<form action="welcome.php" method="post" name="p-data" onsubmit="return validateForm();">
+<form action="form/welcome.php" method="post" name="p-data" onsubmit="return validateForm();">
     <fieldset>
         <legend><?php echo translate("personal-info") ?> :</legend>
         Name : <br><input type="text" name="name" placeholder="name" autofocus required><br>
