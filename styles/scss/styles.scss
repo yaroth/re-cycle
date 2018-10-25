@@ -31,7 +31,7 @@ body {
         margin: 0px;
         padding: 0px;
         list-style: none;
-        &:first-child{
+        &:first-child {
           margin-top: 0;
         }
         margin-top: 20px;
@@ -68,7 +68,6 @@ body {
         }
       }
 
-
     }
   }
   .inpagenav {
@@ -81,16 +80,15 @@ body {
     background-color: lightblue;
     padding: 10px;
     overflow: hidden;
-    fieldset {
+    form {
       display: inline;
-      vertical-align: top;
+      fieldset {
+        display: inline;
+        vertical-align: top;
+      }
     }
     input:focus {
       background-color: yellow;
-    }
-    h2 {
-      width: 80%;
-      display: inline-block;
     }
     .items {
       margin: 20px 0;

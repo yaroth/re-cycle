@@ -54,6 +54,8 @@
         <br>
         <input type="submit" value="Submit">
     </fieldset>
+</form>
+<form action="/add_bike.php">
     <fieldset>
         <input type="button" value="Add Bicycle..."/>
     </fieldset>

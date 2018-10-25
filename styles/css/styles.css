@@ -60,14 +60,13 @@ body {
     background-color: lightblue;
     padding: 10px;
     overflow: hidden; }
-    body .main fieldset {
-      display: inline;
-      vertical-align: top; }
+    body .main form {
+      display: inline; }
+      body .main form fieldset {
+        display: inline;
+        vertical-align: top; }
     body .main input:focus {
       background-color: yellow; }
-    body .main h2 {
-      width: 80%;
-      display: inline-block; }
     body .main .items {
       margin: 20px 0; }
       body .main .items .item.wrapper {
