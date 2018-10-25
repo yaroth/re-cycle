@@ -1,4 +1,5 @@
-<h2>Your match!</h2>
+<h2><?php
+        echo translate("results"); ?></h2>
 <?php include 'components/userInfo.php' ?>
 <?php include '../data/bikes.php'; ?>
 <div class="items">

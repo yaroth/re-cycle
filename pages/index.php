@@ -24,6 +24,9 @@
     elseif (getId() == 2){
         include 'form/login.php';
     }
+    elseif (getId() == 3){
+        include 'form/bikeProperties.php';
+    }
     ?>
 
 

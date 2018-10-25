@@ -49,6 +49,10 @@
                 'de' => 'Willkommen auf der Seite ',
                 'fr' => 'Bienvenue à la page ',
                 'en' => 'Welcome to the page '),
+            'results' => array(
+                'de' => 'Resultate ',
+                'fr' => 'Résultats ',
+                'en' => 'Results '),
             'personal-info' => array(
                 'de' => 'Angaben ',
                 'fr' => 'Données ',
@@ -61,9 +65,9 @@
         global $language;
         $titles = array(
             'page' => array(
-                'de' => array("Start", "Konto erstellen", "Login", "Seite 3", "Seite 4", "letzte Seite"),
-                'fr' => array("Départ", "S'enregistrer", "Se loguer", "page 3", "page 4", "Dernière page"),
-                'en' => array("Start", "Create account", "Login EN", "Page 3 EN", "Page 4 EN", "Last page")
+                'de' => array("Start", "Konto erstellen", "Login", "Velo", "Seite 4", "letzte Seite"),
+                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "page 4", "Dernière page"),
+                'en' => array("Start", "Create account", "Login EN", "Bike", "Page 4 EN", "Last page")
             ));
         return $titles[$key][$language][$id] ?? "[$key][$language][$id]";
     }
