@@ -31,7 +31,7 @@
 
 
 
-    </div>
+    </div><!--end main-->
     <div class="footer">footer</div>
 </body>
 </html>

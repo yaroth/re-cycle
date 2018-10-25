@@ -1,3 +1,4 @@
+<h2><?php echo translate("create-account"); ?></h2>
 <form action="form/welcome.php" method="post" name="p-data" onsubmit="return validateForm();">
     <fieldset>
         <legend><?php echo translate("personal-info") ?> :</legend>

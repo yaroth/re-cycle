@@ -20,7 +20,8 @@ body {
       padding: 10px;
       text-align: center;
       vertical-align: top;
-      float: right; }
+      float: right;
+      border-radius: 3px; }
       body .header .nav ul {
         font-size: 20px;
         margin: 0px;
@@ -29,23 +30,27 @@ body {
         margin-top: 20px; }
         body .header .nav ul:first-child {
           margin-top: 0; }
-        body .header .nav ul li {
-          margin-right: 20px; }
-          body .header .nav ul li.nav-item {
-            display: block; }
-          body .header .nav ul li.lang {
-            display: inline; }
-          body .header .nav ul li .active {
+        body .header .nav ul li.nav-item {
+          display: block; }
+        body .header .nav ul li.lang {
+          display: inline; }
+        body .header .nav ul li .active {
+          color: darkorange; }
+          body .header .nav ul li .active:hover {
             color: darkorange; }
-            body .header .nav ul li .active:hover {
-              color: darkorange; }
-          body .header .nav ul li a {
-            color: darkblue;
-            margin: 0px;
-            padding: 5px;
-            text-decoration: none; }
-            body .header .nav ul li a:hover {
-              color: blue; }
+        body .header .nav ul li a {
+          color: darkblue;
+          margin: 0px;
+          padding: 5px;
+          text-decoration: none; }
+          body .header .nav ul li a:hover {
+            color: blue; }
+      body .header .nav .userInfo {
+        display: inline-block;
+        margin-top: 20px; }
+        body .header .nav .userInfo p {
+          margin: 0 5px;
+          padding: 1px 5px; }
   body .inpagenav {
     width: 25%;
     background-color: yellowgreen;
@@ -55,17 +60,14 @@ body {
     background-color: lightblue;
     padding: 10px;
     overflow: hidden; }
+    body .main fieldset {
+      display: inline;
+      vertical-align: top; }
     body .main input:focus {
       background-color: yellow; }
     body .main h2 {
       width: 80%;
       display: inline-block; }
-    body .main .userInfo {
-      display: inline-block;
-      float: right; }
-      body .main .userInfo p {
-        margin: 0 5px;
-        padding: 1px 5px; }
     body .main .items {
       margin: 20px 0; }
       body .main .items .item.wrapper {

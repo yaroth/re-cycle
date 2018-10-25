@@ -10,6 +10,5 @@
                 echo $id; ?>
         </h2>
     </div>
-<!--    TODO: function to include navigation from anywhere-->
     <?php include 'navigation/nav.php' ?>
 </div>

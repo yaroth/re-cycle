@@ -42,7 +42,7 @@
                 <p>Color: ' . $bikesToSell[$id]['color'] . ' </p>
                 <p>Speeds: 7</p>
                 <p>Brakes: rims</p>
-                <p>Wheels: 28"</p>
+                <p>Wheel size: 28"</p>
             </div>
             <div>  <a href="url">Buy Now</a> </div>
         </div>';

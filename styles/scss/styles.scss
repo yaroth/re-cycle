@@ -25,6 +25,7 @@ body {
       text-align: center;
       vertical-align: top;
       float: right;
+      border-radius: 3px;
       ul {
         font-size: 20px;
         margin: 0px;
@@ -35,7 +36,6 @@ body {
         }
         margin-top: 20px;
         li {
-          margin-right: 20px;
           &.nav-item {
             display: block;
           }
@@ -59,6 +59,15 @@ body {
           }
         }
       }
+      .userInfo {
+        display: inline-block;
+        margin-top: 20px;
+        p {
+          margin: 0 5px;
+          padding: 1px 5px;
+        }
+      }
+
 
     }
   }
@@ -72,20 +81,16 @@ body {
     background-color: lightblue;
     padding: 10px;
     overflow: hidden;
+    fieldset {
+      display: inline;
+      vertical-align: top;
+    }
     input:focus {
       background-color: yellow;
     }
     h2 {
       width: 80%;
       display: inline-block;
-    }
-    .userInfo {
-      display: inline-block;
-      float: right;
-      p {
-        margin: 0 5px;
-        padding: 1px 5px;
-      }
     }
     .items {
       margin: 20px 0;

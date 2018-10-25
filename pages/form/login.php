@@ -1,3 +1,4 @@
+<h2><?php echo translate("login"); ?></h2>
 <form action="form/welcome.php" method="post" name="p-data" onsubmit="return validateLogin();">
     <fieldset>
         <legend>Login information:</legend>
