@@ -1,4 +1,4 @@
-<form action="welcome.php" method="post" name="p-data" onsubmit="return validateLogin();">
+<form action="form/welcome.php" method="post" name="p-data" onsubmit="return validateLogin();">
     <fieldset>
         <legend>Login information:</legend>
         Name: <br><input type="text" name="name" value="" placeholder="Name" autofocus required><br>
