@@ -2,30 +2,20 @@
 <form action="/action_page.php">
     <fieldset>
         <legend>Bike Data</legend>
-        <legend>Select Gender</legend>
+        <h4>Select Gender</h4>
         <input type="radio" name="gender" value="male"/>Male<br/>
         <input type="radio" name="gender" value="female" checked="checked"/>Female<br/>
         <input type="radio" name="gender" value="child"/>Child<br/>
         <input type="radio" name="gender" value="other"/>Other<br/>
         <br>
         <br>
-        <legend>Select wheel size</legend>
+        <h4>Select wheel size</h4>
         <input type="radio" name="wheelsize" value="12"/>12"<br/>
         <input type="radio" name="wheelsize" value="24" />24"<br/>
         <input type="radio" name="wheelsize" value="26" />26"<br/>
         <input type="radio" name="wheelsize" value="28" checked="checked"/>28"<br/>
         <input type="radio" name="wheelsize" value="29"/>29"<br/>
         <input type="radio" name="wheelsize" value="other"/>Other<br/>
-        <!--<br>
-        <br>
-        <legend>(Multi-) Select Brand</legend>
-        <input type="checkbox" name="brand[]" value="BMC">BMC<br/>
-        <input type="checkbox" name="brand[]" value="pulse">Pulse<br/>
-        <input type="checkbox" name="brand[]" value="gerber">Gerber<br/>
-        <input type="checkbox" name="brand[]" value="clio">Cilo<br/>
-        <input type="checkbox" name="brand[]" value="mondia">Mondia<br/>
-        <input type="checkbox" name="brand[]" value="specialized">Specialized<br/>
-        <input type="checkbox" name="brand[]" value="cube">Cube<br/>-->
         <br>
         <br>
         <legend>Checkbox: Select Type</legend>
@@ -48,8 +38,7 @@
         <textarea>Please enter some text...</textarea>
         <br>
         <br>
-        <legend>Password?</legend>
-        <input type="password"/>
+        <?php include '../upload/uploadFile.php' ?>
         <br>
         <br>
         <input type="submit" value="Submit">

@@ -15,7 +15,7 @@
     usort($bikesToSell, function ($item1, $item2) {
         return $item2['match'] <=> $item1['match'];
     });
-
+// TODO: NICE-TO-HAVE: create a function to sort by different keys
 
     function listProducts() {
         global $bikesToSell;

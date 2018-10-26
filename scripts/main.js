@@ -1,5 +1,6 @@
-function validateForm() {
-    var form = document.forms["p-data"];
+function validateCreateAccount() {
+    //TODO: remove commenting out
+    /*var form = document.forms["create-account"];
     var name = form["name"].value;
     if (!name) {
         alert("No valid name!");
@@ -31,12 +32,12 @@ function validateForm() {
     if (!regex.test(email)) {
         alert("No valid e-mail address!");
         return false;
-    }
+    }*/
     return true;
 }
 
 function validateLogin() {
-    var form = document.forms["p-data"];
+    var form = document.forms["login"];
     var name = form["name"].value;
     if (!name) {
         alert("No valid name!");
