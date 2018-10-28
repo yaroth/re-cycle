@@ -38,7 +38,7 @@
         <textarea>Please enter some text...</textarea>
         <br>
         <br>
-        <?php include '../upload/uploadFile.php' ?>
+        <?php include 'uploadFile.php' ?>
         <br>
         <br>
         <input type="submit" value="Submit">

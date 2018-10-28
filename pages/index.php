@@ -1,6 +1,4 @@
-<?php
-    include "functions.php";
-?>
+<?php include "functions.php"; ?>
 
 <!DOCTYPE html>
 <html lang="<?php echo getLang() ?>">
@@ -13,19 +11,19 @@
     <title>Re-cycle</title>
 </head>
 <body>
-    <?php include 'areas/header.php'; ?>
+    <?php include 'header.php'; ?>
     <div class="main">
     <?php if (getId() == 0){
         include 'start.php';
     }
     elseif (getId() == 1){
-        include 'form/createAccount.php';
+        include 'createAccount.php';
     }
     elseif (getId() == 2){
-        include 'form/login.php';
+        include 'login.php';
     }
     elseif (getId() == 3){
-        include 'form/bikeProperties.php';
+        include 'bikeProperties.php';
     }
     elseif (getId() == 4){
         include 'accountCreated.php';

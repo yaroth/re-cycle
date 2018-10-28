@@ -9,6 +9,6 @@
     echo '<ul>';
     languages($language, $id);
     echo '</ul>';
-    include 'components/userInfo.php';
+    include 'userInfo.php';
     echo '</div>';
 
