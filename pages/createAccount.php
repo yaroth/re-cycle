@@ -2,6 +2,7 @@
 <?php
     $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
     $targetURL = add_param($targetURL, "id", "4");
+    /*id=4 will call for the page/component accountCreated.php*/
     ?>
 <form action="<?php echo $targetURL ?>" method="post" name="create-account" onsubmit="return validateCreateAccount();">
     <fieldset>

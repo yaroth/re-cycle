@@ -37,7 +37,8 @@ function validateCreateAccount() {
 }
 
 function validateLogin() {
-    var form = document.forms["login"];
+    // TODO: update code, once it is clear what needs to be verified
+    /*var form = document.forms["login"];
     var name = form["name"].value;
     if (!name) {
         alert("No valid name!");
@@ -48,6 +49,6 @@ function validateLogin() {
     if (!regex.test(email)) {
         alert("No valid e-mail address!");
         return false;
-    }
+    }*/
     return true;
 }
