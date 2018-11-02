@@ -57,6 +57,14 @@
                 'de' => 'Konto erstellen ',
                 'fr' => 'Créer un compte ',
                 'en' => 'Create account '),
+            'success' => array(
+                'de' => 'Konto erstellt! ',
+                'fr' => 'Compte créé! ',
+                'en' => 'Account created! '),
+            'welcome' => array(
+                'de' => 'Willkommen ',
+                'fr' => 'Bienvenu ',
+                'en' => 'Welcome '),
             'bike-specs' => array(
                 'de' => 'Velo Spezifikationen ',
                 'fr' => 'Spécifications vélo ',
