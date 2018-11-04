@@ -7,4 +7,4 @@
 package-lock.json
 
 #confidential stuff
-conf.php
+/data/conf.php

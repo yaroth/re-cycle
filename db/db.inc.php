@@ -1,8 +1,8 @@
 <?php
+    include_once "../data/conf.php";
     const HOST = "localhost";
     const USER = "admin";
-    // TODO set password in a non git file!
-    const PW = "";
+    const PW = CONF_PW;
     const DB_NAME = "recycle";
 
     $db = new mysqli(HOST, USER, PW, DB_NAME);
