@@ -4,13 +4,13 @@
     if ($_POST) {
         echo '<div class="account">';
         echo '<h2>' . translate("success") . '</h2>';
-        if (empty($_POST['fname'])) {
+        if (empty(strip_tags($_POST['fname']))) {
             $success = false;
-        } else $fname = $_POST['fname'];
+        } else $fname = strip_tags($_POST['fname']);
 
-        if (empty($_POST['lname'])) {
+        if (empty(strip_tags($_POST['lname']))) {
             $success = false;
-        } else $lname = $_POST['lname'];
+        } else $lname = strip_tags($_POST['lname']);
         if (!$success) {
             echo "<p>Something went wrong!</p>";
             exit;
