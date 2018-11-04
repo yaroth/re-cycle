@@ -5,3 +5,6 @@
 .idea/
 
 package-lock.json
+
+#confidential stuff
+conf.php
