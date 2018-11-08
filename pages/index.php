@@ -1,6 +1,8 @@
 <?php
     include "functions.php";
     require_once "../db/db.inc.php";
+    require_once("../db/autoloader.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/css/styles.css"/>
     <script type="text/javascript" src="../scripts/main.js"></script>
+    <!--TODO: what is that line?-->
     <?php $pageTitle = "homYe" ?>
     <title>Re-cycle</title>
 </head>
@@ -28,18 +31,23 @@
         }
 
         $users = $db->query("SELECT * FROM users;");
+        $usersArray = array();
         $sexes = $db->query("SELECT * FROM sexes;");
         $sexesArray = array();
-        while ($sexItem = $sexes->fetch_assoc()) {
-            $sexesArray[$sexItem["id"]] = $sexItem["name"];
-        }
-        while ($user = $users->fetch_assoc()) {
-            $userSexID = $user["sexID"];
-            echo $user["firstname"] . " " . $user["lastname"] . " is of sex: " . $sexesArray[$userSexID] . "<br>";
-        }
 
+        while ($sexItem = $sexes->fetch_object("Sex")) {
+            $sexesArray[$sexItem->id] = $sexItem->name;
+        }
+        while ($user = $users->fetch_object("User")) {
+            $user->setSexString($sexesArray[$user->sexID]);
+            $usersArray[] = $user;
+        }
+        foreach ($usersArray as $u) echo $u . '<br>';
+
+        $sexes->close();
         $users->close();
         $db->close();
+
     ?>
 
 </div><!--end main-->
