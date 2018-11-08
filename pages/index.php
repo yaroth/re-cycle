@@ -30,14 +30,16 @@
             include 'bikeProperties.php';
         }
 
-        $users = $db->query("SELECT * FROM users;");
-        $usersArray = array();
+//        Get sexes in DB, put them in a sexes array
         $sexes = $db->query("SELECT * FROM sexes;");
         $sexesArray = array();
-
         while ($sexItem = $sexes->fetch_object("Sex")) {
             $sexesArray[$sexItem->id] = $sexItem->name;
         }
+
+        // get users in DB and put them in an array
+        $users = $db->query("SELECT * FROM users;");
+        $usersArray = array();
         while ($user = $users->fetch_object("User")) {
             $user->setSexString($sexesArray[$user->sexID]);
             $usersArray[] = $user;
