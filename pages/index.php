@@ -36,18 +36,19 @@
         while ($sexItem = $sexes->fetch_object("Sex")) {
             $sexesArray[$sexItem->id] = $sexItem->name;
         }
+        //Get bicycles in DB, put them in a bicycles array
+        $bicyclesArray = Bicycle::getBicycles();
 
         // get users in DB and put them in an array
-        $users = $db->query("SELECT * FROM users;");
-        $usersArray = array();
-        while ($user = $users->fetch_object("User")) {
-            $user->setSexString($sexesArray[$user->sexID]);
-            $usersArray[] = $user;
+        $usersArray = User::getUsers();
+        foreach ($usersArray as $user) {
+            $user->setSexString($sexesArray);
         }
-        foreach ($usersArray as $u) echo $u . '<br>';
+        /*foreach (User::getUsers() as $user) echo $user . '<br>';
+        foreach ($usersArray as $user) echo $user . '<br>';
+        foreach ($bicyclesArray as $bike) echo $bike . '<br>';*/
 
         $sexes->close();
-        $users->close();
         $db->close();
 
     ?>
