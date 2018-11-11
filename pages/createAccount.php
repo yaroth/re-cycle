@@ -28,13 +28,14 @@
             echo '<h3>' . translate("sorry") . " " . $fname . " " . $lname . '!</h3>';
             echo "<p>Could not add $user->fname $user->lname to DB! </p>";
         }
-        /*$userToDeleteID = 49;
-        $deleteSuccess = User::deleteUserWithIDFromDB($userToDeleteID);
+        /*$userToDeleteID = 50;
+        $deleteSuccess = User::deleteUserWithID($userToDeleteID);
         if ($deleteSuccess) echo "<p>yes!</p>";
-        else echo "<p>no!</p>";*/
+        else echo "<p>no!</p>";
         $userID = 51;
         $someUser = User::getUserWithID($userID);
-        echo $someUser->id;
+        echo $someUser->id;*/
+
         echo '</div>';
     } else include 'createAccountForm.php';
 

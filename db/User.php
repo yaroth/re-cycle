@@ -53,7 +53,7 @@
             $dbInstance = DB::getInstance();
             $stmt = $dbInstance->prepare($ADD_STATEMENT);
             if (!$stmt) {
-                echo "Prepare failed";
+                echo "Prepare failed with error: $dbInstance->error ";
                 exit;
             }
             $userID = NULL;
@@ -64,18 +64,18 @@
             $userSexID = $user->sexID;
             $stmt->bind_param('issssi', $userID, $firstName, $lastName, $dateOfBirth, $useremail, $userSexID);
             if (!$stmt) {
-                echo "bind_param failed";
+                echo "bind_param failed: $dbInstance->error ";
                 exit;
             }
             $stmt->execute();
             if (!$stmt) {
-                echo "execute failed";
+                echo "execute failed: $dbInstance->error";
                 exit;
             }
             return $stmt;
         }
 
-        public static function deleteUserWithIDFromDB($userID) {
+        public static function deleteUserWithID($userID) {
             $ADD_STATEMENT = "DELETE FROM users WHERE users.id = ?";
             $dbInstance = DB::getInstance();
             $stmt = $dbInstance->prepare($ADD_STATEMENT);
@@ -93,7 +93,8 @@
                 echo "execute failed";
                 exit;
             }
-            return $stmt;
+            $result = $stmt->get_result();
+            return $result;
         }
 
         public static function getUserWithID($userID){
@@ -103,6 +104,7 @@
                 echo "Prepare failed";
                 exit;
             }
+            $userID = (int)$userID;
             $stmt->bind_param('i', $userID);
             if (!$stmt) {
                 echo "bind_param failed";
@@ -114,6 +116,7 @@
                 exit;
             }
             $result = $stmt->get_result();
+            if (!$result) return null;
             $userObject = $result->fetch_object("User");
             return $userObject;
         }
