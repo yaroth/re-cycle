@@ -37,28 +37,33 @@
         }
 
         public static function addAccountToDB($account) {
+            //TODO: check if account with this login already exists!
+            $db = DB::getInstance();
+            $login = $db->escape_string($account->login);
+            $accountsWithLogin = DB::doQuery("SELECT * FROM accounts WHERE accounts.login = $login");
+            if (!$accountsWithLogin || $accountsWithLogin->num_rows >= 1)
+                return false;
             $ADD_STATEMENT = "INSERT INTO accounts (id, login, pw_hash, admin) VALUE (?, ?, ?, ?)";
-            $dbInstance = DB::getInstance();
-            $stmt = $dbInstance->prepare($ADD_STATEMENT);
+            $stmt = $db->prepare($ADD_STATEMENT);
             if (!$stmt) {
-                echo "Prepare failed with error: $dbInstance->error ";
+                echo "Prepare failed with error: $db->error ";
                 exit;
             }
             $accountID = NULL;
-            $login = $account->login;
-            $pw = $account->pw;
-            $isAdmin = $account->isAdmin;
+            $pw = $db->escape_string($account->pw);
+            $isAdmin = $db->escape_string($account->isAdmin);
             $stmt->bind_param('issi', $accountID, $login, $pw, $isAdmin);
             if (!$stmt) {
-                echo "bind_param failed: $dbInstance->error ";
+                echo "bind_param failed: $db->error ";
                 exit;
             }
             $stmt->execute();
             if (!$stmt) {
-                echo "execute failed: $dbInstance->error";
+                echo "execute failed: $db->error";
                 exit;
             }
-            return $stmt;
+            $result = $stmt->get_result();
+            return $result != null;
         }
 
         public static function deleteAccountWithID($accountID) {
@@ -83,15 +88,15 @@
             return $result;
         }
 
-        public static function getAccountWithID($accountID){
-            $ADD_STATEMENT = "SELECT * FROM accounts WHERE accounts.id = ?";
+        public static function getAccountByLogin($login){
+            $ADD_STATEMENT = "SELECT * FROM accounts WHERE accounts.login = ?";
             $stmt = DB::getInstance()->prepare($ADD_STATEMENT);
             if (!$stmt) {
                 echo "Prepare failed";
                 exit;
             }
-            $accountID = (int)$accountID;
-            $stmt->bind_param('i', $accountID);
+            $login = DB::getInstance()->escape_string($login);
+            $stmt->bind_param('s', $login);
             if (!$stmt) {
                 echo "bind_param failed";
                 exit;

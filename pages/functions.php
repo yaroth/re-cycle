@@ -88,7 +88,11 @@
             'personal-info' => array(
                 'de' => 'Angaben ',
                 'fr' => 'Données ',
-                'en' => 'Personal information ')
+                'en' => 'Personal information '),
+            'set-password' => array(
+                'de' => 'Passwort setzen ',
+                'fr' => 'Définir le mot de passe ',
+                'en' => 'Set password ')
         );
         return $texts[$key][$language] ?? "[$key][$language]";
     }

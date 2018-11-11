@@ -1,3 +1,7 @@
+<?php
+    $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
+    $targetURL = add_param($targetURL, "id", getId());
+?>
 <form action="<?php echo $targetURL ?>" method="post" name="login" onsubmit="return validateLogin();">
     <fieldset>
         <legend>Login information:</legend>
