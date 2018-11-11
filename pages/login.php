@@ -4,6 +4,7 @@
 ?>
 
     <h2><?php echo translate("login"); ?></h2>
+
 <?php
     if ($_POST) {
         $success = true;
@@ -26,11 +27,7 @@
         }
         if ($success) {
             include_once "authentication.inc.php";
-            }
-        } else {
-            echo '<h2>' . translate("error") . '</h2>';
-            echo '<h3>' . translate("sorry") . " " . $fname . " " . $lname . '!</h3>';
-            echo "<p>Could not add $user->fname $user->lname to DB! </p>";
+            echo "<p>Login successful!</p>";
         }
 
         echo '</div>';
