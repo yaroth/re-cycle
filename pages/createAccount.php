@@ -16,7 +16,7 @@
         }
         if ($success) {
             $user = new User();
-            $user->addProperties($fname, $lname, "1968-12-04", "test@user.ch", 2);
+            $user->setProperties($fname, $lname, "1968-12-04", "test@user.ch", 2);
             $addedToDB = USER::addUserToDB($user);
             if ($addedToDB) {
                 echo '<h2>' . translate("success") . '</h2>';
@@ -31,10 +31,13 @@
         /*$userToDeleteID = 50;
         $deleteSuccess = User::deleteUserWithID($userToDeleteID);
         if ($deleteSuccess) echo "<p>yes!</p>";
-        else echo "<p>no!</p>";
-        $userID = 51;
+        else echo "<p>no!</p>";*/
+        /*$userID = 51;
         $someUser = User::getUserWithID($userID);
-        echo $someUser->id;*/
+        echo $someUser . '<br>';
+        $someUser->lname = "Blau";
+        User::updateUser($someUser);
+        echo $someUser;*/
 
         echo '</div>';
     } else include 'createAccountForm.php';

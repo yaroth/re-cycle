@@ -40,7 +40,7 @@
             return $users;
         }
 
-        public function addProperties($fname, $lname, $dob, $email, $sexID) {
+        public function setProperties($fname, $lname, $dob, $email, $sexID) {
             $this->fname = $fname;
             $this->lname = $lname;
             $this->dob = $dob;
@@ -117,7 +117,34 @@
             }
             $result = $stmt->get_result();
             if (!$result) return null;
-            $userObject = $result->fetch_object("User");
-            return $userObject;
+            return $result->fetch_object(get_class());
+        }
+
+        public static function updateUser($user){
+            $ADD_STATEMENT = "UPDATE users SET fname=?, lname=?, dob=?, email=?, sexID=? WHERE users.id = ?;";
+            $db = DB::getInstance();
+            $stmt = $db->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed";
+                exit;
+            }
+            $userID = (int)$user->id;
+            $fname = $db->escape_string($user->fname);
+            $lname = $db->escape_string($user->lname);
+            $dob = $db->escape_string($user->dob);
+            $email = $db->escape_string($user->email);
+            $sexID = (int) $user->sexID;
+            $stmt->bind_param('ssssii', $fname, $lname, $dob, $email, $sexID, $userID);
+            if (!$stmt) {
+                echo "bind_param failed";
+                exit;
+            }
+            $stmt->execute();
+            if (!$stmt) {
+                echo "execute failed";
+                exit;
+            }
+            $result = $stmt->get_result();
+            return $result != null;
         }
     }
