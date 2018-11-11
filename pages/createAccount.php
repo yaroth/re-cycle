@@ -18,9 +18,10 @@
         echo '<h3>' . translate("welcome") . " " . $fname . " " . $lname . '!</h3>';
 
         $user = new User();
-        $user->addProperties(NULL, $fname, $lname, "1968-12-04", "test@user.ch", 2);
+        $user->addProperties($fname, $lname, "1968-12-04", "test@user.ch", 2);
         $addedToDB = USER::addUserToDB($user);
-        if ($addedToDB) echo '<p> Successfully added Franz Rothen to DB! ';
+        if ($addedToDB) echo "<p> Successfully added $user->fname $user->lname to DB! </p>";
+        else echo "<p> Could not add $user->fname $user->lname to DB! </p>";
 
         echo '</div>';
     } else include 'createAccountForm.php';

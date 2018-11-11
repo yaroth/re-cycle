@@ -5,7 +5,7 @@
      * Date: 08.11.18
      * Time: 21:27
      */
-    include_once "../data/conf.php";
+    require_once "../data/conf.php";
 
     class DB extends mysqli {
         const HOST = "localhost", USER = "admin", PW = CONF_PW, DB_NAME = "recycle";
@@ -13,6 +13,7 @@
 
         function __construct() {
             parent::__construct(self::HOST, self::USER, self::PW, self::DB_NAME);
+            self::set_charset("utf8");
         }
 
         static public function getInstance() {

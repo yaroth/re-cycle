@@ -44,6 +44,7 @@
         foreach ($usersArray as $user) {
             $user->setSexString($sexesArray);
         }
+        // print out users and bikes
         /*foreach (User::getUsers() as $user) echo $user . '<br>';
         foreach ($usersArray as $user) echo $user . '<br>';
         foreach ($bicyclesArray as $bike) echo $bike . '<br>';*/

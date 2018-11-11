@@ -16,13 +16,13 @@
         public $email;
         public $sexID;
         public $sexString;
-        private static $ADD_STATEMENT = "INSERT INTO `users` (`id`, `fname`, `lname`, `dob`, `email`, `sexID`) VALUES (?,?,?,?,?,?)";
+
 
         function __construct() {
         }
 
         public function __toString() {
-            return sprintf("%d) %s, %s of sex: %s", $this->id, $this->fname, $this->lname, $this->sexString);
+            return sprintf("%d) %s, %s of sex: %s (id: %d)", $this->id, $this->fname, $this->lname, $this->sexString, $this->sexID);
         }
 
         public function setSexString($sexArray) {
@@ -40,23 +40,39 @@
             return $users;
         }
 
-        public function addProperties($id, $fname, $lname, $dob, $email, $sexID){
-            $this->$id = $id;
-            $this->$fname = $fname;
-            $this->$lname = $lname;
-            $this->$dob = $dob;
-            $this->$email = $email;
-            $this->$sexID = $sexID;
-            echo $this->__toString();
+        public function addProperties($fname, $lname, $dob, $email, $sexID) {
+            $this->fname = $fname;
+            $this->lname = $lname;
+            $this->dob = $dob;
+            $this->email = $email;
+            $this->sexID = $sexID;
         }
 
         public static function addUserToDB($user) {
+            $ADD_STATEMENT = "INSERT INTO users (id, fname, lname, dob, email, sexID) VALUE (?, ?, ?, ?, ?, ?)";
             $dbInstance = DB::getInstance();
-            $stmt = $dbInstance->prepare(USER::$ADD_STATEMENT);
-            $date = date($user->dob);
-            $stmt->bind_param('issssi', $user->id, $user->fname, $user->lname, $date, $user->email, $user->sexID);
+            $stmt = $dbInstance->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed";
+                exit;
+            }
+            $userID = NULL;
+            $firstName = $user->fname;
+            $lastName = $user->lname;
+//            $dateOfBirth = $user->dob;
+            $dateOfBirth = date($user->dob);
+            $useremail = $user->email;
+            $userSexID = $user->sexID;
+            $stmt->bind_param('issssi', $userID, $firstName, $lastName, $dateOfBirth, $useremail, $userSexID);
+            if (!$stmt) {
+                echo "bind_param failed";
+                exit;
+            }
             $stmt->execute();
-            $result = $stmt->get_result();
-            return $result;
+            if (!$stmt) {
+                echo "execute failed";
+                exit;
+            }
+            return $stmt;
         }
     }
