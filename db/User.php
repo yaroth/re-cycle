@@ -120,7 +120,17 @@
             return $result->fetch_object(get_class());
         }
 
-        public static function updateUser($user){
+        public function setUser($user){
+            $db = DB::getInstance();
+            $this->id = (int)$user->id;
+            $this->fname = $db->escape_string($user->fname);
+            $this->lname = $db->escape_string($user->lname);
+            $this->dob = $db->escape_string($user->dob);
+            $this->email = $db->escape_string($user->email);
+            $this->sexID = (int) $user->sexID;
+        }
+
+        public function updateUserInDB($user){
             $ADD_STATEMENT = "UPDATE users SET fname=?, lname=?, dob=?, email=?, sexID=? WHERE users.id = ?;";
             $db = DB::getInstance();
             $stmt = $db->prepare($ADD_STATEMENT);
@@ -128,13 +138,8 @@
                 echo "Prepare failed";
                 exit;
             }
-            $userID = (int)$user->id;
-            $fname = $db->escape_string($user->fname);
-            $lname = $db->escape_string($user->lname);
-            $dob = $db->escape_string($user->dob);
-            $email = $db->escape_string($user->email);
-            $sexID = (int) $user->sexID;
-            $stmt->bind_param('ssssii', $fname, $lname, $dob, $email, $sexID, $userID);
+            $this->setUser($user);
+            $stmt->bind_param('ssssii', $this->fname, $this->lname, $this->dob, $this->email, $this->sexID, $this->id);
             if (!$stmt) {
                 echo "bind_param failed";
                 exit;

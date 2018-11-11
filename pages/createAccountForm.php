@@ -14,9 +14,9 @@
         Country :<br> <input type="text" name="coutry" placeholder="Schweiz" required><br>
         Phone :<br> <input type="tel" name="phone" placeholder="+41 79 123 45 67" required><br>
         E-mail : <br><input type="email" name="email" placeholder="Email" required><br>
-        Username:<br> <input type="text" name="username" placeholder="username" required><br>
-        Password:<br> <input type="password" name="password" placeholder="password" required><br>
         Birthday:<br> <input type="date" name="bday" placeholder="11.10.1989" required>-->
+        Login:<br> <input type="text" name="login" placeholder="Enter your login..." required><br>
+        Password:<br> <input type="password" name="pw" placeholder="Enter your password..." required><br>
         <input type="submit">
     </fieldset>
 </form>

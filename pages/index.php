@@ -1,5 +1,6 @@
 <?php
-    include "functions.php";
+    session_start();
+    include_once "functions.php";
     require_once "../db/db.inc.php";
     require_once("../db/autoloader.php");
 
@@ -28,6 +29,8 @@
             include 'login.php';
         } elseif (getId() == 3) {
             include 'bikeProperties.php';
+        } elseif (getId() == 4) {
+            include 'protected.php';
         }
 
 //        Get sexes in DB, put them in a sexes array

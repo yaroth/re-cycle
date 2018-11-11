@@ -81,6 +81,10 @@
                 'de' => 'Tut uns leid! ',
                 'fr' => 'Désolé! ',
                 'en' => 'Sorry! '),
+            'protected' => array(
+                'de' => 'Seite nur mit login zugänglich ',
+                'fr' => 'protégé! ',
+                'en' => 'Protected page! '),
             'personal-info' => array(
                 'de' => 'Angaben ',
                 'fr' => 'Données ',
@@ -93,9 +97,9 @@
         global $language;
         $titles = array(
             'page' => array(
-                'de' => array("Start", "Konto erstellen", "Login", "Velo", "Seite 4", "letzte Seite"),
-                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "page 4", "Dernière page"),
-                'en' => array("Start", "Create account", "Login EN", "Bike", "Page 4 EN", "Last page")
+                'de' => array("Start", "Konto erstellen", "Login", "Velo", "geheim", "letzte Seite"),
+                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "protégé", "Dernière page"),
+                'en' => array("Start", "Create account", "Login EN", "Bike", "login ONLY", "Last page")
             ));
         return $titles[$key][$language][$id] ?? "[$key][$language][$id]";
     }
@@ -112,4 +116,16 @@
             $id = 0;
         else $id = $_GET["id"];
         return $id;
+    }
+
+    function checklogin($login, $password) {
+        // db error checking omitted...
+        $stmt = DB::getInstance()->prepare("SELECT * FROM accounts WHERE login=?");
+        $stmt->bind_param('s', $login);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if (!$result || $result->num_rows !== 1)
+            return false;
+        $row = $result->fetch_assoc();
+        return password_verify($password, $row["pw_hash"]);
     }
