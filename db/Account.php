@@ -18,7 +18,7 @@
         }
 
         public function __toString() {
-            return sprintf("ID: %d, login: %s, pw_hash: %s, isAdmin: %i)", $this->id, $this->login, $this->pw, $this->isAdmin);
+            return sprintf("ID: %d, login: %s, pw_hash: %s, isAdmin: %i)", $this->id, $this->login, $this->pw_hash, $this->isAdmin);
         }
 
         static public function getAccounts() {
@@ -40,9 +40,9 @@
             //TODO: check if account with this login already exists!
             $db = DB::getInstance();
             $login = $db->escape_string($account->login);
-            $accountsWithLogin = DB::doQuery("SELECT * FROM accounts WHERE accounts.login = $login");
-            if ($accountsWithLogin)
-                return false;
+            if (self::getAccountByLogin($login) !== null){
+                return null;
+            }
             $ADD_STATEMENT = "INSERT INTO accounts (id, login, pw_hash, admin) VALUE (?, ?, ?, ?)";
             $stmt = $db->prepare($ADD_STATEMENT);
             if (!$stmt) {

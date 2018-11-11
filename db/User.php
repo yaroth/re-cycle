@@ -65,7 +65,7 @@
             $dateOfBirth = date($user->dob);
             $useremail = $user->email;
             $userSexID = $user->sexID;
-            $stmt->bind_param('issssi', $userID, $firstName, $lastName, $login, $dateOfBirth, $useremail, $userSexID);
+            $stmt->bind_param('isssssi', $userID, $firstName, $lastName, $login, $dateOfBirth, $useremail, $userSexID);
             if (!$stmt) {
                 echo "bind_param failed: $dbInstance->error ";
                 exit;
