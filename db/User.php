@@ -59,7 +59,6 @@
             $userID = NULL;
             $firstName = $user->fname;
             $lastName = $user->lname;
-//            $dateOfBirth = $user->dob;
             $dateOfBirth = date($user->dob);
             $useremail = $user->email;
             $userSexID = $user->sexID;
@@ -74,5 +73,48 @@
                 exit;
             }
             return $stmt;
+        }
+
+        public static function deleteUserWithIDFromDB($userID) {
+            $ADD_STATEMENT = "DELETE FROM users WHERE users.id = ?";
+            $dbInstance = DB::getInstance();
+            $stmt = $dbInstance->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed";
+                exit;
+            }
+            $stmt->bind_param('i', $userID);
+            if (!$stmt) {
+                echo "bind_param failed";
+                exit;
+            }
+            $stmt->execute();
+            if (!$stmt) {
+                echo "execute failed";
+                exit;
+            }
+            return $stmt;
+        }
+
+        public static function getUserWithID($userID){
+            $ADD_STATEMENT = "SELECT * FROM users WHERE users.id = ?";
+            $stmt = DB::getInstance()->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed";
+                exit;
+            }
+            $stmt->bind_param('i', $userID);
+            if (!$stmt) {
+                echo "bind_param failed";
+                exit;
+            }
+            $stmt->execute();
+            if (!$stmt) {
+                echo "execute failed";
+                exit;
+            }
+            $result = $stmt->get_result();
+            $userObject = $result->fetch_object("User");
+            return $userObject;
         }
     }

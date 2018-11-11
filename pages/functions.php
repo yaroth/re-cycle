@@ -73,6 +73,14 @@
                 'de' => 'Einloggen ',
                 'fr' => 'Se loguer ',
                 'en' => 'Login '),
+            'error' => array(
+                'de' => 'Fehler! ',
+                'fr' => 'Erreur! ',
+                'en' => 'Error! '),
+            'sorry' => array(
+                'de' => 'Tut uns leid! ',
+                'fr' => 'Désolé! ',
+                'en' => 'Sorry! '),
             'personal-info' => array(
                 'de' => 'Angaben ',
                 'fr' => 'Données ',
