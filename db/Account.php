@@ -41,7 +41,7 @@
             $db = DB::getInstance();
             $login = $db->escape_string($account->login);
             $accountsWithLogin = DB::doQuery("SELECT * FROM accounts WHERE accounts.login = $login");
-            if (!$accountsWithLogin || $accountsWithLogin->num_rows >= 1)
+            if ($accountsWithLogin)
                 return false;
             $ADD_STATEMENT = "INSERT INTO accounts (id, login, pw_hash, admin) VALUE (?, ?, ?, ?)";
             $stmt = $db->prepare($ADD_STATEMENT);
