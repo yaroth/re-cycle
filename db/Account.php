@@ -37,7 +37,6 @@
         }
 
         public static function addAccountToDB($account) {
-            //TODO: check if account with this login already exists!
             $db = DB::getInstance();
             $login = $db->escape_string($account->login);
             if (self::getAccountByLogin($login) !== null){
