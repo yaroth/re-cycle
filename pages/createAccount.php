@@ -6,11 +6,17 @@
 
         if (empty(strip_tags($_POST['fname']))) {
             $success = false;
-        } else $fname = strip_tags($_POST['fname']);
+        } else {
+            $fname = strip_tags($_POST['fname']);
+            $_COOKIE["fname"] = $fname;
+        }
 
         if (empty(strip_tags($_POST['lname']))) {
             $success = false;
-        } else $lname = strip_tags($_POST['lname']);
+        } else {
+            $lname = strip_tags($_POST['lname']);
+            $_COOKIE["lname"] = $lname;
+        }
 
         if (empty(strip_tags($_POST['login']))) {
             $success = false;
@@ -38,7 +44,10 @@
                     echo '<h3>' . translate("welcome") . " " . $fname . " " . $lname . '!</h3>';
                     echo "<h3>Successfully added $login to DB.</h3>";
                 }
-            } else echo "<h3>Login $login already exists. Please choose another login!</h3>";
+            } else {
+                echo "<h3>Login $login already exists. Please choose another login!</h3>";
+                include 'createAccountForm.php';
+            }
 
 
         } else {
@@ -51,9 +60,9 @@
         if ($deleteSuccess) echo "<p>yes!</p>";
         else echo "<p>no!</p>";
         $userID = 51;
+        foreach (Account::getAccounts() as $account) echo $account . '<br>';
         $someUser = User::getUserByID($userID);
         $someUser->updateUserInDB($someUser);*/
-        foreach (Account::getAccounts() as $account) echo $account . '<br>';
 
         echo '</div>';
     } else include 'createAccountForm.php';

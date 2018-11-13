@@ -6,8 +6,8 @@
 <form action="<?php echo $targetURL ?>" method="post" name="create-account" onsubmit="return validateCreateAccount();">
     <fieldset>
         <legend><?php echo translate("personal-info") ?> :</legend>
-        First Name : <br><input type="text" name="fname" placeholder="Bob" autofocus required><br>
-        Last Name :<br> <input type="text" name="lname" placeholder="Geldof" required><br>
+        First Name : <br><input type="text" name="fname" placeholder="Bob" value="<?php echo $_COOKIE["fname"] ?? "";?>" autofocus required><br>
+        Last Name :<br> <input type="text" name="lname" placeholder="Geldof" value="<?php echo $_COOKIE["lname"] ?? "";?>" required><br>
         <!--Address :<br> <input type="text" name="address" placeholder="Wasserweg 23" required><br>
         ZIP :<br> <input type="number" name="zip" placeholder="3006" required><br>
         City :<br> <input type="text" name="city" placeholder="Bern" required><br>
