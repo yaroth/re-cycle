@@ -10,7 +10,9 @@
     class Bicycle {
 
         public $id;
+        public $title;
         public $weight;
+        public $price;
         public $hasLights;
         public $hasGears;
         public $wheelSize;
@@ -27,9 +29,7 @@
         }
         static public function getBicycles() {
             $bicycles = array();
-            $res = DB::doQuery(
-                "SELECT * FROM bicycles;"
-            );
+            $res = DB::doQuery("SELECT * FROM bicycles;");
             if (!$res) return null;
             while ($bicycle = $res->fetch_object(get_class()))
                 $bicycles[] = $bicycle;

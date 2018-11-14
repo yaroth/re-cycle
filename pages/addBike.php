@@ -2,7 +2,8 @@
     $success = true;
     $login = $pw = '';
     if ($_POST) {
-        echo '<div class="account">';
+        echo '<div class="add-bike">';
+        echo var_dump($_POST);
         $postVar = ["address", "zip", "city", "country", "phone", "email", "dob"];
         for ($i = 0; $i < count($postVar); $i++) {
             if (empty(strip_tags($_POST[$postVar[$i]]))) {
@@ -68,5 +69,5 @@
             echo "<p>Could not add $user->fname $user->lname to DB! </p>";
         }
         echo '</div>';
-    } else include 'createAccountForm.php';
+    } else include 'bikeForm.php';
 

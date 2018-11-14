@@ -16,7 +16,7 @@
 
     function navigation($language, $pageId) {
         $urlbase = add_param($_SERVER['PHP_SELF'], "lang", $language);
-        for ($i = 0; $i <= 5; $i++) {
+        for ($i = 0; $i <= 6; $i++) {
             $url = add_param($urlbase, "id", $i);
             $class = $pageId == $i ? 'active' : 'inactive';
             echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . navtitles('page', $i) . "</a></li>";
@@ -89,6 +89,14 @@
                 'de' => 'Angaben ',
                 'fr' => 'Données ',
                 'en' => 'Personal information '),
+            'add-bicycle' => array(
+                'de' => 'Neues Velo erfassen',
+                'fr' => 'Ajouter un nouveau vélo',
+                'en' => 'Add a new bicycle'),
+            'bike-info' => array(
+                'de' => 'Velo Daten',
+                'fr' => 'Données vélo',
+                'en' => 'Bicycle data'),
             'set-password' => array(
                 'de' => 'Passwort setzen ',
                 'fr' => 'Définir le mot de passe ',
@@ -101,9 +109,9 @@
         global $language;
         $titles = array(
             'page' => array(
-                'de' => array("Start", "Konto erstellen", "Login", "Velo", "geheim", "letzte Seite"),
-                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "protégé", "Dernière page"),
-                'en' => array("Start", "Create account", "Login EN", "Bike", "login ONLY", "Last page")
+                'de' => array("Start", "Konto erstellen", "Login", "Velo", "geheim", "letzte Seite", "Velo hinzufügen"),
+                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "protégé", "Dernière page", "Ajouter vélo"),
+                'en' => array("Start", "Create account", "Login EN", "Bike", "login ONLY", "Last page", "Add bike")
             ));
         return $titles[$key][$language][$id] ?? "[$key][$language][$id]";
     }

@@ -8,13 +8,13 @@
         <legend><?php echo translate("personal-info") ?> :</legend>
         First Name : <br><input type="text" name="fname" placeholder="Bob" value="<?php echo $_COOKIE["fname"] ?? "";?>" autofocus required><br>
         Last Name :<br> <input type="text" name="lname" placeholder="Geldof" value="<?php echo $_COOKIE["lname"] ?? "";?>" required><br>
-        <!--Address :<br> <input type="text" name="address" placeholder="Wasserweg 23" required><br>
-        ZIP :<br> <input type="number" name="zip" placeholder="3006" required><br>
-        City :<br> <input type="text" name="city" placeholder="Bern" required><br>
-        Country :<br> <input type="text" name="coutry" placeholder="Schweiz" required><br>
-        Phone :<br> <input type="tel" name="phone" placeholder="+41 79 123 45 67" required><br>
-        E-mail : <br><input type="email" name="email" placeholder="Email" required><br>
-        Birthday:<br> <input type="date" name="bday" placeholder="11.10.1989" required>-->
+        Address :<br> <input type="text" name="address" placeholder="Wasserweg 23" value="<?php echo $_COOKIE["address"] ?? "";?>" required><br>
+        ZIP :<br> <input type="number" name="zip" placeholder="3006" value="<?php echo $_COOKIE["zip"] ?? "";?>" required><br>
+        City :<br> <input type="text" name="city" placeholder="Bern" value="<?php echo $_COOKIE["city"] ?? "";?>" required><br>
+        Country :<br> <input type="text" name="country" placeholder="Schweiz" value="<?php echo $_COOKIE["country"] ?? "";?>" required><br>
+        Phone :<br> <input type="tel" name="phone" placeholder="+41 79 123 45 67" value="<?php echo $_COOKIE["phone"] ?? "";?>" required><br>
+        E-mail : <br><input type="email" name="email" placeholder="john.bright@gbrake.com" value="<?php echo $_COOKIE["email"] ?? "";?>" required><br>
+        Birthday:<br> <input type="date" name="dob" placeholder="1974-01-31" value="<?php echo $_COOKIE["dob"] ?? "";?>" required><br>
         Login:<br> <input type="text" name="login" placeholder="Enter your login..." required><br>
         Password:<br> <input type="password" name="pw" placeholder="Enter your password..." required><br>
         <input type="submit">

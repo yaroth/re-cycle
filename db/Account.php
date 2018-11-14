@@ -11,7 +11,7 @@
 
         public $id;
         public $login;
-        public $pw;
+        public $pw_hash;
         public $isAdmin;
 
         function __construct() {
@@ -31,14 +31,16 @@
         }
 
         public function setProperties($login, $pw, $isAdmin) {
-            $this->login = $login;
-            $this->pw = $pw;
-            $this->isAdmin = $isAdmin;
+            $db = DB::getInstance();
+            $this->login = $db->escape_string($login);
+            $temp = $db->escape_string($pw);
+            $this->pw_hash = password_hash($temp, PASSWORD_BCRYPT);
+            $this->isAdmin = $db->escape_string($isAdmin);
         }
 
         public static function addAccountToDB($account) {
             $db = DB::getInstance();
-            $login = $db->escape_string($account->login);
+            $login = $account->login;
             if (self::getAccountByLogin($login) !== null){
                 return null;
             }
@@ -49,8 +51,8 @@
                 exit;
             }
             $accountID = NULL;
-            $pw = $db->escape_string($account->pw);
-            $isAdmin = $db->escape_string($account->isAdmin);
+            $pw = $account->pw_hash;
+            $isAdmin = $account->isAdmin;
             $stmt->bind_param('issi', $accountID, $login, $pw, $isAdmin);
             if (!$stmt) {
                 echo "bind_param failed: $db->error ";
@@ -61,8 +63,7 @@
                 echo "execute failed: $db->error";
                 exit;
             }
-            $result = $stmt->get_result();
-            return $result != null;
+            return $stmt;
         }
 
         public static function deleteAccountWithID($accountID) {
@@ -114,7 +115,7 @@
             $db = DB::getInstance();
             $this->id = (int)$account->id;
             $this->login = $db->escape_string($account->login);
-            $this->pw = $db->escape_string($account->pw);
+            $this->pw_hash = $db->escape_string($account->pw);
             $this->isAdmin = $db->escape_string($account->isAdmin);
         }
 

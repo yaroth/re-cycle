@@ -32,6 +32,8 @@
             include 'protected.php';
         } elseif (getId() == 5) {
             include 'setpassword.php';
+        } elseif (getId() == 6) {
+            include 'addBike.php';
         }
 
 //        Get sexes in DB, put them in a sexes array

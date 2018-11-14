@@ -42,12 +42,13 @@
         }
 
         public function setProperties($fname, $lname, $login, $dob, $email, $sexID) {
-            $this->fname = $fname;
-            $this->lname = $lname;
-            $this->login = $login;
-            $this->dob = $dob;
-            $this->email = $email;
-            $this->sexID = $sexID;
+            $db = DB::getInstance();
+            $this->fname = $db->escape_string($fname);
+            $this->lname = $db->escape_string($lname);
+            $this->login = $db->escape_string($login);
+            $this->dob = $db->escape_string($dob);
+            $this->email = $db->escape_string($email);
+            $this->sexID = $db->escape_string($sexID);
         }
 
         public static function addUserToDB($user) {
@@ -59,13 +60,8 @@
                 exit;
             }
             $userID = NULL;
-            $firstName = $user->fname;
-            $lastName = $user->lname;
-            $login = $user->login;
             $dateOfBirth = date($user->dob);
-            $useremail = $user->email;
-            $userSexID = $user->sexID;
-            $stmt->bind_param('isssssi', $userID, $firstName, $lastName, $login, $dateOfBirth, $useremail, $userSexID);
+            $stmt->bind_param('isssssi', $userID, $user->fname, $user->lname, $user->login, $dateOfBirth, $user->email, $user->sexID);
             if (!$stmt) {
                 echo "bind_param failed: $dbInstance->error ";
                 exit;
