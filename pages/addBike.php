@@ -3,70 +3,102 @@
     $login = $pw = '';
     if ($_POST) {
         echo '<div class="add-bike">';
-        echo var_dump($_POST);
-        $postVar = ["address", "zip", "city", "country", "phone", "email", "dob"];
-        for ($i = 0; $i < count($postVar); $i++) {
-            if (empty(strip_tags($_POST[$postVar[$i]]))) {
-                $success = false;
-            } else {
-                $tempVar = strip_tags($_POST[$postVar[$i]]);
-                $_COOKIE[$postVar[$i]] = $tempVar;
-            }
-        }
 
-        if (empty(strip_tags($_POST['fname']))) {
+        $bikeArray = array();
+        if (empty(strip_tags($_POST['title']))) {
             $success = false;
         } else {
-            $fname = strip_tags($_POST['fname']);
-            $_COOKIE['fname'] = $fname;
+            $title = strip_tags($_POST['title']);
+            $_COOKIE['title'] = $title;
+            $bikeArray['title'] = $title;
         }
-
-        if (empty(strip_tags($_POST['lname']))) {
+        if (empty(strip_tags($_POST['description']))) {
             $success = false;
         } else {
-            $lname = strip_tags($_POST['lname']);
-            $_COOKIE['lname'] = $lname;
+            $description = strip_tags($_POST['description']);
+            $_COOKIE['description'] = $description;
+            $bikeArray['description'] = $description;
+        }
+        if (empty(strip_tags($_POST['weight']))) {
+            $success = false;
+        } else {
+            $weight = strip_tags($_POST['weight']);
+            $_COOKIE['weight'] = $weight;
+            $bikeArray['weight'] = $weight;
+        }
+        if (empty(strip_tags($_POST['price']))) {
+            $success = false;
+        } else {
+            $price = strip_tags($_POST['price']);
+            $_COOKIE['price'] = $price;
+            $bikeArray['price'] = $price;
+        }
+        if (empty(strip_tags($_POST['hasLights']))) {
+            $success = false;
+        } else {
+            $hasLights = strip_tags($_POST['hasLights']);
+            $_COOKIE['hasLights'] = $hasLights;
+            $bikeArray['hasLights'] = $hasLights;
+        }
+        if (empty(strip_tags($_POST['hasGears']))) {
+            $success = false;
+        } else {
+            $hasGears = strip_tags($_POST['hasGears']);
+            $_COOKIE['hasGears'] = $hasGears;
+            $bikeArray['hasGears'] = $hasGears;
+        }
+        if (empty(strip_tags($_POST['gearType']))) {
+            $success = false;
+        } else {
+            $gearType = strip_tags($_POST['gearType']);
+            $_COOKIE['gearType'] = $gearType;
+            $bikeArray['gearType'] = $gearType;
+        }
+        if (empty(strip_tags($_POST['nbOfGears']))) {
+            $success = false;
+        } else {
+            $nbOfGears = strip_tags($_POST['nbOfGears']);
+            $_COOKIE['nbOfGears'] = $nbOfGears;
+            $bikeArray['nbOfGears'] = $nbOfGears;
+        }
+        if (empty(strip_tags($_POST['wheelSize']))) {
+            $success = false;
+        } else {
+            $wheelSize = strip_tags($_POST['wheelSize']);
+            $_COOKIE['wheelSize'] = $wheelSize;
+            $bikeArray['wheelSize'] = $wheelSize;
+        }
+        if (empty(strip_tags($_POST['brakeType']))) {
+            $success = false;
+        } else {
+            $brakeType = strip_tags($_POST['brakeType']);
+            $_COOKIE['brakeType'] = $brakeType;
+            $bikeArray['brakeType'] = $brakeType;
         }
 
-        if (empty(strip_tags($_POST['login']))) {
-            $success = false;
-        } else $login = strip_tags($_POST['login']);
-
-        if (empty(strip_tags($_POST['pw']))) {
-            $success = false;
-        } else $pw = strip_tags($_POST['pw']);
 
         if (!$success) {
             echo "<p>Something went wrong!</p>";
             exit;
         }
         if ($success) {
-            $account = new Account();
-            $account->setProperties($login, $pw, 0);
-            $addedAccountToDB = Account::addAccountToDB($account);
-            if ($addedAccountToDB) {
-                $user = new User();
-                $user->setProperties($fname, $lname, $login, $_COOKIE["dob"], $_COOKIE["email"], 2);
-                $addedUserToDB = USER::addUserToDB($user);
-                if ($addedUserToDB) {
-                    echo '<h2>' . translate("success") . '</h2>';
-                    echo '<h3>' . translate("welcome") . " " . $fname . " " . $lname . '!</h3>';
-                    echo "<h3>Successfully added $login to DB.</h3>";
-                } else {
-                    echo '<h2>' . translate("error") . '</h2>';
-                    echo "<h3>Could NOT add user to DB!</h3>";
-                }
+            $user = User::getUserByLogin($_SESSION["user"]);
+            $bikeArray["ownerID"] = $user->id;
+            $bicycle = Bicycle::withParams($bikeArray);
+            $addedBikeToDB = Bicycle::addBikeToDB($bicycle);
+            if ($addedBikeToDB) {
+                echo '<h2>' . translate("success") . '</h2>';
+                echo "<h3>Successfully added $bicycle to DB.</h3>";
             } else {
                 echo '<h2>' . translate("error") . '</h2>';
-                echo "<h3>Login $login already exists. Please choose another login!</h3>";
-                include 'createAccountForm.php';
+                echo "<h3>Could NOT add bicycle to DB!</h3>";
             }
 
 
         } else {
             echo '<h2>' . translate("error") . '</h2>';
-            echo '<h3>' . translate("sorry") . " " . $fname . " " . $lname . '!</h3>';
-            echo "<p>Could not add $user->fname $user->lname to DB! </p>";
+            echo '<h3>' . translate("sorry") . '!</h3>';
+            echo "<p>Some form entries enduced an error!</p>";
         }
         echo '</div>';
     } else include 'bikeForm.php';

@@ -35,7 +35,7 @@
         <br>
         <legend>Comment</legend>
         <input type="text"/><br>
-        <textarea>Please enter some text...</textarea>
+        <textarea name="description" placeholder="Please enter some text..."></textarea>
         <br>
         <br>
         <?php include 'uploadFile.php' ?>
