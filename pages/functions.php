@@ -57,10 +57,14 @@
                 'de' => 'Konto erstellen ',
                 'fr' => 'Créer un compte ',
                 'en' => 'Create account '),
-            'success' => array(
+            'account created' => array(
                 'de' => 'Konto erstellt! ',
                 'fr' => 'Compte créé! ',
                 'en' => 'Account created! '),
+            'success' => array(
+                'de' => 'Erfolgreich! ',
+                'fr' => 'Succès! ',
+                'en' => 'Success! '),
             'welcome' => array(
                 'de' => 'Willkommen ',
                 'fr' => 'Bienvenu ',
