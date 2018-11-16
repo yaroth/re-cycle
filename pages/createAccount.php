@@ -42,7 +42,8 @@
         if ($success) {
             $account = new Account();
             $account->setProperties($login, $pw, 0);
-            $addedAccountToDB = Account::addAccountToDB($account);
+            if (empty($account->login)) $addedAccountToDB = false;
+            else $addedAccountToDB = Account::addAccountToDB($account);
             if ($addedAccountToDB) {
                 $user = new User();
                 $user->setProperties($fname, $lname, $login, $_COOKIE["dob"], $_COOKIE["email"], 2);
