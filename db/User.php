@@ -117,6 +117,11 @@
             return $result->fetch_object(get_class());
         }
 
+        public static function getUserIDByLogin($login){
+            $user = User::getUserByLogin($login);
+            return $user->id;
+        }
+
         public static function getUserByLogin($login) {
             $ADD_STATEMENT = "SELECT * FROM users WHERE users.login = ?";
             $stmt = DB::getInstance()->prepare($ADD_STATEMENT);

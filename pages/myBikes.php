@@ -3,6 +3,7 @@
 <div class="items">
     <?php
         if (isset($_SESSION["user"])) {
+            $login = $_SESSION["user"];
             if (isset($_POST["bikeID"])) {
                 $bikeID = $_POST["bikeID"];
                 listBikeByID($bikeID);
@@ -10,9 +11,7 @@
                 $bikeID = $_POST["saveBikeID"];
                 $bikeArray = bikeArrayFromPost();
                 $bikeArray["id"] = $bikeID;
-                $login = $_SESSION["user"];
-                $user = User::getUserByLogin($login);
-                $bikeArray["ownerID"] = $user->id;
+                $bikeArray["ownerID"] = User::getUserIDByLogin($login);
 //                $success = ($bikeArray !== false);
                 $updatedBikeInDB = Bicycle::updateBikeInDB($bikeArray);
                 if ($updatedBikeInDB) {
@@ -24,7 +23,6 @@
                     listBikeByID($bikeID);
                 }
             } else {
-                $login = $_SESSION["user"];
                 $user = User::getUserByLogin($login);
                 listBikesByUser($user);
             }
