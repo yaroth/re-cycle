@@ -46,6 +46,7 @@
             if (empty($account->login)) $addedAccountToDB = false;
             else $addedAccountToDB = Account::addAccountToDB($account);
             if ($addedAccountToDB) {
+                $user = new User();
                 $user->setProperties($fname, $lname, $login, $_COOKIE["dob"], $_COOKIE["email"], $_COOKIE["gender"]);
                 $addedUserToDB = USER::addUserToDB($user);
                 if ($addedUserToDB) {

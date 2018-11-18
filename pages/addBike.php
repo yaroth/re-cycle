@@ -26,5 +26,12 @@
             }
         }
         echo '</div>';
-    } else include 'bikeForm.php';
+    } elseif (isset($_SESSION["user"])) {
+        include 'bikeForm.php';
+    } else {
+        echo '<div class="add-bike">';
+        echo '<h2>' . translate("sorry") . '</h2>';
+        echo '<p>To add a bike you first need to <a href="index.php?lang=' . getLang() . '&id=2">login</a>!</p>';
+        echo '</div>';
+    }
 
