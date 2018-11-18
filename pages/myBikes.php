@@ -5,7 +5,10 @@
         if (isset($_SESSION["user"])) {
             $login = $_SESSION["user"];
             $user = User::getUserByLogin($login);
-            listMyBikes($user);
+
+            if (isset($_POST["bikeID"])){
+                listBikeByID();
+            } else listBikesByUser($user);
         }
         else {
             $lang = getLang();

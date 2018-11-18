@@ -46,7 +46,7 @@
             return $bicycles;
         }
 
-        public static function getMyBicycles($user) {
+        public static function getBicyclesOfUser($user) {
             $ownerID = $user->id;
             $bicycles = array();
             $res = DB::doQuery("SELECT * FROM bicycles WHERE bicycles.ownerID = $ownerID;");
@@ -54,6 +54,13 @@
             while ($bicycle = $res->fetch_object(get_class()))
                 $bicycles[] = $bicycle;
             return $bicycles;
+        }
+
+        // Should return one bicycle ONLY!
+        public static function getBicycleByID($id) {
+            $res = DB::doQuery("SELECT * FROM bicycles WHERE bicycles.id = $id;");
+            if (!$res || $res->num_rows !== 1) return false;
+            return $res->fetch_object(get_class());
         }
 
         public static function addBikeToDB($bike) {
