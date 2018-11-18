@@ -8,7 +8,7 @@
     if (isset($_POST["login"]) && isset($_POST["pw"])) {
         $login = strip_tags($_POST["login"]);
         $pw = strip_tags($_POST["pw"]);
-        if (checklogin($login, $pw))
+        if (Account::checklogin($login, $pw))
             $_SESSION["user"] = $login;
     }
     if (!isset($_SESSION["user"])) {

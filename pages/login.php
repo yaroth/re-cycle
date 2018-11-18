@@ -27,7 +27,7 @@
             }
             if ($success) {
                 include_once "authentication.inc.php";
-                echo "<p>Login successful!</p>";
+                echo "<p>Login for '$login' successful!</p>";
                 echo '<p> Do you want to <a href="logout.php?lang=' . getLang() . '">logout?</a>';
             }
 

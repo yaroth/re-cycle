@@ -52,3 +52,15 @@ function validateLogin() {
     }*/
     return true;
 }
+
+function validateNewPassword() {
+    // TODO: Some checks
+    let form = document.forms["setNewPassword"];
+    let pw1 = form["newpw1"].value;
+    let pw2 = form["newpw2"].value;
+    if (pw1 !== pw2) {
+        alert("Passwords do not match!");
+        return false;
+    }
+    return true;
+}

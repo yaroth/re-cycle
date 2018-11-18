@@ -113,9 +113,9 @@
         global $language;
         $titles = array(
             'page' => array(
-                'de' => array("Start", "Konto erstellen", "Login", "Velo", "geheim", "letzte Seite", "Velo hinzufügen"),
-                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "protégé", "Dernière page", "Ajouter vélo"),
-                'en' => array("Start", "Create account", "Login EN", "Bike", "login ONLY", "Last page", "Add bike")
+                'de' => array("Start", "Konto erstellen", "Login", "Velo", "geheim", "Passwort ändern", "Velo hinzufügen"),
+                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "protégé", "Changer mot de passe", "Ajouter vélo"),
+                'en' => array("Start", "Create account", "Login EN", "Bike", "login ONLY", "Change password", "Add bike")
             ));
         return $titles[$key][$language][$id] ?? "[$key][$language][$id]";
     }
@@ -134,18 +134,7 @@
         return $id;
     }
 
-    function checklogin($login, $password) {
-        // db error checking omitted...
-        $db = DB::getInstance();
-        $stmt = $db->prepare("SELECT * FROM accounts WHERE login=?");
-        $stmt->bind_param('s', $login);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if (!$result || $result->num_rows !== 1)
-            return false;
-        $row = $result->fetch_assoc();
-        return password_verify($password, $row["pw_hash"]);
-    }
+
 
     function getChecked($name, $value) {
         $checked = NULL;

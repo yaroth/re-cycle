@@ -12,13 +12,13 @@
         public $id;
         public $login;
         public $pw_hash;
-        public $isAdmin;
+        public $admin;
 
         function __construct() {
         }
 
         public function __toString() {
-            return sprintf("ID: %d, login: %s, pw_hash: %s, isAdmin: %i)", $this->id, $this->login, $this->pw_hash, $this->isAdmin);
+            return sprintf("ID: %d, login: %s, pw_hash: %s, isAdmin: %i)", $this->id, $this->login, $this->pw_hash, $this->admin);
         }
 
         static public function getAccounts() {
@@ -30,12 +30,12 @@
             return $accounts;
         }
 
-        public function setProperties($login, $pw, $isAdmin) {
+        public function setProperties($login, $pw, $admin) {
             $db = DB::getInstance();
             $this->login = $db->escape_string($login);
             $temp = $db->escape_string($pw);
             $this->pw_hash = password_hash($temp, PASSWORD_BCRYPT);
-            $this->isAdmin = $db->escape_string($isAdmin);
+            $this->admin = $db->escape_string($admin);
         }
 
         public static function addAccountToDB($account) {
@@ -52,8 +52,8 @@
             }
             $accountID = NULL;
             $pw = $account->pw_hash;
-            $isAdmin = $account->isAdmin;
-            $stmt->bind_param('issi', $accountID, $login, $pw, $isAdmin);
+            $admin = $account->admin;
+            $stmt->bind_param('issi', $accountID, $login, $pw, $admin);
             if (!$stmt) {
                 echo "bind_param failed: $db->error ";
                 exit;
@@ -115,12 +115,12 @@
             $db = DB::getInstance();
             $this->id = (int)$account->id;
             $this->login = $db->escape_string($account->login);
-            $this->pw_hash = $db->escape_string($account->pw);
-            $this->isAdmin = $db->escape_string($account->isAdmin);
+            $this->pw_hash = $db->escape_string($account->pw_hash);
+            $this->admin = $db->escape_string($account->admin);
         }
 
         public function updateAccountInDB($account){
-            $ADD_STATEMENT = "UPDATE accounts SET login=?, pw=?, isAdmin=? WHERE accounts.id = ?;";
+            $ADD_STATEMENT = "UPDATE accounts SET login=?, pw_hash=?, admin=? WHERE accounts.id = ?;";
             $db = DB::getInstance();
             $stmt = $db->prepare($ADD_STATEMENT);
             if (!$stmt) {
@@ -128,7 +128,7 @@
                 exit;
             }
             $this->setAccount($account);
-            $stmt->bind_param('ssii', $this->login, $this->pw, $this->isAdmin, $this->id);
+            $stmt->bind_param('ssii', $this->login, $this->pw_hash, $this->admin, $this->id);
             if (!$stmt) {
                 echo "bind_param failed";
                 exit;
@@ -138,7 +138,19 @@
                 echo "execute failed";
                 exit;
             }
+            return $stmt != null;
+        }
+
+        public static function checklogin($login, $password) {
+            // db error checking omitted...
+            $db = DB::getInstance();
+            $stmt = $db->prepare("SELECT * FROM accounts WHERE login=?");
+            $stmt->bind_param('s', $login);
+            $stmt->execute();
             $result = $stmt->get_result();
-            return $result != null;
+            if (!$result || $result->num_rows !== 1)
+                return false;
+            $row = $result->fetch_assoc();
+            return password_verify($password, $row["pw_hash"]);
         }
     }

@@ -96,6 +96,5 @@
             }
         }
         echo '</div>';
-        include 'bikeForm.php';
     } else include 'bikeForm.php';
 
