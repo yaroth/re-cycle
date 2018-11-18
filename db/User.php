@@ -170,7 +170,6 @@
                 echo "execute failed";
                 exit;
             }
-            $result = $stmt->get_result();
-            return $result != null;
+            return $stmt != null;
         }
     }

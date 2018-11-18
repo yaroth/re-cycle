@@ -3,17 +3,35 @@
 <div class="items">
     <?php
         if (isset($_SESSION["user"])) {
-            $login = $_SESSION["user"];
-            $user = User::getUserByLogin($login);
-
-            if (isset($_POST["bikeID"])){
-                listBikeByID();
-            } else listBikesByUser($user);
-        }
-        else {
+            if (isset($_POST["bikeID"])) {
+                $bikeID = $_POST["bikeID"];
+                listBikeByID($bikeID);
+            } elseif (isset($_POST["saveBikeID"])) {
+                $bikeID = $_POST["saveBikeID"];
+                $bikeArray = bikeArrayFromPost();
+                $bikeArray["id"] = $bikeID;
+                $login = $_SESSION["user"];
+                $user = User::getUserByLogin($login);
+                $bikeArray["ownerID"] = $user->id;
+//                $success = ($bikeArray !== false);
+                $updatedBikeInDB = Bicycle::updateBikeInDB($bikeArray);
+                if ($updatedBikeInDB) {
+                    echo '<h2>' . translate("success") . '</h2>';
+                    echo "<h3>Successfully updated your bicycle.</h3>";
+                } else {
+                    echo '<h2>' . translate("error") . '</h2>';
+                    echo "<h3>Could NOT update bicycle!</h3>";
+                    listBikeByID($bikeID);
+                }
+            } else {
+                $login = $_SESSION["user"];
+                $user = User::getUserByLogin($login);
+                listBikesByUser($user);
+            }
+        } else {
             $lang = getLang();
             echo '<h2>' . translate("error") . '</h2>';
             echo '<h3>' . translate("sorry") . ', to view your bicycles you first need to <a href="index.php?lang=' . $lang . '&id=2">login</a>!</h3>';
         }
-        ?>
+    ?>
 </div>

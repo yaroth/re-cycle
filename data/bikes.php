@@ -79,9 +79,31 @@
             <div class="edit">
                 <form action="' . $targetURL . '" method="post" name="editBike" >
                 <input type="hidden" name="bikeID" value="' . $bike->id . '" required><br>
-                <input type="submit" value="Edit">
+                <input type="submit" value="Edit bike">
                 </form>
             </div>
         </div>';
         echo $item;
+    }
+
+    function listBikeByID($bikeID) {
+        $bike = Bicycle::getBicycleByID($bikeID);
+        if ($bike !== null) {
+            setCookiesForBike($bike);
+            include '../pages/bikeForm.php';
+        }
+    }
+
+    function setCookiesForBike($bike) {
+        $_COOKIE['id'] = $bike->id;
+        $_COOKIE['title'] = $bike->title;
+        $_COOKIE['description'] = $bike->description;
+        $_COOKIE['weight'] = $bike->weight;
+        $_COOKIE['price'] = $bike->price;
+        $_COOKIE['hasLights'] = $bike->hasLights;
+        $_COOKIE['hasGears'] = $bike->hasGears;
+        $_COOKIE['gearType'] = $bike->gearTypeID;
+        $_COOKIE['nbOfGears'] = $bike->nbOfGears;
+        $_COOKIE['wheelSize'] = $bike->wheelSize;
+        $_COOKIE['brakeType'] = $bike->brakeTypeID;
     }

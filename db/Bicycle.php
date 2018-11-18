@@ -11,6 +11,7 @@
 
         public $id;
         public $title;
+        public $description;
         public $weight;
         public $price;
         public $hasLights;
@@ -25,12 +26,12 @@
         }
 
         public static function withParams($bikeArray) {
-            $instance = new self();
+            $bicycle = new self();
             $db = DB::getInstance();
             foreach ($bikeArray as $key => $value) {
-                $instance->$key = $db->escape_string($value);
+                $bicycle->$key = $db->escape_string($value);
             }
-            return $instance;
+            return $bicycle;
         }
 
         public function __toString() {
@@ -83,6 +84,28 @@
                 exit;
             }
             return $stmt;
+        }
+
+        public static function updateBikeInDB($bikeArray) {
+            $ADD_STATEMENT = "UPDATE bicycles SET title=?, description=?, weight=?, price=?, hasLights=?, hasGears=?, wheelSize=?, brakeTypeID=?, nbOfGears=?, gearTypeID=?, ownerID=? WHERE bicycles.id = ?;";
+            $db = DB::getInstance();
+            $stmt = $db->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed";
+                exit;
+            }
+            $bike = Bicycle::withParams($bikeArray);
+            $stmt->bind_param('ssdiiiiiiiii', $bike->title, $bike->description, $bike->weight, $bike->price, $bike->hasLights, $bike->hasGears, $bike->wheelSize, $bike->brakeType, $bike->nbOfGears, $bike->gearType, $bike->ownerID, $bike->id);
+            if (!$stmt) {
+                echo "bind_param failed";
+                exit;
+            }
+            $stmt->execute();
+            if (!$stmt) {
+                echo "execute failed";
+                exit;
+            }
+            return $stmt != null;
         }
 
         public function getOwnerName() {
