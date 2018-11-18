@@ -16,7 +16,7 @@
 
     function navigation($language, $pageId) {
         $urlbase = add_param($_SERVER['PHP_SELF'], "lang", $language);
-        for ($i = 0; $i <= 6; $i++) {
+        for ($i = 0; $i <= 7; $i++) {
             $url = add_param($urlbase, "id", $i);
             $class = $pageId == $i ? 'active' : 'inactive';
             echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . navtitles('page', $i) . "</a></li>";
@@ -87,7 +87,7 @@
                 'en' => 'Sorry! '),
             'protected' => array(
                 'de' => 'Seite nur mit login zugänglich ',
-                'fr' => 'protégé! ',
+                'fr' => 'Page protégée! ',
                 'en' => 'Protected page! '),
             'personal-info' => array(
                 'de' => 'Angaben ',
@@ -101,10 +101,26 @@
                 'de' => 'Velo Daten',
                 'fr' => 'Données vélo',
                 'en' => 'Bicycle data'),
+            'felgen' => array(
+                'de' => 'Felgenbremsen',
+                'fr' => 'freins de gentes',
+                'en' => 'rim brakes'),
+            'ketten' => array(
+                'de' => 'Kettenschaltung',
+                'fr' => 'dérailleur',
+                'en' => 'derailleur'),
+            'naben' => array(
+                'de' => 'Nabenschaltung',
+                'fr' => 'pignons de moyeu',
+                'en' => 'hub gears'),
+            'myBikes' => array(
+                'de' => 'Meine Velos',
+                'fr' => 'Mes vélos',
+                'en' => 'My bikes'),
             'set-password' => array(
-                'de' => 'Passwort setzen ',
-                'fr' => 'Définir le mot de passe ',
-                'en' => 'Set password ')
+                'de' => 'Passwort ändern ',
+                'fr' => 'Changer le mot de passe ',
+                'en' => 'Change password ')
         );
         return $texts[$key][$language] ?? "[$key][$language]";
     }
@@ -113,9 +129,9 @@
         global $language;
         $titles = array(
             'page' => array(
-                'de' => array("Start", "Konto erstellen", "Login", "Velo", "geheim", "Passwort ändern", "Velo hinzufügen"),
-                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "protégé", "Changer mot de passe", "Ajouter vélo"),
-                'en' => array("Start", "Create account", "Login EN", "Bike", "login ONLY", "Change password", "Add bike")
+                'de' => array("Start", "Konto erstellen", "Login", "Velo", "geheim", "Passwort ändern", "Velo hinzufügen", "Meine Velos"),
+                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "protégé", "Changer mot de passe", "Ajouter vélo", "Mes vélos"),
+                'en' => array("Start", "Create account", "Login EN", "Bike", "login ONLY", "Change password", "Add bike", "My bikes")
             ));
         return $titles[$key][$language][$id] ?? "[$key][$language][$id]";
     }
@@ -133,8 +149,6 @@
         else $id = $_GET["id"];
         return $id;
     }
-
-
 
     function getChecked($name, $value) {
         $checked = NULL;

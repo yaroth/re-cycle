@@ -54,7 +54,6 @@ function validateLogin() {
 }
 
 function validateNewPassword() {
-    // TODO: Some checks
     let form = document.forms["setNewPassword"];
     let pw1 = form["newpw1"].value;
     let pw2 = form["newpw2"].value;

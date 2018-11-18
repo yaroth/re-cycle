@@ -6,23 +6,34 @@
      * Time: 10:30
      */
 
-    /*usort($bikesToSell, function ($item1, $item2) {
-        return $item2['match'] <=> $item1['match'];
-    });*/
+
 // TODO: NICE-TO-HAVE: create a function to sort by different keys
 
     function listProducts() {
-        foreach(Bicycle::getBicycles() as $bike) {
+        $bikesToSell = Bicycle::getBicycles();
+        usort($bikesToSell, function ($bike1, $bike2) {
+            return $bike1->price <=> $bike2->price;
+        });
+        foreach ($bikesToSell as $bike) {
+            listItem($bike);
+        }
+    }
+    function listMyBikes($user) {
+        $bikesToSell = Bicycle::getMyBicycles($user);
+        usort($bikesToSell, function ($bike1, $bike2) {
+            return $bike1->price <=> $bike2->price;
+        });
+        foreach ($bikesToSell as $bike) {
             listItem($bike);
         }
     }
 
-    function listItem($bicycle) {
+    function listItem($bike) {
         $item = '<div class="item wrapper">
             <div class="title">
-            <h3>' . $bicycle->title . '</h3>
-            <p class="price">' . $bicycle->price . '.-</p>
-            <p class="match">Match: ' . "80" . '%</p>
+            <h3>' . $bike->title . '</h3>
+            <p class="price">' . $bike->price . '.-</p>
+            <p class="weight">Weight: ' . $bike->weight . ' kg</p>
             </div>
             <div class="image">
                 <a href="../functions.php">
@@ -30,11 +41,12 @@
                 </a>
             </div>
             <div class="specs">
-                <p>Frame size : 58 cm</p>
-                <p>Color: blue </p>
-                <p>Speeds: ' . $bicycle->nbOfGears . '</p>
-                <p>Brakes: rims</p>
-                <p>Wheel size: '. $bicycle->wheelSize . '"</p>
+                <p>' . $bike->description . '</p>
+                <p>Gear type: ' . translate($bike->getGearTypeName()) . '</p>
+                <p>Speeds: ' . $bike->nbOfGears . '</p>
+                <p>Brakes: ' . translate($bike->getBrakeTypeName()) . '</p>
+                <p>Wheel size: ' . $bike->wheelSize . '"</p>
+                <p>Owner: ' . $bike->getOwnerName() . '</p>
             </div>
             <div>  <a href="url">Buy Now</a> </div>
         </div>';

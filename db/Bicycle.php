@@ -15,10 +15,10 @@
         public $price;
         public $hasLights;
         public $hasGears;
-        public $wheelSize;
-        public $brakeTypeID;
+        public $gearTypeID; //referencing to the gear type table
         public $nbOfGears;
-        public $gearTypeID;
+        public $wheelSize;
+        public $brakeTypeID; //referencing to the brake type table
         public $ownerID;
 
         function __construct() {
@@ -40,6 +40,16 @@
         public static function getBicycles() {
             $bicycles = array();
             $res = DB::doQuery("SELECT * FROM bicycles;");
+            if (!$res) return null;
+            while ($bicycle = $res->fetch_object(get_class()))
+                $bicycles[] = $bicycle;
+            return $bicycles;
+        }
+
+        public static function getMyBicycles($user) {
+            $ownerID = $user->id;
+            $bicycles = array();
+            $res = DB::doQuery("SELECT * FROM bicycles WHERE bicycles.ownerID = $ownerID;");
             if (!$res) return null;
             while ($bicycle = $res->fetch_object(get_class()))
                 $bicycles[] = $bicycle;
@@ -68,4 +78,18 @@
             return $stmt;
         }
 
+        public function getOwnerName() {
+            $owner = User::getUserByID($this->ownerID);
+            return $owner->fname . ' ' . $owner->lname;
+        }
+
+        public function getBrakeTypeName() {
+            $brakeType = BrakeType::getBrakeTypeByID($this->brakeTypeID);
+            return $brakeType->name;
+        }
+
+        public function getGearTypeName() {
+            $gearType = GearType::getGearTypeByID($this->gearTypeID);
+            return $gearType->name;
+        }
     }

@@ -7,7 +7,7 @@
      */
 
 
-    class Sex {
+    class Gender {
 
         public $id;
         public $name;

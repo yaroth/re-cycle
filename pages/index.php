@@ -34,6 +34,8 @@
             include 'setpassword.php';
         } elseif (getId() == 6) {
             include 'addBike.php';
+        } elseif (getId() == 7) {
+            include 'myBikes.php';
         }
     ?>
 
