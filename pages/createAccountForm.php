@@ -8,6 +8,10 @@
         <legend><?php echo translate("personal-info") ?> :</legend>
         First Name : <br><input type="text" name="fname" placeholder="Bob" value="<?php echo $_COOKIE["fname"] ?? "";?>" autofocus required><br>
         Last Name :<br> <input type="text" name="lname" placeholder="Geldof" value="<?php echo $_COOKIE["lname"] ?? "";?>" required><br>
+        Gender :
+        <br> <input type="radio" name="gender" value="1" checked="checked" required>female
+        <br> <input type="radio" name="gender" value="2" required>male
+        <br> <input type="radio" name="gender" value="3" required>other<br>
         Address :<br> <input type="text" name="address" placeholder="Wasserweg 23" value="<?php echo $_COOKIE["address"] ?? "";?>" required><br>
         ZIP :<br> <input type="number" name="zip" placeholder="3006" value="<?php echo $_COOKIE["zip"] ?? "";?>" required><br>
         City :<br> <input type="text" name="city" placeholder="Bern" value="<?php echo $_COOKIE["city"] ?? "";?>" required><br>

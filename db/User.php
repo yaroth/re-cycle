@@ -32,9 +32,7 @@
 
         static public function getUsers() {
             $users = array();
-            $res = DB::doQuery(
-                "SELECT * FROM users;"
-            );
+            $res = DB::doQuery("SELECT * FROM users;");
             if (!$res) return null;
             while ($user = $res->fetch_object(get_class()))
                 $users[] = $user;
@@ -46,7 +44,7 @@
             $this->fname = $db->escape_string($fname);
             $this->lname = $db->escape_string($lname);
             $this->login = $db->escape_string($login);
-            $this->dob = $db->escape_string($dob);
+            $this->dob = date($db->escape_string($dob));
             $this->email = $db->escape_string($email);
             $this->sexID = $db->escape_string($sexID);
         }
@@ -96,7 +94,7 @@
             return $result;
         }
 
-        public static function getUserByID($userID){
+        public static function getUserByID($userID) {
             $ADD_STATEMENT = "SELECT * FROM users WHERE users.id = ?";
             $stmt = DB::getInstance()->prepare($ADD_STATEMENT);
             if (!$stmt) {
@@ -119,7 +117,7 @@
             return $result->fetch_object(get_class());
         }
 
-        public static function getUserByLogin($login){
+        public static function getUserByLogin($login) {
             $ADD_STATEMENT = "SELECT * FROM users WHERE users.login = ?";
             $stmt = DB::getInstance()->prepare($ADD_STATEMENT);
             if (!$stmt) {
@@ -142,7 +140,7 @@
             return $result->fetch_object(get_class());
         }
 
-        public function setUser($user){
+        public function setUser($user) {
             $db = DB::getInstance();
             $this->id = (int)$user->id;
             $this->fname = $db->escape_string($user->fname);
@@ -150,10 +148,10 @@
             $this->login = $db->escape_string($user->login);
             $this->dob = $db->escape_string($user->dob);
             $this->email = $db->escape_string($user->email);
-            $this->sexID = (int) $user->sexID;
+            $this->sexID = (int)$user->sexID;
         }
 
-        public function updateUserInDB($user){
+        public function updateUserInDB($user) {
             $ADD_STATEMENT = "UPDATE users SET fname=?, lname=?, login=?, dob=?, email=?, sexID=? WHERE users.id = ?;";
             $db = DB::getInstance();
             $stmt = $db->prepare($ADD_STATEMENT);

@@ -3,7 +3,7 @@
     $login = $pw = '';
     if ($_POST) {
         echo '<div class="account">';
-        $postVar = ["address", "zip", "city", "country", "phone", "email", "dob"];
+        $postVar = ["address", "zip", "city", "country", "phone", "email", "dob", "gender"];
         for ($i = 0; $i < count($postVar); $i++) {
             if (empty(strip_tags($_POST[$postVar[$i]]))) {
                 $success = false;
@@ -45,8 +45,7 @@
             if (empty($account->login)) $addedAccountToDB = false;
             else $addedAccountToDB = Account::addAccountToDB($account);
             if ($addedAccountToDB) {
-                $user = new User();
-                $user->setProperties($fname, $lname, $login, $_COOKIE["dob"], $_COOKIE["email"], 2);
+                $user->setProperties($fname, $lname, $login, $_COOKIE["dob"], $_COOKIE["email"], $_COOKIE["gender"]);
                 $addedUserToDB = USER::addUserToDB($user);
                 if ($addedUserToDB) {
                     echo '<h2>' . translate("success") . '</h2>';

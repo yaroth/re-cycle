@@ -3,7 +3,6 @@
     $login = $pw = '';
     if ($_POST) {
         echo '<div class="add-bike">';
-
         $bikeArray = array();
         if (empty(strip_tags($_POST['title']))) {
             $success = false;
@@ -36,14 +35,14 @@
         if (empty(strip_tags($_POST['hasLights']))) {
             $success = false;
         } else {
-            $hasLights = strip_tags($_POST['hasLights']);
+            $hasLights = strip_tags($_POST['hasLights']== 'no' ? '0':'1');
             $_COOKIE['hasLights'] = $hasLights;
             $bikeArray['hasLights'] = $hasLights;
         }
         if (empty(strip_tags($_POST['hasGears']))) {
             $success = false;
         } else {
-            $hasGears = strip_tags($_POST['hasGears']);
+            $hasGears = strip_tags($_POST['hasGears']== 'no' ? '0':'1');
             $_COOKIE['hasGears'] = $hasGears;
             $bikeArray['hasGears'] = $hasGears;
         }
@@ -78,6 +77,8 @@
 
 
         if (!$success) {
+            echo '<h2>' . translate("error") . '</h2>';
+            echo '<h3>' . translate("sorry") . '!</h3>';
             echo "<p>Something went wrong!</p>";
             exit;
         }
@@ -93,13 +94,8 @@
                 echo '<h2>' . translate("error") . '</h2>';
                 echo "<h3>Could NOT add bicycle to DB!</h3>";
             }
-
-
-        } else {
-            echo '<h2>' . translate("error") . '</h2>';
-            echo '<h3>' . translate("sorry") . '!</h3>';
-            echo "<p>Some form entries enduced an error!</p>";
         }
         echo '</div>';
+        include 'bikeForm.php';
     } else include 'bikeForm.php';
 

@@ -35,29 +35,6 @@
         } elseif (getId() == 6) {
             include 'addBike.php';
         }
-
-//        Get sexes in DB, put them in a sexes array
-        $sexes = $db->query("SELECT * FROM sexes;");
-        $sexesArray = array();
-        while ($sexItem = $sexes->fetch_object("Sex")) {
-            $sexesArray[$sexItem->id] = $sexItem->name;
-        }
-        //Get bicycles in DB, put them in a bicycles array
-        $bicyclesArray = Bicycle::getBicycles();
-
-        // get users in DB and put them in an array
-        $usersArray = User::getUsers();
-        foreach ($usersArray as $user) {
-            $user->setSexString($sexesArray);
-        }
-        // print out users and bikes
-        /*forforeaeach (User::getUsers() as $user) echo $user . '<br>';
-        ch ($usersArray as $user) echo $user . '<br>';
-        foreach ($bicyclesArray as $bike) echo $bike . '<br>';*/
-
-        $sexes->close();
-        $db->close();
-
     ?>
 
 </div><!--end main-->

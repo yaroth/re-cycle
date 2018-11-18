@@ -19,7 +19,7 @@
         static public function getInstance() {
             if (!self::$instance)
                 @self::$instance = new DB(); // error handling ...
-            // set charset to utf8
+            // set charset to utf8: done in __construct.
             return self::$instance;
         }
 

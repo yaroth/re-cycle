@@ -55,7 +55,7 @@
                 exit;
             }
             $bikeID = NULL;
-            $stmt->bind_param('issdiiiiiiii', $bikeID, $bike->title, $bike->description, $bike->weight, $bike->price, $bike->hasLights, $bike->hasGears, $bike->wheelSize, $bike->brakeType, $bike->nbOfGears, $bike->gearTypeID, $bike->ownerID);
+            $stmt->bind_param('issdiiiiiiii', $bikeID, $bike->title, $bike->description, $bike->weight, $bike->price, $bike->hasLights, $bike->hasGears, $bike->wheelSize, $bike->brakeType, $bike->nbOfGears, $bike->gearType, $bike->ownerID);
             if (!$stmt) {
                 echo "bind_param failed: $db->error ";
                 exit;

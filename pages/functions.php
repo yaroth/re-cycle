@@ -136,7 +136,8 @@
 
     function checklogin($login, $password) {
         // db error checking omitted...
-        $stmt = DB::getInstance()->prepare("SELECT * FROM accounts WHERE login=?");
+        $db = DB::getInstance();
+        $stmt = $db->prepare("SELECT * FROM accounts WHERE login=?");
         $stmt->bind_param('s', $login);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -144,4 +145,14 @@
             return false;
         $row = $result->fetch_assoc();
         return password_verify($password, $row["pw_hash"]);
+    }
+
+    function getChecked($name, $value) {
+        $checked = NULL;
+        if (isset($_COOKIE[$name]))
+            if ($_COOKIE[$name] == $value) {
+                $checked = 'checked="checked"';
+
+            } elseif ($value == 1) $checked = 'checked="checked"';
+        return $checked;
     }
