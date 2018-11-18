@@ -16,10 +16,10 @@
                 $updatedBikeInDB = Bicycle::updateBikeInDB($bikeArray);
                 if ($updatedBikeInDB) {
                     echo '<h2>' . translate("success") . '</h2>';
-                    echo "<h3>Successfully updated your bicycle.</h3>";
+                    echo "<h3>Successfully updated your bicycle data.</h3>";
                 } else {
                     echo '<h2>' . translate("error") . '</h2>';
-                    echo "<h3>Could NOT update bicycle!</h3>";
+                    echo "<h3>Could NOT update bicycle data!</h3>";
                     listBikeByID($bikeID);
                 }
             } else {

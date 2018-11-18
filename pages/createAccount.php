@@ -2,7 +2,7 @@
     $success = true;
     $login = $pw = '';
     if ($_POST) {
-        echo '<div class="account">';
+
         $postVar = ["address", "zip", "city", "country", "phone", "email", "dob", "gender"];
         for ($i = 0; $i < count($postVar); $i++) {
             if (empty(strip_tags($_POST[$postVar[$i]]))) {
@@ -39,6 +39,7 @@
             echo "<p>Something went wrong!</p>";
             exit;
         }
+        echo '<div class="account">';
         if ($success) {
             $account = new Account();
             $account->setProperties($login, $pw, 0);
@@ -68,5 +69,14 @@
             echo "<p>Could not add $user->fname $user->lname to DB! </p>";
         }
         echo '</div>';
-    } else include 'createAccountForm.php';
+    } elseif (isset($_SESSION["user"])) {
+        $login = $_SESSION["user"];
+        $user = User::getUserByLogin($login);
+        echo '<div class="account">';
+        echo '<h2>' . translate("sorry") . '</h2>';
+        echo '<h3>Dear' . " " . $user->fname . " " . $user->lname . ',</h3>';
+        echo '<p> You cannot create an account if logged in. Please <a href="logout.php?lang='. getLang() .'">logout</a>!</p>';
+        echo '</div>';
+    } else
+        include 'createAccountForm.php';
 
