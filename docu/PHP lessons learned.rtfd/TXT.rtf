@@ -5,7 +5,7 @@
 }
 {\*\expandedcolortbl;;\csgenericrgb\c32157\c0\c784;\csgenericrgb\c96078\c97647\c100000;\csgenericrgb\c5882\c43922\c1176;
 }
-\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\paperw11900\paperh16840\margl1440\margr1440\vieww13660\viewh13660\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
 \f0\fs24 \cf0 php lessons learned\
@@ -33,4 +33,17 @@ the number of columns (i.e \'84id\'93, \'84fname\'93,\'85.) HAS TO FIT the numbe
 \f1\b0 \cf0 :
 \f3\b \cf4 '1'
 \f1\b0 \cf0 );\
-}
+\
+
+\f0\b if setting a foreign key does not work:\
+
+\b0 1. delete column\
+2. add same column again\
+3. set indexing of column
+\f1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0 \cf0 \cb1     {{\NeXTGraphic Bildschirmfoto 2018-11-22 um 17.32.56.png \width5640 \height2780
+}¬}\
+4. go to structure -> Beziehungsansicht: add foreign key\
+MAGIC: it does usually work!}

@@ -6,7 +6,9 @@
     else $addOrEditBike = "add-bicycle";
 ?>
 <h2><?php echo translate($addOrEditBike); ?></h2>
-<form action="<?php echo $targetURL ?>" method="post" name="<?php echo $addOrEditBike; ?>"
+<form action="<?php echo $targetURL ?>" method="post"
+      name="<?php echo $addOrEditBike; ?>"
+      enctype="multipart/form-data"
       onsubmit="return validateAddBicycle();">
     <fieldset>
         <legend><?php echo translate("bike-info") ?> :</legend>
@@ -48,6 +50,8 @@
         <input type="radio" name="brakeType" value="3" <?php echo getChecked("brakeType", "3") ?> required>Scheibenbremsen<br>
         <input type="radio" name="brakeType" value="4" <?php echo getChecked("brakeType", "4") ?> required>Rücktritt<br>
         <input type="radio" name="brakeType" value="5" <?php echo getChecked("brakeType", "5") ?> required>Andere<br>
+        Image : <br>
+        <input type="file" name="upload"/><br>
         <input type="hidden" name="saveBikeID" value="<?php echo $_COOKIE["id"] ?? ""; ?>" ><br>
         <input type="submit" value="Save">
     </fieldset>

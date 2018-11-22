@@ -4,15 +4,15 @@
     <?php
         if (isset($_SESSION["user"])) {
             $login = $_SESSION["user"];
-            if (isset($_POST["bikeID"])) {
-                $bikeID = $_POST["bikeID"];
+            if (isset($_POST["bikeID"]) || isset($_GET["bikeID"])) {
+                if (isset($_POST["bikeID"])) $bikeID = $_POST["bikeID"];
+                elseif ((isset($_GET["bikeID"]))) $bikeID = $_GET["bikeID"];
                 listBikeByID($bikeID);
             } elseif (isset($_POST["saveBikeID"])) {
                 $bikeID = $_POST["saveBikeID"];
                 $bikeArray = bikeArrayFromPost();
                 $bikeArray["id"] = $bikeID;
                 $bikeArray["ownerID"] = User::getUserIDByLogin($login);
-//                $success = ($bikeArray !== false);
                 $updatedBikeInDB = Bicycle::updateBikeInDB($bikeArray);
                 if ($updatedBikeInDB) {
                     echo '<h2>' . translate("success") . '</h2>';

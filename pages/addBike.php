@@ -4,7 +4,6 @@
     if ($_POST) {
         $bikeArray = bikeArrayFromPost();
         $success = ($bikeArray !== false);
-
         echo '<div class="add-bike">';
         if (!$success) {
             echo '<h2>' . translate("error") . '</h2>';

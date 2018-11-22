@@ -57,6 +57,7 @@
     function listEditableBike($bike) {
         $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
         $targetURL = add_param($targetURL, "id", getId());
+        $targetURL = add_param($targetURL, "bikeID", $bike->id);
         $item = '<div class="item wrapper">
             <div class="title">
             <h3>' . $bike->title . '</h3>

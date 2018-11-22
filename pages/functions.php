@@ -26,11 +26,13 @@
     function languages($language, $pageId) {
         $languages = ['de', 'fr', 'en'];
         $urlbase = add_param($_SERVER['PHP_SELF'], 'id', $pageId);
+        if (isset($_GET["bikeID"])) {
+            $bikeID = $_GET["bikeID"];
+            $urlbase = add_param($urlbase, 'bikeID', $bikeID);
+        }
         foreach ($languages as $l) {
             $class = $language == $l ? 'active' : 'inactive';
-            echo '<li class="lang"><a class="' . $class . '" href="';
-            echo add_param($urlbase, 'lang', $l) . '">';
-            echo strtoupper($l) . '</a></li>';
+            echo '<li class="lang"><a class="' . $class . '" href="' . add_param($urlbase, 'lang', $l) . '">' . strtoupper($l) . '</a></li>';
         }
     }
 
@@ -163,7 +165,7 @@
         return $checked;
     }
 
-    function bikeArrayFromPost(){
+    function bikeArrayFromPost() {
         $bikeArray = array();
         $success = true;
         if (empty(strip_tags($_POST['title']))) {
@@ -197,14 +199,14 @@
         if (empty(strip_tags($_POST['hasLights']))) {
             $success = false;
         } else {
-            $hasLights = strip_tags($_POST['hasLights']== 'no' ? '0':'1');
+            $hasLights = strip_tags($_POST['hasLights'] == 'no' ? '0' : '1');
             $_COOKIE['hasLights'] = $hasLights;
             $bikeArray['hasLights'] = $hasLights;
         }
         if (empty(strip_tags($_POST['hasGears']))) {
             $success = false;
         } else {
-            $hasGears = strip_tags($_POST['hasGears']== 'no' ? '0':'1');
+            $hasGears = strip_tags($_POST['hasGears'] == 'no' ? '0' : '1');
             $_COOKIE['hasGears'] = $hasGears;
             $bikeArray['hasGears'] = $hasGears;
         }
@@ -235,6 +237,16 @@
             $brakeType = strip_tags($_POST['brakeType']);
             $_COOKIE['brakeType'] = $brakeType;
             $bikeArray['brakeType'] = $brakeType;
+        }
+        if (isset($_FILES['upload'])) {
+            $file = $_FILES['upload'];
+            if ($file['error'] != 0) {
+                echo "Error uploading the image, please try again later";
+                $success = false;
+            } else {
+                // validate the file: type, size, image size...
+                move_uploaded_file($file['tmp_name'], '../img/' . $file['name']);
+            }
         }
         if (!$success) return $success;
         else return $bikeArray;
