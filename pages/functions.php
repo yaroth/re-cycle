@@ -128,7 +128,7 @@
                 'fr' => 'Changer le mot de passe ',
                 'en' => 'Change password ')
         );
-        return $texts[$key][$language] ?? "[$key][$language]";
+        return $texts[$key][$language] ?? "[?$key?][?$language?]";
     }
 
     function navtitles($key, $id) {

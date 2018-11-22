@@ -11,15 +11,23 @@
             } elseif (isset($_POST["saveBikeID"])) {
                 $bikeID = $_POST["saveBikeID"];
                 $bikeArray = bikeArrayFromPost();
-                $bikeArray["id"] = $bikeID;
-                $bikeArray["ownerID"] = User::getUserIDByLogin($login);
-                $updatedBikeInDB = Bicycle::updateBikeInDB($bikeArray);
-                if ($updatedBikeInDB) {
-                    echo '<h2>' . translate("success") . '</h2>';
-                    echo "<h3>Successfully updated your bicycle data.</h3>";
+                // check that bike array returns a correct value!
+                if ($bikeArray !== false) {
+                    $bikeArray["id"] = $bikeID;
+                    $bikeArray["ownerID"] = User::getUserIDByLogin($login);
+                    $updatedBikeInDB = Bicycle::updateBikeInDB($bikeArray);
+                    if ($updatedBikeInDB) {
+                        echo '<h2>' . translate("success") . '</h2>';
+                        echo "<h3>Successfully updated your bicycle data.</h3>";
+                    } else {
+                        echo '<h2>' . translate("error") . '</h2>';
+                        echo "<h3>Could NOT update bicycle data!</h3>";
+                        listBikeByID($bikeID);
+                    }
                 } else {
                     echo '<h2>' . translate("error") . '</h2>';
-                    echo "<h3>Could NOT update bicycle data!</h3>";
+                    // TODO: Fix error handling!
+                    echo "<h3>Could NOT update bicycle data! (bikeArray is false)</h3>";
                     listBikeByID($bikeID);
                 }
             } else {
