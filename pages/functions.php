@@ -245,7 +245,9 @@
                 $success = false;
             } else {
                 // validate the file: type, size, image size...
-                move_uploaded_file($file['tmp_name'], '../img/' . $file['name']);
+                //TODO: check if same name file exists, in which case find another name
+                move_uploaded_file($file['tmp_name'], '../img/uploads/' . $file['name']);
+                $bikeArray['imageName'] = $file['name'];
             }
         }
         if (!$success) return $success;

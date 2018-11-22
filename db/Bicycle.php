@@ -12,6 +12,7 @@
         public $id;
         public $title;
         public $description;
+        public $imageName;
         public $weight;
         public $price;
         public $hasLights;
@@ -66,14 +67,14 @@
 
         public static function addBikeToDB($bike) {
             $db = DB::getInstance();
-            $ADD_STATEMENT = "INSERT INTO bicycles (id, title, description, weight, price, hasLights, hasGears, wheelSize, brakeTypeID, nbOfGears, gearTypeID, ownerID) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $ADD_STATEMENT = "INSERT INTO bicycles (id, title, description, imageName, weight, price, hasLights, hasGears, wheelSize, brakeTypeID, nbOfGears, gearTypeID, ownerID) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $db->prepare($ADD_STATEMENT);
             if (!$stmt) {
                 echo "Prepare failed with error: $db->error ";
                 exit;
             }
             $bikeID = NULL;
-            $stmt->bind_param('issdiiiiiiii', $bikeID, $bike->title, $bike->description, $bike->weight, $bike->price, $bike->hasLights, $bike->hasGears, $bike->wheelSize, $bike->brakeType, $bike->nbOfGears, $bike->gearType, $bike->ownerID);
+            $stmt->bind_param('isssdiiiiiiii', $bikeID, $bike->title, $bike->description, $bike->imageName, $bike->weight, $bike->price, $bike->hasLights, $bike->hasGears, $bike->wheelSize, $bike->brakeType, $bike->nbOfGears, $bike->gearType, $bike->ownerID);
             if (!$stmt) {
                 echo "bind_param failed: $db->error ";
                 exit;
@@ -87,7 +88,7 @@
         }
 
         public static function updateBikeInDB($bikeArray) {
-            $ADD_STATEMENT = "UPDATE bicycles SET title=?, description=?, weight=?, price=?, hasLights=?, hasGears=?, wheelSize=?, brakeTypeID=?, nbOfGears=?, gearTypeID=?, ownerID=? WHERE bicycles.id = ?;";
+            $ADD_STATEMENT = "UPDATE bicycles SET title=?, description=?, imageName=?, weight=?, price=?, hasLights=?, hasGears=?, wheelSize=?, brakeTypeID=?, nbOfGears=?, gearTypeID=?, ownerID=? WHERE bicycles.id = ?;";
             $db = DB::getInstance();
             $stmt = $db->prepare($ADD_STATEMENT);
             if (!$stmt) {
@@ -95,7 +96,7 @@
                 exit;
             }
             $bike = Bicycle::withParams($bikeArray);
-            $stmt->bind_param('ssdiiiiiiiii', $bike->title, $bike->description, $bike->weight, $bike->price, $bike->hasLights, $bike->hasGears, $bike->wheelSize, $bike->brakeType, $bike->nbOfGears, $bike->gearType, $bike->ownerID, $bike->id);
+            $stmt->bind_param('sssdiiiiiiiii', $bike->title, $bike->description, $bike->imageName, $bike->weight, $bike->price, $bike->hasLights, $bike->hasGears, $bike->wheelSize, $bike->brakeType, $bike->nbOfGears, $bike->gearType, $bike->ownerID, $bike->id);
             if (!$stmt) {
                 echo "bind_param failed";
                 exit;

@@ -66,7 +66,7 @@
             </div>
             <div class="image">
                 <a href="../functions.php">
-                    <img src="../../img/logo.png">
+                    <img src="../../img/uploads/' . $bike->imageName . '">
                 </a>
             </div>
             <div class="specs">
