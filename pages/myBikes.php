@@ -4,12 +4,16 @@
     <?php
         if (isset($_SESSION["user"])) {
             $login = $_SESSION["user"];
+            // calling the one bike to edit -> takes DB data
             if (isset($_POST["bikeID"]) || isset($_GET["bikeID"])) {
                 if (isset($_POST["bikeID"])) $bikeID = $_POST["bikeID"];
                 elseif ((isset($_GET["bikeID"]))) $bikeID = $_GET["bikeID"];
                 listBikeByID($bikeID);
-            } elseif (isset($_POST["saveBikeID"])) {
+            }
+            // checking on submitted data
+            elseif (isset($_POST["saveBikeID"])) {
                 $bikeID = $_POST["saveBikeID"];
+                // creates an array AND updates COOKIES
                 $bikeArray = bikeArrayFromPost();
                 // check that bike array returns a correct value!
                 if ($bikeArray !== false) {
@@ -19,16 +23,20 @@
                     if ($updatedBikeInDB) {
                         echo '<h2>' . translate("success") . '</h2>';
                         echo "<h3>Successfully updated your bicycle data.</h3>";
-                    } else {
+                    }
+                    // TODO: should show POST data!
+                    else {
                         echo '<h2>' . translate("error") . '</h2>';
                         echo "<h3>Could NOT update bicycle data!</h3>";
-                        listBikeByID($bikeID);
+                        include 'bikeForm.php';
                     }
-                } else {
+                }
+                // TODO: should show POST data!
+                else {
                     echo '<h2>' . translate("error") . '</h2>';
-                    // TODO: Fix error handling!
+                    // TODO: Fix error handling! write to log file!
                     echo "<h3>Could NOT update bicycle data! (bikeArray is false)</h3>";
-                    listBikeByID($bikeID);
+                    include 'bikeForm.php';
                 }
             } else {
                 $user = User::getUserByLogin($login);
