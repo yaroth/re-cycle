@@ -30,7 +30,7 @@
             $this->sexString = $sexArray[$this->sexID];
         }
 
-        static public function getUsers() {
+        public static function getUsers() {
             $users = array();
             $res = DB::doQuery("SELECT * FROM users;");
             if (!$res) return null;
@@ -156,7 +156,16 @@
             $this->sexID = (int)$user->sexID;
         }
 
-        public function updateUserInDB($user) {
+        public static function withParams($userArray) {
+            $user = new self();
+            $db = DB::getInstance();
+            foreach ($userArray as $key => $value) {
+                $user->$key = $db->escape_string($value);
+            }
+            return $user;
+        }
+
+        public static function updateUserInDB($userArray) {
             $ADD_STATEMENT = "UPDATE users SET fname=?, lname=?, login=?, dob=?, email=?, sexID=? WHERE users.id = ?;";
             $db = DB::getInstance();
             $stmt = $db->prepare($ADD_STATEMENT);
@@ -164,8 +173,8 @@
                 echo "Prepare failed";
                 exit;
             }
-            $this->setUser($user);
-            $stmt->bind_param('sssssii', $this->fname, $this->lname, $this->login, $this->dob, $this->email, $this->sexID, $this->id);
+            $user = User::withParams($userArray);
+            $stmt->bind_param('sssssii', $user->fname, $user->lname, $user->login, $user->dob, $user->email, $user->sexID, $user->id);
             if (!$stmt) {
                 echo "bind_param failed";
                 exit;
@@ -176,5 +185,11 @@
                 exit;
             }
             return $stmt != null;
+        }
+
+        public function setCookiesForUser() {
+            foreach ($this as $key => $value) {
+                $_COOKIE[$key] = $value;
+            }
         }
     }

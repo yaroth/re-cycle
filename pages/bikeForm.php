@@ -32,27 +32,31 @@
         <input type="radio" name="hasGears" value="no" <?php echo getChecked("hasGears", "0") ?> required>NO, single
         speed<br>
         Gear Type:<br>
-        <input type="radio" name="gearType" value="1" <?php echo getChecked("gearType", "1") ?>
-               required>Nabenschaltung<br>
-        <input type="radio" name="gearType" value="2"
-               <?php echo getChecked("gearType", "2") ?>required>Kettenschaltung<br>
-        <input type="radio" name="gearType" value="3" <?php echo getChecked("gearType", "3") ?>required>Rücktritt<br>
-        <input type="radio" name="gearType" value="4" <?php echo getChecked("gearType", "4") ?>required>Andere<br>
+        <input type="radio" name="gearTypeID" value="1" <?php echo getChecked("gearTypeID", "1") ?> required>Nabenschaltung<br>
+        <input type="radio" name="gearTypeID" value="2" <?php echo getChecked("gearTypeID", "2") ?>required>Kettenschaltung<br>
+        <input type="radio" name="gearTypeID" value="3" <?php echo getChecked("gearTypeID", "3") ?>required>Rücktritt<br>
+        <input type="radio" name="gearTypeID" value="4" <?php echo getChecked("gearTypeID", "4") ?>required>Andere<br>
         Number of gears: <br>
-        <input type="number" name="nbOfGears" placeholder="14" value="<?php echo $_COOKIE["nbOfGears"] ?? ""; ?>"
-               required><br>
+        <input type="number" name="nbOfGears" placeholder="14" value="<?php echo $_COOKIE["nbOfGears"] ?? ""; ?>" required><br>
         Wheel size :<br>
-        <input type="number" name="wheelSize" placeholder="28" value="<?php echo $_COOKIE["wheelSize"] ?? ""; ?>"
-               required><br>
+        <input type="number" name="wheelSize" placeholder="28" value="<?php echo $_COOKIE["wheelSize"] ?? ""; ?>" required><br>
         Brake Type :<br>
-        <input type="radio" name="brakeType" value="1" <?php echo getChecked("brakeType", "1") ?> required>Felgenbremsen<br>
-        <input type="radio" name="brakeType" value="2" <?php echo getChecked("brakeType", "2") ?> required>Trommelbremsen<br>
-        <input type="radio" name="brakeType" value="3" <?php echo getChecked("brakeType", "3") ?> required>Scheibenbremsen<br>
-        <input type="radio" name="brakeType" value="4" <?php echo getChecked("brakeType", "4") ?> required>Rücktritt<br>
-        <input type="radio" name="brakeType" value="5" <?php echo getChecked("brakeType", "5") ?> required>Andere<br>
+        <input type="radio" name="brakeTypeID" value="1" <?php echo getChecked("brakeTypeID", "1") ?> required>Felgenbremsen<br>
+        <input type="radio" name="brakeTypeID" value="2" <?php echo getChecked("brakeTypeID", "2") ?> required>Trommelbremsen<br>
+        <input type="radio" name="brakeTypeID" value="3" <?php echo getChecked("brakeTypeID", "3") ?> required>Scheibenbremsen<br>
+        <input type="radio" name="brakeTypeID" value="4" <?php echo getChecked("brakeTypeID", "4") ?> required>Rücktritt<br>
+        <input type="radio" name="brakeTypeID" value="5" <?php echo getChecked("brakeTypeID", "5") ?> required>Andere<br>
+        <?php
+            if ($addOrEditBike == "edit-bicycle"){
+                $imageName = $_COOKIE['imageName'];
+                $bikeID = $_COOKIE["id"];
+                echo 'Current image: <br>';
+                echo '<div class="current-img"><img src="../img/uploads/' . $imageName . '"></div>';
+                echo '<input type="hidden" name="saveBikeID" value="' . $bikeID .'" ><br>';
+            }
+        ?>
         Image : <br>
         <input type="file" name="upload"/><br>
-        <input type="hidden" name="saveBikeID" value="<?php echo $_COOKIE["id"] ?? ""; ?>" ><br>
         <input type="submit" value="Save">
     </fieldset>
 </form>

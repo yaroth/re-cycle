@@ -96,7 +96,7 @@
                 exit;
             }
             $bike = Bicycle::withParams($bikeArray);
-            $stmt->bind_param('sssdiiiiiiiii', $bike->title, $bike->description, $bike->imageName, $bike->weight, $bike->price, $bike->hasLights, $bike->hasGears, $bike->wheelSize, $bike->brakeType, $bike->nbOfGears, $bike->gearType, $bike->ownerID, $bike->id);
+            $stmt->bind_param('sssdiiiiiiiii', $bike->title, $bike->description, $bike->imageName, $bike->weight, $bike->price, $bike->hasLights, $bike->hasGears, $bike->wheelSize, $bike->brakeTypeID, $bike->nbOfGears, $bike->gearTypeID, $bike->ownerID, $bike->id);
             if (!$stmt) {
                 echo "bind_param failed";
                 exit;
@@ -122,5 +122,11 @@
         public function getGearTypeName() {
             $gearType = GearType::getGearTypeByID($this->gearTypeID);
             return $gearType->name;
+        }
+
+        public function setCookiesForBike() {
+            foreach ($this as $key => $value) {
+                $_COOKIE[$key] = $value;
+            }
         }
     }

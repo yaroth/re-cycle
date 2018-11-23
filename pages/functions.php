@@ -16,7 +16,7 @@
 
     function navigation($language, $pageId) {
         $urlbase = add_param($_SERVER['PHP_SELF'], "lang", $language);
-        for ($i = 0; $i <= 7; $i++) {
+        for ($i = 0; $i <= 8; $i++) {
             $url = add_param($urlbase, "id", $i);
             $class = $pageId == $i ? 'active' : 'inactive';
             echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . navtitles('page', $i) . "</a></li>";
@@ -123,6 +123,10 @@
                 'de' => 'Meine Velos',
                 'fr' => 'Mes vélos',
                 'en' => 'My bikes'),
+            'editAccount' => array(
+                'de' => 'Meine Kontoangaben ändern',
+                'fr' => 'Modifier mes données',
+                'en' => 'Modify my data'),
             'set-password' => array(
                 'de' => 'Passwort ändern ',
                 'fr' => 'Changer le mot de passe ',
@@ -135,9 +139,9 @@
         global $language;
         $titles = array(
             'page' => array(
-                'de' => array("Start", "Konto erstellen", "Login", "Velo", "geheim", "Passwort ändern", "Velo hinzufügen", "Meine Velos"),
-                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "protégé", "Changer mot de passe", "Ajouter vélo", "Mes vélos"),
-                'en' => array("Start", "Create account", "Login EN", "Bike", "login ONLY", "Change password", "Add bike", "My bikes")
+                'de' => array("Start", "Konto erstellen", "Login", "Velo", "geheim", "Passwort ändern", "Velo hinzufügen", "Meine Velos", "Mein Konto"),
+                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "protégé", "Changer mot de passe", "Ajouter vélo", "Mes vélos", "Mon compte"),
+                'en' => array("Start", "Create account", "Login EN", "Bike", "login ONLY", "Change password", "Add bike", "My bikes", "My account")
             ));
         return $titles[$key][$language][$id] ?? "[$key][$language][$id]";
     }
@@ -161,6 +165,7 @@
         if (isset($_COOKIE[$name]))
             if ($_COOKIE[$name] == $value) {
                 $checked = 'checked="checked"';
+                //TODO: this is not valid for all cases -> update!
             } elseif ($value == 1) $checked = 'checked="checked"';
         return $checked;
     }
@@ -210,12 +215,12 @@
             $_COOKIE['hasGears'] = $hasGears;
             $bikeArray['hasGears'] = $hasGears;
         }
-        if (empty(strip_tags($_POST['gearType']))) {
+        if (empty(strip_tags($_POST['gearTypeID']))) {
             $success = false;
         } else {
-            $gearType = strip_tags($_POST['gearType']);
-            $_COOKIE['gearType'] = $gearType;
-            $bikeArray['gearType'] = $gearType;
+            $gearType = strip_tags($_POST['gearTypeID']);
+            $_COOKIE['gearTypeID'] = $gearType;
+            $bikeArray['gearTypeID'] = $gearType;
         }
         if (empty(strip_tags($_POST['nbOfGears']))) {
             $success = false;
@@ -231,25 +236,73 @@
             $_COOKIE['wheelSize'] = $wheelSize;
             $bikeArray['wheelSize'] = $wheelSize;
         }
-        if (empty(strip_tags($_POST['brakeType']))) {
+        if (empty(strip_tags($_POST['brakeTypeID']))) {
             $success = false;
         } else {
-            $brakeType = strip_tags($_POST['brakeType']);
-            $_COOKIE['brakeType'] = $brakeType;
-            $bikeArray['brakeType'] = $brakeType;
+            $brakeType = strip_tags($_POST['brakeTypeID']);
+            $_COOKIE['brakeTypeID'] = $brakeType;
+            $bikeArray['brakeTypeID'] = $brakeType;
         }
         if (isset($_FILES['upload'])) {
             $file = $_FILES['upload'];
             if ($file['error'] != 0) {
-                echo "Error uploading the image, please try again later";
-                $success = false;
+                if (isset($_POST["saveBikeID"])) {
+                    $bikeID = $_POST["saveBikeID"];
+                    $bike = Bicycle::getBicycleByID($bikeID);
+                    $bikeArray['imageName'] = $bike->imageName;
+                } else {
+                    echo "Error uploading the image, please try again later";
+                    $success = false;
+                }
             } else {
                 // validate the file: type, size, image size...
-                //TODO: check if same name file exists, in which case find another name
+                //TODO: check if same name file exists, in which case find another name > seems to be done automatically!
                 move_uploaded_file($file['tmp_name'], '../img/uploads/' . $file['name']);
                 $bikeArray['imageName'] = $file['name'];
             }
         }
         if (!$success) return $success;
         else return $bikeArray;
+    }
+
+    function userArrayFromPost() {
+        $userArray = array();
+        $success = true;
+        if (empty(strip_tags($_POST['fname']))) {
+            $success = false;
+        } else {
+            $fname = strip_tags($_POST['fname']);
+            $_COOKIE['fname'] = $fname;
+            $userArray['fname'] = $fname;
+        }
+        if (empty(strip_tags($_POST['lname']))) {
+            $success = false;
+        } else {
+            $lname = strip_tags($_POST['lname']);
+            $_COOKIE['lname'] = $lname;
+            $userArray['lname'] = $lname;
+        }
+        if (empty(strip_tags($_POST['dob']))) {
+            $success = false;
+        } else {
+            $dob = strip_tags($_POST['dob']);
+            $_COOKIE['dob'] = $dob;
+            $userArray['dob'] = $dob;
+        }
+        if (empty(strip_tags($_POST['email']))) {
+            $success = false;
+        } else {
+            $email = strip_tags($_POST['email']);
+            $_COOKIE['email'] = $email;
+            $userArray['email'] = $email;
+        }
+        if (empty(strip_tags($_POST['sexID']))) {
+            $success = false;
+        } else {
+            $sexID = strip_tags($_POST['sexID']);
+            $_COOKIE['sexID'] = $sexID;
+            $userArray['sexID'] = $sexID;
+        }
+        if (!$success) return $success;
+        else return $userArray;
     }
