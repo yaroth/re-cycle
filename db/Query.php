@@ -15,7 +15,7 @@
 
         public $id;
         public $title;
-        public $ownerID;
+        public $userID;
         public $weight;
         public $price;
         public $hasLights;
@@ -29,8 +29,17 @@
         function __construct() {
         }
 
+        public static function withParams($queryArray) {
+            $query = new self();
+            $db = DB::getInstance();
+            foreach ($queryArray as $key => $value) {
+                $query->$key = $db->escape_string($value);
+            }
+            return $query;
+        }
+
         public function __toString() {
-            return sprintf("query %d: '%s' owned by: %s", $this->id, $this->title, $this->ownerID);
+            return sprintf("query %d: '%s' owned by: %s", $this->id, $this->title, $this->userID);
         }
         // returns a queries array
         public static function getQueries() {
@@ -94,4 +103,52 @@
             return $result->fetch_object(get_class());
         }
 
+        public static function addQueryToDB($query) {
+            $db = DB::getInstance();
+            $ADD_STATEMENT = "INSERT INTO queries (id, title, userID, weight, price, hasLights, hasGears, wheelSize, brakeTypeID, nbOfGears, gearTypeID) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $db->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed with error: $db->error ";
+                exit;
+            }
+            $queryID = NULL;
+            $stmt->bind_param('isidiiiiiii', $queryID, $query->title, $query->userID, $query->weight, $query->price, $query->hasLights, $query->hasGears, $query->wheelSize, $query->brakeTypeID, $query->nbOfGears, $query->gearTypeID);
+            if (!$stmt) {
+                echo "bind_param failed: $db->error ";
+                exit;
+            }
+            $stmt->execute();
+            if (!$stmt) {
+                echo "execute failed: $db->error";
+                exit;
+            }
+            return $stmt;
+        }
+
+        public static function updateQueryInDB($query) {
+            $ADD_STATEMENT = "UPDATE queries SET title=?, userID=?, weight=?, price=?, hasLights=?, hasGears=?, wheelSize=?, brakeTypeID=?, nbOfGears=?, gearTypeID=? WHERE queries.id = ?;";
+            $db = DB::getInstance();
+            $stmt = $db->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed";
+                exit;
+            }
+            $stmt->bind_param('sidiiiiiiii', $query->title, $query->userID, $query->weight, $query->price, $query->hasLights, $query->hasGears, $query->wheelSize, $query->brakeTypeID, $query->nbOfGears, $query->gearTypeID, $query->id);
+            if (!$stmt) {
+                echo "bind_param failed";
+                exit;
+            }
+            $stmt->execute();
+            if (!$stmt) {
+                echo "execute failed";
+                exit;
+            }
+            return $stmt != null;
+        }
+
+        public function setCookiesForQuery() {
+            foreach ($this as $key => $value) {
+                $_COOKIE[$key] = $value;
+            }
+        }
     }

@@ -2,16 +2,15 @@
     $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
     $targetURL = add_param($targetURL, "id", getId());
 ?>
-<h2><?php echo translate("create-account"); ?></h2>
 <form action="<?php echo $targetURL ?>" method="post" name="create-account" onsubmit="return validateCreateAccount();">
     <fieldset>
         <legend><?php echo translate("personal-info") ?> :</legend>
         First Name : <br><input type="text" name="fname" placeholder="Bob" value="<?php echo $_COOKIE["fname"] ?? "";?>" autofocus required><br>
         Last Name :<br> <input type="text" name="lname" placeholder="Geldof" value="<?php echo $_COOKIE["lname"] ?? "";?>" required><br>
         Gender :
-        <br> <input type="radio" name="gender" value="1" checked="checked" required>female
-        <br> <input type="radio" name="gender" value="2" required>male
-        <br> <input type="radio" name="gender" value="3" required>other<br>
+        <br> <input type="radio" name="genderID" value="1" <?php echo getChecked("genderID", "1")?> required>female
+        <br> <input type="radio" name="genderID" value="2" <?php echo getChecked("genderID", "2")?> required>male
+        <br> <input type="radio" name="genderID" value="3" <?php echo getChecked("genderID", "3")?> required>other<br>
         <!--Address :<br> <input type="text" name="address" placeholder="Wasserweg 23" value="<?php /*echo $_COOKIE["address"] ?? "";*/?>" required><br>
         ZIP :<br> <input type="number" name="zip" placeholder="3006" value="<?php /*echo $_COOKIE["zip"] ?? "";*/?>" required><br>
         City :<br> <input type="text" name="city" placeholder="Bern" value="<?php /*echo $_COOKIE["city"] ?? "";*/?>" required><br>
@@ -21,15 +20,15 @@
         Birthday:<br> <input type="date" name="dob" placeholder="1974-01-31" value="<?php echo $_COOKIE["dob"] ?? "";?>" required><br>
 
         <?php
-            if (isset($_POST["user"])){
-                $login = $_POST["user"];
+            if (isset($_SESSION["user"])){
+                $login = $_SESSION["user"];
                 echo '<input type="hidden" name="userID" value="'. USER::getUserIDByLogin($login) . '" ><br>';
             }
             elseif (isset($_POST["userID"])) {
-                echo 'Login:<br> <input type="text" name="login" placeholder="Enter your login..." required><br>';
-                echo 'Password:<br> <input type="password" name="pw" placeholder="Enter your password..." required><br>';
             }
         ?>
+        Login:<br> <input type="text" name="login" placeholder="Enter your login..." value="<?php echo $_COOKIE["login"] ?? "";?>" required><br>
+        Password:<br> <input type="password" name="pw" placeholder="Enter your password..." required><br>
         <input type="submit" value="Save account">
     </fieldset>
 </form>

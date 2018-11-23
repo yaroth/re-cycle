@@ -1,72 +1,42 @@
+<h2><?php echo translate("create-account"); ?></h2>
 <?php
     $success = true;
     $login = $pw = '';
     if ($_POST) {
-
-        $postVar = ["address", "zip", "city", "country", "phone", "email", "dob", "gender"];
-        for ($i = 0; $i < count($postVar); $i++) {
-            if (empty(strip_tags($_POST[$postVar[$i]]))) {
-                $success = false;
-            } else {
-                $tempVar = strip_tags($_POST[$postVar[$i]]);
-                $_COOKIE[$postVar[$i]] = $tempVar;
-            }
-        }
-
-        if (empty(strip_tags($_POST['fname']))) {
-            $success = false;
-        } else {
-            $fname = strip_tags($_POST['fname']);
-            $_COOKIE['fname'] = $fname;
-        }
-
-        if (empty(strip_tags($_POST['lname']))) {
-            $success = false;
-        } else {
-            $lname = strip_tags($_POST['lname']);
-            $_COOKIE['lname'] = $lname;
-        }
-
-        if (empty(strip_tags($_POST['login']))) {
-            $success = false;
-        } else $login = strip_tags($_POST['login']);
-
-        if (empty(strip_tags($_POST['pw']))) {
-            $success = false;
-        } else $pw = strip_tags($_POST['pw']);
-
-        if (!$success) {
-            echo "<p>Something went wrong!</p>";
-            exit;
-        }
+        $userArray = userArrayFromPost();
         echo '<div class="account">';
-        if ($success) {
+        if ($userArray !== false) {
             $account = new Account();
+            $login = $_POST["login"];
+            $pw = $_POST["pw"];
             $account->setProperties($login, $pw, 0);
             if (empty($account->login)) $addedAccountToDB = false;
             else $addedAccountToDB = Account::addAccountToDB($account);
             if ($addedAccountToDB) {
-                $user = new User();
-                $user->setProperties($fname, $lname, $login, $_COOKIE["dob"], $_COOKIE["email"], $_COOKIE["gender"]);
+                $user = User::withParams($userArray);
+//                $user->setProperties($fname, $lname, $login, $_COOKIE["dob"], $_COOKIE["email"], $_COOKIE["genderID"]);
                 $addedUserToDB = USER::addUserToDB($user);
                 if ($addedUserToDB) {
-                    echo '<h2>' . translate("success") . '</h2>';
-                    echo '<h3>' . translate("welcome") . " " . $fname . " " . $lname . '!</h3>';
-                    echo "<h3>Successfully added $login to DB.</h3>";
+                    echo '<h3>' . translate("success") . '</h3>';
+                    echo '<h3>' . translate("welcome") . " " . $user->fname . " " . $user->lname . '!</h3>';
+                    echo "<p>Successfully added $login to DB.</p>";
+                    include_once "authentication.inc.php";
+                    echo "<p>Login for '$login' successful!</p>";
+                    echo '<p> Do you want to <a href="logout.php?lang=' . getLang() . '">logout?</a>';
                 } else {
-                    echo '<h2>' . translate("error") . '</h2>';
-                    echo "<h3>Could NOT add user to DB!</h3>";
+                    echo '<h3>' . translate("error") . '</h3>';
+                    echo "<p>Could NOT add user to DB!</p>";
                 }
             } else {
-                echo '<h2>' . translate("error") . '</h2>';
-                echo "<h3>Login $login already exists. Please choose another login!</h3>";
+                echo '<h3>' . translate("error") . '</h3>';
+                echo "<p>Login $login already exists. Please choose another login!</p>";
                 include 'createAccountForm.php';
             }
 
 
         } else {
-            echo '<h2>' . translate("error") . '</h2>';
-            echo '<h3>' . translate("sorry") . " " . $fname . " " . $lname . '!</h3>';
+            echo '<h3>' . translate("error") . '</h3>';
+            echo '<h3>' . translate("sorry") . " " . $user->fname . " " . $user->lname . '!</h3>';
             echo "<p>Could not add $user->fname $user->lname to DB! </p>";
         }
         echo '</div>';
@@ -74,9 +44,9 @@
         $login = $_SESSION["user"];
         $user = User::getUserByLogin($login);
         echo '<div class="account">';
-        echo '<h2>' . translate("sorry") . '</h2>';
-        echo '<h3>Dear' . " " . $user->fname . " " . $user->lname . ',</h3>';
-        echo '<p> You cannot create an account if logged in. Please <a href="logout.php?lang='. getLang() .'">logout</a>!</p>';
+        echo '<h3>' . translate("sorry") . '</h3>';
+        echo '<p>Dear' . " " . $user->fname . " " . $user->lname . ',</p>';
+        echo '<p> You cannot create an account if logged in. Please <a href="logout.php?lang=' . getLang() . '">logout</a>!</p>';
         echo '</div>';
     } else
         include 'createAccountForm.php';

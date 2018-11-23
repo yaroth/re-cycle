@@ -1,33 +1,30 @@
-<h2><?php echo translate("editAccount"); ?></h2>
+<h2><?php echo translate("edit-account"); ?></h2>
 <div class="items">
     <?php
         if (isset($_SESSION["user"])) {
             $login = $_SESSION["user"];
-            /*if (isset($_POST["userID"]) || isset($_GET["userID"])) {
-                if (isset($_POST["userID"])) $userID = $_POST["userID"];
-                elseif ((isset($_GET["userID"]))) $userID = $_GET["userID"];
-                listUserByID($userID);
-
-            } else*/
             if (isset($_POST["userID"])) {
                 $userID = $_POST["userID"];
                 $userArray = userArrayFromPost();
                 // check that user array returns a correct value!
                 if ($userArray !== false) {
                     $userArray["id"] = $userID;
-                    $updatedUserInDB = User::updateUserInDB($userArray);
+                    $userArray["login"] = $login;
+                    $pw = strip_tags($_POST["pw"]);
+                    $updatedUserInDB = false;
+                    if (Account::checklogin($login, $pw)) $updatedUserInDB = User::updateUserInDB($userArray);
                     if ($updatedUserInDB) {
-                        echo '<h2>' . translate("success") . '</h2>';
-                        echo "<h3>Successfully updated your personal data.</h3>";
+                        echo '<h3>' . translate("success") . '</h3>';
+                        echo "<p>Successfully updated your personal data.</p>";
                     } else {
-                        echo '<h2>' . translate("error") . '</h2>';
-                        echo "<h3>Could NOT update your personal data!</h3>";
+                        echo '<h3>' . translate("error") . '</h3>';
+                        echo "<p>Could NOT update your personal data! Check your login and password!</p>";
                         include 'createAccountForm.php';
                     }
                 } else {
-                    echo '<h2>' . translate("error") . '</h2>';
+                    echo '<h3>' . translate("error") . '</h3>';
                     // TODO: Fix error handling!
-                    echo "<h3>Could NOT update your personal data! (userArray is false)</h3>";
+                    echo "<p>Could NOT update your personal data! (userArray is false)</p>";
                     include 'createAccountForm.php';
                 }
             } else {
@@ -37,8 +34,8 @@
             }
         } else {
             $lang = getLang();
-            echo '<h2>' . translate("error") . '</h2>';
-            echo '<h3>' . translate("sorry") . ', to view your account data you first need to <a href="index.php?lang=' . $lang . '&id=2">login</a>!</h3>';
+            echo '<h3>' . translate("error") . '</h3>';
+            echo '<p>' . translate("sorry") . ', to view your account data you first need to <a href="index.php?lang=' . $lang . '&id=2">login</a>!</p>';
         }
     ?>
 </div>

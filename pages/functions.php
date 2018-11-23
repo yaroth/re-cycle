@@ -55,10 +55,6 @@
                 'de' => 'Resultate ',
                 'fr' => 'Résultats ',
                 'en' => 'Results '),
-            'create-account' => array(
-                'de' => 'Konto erstellen ',
-                'fr' => 'Créer un compte ',
-                'en' => 'Create account '),
             'account created' => array(
                 'de' => 'Konto erstellt! ',
                 'fr' => 'Compte créé! ',
@@ -123,14 +119,26 @@
                 'de' => 'Meine Velos',
                 'fr' => 'Mes vélos',
                 'en' => 'My bikes'),
-            'editAccount' => array(
+            'myQueries' => array(
+                'de' => 'Meine Suchen',
+                'fr' => 'Mes recherches',
+                'en' => 'My queries'),
+            'create-account' => array(
+                'de' => 'Konto erstellen ',
+                'fr' => 'Créer un compte ',
+                'en' => 'Create account '),
+            'edit-account' => array(
                 'de' => 'Meine Kontoangaben ändern',
                 'fr' => 'Modifier mes données',
                 'en' => 'Modify my data'),
             'set-password' => array(
                 'de' => 'Passwort ändern ',
                 'fr' => 'Changer le mot de passe ',
-                'en' => 'Change password ')
+                'en' => 'Change password '),
+            'other' => array(
+                'de' => 'andere',
+                'fr' => 'autres',
+                'en' => 'other')
         );
         return $texts[$key][$language] ?? "[?$key?][?$language?]";
     }
@@ -139,9 +147,9 @@
         global $language;
         $titles = array(
             'page' => array(
-                'de' => array("Start", "Konto erstellen", "Login", "Velo", "geheim", "Passwort ändern", "Velo hinzufügen", "Meine Velos", "Mein Konto"),
-                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "protégé", "Changer mot de passe", "Ajouter vélo", "Mes vélos", "Mon compte"),
-                'en' => array("Start", "Create account", "Login EN", "Bike", "login ONLY", "Change password", "Add bike", "My bikes", "My account")
+                'de' => array("Start", "Konto erstellen", "Login", "Velo", "Meine Suchen", "Passwort ändern", "Velo hinzufügen", "Meine Velos", "Mein Konto"),
+                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "Mes recherches", "Changer mot de passe", "Ajouter vélo", "Mes vélos", "Mon compte"),
+                'en' => array("Start", "Create account", "Login EN", "Bike", "My queries", "Change password", "Add bike", "My bikes", "My account")
             ));
         return $titles[$key][$language][$id] ?? "[$key][$language][$id]";
     }
@@ -265,9 +273,62 @@
         else return $bikeArray;
     }
 
+    function queryArrayFromPost() {
+        $queryArray = array();
+        $success = true;
+        // DECISION: since none of the search conditions are required, no false success is possible!
+        if (!empty(strip_tags($_POST['title']))) {
+            $title = strip_tags($_POST['title']);
+            $_COOKIE['title'] = $title;
+            $queryArray['title'] = $title;
+        }
+        if (!empty(strip_tags($_POST['weight']))) {
+            $weight = strip_tags($_POST['weight']);
+            $_COOKIE['weight'] = $weight;
+            $queryArray['weight'] = $weight;
+        }
+        if (!empty(strip_tags($_POST['price']))) {
+            $price = strip_tags($_POST['price']);
+            $_COOKIE['price'] = $price;
+            $queryArray['price'] = $price;
+        }
+        if (!empty(strip_tags($_POST['hasLights']))) {
+            $hasLights = strip_tags($_POST['hasLights'] == 'no' ? '0' : '1');
+            $_COOKIE['hasLights'] = $hasLights;
+            $queryArray['hasLights'] = $hasLights;
+        }
+        if (!empty(strip_tags($_POST['hasGears']))) {
+            $hasGears = strip_tags($_POST['hasGears'] == 'no' ? '0' : '1');
+            $_COOKIE['hasGears'] = $hasGears;
+            $queryArray['hasGears'] = $hasGears;
+        }
+        if (!empty(strip_tags($_POST['gearTypeID']))) {
+            $gearType = strip_tags($_POST['gearTypeID']);
+            $_COOKIE['gearTypeID'] = $gearType;
+            $queryArray['gearTypeID'] = $gearType;
+        }
+        if (!empty(strip_tags($_POST['nbOfGears']))) {
+            $nbOfGears = strip_tags($_POST['nbOfGears']);
+            $_COOKIE['nbOfGears'] = $nbOfGears;
+            $queryArray['nbOfGears'] = $nbOfGears;
+        }
+        if (!empty(strip_tags($_POST['wheelSize']))) {
+            $wheelSize = strip_tags($_POST['wheelSize']);
+            $_COOKIE['wheelSize'] = $wheelSize;
+            $queryArray['wheelSize'] = $wheelSize;
+        }
+        if (!empty(strip_tags($_POST['brakeTypeID']))) {
+            $brakeType = strip_tags($_POST['brakeTypeID']);
+            $_COOKIE['brakeTypeID'] = $brakeType;
+            $queryArray['brakeTypeID'] = $brakeType;
+        }
+        else return $queryArray;
+    }
+
     function userArrayFromPost() {
         $userArray = array();
         $success = true;
+
         if (empty(strip_tags($_POST['fname']))) {
             $success = false;
         } else {
@@ -289,6 +350,13 @@
             $_COOKIE['dob'] = $dob;
             $userArray['dob'] = $dob;
         }
+        if (empty(strip_tags($_POST['login']))) {
+            $success = false;
+        } else {
+            $login = strip_tags($_POST['login']);
+            $_COOKIE['login'] = $login;
+            $userArray['login'] = $login;
+        }
         if (empty(strip_tags($_POST['email']))) {
             $success = false;
         } else {
@@ -296,13 +364,17 @@
             $_COOKIE['email'] = $email;
             $userArray['email'] = $email;
         }
-        if (empty(strip_tags($_POST['sexID']))) {
+        if (empty(strip_tags($_POST['genderID']))) {
             $success = false;
         } else {
-            $sexID = strip_tags($_POST['sexID']);
-            $_COOKIE['sexID'] = $sexID;
-            $userArray['sexID'] = $sexID;
+            $genderID = strip_tags($_POST['genderID']);
+            $_COOKIE['genderID'] = $genderID;
+            $userArray['genderID'] = $genderID;
         }
+        // TODO: update this once all data can be saved in DB!
+        // $postVar = ["address", "zip", "city", "country", "phone", ];
+
         if (!$success) return $success;
         else return $userArray;
+
     }

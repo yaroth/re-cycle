@@ -15,7 +15,7 @@
         public $login;
         public $dob;
         public $email;
-        public $sexID;
+        public $genderID;
         public $sexString;
 
 
@@ -23,11 +23,11 @@
         }
 
         public function __toString() {
-            return sprintf("%d) %s, %s of sex: %s (id: %d)", $this->id, $this->fname, $this->lname, $this->sexString, $this->sexID);
+            return sprintf("%d) %s, %s of sex: %s (id: %d)", $this->id, $this->fname, $this->lname, $this->sexString, $this->genderID);
         }
 
         public function setSexString($sexArray) {
-            $this->sexString = $sexArray[$this->sexID];
+            $this->sexString = $sexArray[$this->genderID];
         }
 
         public static function getUsers() {
@@ -39,18 +39,18 @@
             return $users;
         }
 
-        public function setProperties($fname, $lname, $login, $dob, $email, $sexID) {
+        public function setProperties($fname, $lname, $login, $dob, $email, $genderID) {
             $db = DB::getInstance();
             $this->fname = $db->escape_string($fname);
             $this->lname = $db->escape_string($lname);
             $this->login = $db->escape_string($login);
             $this->dob = date($db->escape_string($dob));
             $this->email = $db->escape_string($email);
-            $this->sexID = $db->escape_string($sexID);
+            $this->genderID = $db->escape_string($genderID);
         }
 
         public static function addUserToDB($user) {
-            $ADD_STATEMENT = "INSERT INTO users (id, fname, lname, login, dob, email, sexID) VALUE (?, ?, ?, ?, ?, ?, ?)";
+            $ADD_STATEMENT = "INSERT INTO users (id, fname, lname, login, dob, email, genderID) VALUE (?, ?, ?, ?, ?, ?, ?)";
             $dbInstance = DB::getInstance();
             $stmt = $dbInstance->prepare($ADD_STATEMENT);
             if (!$stmt) {
@@ -59,7 +59,7 @@
             }
             $userID = NULL;
             $dateOfBirth = date($user->dob);
-            $stmt->bind_param('isssssi', $userID, $user->fname, $user->lname, $user->login, $dateOfBirth, $user->email, $user->sexID);
+            $stmt->bind_param('isssssi', $userID, $user->fname, $user->lname, $user->login, $dateOfBirth, $user->email, $user->genderID);
             if (!$stmt) {
                 echo "bind_param failed: $dbInstance->error ";
                 exit;
@@ -153,7 +153,7 @@
             $this->login = $db->escape_string($user->login);
             $this->dob = $db->escape_string($user->dob);
             $this->email = $db->escape_string($user->email);
-            $this->sexID = (int)$user->sexID;
+            $this->genderID = (int)$user->genderID;
         }
 
         public static function withParams($userArray) {
@@ -166,7 +166,7 @@
         }
 
         public static function updateUserInDB($userArray) {
-            $ADD_STATEMENT = "UPDATE users SET fname=?, lname=?, login=?, dob=?, email=?, sexID=? WHERE users.id = ?;";
+            $ADD_STATEMENT = "UPDATE users SET fname=?, lname=?, login=?, dob=?, email=?, genderID=? WHERE users.id = ?;";
             $db = DB::getInstance();
             $stmt = $db->prepare($ADD_STATEMENT);
             if (!$stmt) {
@@ -174,7 +174,7 @@
                 exit;
             }
             $user = User::withParams($userArray);
-            $stmt->bind_param('sssssii', $user->fname, $user->lname, $user->login, $user->dob, $user->email, $user->sexID, $user->id);
+            $stmt->bind_param('sssssii', $user->fname, $user->lname, $user->login, $user->dob, $user->email, $user->genderID, $user->id);
             if (!$stmt) {
                 echo "bind_param failed";
                 exit;

@@ -29,7 +29,7 @@
         } elseif (getId() == 3) {
             include 'bikeProperties.php';
         } elseif (getId() == 4) {
-            include 'protected.php';
+            include 'myQueries.php';
         } elseif (getId() == 5) {
             include 'setpassword.php';
         } elseif (getId() == 6) {
