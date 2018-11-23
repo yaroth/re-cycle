@@ -119,6 +119,14 @@ body {
           line-height: .3em;
         }
       }
+      form {
+        .current-img {
+          width: 200px;
+          img {
+            width: 100%;
+          }
+        }
+      }
     }
 
   }

@@ -90,6 +90,10 @@ body {
         body .main .items .item.wrapper .specs {
           color: darkblue;
           line-height: .3em; }
+      body .main .items form .current-img {
+        width: 200px; }
+        body .main .items form .current-img img {
+          width: 100%; }
   body .footer {
     clear: both;
     padding: 10px;
