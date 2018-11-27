@@ -46,23 +46,18 @@
         $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
         $targetURL = add_param($targetURL, "id", getId());
         $targetURL = add_param($targetURL, "queryID", $query->id);
+        $user = USER::getUserByID($query->userID);
+        $userName = $user->getUserFullName();
         $item = '<div class="query wrapper">
-            <div class="title">
-            <h3>' . $query->title . '</h3>
-            <p class="price">' . $query->price . '.-</p>
-            <p class="weight">Weight: ' . $query->weight . ' kg</p>
-            </div>
-            <div class="specs">
-                <p>Gear type: ' . translate($query->getGearTypeName()) . '</p>
-                <p>Speeds: ' . $query->nbOfGears . '</p>
-                <p>Brakes: ' . translate($query->getBrakeTypeName()) . '</p>
-                <p>Wheel size: ' . $query->wheelSize . '"</p>
-                <p>Owner: ' . $query->getOwnerName() . '</p>
-            </div>
-            <div class="edit">
+            <div class="item title">' . $query->title . '</div>
+            <div class="item price">' . $query->price . '.-</div>
+            <div class="item weight">Weight: ' . $query->weight . ' kg</div>
+            <div class="item user">Owner: ' . $userName . '</div>
+            <div class="item edit">
                 <form action="' . $targetURL . '" method="post" name="editQuery" >
-                    <input type="hidden" name="queryID" value="' . $query->id . '" required><br>
-                    <input type="submit" value="Edit query">
+                    <input type="hidden" name="queryID" value="' . $query->id . '" required>
+                    <button type="submit" name="action" value="editQuery">Edit</button>
+                    <button type="submit" name="action" value="deleteQuery">Delete</button>
                 </form>
             </div>
         </div>';

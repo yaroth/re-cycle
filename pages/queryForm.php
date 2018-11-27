@@ -9,12 +9,11 @@
 <form action="<?php echo $targetURL ?>" method="post"
       name="<?php echo $addOrEditBike; ?>"
       enctype="multipart/form-data"
-      onsubmit="return validateAddBicycle();">
+      onsubmit="return validateAddQuery();">
     <fieldset>
         <legend><?php echo translate("bike-info") ?> :</legend>
         Title : <br>
-        <input type="text" name="title" placeholder="lightweight racing bike"
-               value="<?php echo $_COOKIE["title"] ?? ""; ?>" autofocus required><br>
+        <input type="text" name="title" placeholder="lightweight racing bike" value="<?php echo $_COOKIE["title"] ?? ""; ?>" autofocus required><br>
         Description: <br> <textarea name="description" placeholder="Selling my blue & red men's racing bicycle..."
                                     rows="5" required><?php echo $_COOKIE["description"] ?? ""; ?></textarea><br>
         Weight :<br>

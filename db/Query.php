@@ -54,7 +54,7 @@
         // returns all the queries set by an user.
         // TODO: Check if this works!
         public static function getQueriesByUserID($userID) {
-            $ADD_STATEMENT = "SELECT * FROM queries WHERE queries.ownerID = ?";
+            $ADD_STATEMENT = "SELECT * FROM queries WHERE queries.userID = ?";
             $stmt = DB::getInstance()->prepare($ADD_STATEMENT);
             if (!$stmt) {
                 echo "Prepare failed";
@@ -84,7 +84,7 @@
             $ADD_STATEMENT = "SELECT * FROM queries WHERE queries.id = ?";
             $stmt = DB::getInstance()->prepare($ADD_STATEMENT);
             if (!$stmt) {
-                echo "Prepare failed";
+                echo "Prepare failed getQueryByID";
                 exit;
             }
             $id = (int)$id;

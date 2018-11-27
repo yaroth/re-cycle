@@ -1,10 +1,11 @@
 <!--Will first list all user specific queries, then make it possible to edit a single query-->
 <h2><?php echo translate("myQueries"); ?></h2>
 <?php include '../data/queries.php'; ?>
-<div class="items">
+<div class="query items">
     <?php
         if (isset($_SESSION["user"])) {
             $login = $_SESSION["user"];
+            $userID = User::getUserIDByLogin($login);
             // calling the one bike to edit -> takes DB data
             // TODO: get language navigation to work
             if (isset($_POST["queryID"]) || isset($_GET["queryID"])) {
@@ -21,7 +22,7 @@
                 if ($queryArray !== false) {
                     $queryObj = Query::withParams($queryArray);
                     $queryObj->id = $queryID;
-                    $queryObj->userID = User::getUserIDByLogin($login);
+                    $queryObj->userID = $userID;
                     $updatedQueryInDB = Query::updateQueryInDB($queryObj);
                     if ($updatedQueryInDB) {
                         echo '<h2>' . translate("success") . '</h2>';
@@ -38,11 +39,10 @@
                 else {
                     echo '<h2>' . translate("error") . '</h2>';
                     // TODO: Fix error handling! write to log file!
-                    echo "<h3>Could NOT update bicycle data! (bikeArray is false)</h3>";
+                    echo "<h3>Could NOT update query data! (queryArray is false)</h3>";
                     include 'queryForm.php';
                 }
             } else {
-                $userID = User::getUserIDByLogin($login);
                 listQueriesByUserID($userID);
             }
         } else {
