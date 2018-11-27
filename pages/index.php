@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/css/styles.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="../scripts/main.js"></script>
     <!--TODO: what is that line?-->
     <?php $pageTitle = "homYe" ?>
@@ -40,7 +41,14 @@
             include 'myAccount.php';
         }
 
+
     ?>
+    <form id="nicknameform">
+        <input name="nickname" placeholder="bob or alice ? "/>
+        <input onclick="getPersonData();" type="button" value="Get Data"/>
+    </form>
+    <p id="persondata"></p>
+
 
 </div><!--end main-->
 <div class="footer">footer</div>

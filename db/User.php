@@ -192,4 +192,8 @@
                 $_COOKIE[$key] = $value;
             }
         }
+
+        public function getUserFullName(){
+            return $this->fname . " " . $this->lname;
+        }
     }

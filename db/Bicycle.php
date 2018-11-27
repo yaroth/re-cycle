@@ -48,7 +48,7 @@
             return $bicycles;
         }
 
-        public static function getBicyclesOfUser($user) {
+        public static function getBicyclesByUser($user) {
             $ownerID = $user->id;
             $bicycles = array();
             $res = DB::doQuery("SELECT * FROM bicycles WHERE bicycles.ownerID = $ownerID;");

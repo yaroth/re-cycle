@@ -1,3 +1,11 @@
+$(document).ready(function () {
+
+    $.get("test.php", function (data) {
+        $("#time").html(data);
+    });
+
+});
+
 function validateCreateAccount() {
     //TODO: remove commenting out
     /*var form = document.forms["create-account"];
@@ -62,4 +70,12 @@ function validateNewPassword() {
         return false;
     }
     return true;
+}
+
+function getPersonData() {
+    // post(url [, data, success-cb, data-type])
+    $.post("../pages/getperson.php", $('#nicknameform').serialize(), function (person) {
+        $('#persondata').html(
+            person.fname + " " + person.lname + ", Age: " + person.age);
+    }, "json");
 }
