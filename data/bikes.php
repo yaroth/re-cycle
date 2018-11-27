@@ -20,7 +20,7 @@
     }
 
     function listBikesByUser($user) {
-        $bikesToSell = Bicycle::getBicyclesOfUser($user);
+        $bikesToSell = Bicycle::getBicyclesByUser($user);
         usort($bikesToSell, function ($bike1, $bike2) {
             return $bike1->price <=> $bike2->price;
         });
@@ -30,6 +30,9 @@
     }
 
     function listItem($bike) {
+        $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
+        $targetURL = add_param($targetURL, "id", getId());
+        $targetURL = add_param($targetURL, "bikeID", $bike->id);
         $item = '<div class="item wrapper">
             <div class="title">
             <h3>' . $bike->title . '</h3>
@@ -38,7 +41,7 @@
             </div>
             <div class="image">
                 <a href="../functions.php">
-                    <img src="../../img/logo.png">
+                    <img src="../../img/uploads/' . $bike->imageName . '">
                 </a>
             </div>
             <div class="specs">
@@ -49,7 +52,12 @@
                 <p>Wheel size: ' . $bike->wheelSize . '"</p>
                 <p>Owner: ' . $bike->getOwnerName() . '</p>
             </div>
-            <div>  <a href="url">Buy Now</a> </div>
+            <div class="buy">
+                <form action="' . $targetURL . '" method="post" name="buyBike" >
+                <input type="hidden" name="bikeID" value="' . $bike->id . '" required><br>
+                <button type="submit" value="buyBike">Buy!</button>
+                </form>
+            </div>
         </div>';
         echo $item;
     }
@@ -80,7 +88,7 @@
             <div class="edit">
                 <form action="' . $targetURL . '" method="post" name="editBike" >
                 <input type="hidden" name="bikeID" value="' . $bike->id . '" required><br>
-                <input type="submit" value="Edit bike">
+                <input type="submit" value="Edit">
                 </form>
             </div>
         </div>';
