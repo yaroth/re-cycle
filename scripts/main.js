@@ -76,6 +76,11 @@ function getPersonData() {
     // post(url [, data, success-cb, data-type])
     $.post("../pages/getperson.php", $('#nicknameform').serialize(), function (person) {
         $('#persondata').html(
-            person.fname + " " + person.lname + ", Age: " + person.age);
+            "<div class='pink'>" + person.fname + " " + person.lname + ", Age: " + person.age + "</div>"
+        );
     }, "json");
+}
+
+function adminSelection() {
+    $.load
 }

@@ -39,15 +39,13 @@
             include 'myBikes.php';
         } elseif (getId() == 8) {
             include 'myAccount.php';
+        } elseif (getId() == 9) {
+            include 'admin.php';
         }
 
 
     ?>
-    <form id="nicknameform">
-        <input name="nickname" placeholder="bob or alice ? "/>
-        <input onclick="getPersonData();" type="button" value="Get Data"/>
-    </form>
-    <p id="persondata"></p>
+
 
 
 </div><!--end main-->

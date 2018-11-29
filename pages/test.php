@@ -1,2 +1,2 @@
 <?php
-    echo date("H:i:s");
+    echo 'AJAX: ' . date("H:i:s");

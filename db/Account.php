@@ -153,4 +153,8 @@
             $row = $result->fetch_assoc();
             return password_verify($password, $row["pw_hash"]);
         }
+
+        public function isAdminAccount(){
+            return $this->admin;
+        }
     }
