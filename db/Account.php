@@ -18,7 +18,7 @@
         }
 
         public function __toString() {
-            return sprintf("ID: %d, login: %s, pw_hash: %s, isAdmin: %i)", $this->id, $this->login, $this->pw_hash, $this->admin);
+            return sprintf("ID: %d, login: %s, pw_hash: %s, isAdmin: %i", $this->id, $this->login, $this->pw_hash, $this->admin);
         }
 
         static public function getAccounts() {
@@ -66,7 +66,7 @@
             return $stmt;
         }
 
-        public static function deleteAccountWithID($accountID) {
+        public static function deleteAccountByID($accountID) {
             $ADD_STATEMENT = "DELETE FROM accounts WHERE accounts.id = ?";
             $dbInstance = DB::getInstance();
             $stmt = $dbInstance->prepare($ADD_STATEMENT);
@@ -75,6 +75,28 @@
                 exit;
             }
             $stmt->bind_param('i', $accountID);
+            if (!$stmt) {
+                echo "bind_param failed";
+                exit;
+            }
+            $stmt->execute();
+            if (!$stmt) {
+                echo "execute failed";
+                exit;
+            }
+            $result = $stmt->get_result();
+            return $result;
+        }
+
+        public static function deleteAccountByLogin($login) {
+            $ADD_STATEMENT = "DELETE FROM accounts WHERE accounts.login = ?";
+            $dbInstance = DB::getInstance();
+            $stmt = $dbInstance->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed";
+                exit;
+            }
+            $stmt->bind_param('s', $login);
             if (!$stmt) {
                 echo "bind_param failed";
                 exit;

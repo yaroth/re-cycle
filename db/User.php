@@ -16,18 +16,18 @@
         public $dob;
         public $email;
         public $genderID;
-        public $sexString;
+        public $genderName;
 
 
         function __construct() {
         }
 
         public function __toString() {
-            return sprintf("%d) %s, %s of sex: %s (id: %d)", $this->id, $this->fname, $this->lname, $this->sexString, $this->genderID);
+            return sprintf("%d) %s, %s of sex: %s (id: %d)", $this->id, $this->fname, $this->lname, $this->genderName, $this->genderID);
         }
 
-        public function setSexString($sexArray) {
-            $this->sexString = $sexArray[$this->genderID];
+        public function setGenderName($sexArray) {
+            $this->genderName = $sexArray[$this->genderID];
         }
 
         public static function getUsers() {
@@ -72,7 +72,7 @@
             return $stmt;
         }
 
-        public static function deleteUserWithID($userID) {
+        public static function deleteUserByID($userID) {
             $ADD_STATEMENT = "DELETE FROM users WHERE users.id = ?";
             $dbInstance = DB::getInstance();
             $stmt = $dbInstance->prepare($ADD_STATEMENT);
@@ -117,7 +117,7 @@
             return $result->fetch_object(get_class());
         }
 
-        public static function getUserIDByLogin($login){
+        public static function getUserIDByLogin($login) {
             $user = User::getUserByLogin($login);
             return $user->id;
         }
@@ -193,7 +193,17 @@
             }
         }
 
-        public function getUserFullName(){
+        public function getUserFullName() {
             return $this->fname . " " . $this->lname;
+        }
+
+        public function getGenderName() {
+            $gender = Gender::getGenderByID($this->genderID);
+            return $gender->name;
+        }
+
+        public function userIsAdmin(){
+            $account = Account::getAccountByLogin($this->login);
+            return $account->isAdminAccount();
         }
     }

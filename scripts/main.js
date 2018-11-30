@@ -81,6 +81,37 @@ function getPersonData() {
     }, "json");
 }
 
-function adminSelection() {
-    $.load
+function adminSelection(element) {
+    let buttonValue = $(element).val();
+    if (buttonValue == "users") {
+        $.get("usersList.php", function (data) {
+            $("#admin-content").html(data);
+        })
+    } else if (buttonValue == "bicycles") {
+        $.get("bikesList.php", function (data) {
+            $("#admin-content").html(data);
+        })
+    } else if (buttonValue == "queries") {
+        $.get("queriesList.php", function (data) {
+            $("#admin-content").html(data);
+        })
+    } else if (buttonValue == "matches") {
+        $.get("matchesList.php", function (data) {
+            $("#admin-content").html(data);
+        })
+    }
+}
+
+function deleteUser(el) {
+    let userID = $(el).val();
+    $.post("deleteUser.php", {deleteUser: userID}, function (data, status) {
+        if (status) {
+            $.get("usersList.php", function (data) {
+                $("#admin-content").html(data);
+            });
+            alert("Successfully deleted user with id: " + userID)
+        }
+        else alert("Could not delete user with id: " + userID);
+    });
+
 }

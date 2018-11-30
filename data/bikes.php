@@ -9,13 +9,13 @@
 
 // TODO: NICE-TO-HAVE: create a function to sort by different keys
 
-    function listProducts() {
+    function listBicycles() {
         $bikesToSell = Bicycle::getBicycles();
         usort($bikesToSell, function ($bike1, $bike2) {
             return $bike1->price <=> $bike2->price;
         });
         foreach ($bikesToSell as $bike) {
-            listItem($bike);
+            listBike($bike);
         }
     }
 
@@ -29,7 +29,7 @@
         }
     }
 
-    function listItem($bike) {
+    function listBike($bike) {
         $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
         $targetURL = add_param($targetURL, "id", getId());
         $targetURL = add_param($targetURL, "bikeID", $bike->id);

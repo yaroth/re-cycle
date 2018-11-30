@@ -8,10 +8,12 @@
     if (isset($_SESSION["user"])) {
         $login = $_SESSION["user"];
         $account = Account::getAccountByLogin($login);
+        $user = User::getUserByLogin($login);
+        $userFullName = $user->getUserFullName();
         if ($account->isAdminAccount()){
-            echo "<h3>Welcome admin!</h3>";
-            echo "<div id=admin-content></div>";
+            echo "<h3>Welcome $userFullName!</h3>";
             include "adminChoice.php";
+            echo "<div id=admin-content></div>";
         }
         else echo "You are not an admin, sorry!";
     }

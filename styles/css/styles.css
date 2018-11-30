@@ -67,9 +67,18 @@ body {
         vertical-align: top; }
     body .main input:focus {
       background-color: yellow; }
-    body .main .items {
+    body .main .user-wrapper {
+      display: flex;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid black; }
+      body .main .user-wrapper .user {
+        margin-right: 20px; }
+      body .main .user-wrapper .item {
+        margin-right: 20px; }
+    body .main .items, body .main .bikesList {
       margin: 20px 0; }
-      body .main .items .item.wrapper {
+      body .main .items .item.wrapper, body .main .bikesList .item.wrapper {
         display: inline-block;
         margin-right: 5px;
         margin-bottom: 5px;
@@ -80,26 +89,26 @@ body {
         border: 1px crimson solid;
         border-radius: 3px;
         overflow: hidden; }
-        body .main .items .item.wrapper .title {
+        body .main .items .item.wrapper .title, body .main .bikesList .item.wrapper .title {
           text-align: center; }
-        body .main .items .item.wrapper .image {
+        body .main .items .item.wrapper .image, body .main .bikesList .item.wrapper .image {
           width: 100%;
           overflow: hidden; }
-          body .main .items .item.wrapper .image img {
+          body .main .items .item.wrapper .image img, body .main .bikesList .item.wrapper .image img {
             width: 100%; }
-        body .main .items .item.wrapper .specs {
+        body .main .items .item.wrapper .specs, body .main .bikesList .item.wrapper .specs {
           color: darkblue;
           line-height: .3em; }
-      body .main .items form .current-img {
+      body .main .items form .current-img, body .main .bikesList form .current-img {
         width: 200px; }
-        body .main .items form .current-img img {
+        body .main .items form .current-img img, body .main .bikesList form .current-img img {
           width: 100%; }
-      body .main .items .query.wrapper {
+      body .main .items .query.wrapper, body .main .bikesList .query.wrapper {
         display: flex;
         margin-bottom: 10px;
         padding: 10px;
         border: 1px solid black; }
-        body .main .items .query.wrapper .item {
+        body .main .items .query.wrapper .item, body .main .bikesList .query.wrapper .item {
           margin-right: 20px; }
   body .footer {
     clear: both;
