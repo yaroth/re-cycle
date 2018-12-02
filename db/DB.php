@@ -8,7 +8,7 @@
     require_once "../data/conf.php";
 
     class DB extends mysqli {
-        const HOST = "localhost", USER = "admin", PW = CONF_PW, DB_NAME = "recycle";
+        const HOST = "localhost", USER = "recycle", PW = CONF_PW, DB_NAME = "recycle";
         static private $instance;
 
         function __construct() {

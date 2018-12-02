@@ -1,6 +1,5 @@
 <?php
     include_once "functions.php";
-    require_once "../db/db.inc.php";
     require_once("../db/autoloader.php");
 
 ?>

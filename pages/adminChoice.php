@@ -3,4 +3,5 @@
     <button onclick="adminSelection(this);" type="button" value="bicycles">Get bikes</button>
     <button onclick="adminSelection(this);" type="button" value="queries">Get queries</button>
     <button onclick="adminSelection(this);" type="button" value="matches">Get matches</button>
+    <button onclick="adminSelection(this);" type="button" value="accounts">Get accounts</button>
 </form>

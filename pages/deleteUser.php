@@ -20,4 +20,4 @@
         }
         else echo "You are not an admin, sorry!";
     }
-    else echo "session cookie not set!";
+    else echo "session cookie 'user' not set!";

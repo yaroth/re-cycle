@@ -11,10 +11,8 @@
         echo '<div class="user dob">' . $user->dob . '</div>';
         echo '<div class="user email">' . $user->email . '</div>';
         echo '<div class="user gender">' . $user->getGenderName() . '</div>';
-        echo '<div class="user edit">
-                <button onclick="deleteUser(this);" name="deleteUser" type="button" value="' . $user->id . '">Delete</button>
-                <button onclick="editUser(this);" name="editUser" type="button" value="' . $user->id . '">Edit</button>
-            </div>';
+        echo '<button onclick="deleteUser(this);" name="deleteUser" type="button" value="' . $user->id . '">Delete</button>
+              <button onclick="editUser(this);" name="editUser" type="button" value="' . $user->id . '">Edit</button>';
         echo '</div><!-- END user-wrapper-->';
     }
     echo '</div>';

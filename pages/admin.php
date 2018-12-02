@@ -16,4 +16,7 @@
             echo "<div id=admin-content></div>";
         }
         else echo "You are not an admin, sorry!";
+    } else {
+        $lang = getLang();
+        echo 'You are not logged in, please do first <a href="index.php?lang=' . $lang . '&id=2">login</a>!';
     }

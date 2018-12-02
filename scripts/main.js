@@ -99,19 +99,28 @@ function adminSelection(element) {
         $.get("matchesList.php", function (data) {
             $("#admin-content").html(data);
         })
-    }
+    } else if (buttonValue == "accounts") {
+        $.get("accountsList.php", function (data) {
+            $("#admin-content").html(data);
+        })
+    } else $("#admin-content").html("Something went wrong. Sorry. Please try again!");
 }
 
 function deleteUser(el) {
     let userID = $(el).val();
+    // TODO: add security message 'do you really want to delete user x'?
     $.post("deleteUser.php", {deleteUser: userID}, function (data, status) {
         if (status) {
             $.get("usersList.php", function (data) {
                 $("#admin-content").html(data);
             });
             alert("Successfully deleted user with id: " + userID)
-        }
-        else alert("Could not delete user with id: " + userID);
+        } else alert("Could not delete user with id: " + userID);
     });
+
+}
+
+function editUser(el) {
+    let userID = $(el).val();
 
 }

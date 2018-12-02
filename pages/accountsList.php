@@ -1,8 +1,7 @@
 <?php
-    require_once ("../data/bikes.php");
     require_once ("functions.php");
     require_once("../db/autoloader.php");
-    echo '<div class="bikesList">';
-    listEditableBicycles();
+    echo '<div class="accountsList">';
+    echo "all accounts!";
     echo '</div>';
 ?>

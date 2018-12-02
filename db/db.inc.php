@@ -1,7 +1,7 @@
 <?php
     include_once "../data/conf.php";
     const HOST = "localhost";
-    const USER = "admin";
+    const USER = "recycle";
     const PW = CONF_PW;
     const DB_NAME = "recycle";
 

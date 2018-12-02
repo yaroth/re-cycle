@@ -19,6 +19,16 @@
         }
     }
 
+    function listEditableBicycles() {
+        $bikesToSell = Bicycle::getBicycles();
+        usort($bikesToSell, function ($bike1, $bike2) {
+            return $bike1->price <=> $bike2->price;
+        });
+        foreach ($bikesToSell as $bike) {
+            listEditableBike($bike);
+        }
+    }
+
     function listBikesByUser($user) {
         $bikesToSell = Bicycle::getBicyclesByUser($user);
         usort($bikesToSell, function ($bike1, $bike2) {
