@@ -1,4 +1,5 @@
 <?php
-    function __autoload($class_name) {
+    function recycleAutoloader($class_name) {
         require_once("$class_name.php");
     }
+    spl_autoload_register('recycleAutoloader');
