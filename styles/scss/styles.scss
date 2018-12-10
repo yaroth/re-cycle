@@ -3,7 +3,7 @@ body {
   margin: 0;
 
   .header {
-    background-color: #aaffaa;
+    background-color: rgba(0, 0, 0, 0.26);
     padding: 10px;
 
     .logo {
@@ -25,18 +25,21 @@ body {
 
     .nav {
       display: inline-block;
-      background-color: #009926;
+      background-color: orangered;
       padding: 10px;
       text-align: center;
       vertical-align: top;
       float: right;
-      border-radius: 3px;
+
+      margin: -8px;
+      border-radius: 5px;
 
       ul {
         font-size: 20px;
         margin: 0px;
-        padding: 0px;
+        padding-right: 19px;
         list-style: none;
+
 
         &:first-child {
           margin-top: 0;
@@ -44,9 +47,17 @@ body {
 
         margin-top: 20px;
 
-        li {
+        li { border:1px solid;
+          padding:5px;
+          margin :7px;
+          background-color: rgba(52, 128, 125, 0.95);
+          border-radius: 5px;
+          font-size: 14px;
           &.nav-item {
+
             display: block;
+
+
           }
 
           &.lang {
@@ -62,9 +73,9 @@ body {
           }
 
           a {
-            color: darkblue;
-            margin: 0px;
-            padding: 5px;
+            color: #1e1e1e;
+            margin: 5px;
+            padding: 8px;
             text-decoration: none;
 
             &:hover {
@@ -95,7 +106,7 @@ body {
   }
 
   .main {
-    background-color: lightblue;
+
     padding: 10px;
     overflow: hidden;
 
@@ -188,6 +199,7 @@ body {
   .footer {
     clear: both;
     padding: 10px;
-    background-color: #ffdddd;
+    background-color: orangered;
   }
 }
+body{background-color: orangered}
