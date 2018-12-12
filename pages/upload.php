@@ -1,4 +1,7 @@
 <?php
+
+//    TODO: is this needed????
+
     if (isset($_FILES['upload'])) {
         $file = $_FILES['upload'];
         if ($file['error'] != 0) {

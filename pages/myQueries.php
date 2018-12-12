@@ -7,7 +7,7 @@
             $login = $_SESSION["user"];
             $userID = User::getUserIDByLogin($login);
             // calling the one bike to edit -> takes DB data
-            // TODO: get language navigation to work
+            // TODO: get language navigation to work when editing ONE query
             if (isset($_POST["queryID"]) || isset($_GET["queryID"])) {
                 if (isset($_POST["queryID"])) $queryID = $_POST["queryID"];
                 elseif ((isset($_GET["queryID"]))) $queryID = $_GET["queryID"];

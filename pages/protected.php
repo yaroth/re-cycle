@@ -1,9 +1,6 @@
 <?php
     /**
-     * Created by PhpStorm.
-     * User: yann
-     * Date: 11.11.18
-     * Time: 15:21
+     * TODO: delete when done with project
      */
 
     echo '<h2>' . translate("protected") . '</h2>';

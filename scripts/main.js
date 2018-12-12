@@ -120,6 +120,7 @@ function deleteUser(el) {
 
 }
 
+// TODO: finalize editing user
 function editUser(el) {
     let userID = $(el).val();
 
