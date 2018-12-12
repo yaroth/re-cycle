@@ -10,5 +10,13 @@
                 echo $id; ?>
         </h2>
     </div>
-    <?php include 'navigation.php' ?>
+    <?php
+        session_start();
+        if (isset($_POST["login"]) && isset($_POST["pw"])) {
+            $login = strip_tags($_POST["login"]);
+            $pw = strip_tags($_POST["pw"]);
+            if (Account::checklogin($login, $pw))
+                $_SESSION["user"] = $login;
+        }
+        include 'navigation.php' ?>
 </div>

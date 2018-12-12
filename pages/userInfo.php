@@ -1,6 +1,5 @@
 <div class="userInfo">
     <?php
-        session_start();
         if (isset($_SESSION["user"])) {
             $login = $_SESSION["user"];
             $user = User::getUserByLogin($login);

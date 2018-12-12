@@ -179,4 +179,8 @@
         public function isAdminAccount(){
             return $this->admin;
         }
+        public static function isAdminByLogin($login){
+            $account = self::getAccountByLogin($login);
+            return $account->isAdminAccount();
+        }
     }

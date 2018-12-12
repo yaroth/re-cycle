@@ -11,6 +11,7 @@
         <br> <input type="radio" name="genderID" value="1" <?php echo getChecked("genderID", "1")?> required>female
         <br> <input type="radio" name="genderID" value="2" <?php echo getChecked("genderID", "2")?> required>male
         <br> <input type="radio" name="genderID" value="3" <?php echo getChecked("genderID", "3")?> required>other<br>
+        <!--TODO: update commented out fields-->
         <!--Address :<br> <input type="text" name="address" placeholder="Wasserweg 23" value="<?php /*echo $_COOKIE["address"] ?? "";*/?>" required><br>
         ZIP :<br> <input type="number" name="zip" placeholder="3006" value="<?php /*echo $_COOKIE["zip"] ?? "";*/?>" required><br>
         City :<br> <input type="text" name="city" placeholder="Bern" value="<?php /*echo $_COOKIE["city"] ?? "";*/?>" required><br>

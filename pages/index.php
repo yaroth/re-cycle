@@ -1,7 +1,6 @@
 <?php
     include_once "functions.php";
     require_once("../db/autoloader.php");
-
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +39,8 @@
             include 'myAccount.php';
         } elseif (getId() == 9) {
             include 'admin.php';
+        }elseif (getId() == 10) {
+            include 'mvc.php';
         }
 
 
