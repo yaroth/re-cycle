@@ -7,10 +7,8 @@
      */
     if (isset($_SESSION["user"])) {
         $login = $_SESSION["user"];
-        $account = Account::getAccountByLogin($login);
-        $user = User::getUserByLogin($login);
-        $userFullName = $user->getUserFullName();
-        if ($account->isAdminAccount()){
+        $userFullName = User::getUserByLogin($login)->getUserFullName();
+        if (Account::isAdminByLogin($login)){
             echo "<h3>Welcome $userFullName!</h3>";
             include "adminChoice.php";
             echo "<div id=admin-content></div>";

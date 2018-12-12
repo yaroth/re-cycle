@@ -9,7 +9,7 @@
     } else {
         if ($_POST) {
             $success = true;
-            $fname = $lname = $login = $pw = '';
+            $login = $pw = '';
 
             if (empty(strip_tags($_POST['login']))) {
                 $success = false;
@@ -19,7 +19,7 @@
                 $success = false;
             } else $pw = strip_tags($_POST['pw']);
 
-            // TODO: add form 'isAdmin'
+            // TODO: add form 'isAdmin' ????
 
             if (!$success) {
                 echo "<p>Something went wrong!</p>";

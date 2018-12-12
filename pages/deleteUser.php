@@ -1,9 +1,6 @@
 <?php
     /**
-     * Created by PhpStorm.
-     * User: yann
-     * Date: 11.11.18
-     * Time: 12:58
+     * Called using AJAX
      */
     require_once("../db/autoloader.php");
     session_start();
@@ -11,6 +8,7 @@
         $login = $_SESSION["user"];
         $account = Account::getAccountByLogin($login);
         if ($account->isAdminAccount()){
+            /*TODO: check if admin wants to delete his/her own account/user -> not allowed!*/
             if (isset($_POST["deleteUser"])){
                 $deleteUserID = $_POST["deleteUser"];
                 $userToDelete = User::getUserByID($deleteUserID);

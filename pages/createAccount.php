@@ -14,7 +14,6 @@
             else $addedAccountToDB = Account::addAccountToDB($account);
             if ($addedAccountToDB) {
                 $user = User::withParams($userArray);
-//                $user->setProperties($fname, $lname, $login, $_COOKIE["dob"], $_COOKIE["email"], $_COOKIE["genderID"]);
                 $addedUserToDB = USER::addUserToDB($user);
                 if ($addedUserToDB) {
                     echo '<h3>' . translate("success") . '</h3>';
@@ -32,8 +31,6 @@
                 echo "<p>Login $login already exists. Please choose another login!</p>";
                 include 'createAccountForm.php';
             }
-
-
         } else {
             echo '<h3>' . translate("error") . '</h3>';
             echo '<h3>' . translate("sorry") . " " . $user->fname . " " . $user->lname . '!</h3>';

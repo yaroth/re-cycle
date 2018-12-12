@@ -12,7 +12,9 @@
             exit;
         }
         if ($success) {
-            $user = User::getUserByLogin($_SESSION["user"]);
+            /*TODO: make code concise*/
+            $login = $_SESSION["user"];
+            $user = User::getUserByLogin($login);
             $bikeArray["ownerID"] = $user->id;
             $bicycle = Bicycle::withParams($bikeArray);
             $addedBikeToDB = Bicycle::addBikeToDB($bicycle);

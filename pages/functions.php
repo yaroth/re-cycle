@@ -16,13 +16,13 @@
 
     function navigation($language, $pageId) {
         $urlbase = add_param($_SERVER['PHP_SELF'], "lang", $language);
-        $navItemsNb = 2;
+        $navItemsIndex = 2;
         if (isset($_SESSION["user"])) {
-            $navItemsNb = 8;
+            $navItemsIndex = 8;
             $login = $_SESSION["user"];
-            if (Account::isAdminByLogin($login)) $navItemsNb = 10;
+            if (Account::isAdminByLogin($login)) $navItemsIndex = 10;
         }
-        for ($i = 0; $i <= $navItemsNb; $i++) {
+        for ($i = 0; $i <= $navItemsIndex; $i++) {
             $url = add_param($urlbase, "id", $i);
             $class = $pageId == $i ? 'active' : 'inactive';
             echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . navtitles('page', $i) . "</a></li>";
@@ -149,6 +149,7 @@
         return $texts[$key][$language] ?? "[?$key?][?$language?]";
     }
 
+    /*TODO: remove page 'Velo' > not necessary*/
     function navtitles($key, $id) {
         global $language;
         $titles = array(

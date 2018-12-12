@@ -5,4 +5,5 @@
     );
     header('Content-Type: application/json');
     echo json_encode($people[$_POST['nickname']]);
- 
+
+    /*TODO: delete class on end of project*/
