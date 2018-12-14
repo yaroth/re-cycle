@@ -3,6 +3,6 @@
     require_once ("functions.php");
     require_once("../db/autoloader.php");
     echo '<div class="queriesList">';
-    echo "querieeeeeesssss!";
+    foreach (Query::getQueries() as $query) echo $query . '<br>';
     echo '</div>';
 ?>

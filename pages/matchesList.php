@@ -3,6 +3,8 @@
     require_once ("functions.php");
     require_once("../db/autoloader.php");
     echo '<div class="matchesList">';
-    echo "matches matches matches matches !";
+    foreach (Matching::getMatchings() as $matching){
+        echo $matching . '<br>';
+    }
     echo '</div>';
 ?>

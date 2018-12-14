@@ -18,7 +18,7 @@
         }
 
         public function __toString() {
-            return sprintf("ID: %d, login: %s, pw_hash: %s, isAdmin: %i", $this->id, $this->login, $this->pw_hash, $this->admin);
+            return sprintf("Account :: ID: %d, login: %s, pw_hash: %s, isAdmin: %s", $this->id, $this->login, $this->pw_hash, $this->admin ? "Yes" : "No");
         }
 
         static public function getAccounts() {

@@ -26,26 +26,23 @@
         } elseif (getId() == 2) {
             include 'login.php';
         } elseif (getId() == 3) {
-            include 'bikeProperties.php';
-        } elseif (getId() == 4) {
             include 'myQueries.php';
-        } elseif (getId() == 5) {
+        } elseif (getId() == 4) {
             include 'setpassword.php';
-        } elseif (getId() == 6) {
+        } elseif (getId() == 5) {
             include 'addBike.php';
-        } elseif (getId() == 7) {
+        } elseif (getId() == 6) {
             include 'myBikes.php';
-        } elseif (getId() == 8) {
+        } elseif (getId() == 7) {
             include 'myAccount.php';
-        } elseif (getId() == 9) {
+        } elseif (getId() == 8) {
             include 'admin.php';
-        }elseif (getId() == 10) {
+        } elseif (getId() == 9) {
             include 'mvc.php';
         }
 
 
     ?>
-
 
 
 </div><!--end main-->

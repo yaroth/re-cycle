@@ -8,6 +8,6 @@
         }
 
         public function render() {
-            echo '<a href="index.php?lang=de&id=10&action=click">' . $this->model->text . '</a>';
+            echo '<a href="index.php?lang=de&id=9&action=click">' . $this->model->text . '</a>';
         }
     }

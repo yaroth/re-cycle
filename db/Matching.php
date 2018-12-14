@@ -22,6 +22,7 @@
             return sprintf("Matching: %d, userID: %s, queryID: %s, bikeID: %s", $this->id, $this->userID, $this->queryID, $this->bikeID);
         }
 
+        // get all matchings
         public static function getMatchings() {
             $matchings = array();
             $res = DB::doQuery("SELECT * FROM matchings;");
@@ -54,6 +55,7 @@
             return $result->fetch_object(get_class());
         }
 
+        // returns all matchings matching a userID
         public static function getMatchingsByUserID($userID) {
             $ADD_STATEMENT = "SELECT * FROM matchings WHERE matchings.userID = ?";
             $stmt = DB::getInstance()->prepare($ADD_STATEMENT);
@@ -80,6 +82,7 @@
             return $matchings;
         }
 
+        // returns all the matchings that match a certain queryID
         public static function getMatchingsByQueryID($queryID) {
             $ADD_STATEMENT = "SELECT * FROM matchings WHERE matchings.queryID = ?";
             $stmt = DB::getInstance()->prepare($ADD_STATEMENT);
