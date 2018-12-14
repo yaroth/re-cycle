@@ -99,6 +99,7 @@
                 <form action="' . $targetURL . '" method="post" name="editBike" >
                 <input type="hidden" name="bikeID" value="' . $bike->id . '" required><br>
                 <input type="submit" value="Edit">
+                <input type="submit" value="Delete">
                 </form>
             </div>
         </div>';

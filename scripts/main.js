@@ -109,19 +109,47 @@ function adminSelection(element) {
 function deleteUser(el) {
     let userID = $(el).val();
     // TODO: add security message 'do you really want to delete user x'?
-    $.post("deleteUser.php", {deleteUser: userID}, function (data, status) {
-        if (status) {
-            $.get("usersList.php", function (data) {
-                $("#admin-content").html(data);
-            });
-            alert("Successfully deleted user with id: " + userID)
-        } else alert("Could not delete user with id: " + userID);
-    });
-
+    var reallyDelete = confirm("Do you really want to delete this user ?");
+    if (reallyDelete) {
+        $.post("deleteUser.php", {deleteUser: userID}, function (data, status) {
+            if (status) {
+                $.get("usersList.php", function (data) {
+                    $("#admin-content").html(data);
+                });
+                alert("Successfully deleted user with id: " + userID)
+            } else alert("Could not delete user with id: " + userID);
+        });
+    }
 }
 
 // TODO: finalize editing user
 function editUser(el) {
     let userID = $(el).val();
 
+}
+
+function saveAccount(el) {
+    let accountID = $(el).val();
+    let form = document.forms["account" + accountID];
+    let loginName = form["login"].value;
+    let pw1 = form["pw1"].value;
+    let pw2 = form["pw2"].value;
+    let passwordsMatch = (pw1 === pw2);
+    // TODO: validate pw1 with pw2
+    let isAdmin = form["isAdmin"].checked ? "1" : "";
+    console.log(loginName, pw1, pw2, isAdmin);
+    if (passwordsMatch) {
+        $.post("updateAccount.php", {
+                accountID: accountID,
+                login: loginName, pw: pw1, admin: isAdmin
+            },
+            function (data, status) {
+                if (status) {
+                    $.get("accountsList.php", function (data) {
+                        $("#admin-content").html(data);
+                    });
+                    alert("Successfully saved account with id: " + accountID)
+                } else alert("Could not save account with id: " + accountID);
+            });
+    } else alert("Passwords don't match. Try again!")
 }

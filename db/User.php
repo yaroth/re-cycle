@@ -187,6 +187,27 @@
             return $stmt != null;
         }
 
+        public static function updateUserLoginByIDInDB($login, $userID) {
+            $ADD_STATEMENT = "UPDATE users SET login=? WHERE users.id = ?;";
+            $db = DB::getInstance();
+            $stmt = $db->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed";
+                exit;
+            }
+            $stmt->bind_param('si', $login, $userID);
+            if (!$stmt) {
+                echo "bind_param failed";
+                exit;
+            }
+            $stmt->execute();
+            if (!$stmt) {
+                echo "execute failed";
+                exit;
+            }
+            return $stmt != null;
+        }
+
         public function setCookiesForUser() {
             foreach ($this as $key => $value) {
                 $_COOKIE[$key] = $value;

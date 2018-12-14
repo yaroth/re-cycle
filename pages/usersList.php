@@ -1,6 +1,7 @@
 <?php
     require_once("../db/autoloader.php");
     $users = User::getUsers();
+    echo '<h4>Users list</h4>';
     echo '<div class="usersList">';
     foreach ($users as $user) {
         $userName = $user->getUserFullName();

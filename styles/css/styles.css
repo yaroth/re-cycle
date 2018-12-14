@@ -67,6 +67,17 @@ body {
         vertical-align: top; }
     body .main input:focus {
       background-color: yellow; }
+    body .main .accountsList .account-wrapper {
+      display: flex;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid black; }
+      body .main .accountsList .account-wrapper .account {
+        width: 17%; }
+        body .main .accountsList .account-wrapper .account.id {
+          width: 6%; }
+        body .main .accountsList .account-wrapper .account.admin {
+          width: 10%; }
     body .main .user-wrapper {
       display: flex;
       margin-bottom: 10px;
@@ -74,6 +85,13 @@ body {
       border: 1px solid black; }
       body .main .user-wrapper .user {
         margin-right: 20px; }
+        body .main .user-wrapper .user.id {
+          width: 3%;
+          margin-right: 5px; }
+        body .main .user-wrapper .user.name {
+          width: 17%; }
+        body .main .user-wrapper .user.login {
+          width: 10%; }
       body .main .user-wrapper .item {
         margin-right: 20px; }
     body .main .items, body .main .bikesList {

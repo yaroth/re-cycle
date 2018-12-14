@@ -112,6 +112,23 @@ body {
       background-color: yellow;
     }
 
+    .accountsList{
+      .account-wrapper {
+        display: flex;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid black;
+        .account {
+          width: 17%;
+          &.id {
+            width: 6%;
+          }
+          &.admin {
+            width: 10%;
+          }
+        }
+      }
+    }
     .user-wrapper {
       display: flex;
       margin-bottom: 10px;
@@ -120,8 +137,17 @@ body {
 
       .user {
         margin-right: 20px;
+        &.id {
+          width: 3%;
+          margin-right: 5px;
+        }
+        &.name {
+          width: 17%;
+        }
+        &.login {
+          width: 10%;
+        }
       }
-
       .item {
         margin-right: 20px;
       }
