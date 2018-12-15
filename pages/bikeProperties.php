@@ -1,6 +1,6 @@
 <h2><?php echo translate("bike-specs"); ?></h2>
 <form action="/action_page.php">
-    <fieldset>
+    <fieldset class="fieldset">
         <legend>Bike Data</legend>
         <h4>Select Gender</h4>
         <input type="radio" name="gender" value="male"/>Male<br/>
@@ -45,7 +45,7 @@
     </fieldset>
 </form>
 <form action="/add_bike.php">
-    <fieldset>
-        <input type="button" value="Add Bicycle..."/>
+    <fieldset id="AddBicycle">
+        <input  type="button" value="Add Bicycle..."/>
     </fieldset>
 </form>

@@ -4,7 +4,7 @@
 ?>
 <h2><?php echo translate("set-password"); ?></h2>
 <form action="<?php echo $targetURL ?>" method="post" name="setNewPassword" onsubmit="return validateNewPassword();">
-    <fieldset>
+    <fieldset class="fieldset">
         <legend><?php echo translate("personal-info") ?> :</legend>
         Login:<br> <input type="text" name="login" value="<?php echo $_SESSION["user"] ?? ""; ?>" required><br>
         Present Password:<br> <input type="password" name="pw" placeholder="old password..." required><br>

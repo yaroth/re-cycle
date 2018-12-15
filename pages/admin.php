@@ -15,8 +15,8 @@
             include "adminChoice.php";
             echo "<div id=admin-content></div>";
         }
-        else echo "You are not an admin, sorry!";
+        else echo "<p class='message'>You are not an admin, sorry!</p>";
     } else {
         $lang = getLang();
-        echo 'You are not logged in, please do first <a href="index.php?lang=' . $lang . '&id=2">login</a>!';
+        echo ' <p class="message">You are not logged in, please do first <a href="index.php?lang=' . $lang . '&id=2">login</a>!</p>';
     }

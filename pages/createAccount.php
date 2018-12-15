@@ -43,10 +43,10 @@
     } elseif (isset($_SESSION["user"])) {
         $login = $_SESSION["user"];
         $user = User::getUserByLogin($login);
-        echo '<div class="account">';
+        echo '<div class="account" id="createaccount">';
         echo '<h3>' . translate("sorry") . '</h3>';
-        echo '<p>Dear' . " " . $user->fname . " " . $user->lname . ',</p>';
-        echo '<p> You cannot create an account if logged in. Please <a href="logout.php?lang=' . getLang() . '">logout</a>!</p>';
+        echo '<p class="alreadycreated1">Dear' . " " . $user->fname . " " . $user->lname . ',</p>';
+        echo '<p class="alreadycreated2"> You cannot create an account if logged in. Please <a href="logout.php?lang=' . getLang() . '">logout</a>!</p>';
         echo '</div>';
     } else
         include 'createAccountForm.php';

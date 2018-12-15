@@ -3,7 +3,7 @@
     $targetURL = add_param($targetURL, "id", getId());
 ?>
 <form action="<?php echo $targetURL ?>" method="post" name="create-account" onsubmit="return validateCreateAccount();">
-    <fieldset>
+    <fieldset class="fieldset" id="meinkonto">
         <legend><?php echo translate("personal-info") ?> :</legend>
         First Name : <br><input type="text" name="fname" placeholder="Bob" value="<?php echo $_COOKIE["fname"] ?? "";?>" autofocus required><br>
         Last Name :<br> <input type="text" name="lname" placeholder="Geldof" value="<?php echo $_COOKIE["lname"] ?? "";?>" required><br>

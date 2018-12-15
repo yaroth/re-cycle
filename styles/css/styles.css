@@ -16,18 +16,18 @@ body {
       width: 50%; }
     body .header .nav {
       display: inline-block;
-      background-color: rgba(0, 0, 0, 0.26);
-      padding: 10px;
+      margin-top: 0em;
+      margin-right: 0px;
+      background-color: #e4e8a0;
+      padding: 16px;
       text-align: center;
       vertical-align: top;
       float: right;
-      border-radius: 3px;
-      margin: -8px;
       border-radius: 5px; }
       body .header .nav ul {
         font-size: 20px;
         margin: 0px;
-        padding: 0px;
+        padding-right: 19px;
         list-style: none;
         margin-top: 20px; }
         body .header .nav ul:first-child {
@@ -35,10 +35,10 @@ body {
         body .header .nav ul li {
           border: 1px solid;
           padding: 5px;
-          margin: 2px;
-          background-color: #468076;
+          margin: 7px;
+          background-color: rgba(52, 128, 125, 0.95);
           border-radius: 5px;
-          font-size: 19px; }
+          font-size: 14px; }
           body .header .nav ul li.nav-item {
             display: block; }
           body .header .nav ul li.lang {
@@ -48,9 +48,9 @@ body {
             body .header .nav ul li .active:hover {
               color: darkorange; }
           body .header .nav ul li a {
-            color: #000000;
-            margin: 0px;
-            padding: 5px;
+            color: #1e1e1e;
+            margin: 5px;
+            padding: 8px;
             text-decoration: none; }
             body .header .nav ul li a:hover {
               color: blue; }
@@ -90,8 +90,10 @@ body {
         display: inline-block;
         margin-right: 5px;
         margin-bottom: 5px;
+        margin-left: 5px;
         padding: 10px;
-        width: 250px;
+        width: 272px;
+        height: 570px;
         min-width: 200px;
         max-width: 300px;
         border: 1px crimson solid;
@@ -106,7 +108,7 @@ body {
             width: 100%; }
         body .main .items .item.wrapper .specs, body .main .bikesList .item.wrapper .specs {
           color: darkblue;
-          line-height: .3em; }
+          line-height: .9em; }
       body .main .items form .current-img, body .main .bikesList form .current-img {
         width: 200px; }
         body .main .items form .current-img img, body .main .bikesList form .current-img img {
@@ -121,7 +123,61 @@ body {
   body .footer {
     clear: both;
     padding: 10px;
-    background-color: orangered; }
+    background-color: #fff069; }
 
 body {
-  background-color: orangered; }
+  background-color: #fff069; }
+
+#img {
+  padding-left: 3.0em;
+  width: 165px;
+  height: 200px; }
+
+@media (max-width: 569px) {
+  .items {
+    position: absolute;
+    top: 42em; }
+  div.main h2 {
+    position: absolute;
+    top: 30em; }
+  .login {
+    position: absolute;
+    top: 49em;
+    left: 1.5em; }
+  .fieldset {
+    position: absolute;
+    top: 49em;
+    left: 1.5em; }
+  #AddBicycle {
+    position: absolute;
+    top: 43.5em;
+    left: 1.5em; }
+  .nav {
+    position: absolute;
+    top: 10em;
+    left: 1.5em; }
+  div.main div.account {
+    position: absolute;
+    top: 42em;
+    left: 1.5em; }
+  #neuesveloerfassen {
+    position: absolute;
+    top: 38em;
+    left: 1.5em; }
+  .form {
+    position: absolute;
+    top: 48em;
+    left: 1.5em; }
+  #meinkonto {
+    position: absolute;
+    top: 8em;
+    left: 1.5em; }
+  h2 {
+    left: 1em; }
+  .message {
+    position: absolute;
+    top: 43em;
+    left: 1.5em; }
+  #createaccount {
+    position: absolute;
+    top: 47em; } }

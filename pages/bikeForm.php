@@ -5,12 +5,12 @@
     if (isset($_POST["bikeID"])) $addOrEditBike = "edit-bicycle";
     else $addOrEditBike = "add-bicycle";
 ?>
-<h3><?php echo translate($addOrEditBike); ?></h3>
-<form action="<?php echo $targetURL ?>" method="post"
+<h3 id="neuesveloerfassen"><?php echo translate($addOrEditBike); ?></h3>
+<form  class="form"  action="<?php echo $targetURL ?>" method="post"
       name="<?php echo $addOrEditBike; ?>"
       enctype="multipart/form-data"
       onsubmit="return validateAddBicycle();">
-    <fieldset>
+    <fieldset >
         <legend><?php echo translate("bike-info") ?> :</legend>
         Title : <br>
         <input type="text" name="title" placeholder="lightweight racing bike"

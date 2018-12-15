@@ -25,13 +25,15 @@ body {
 
     .nav {
       display: inline-block;
-      background-color: orangered;
-      padding: 10px;
+      margin-top: 0em;
+      margin-right: 0px;
+      background-color: rgb(228, 232, 160);
+      padding: 16px;
       text-align: center;
       vertical-align: top;
       float: right;
 
-      margin: -8px;
+
       border-radius: 5px;
 
       ul {
@@ -142,11 +144,15 @@ body {
       margin: 20px 0;
 
       .item.wrapper {
+
+
         display: inline-block;
         margin-right: 5px;
         margin-bottom: 5px;
+        margin-left: 5px;
         padding: 10px;
-        width: 250px;
+        width: 272px;
+        height: 570px;
         min-width: 200px;
         max-width: 300px;
         border: 1px crimson solid;
@@ -168,7 +174,7 @@ body {
 
         .specs {
           color: darkblue;
-          line-height: .3em;
+          line-height: .9em;
         }
       }
 
@@ -199,7 +205,86 @@ body {
   .footer {
     clear: both;
     padding: 10px;
-    background-color: orangered;
+    background-color: #fff069;
   }
 }
-body{background-color: orangered}
+body{background-color: #fff069;
+}
+#img{
+  padding-left: 3.0em;
+  width: 165px;
+  height: 200px;
+}
+
+@media (max-width: 569px) {
+  .items{
+    position:absolute;
+    top:42em;
+
+  }
+  div.main h2{
+
+    position: absolute;
+    top: 30em;
+  }
+  .login{
+    position:absolute;
+    top:49em;
+    left:1.5em;
+
+  }
+  .fieldset{
+    position:absolute;
+    top:49em;
+    left:1.5em;
+
+  }
+
+  #AddBicycle{
+    position:absolute;
+    top:43.5em;
+    left:1.5em;
+
+
+  }
+  .nav{
+    position: absolute;
+    top: 10em;
+    left:1.5em;
+  }
+
+div.main div.account{
+  position:absolute;
+  top:42em;
+  left:1.5em;
+}
+  #neuesveloerfassen{
+    position:absolute;
+    top:38em;
+    left:1.5em;
+
+  }
+  .form{
+    position:absolute;
+    top:48em;
+    left:1.5em;
+  }
+  #meinkonto{
+    position:absolute;
+    top:8em;
+    left:1.5em;
+  }
+  h2{
+    left:1em;
+  }
+  .message{
+    position:absolute;
+    top:43em;
+    left:1.5em;
+  }
+  #createaccount{
+    position:absolute;
+    top:47em;
+
+  }
+}

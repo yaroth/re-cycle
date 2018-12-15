@@ -149,7 +149,7 @@
             'page' => array(
                 'de' => array("Start", "Konto erstellen", "Login", "Velo", "Meine Suchen", "Passwort ändern", "Velo hinzufügen", "Meine Velos", "Mein Konto", "Admin"),
                 'fr' => array("Départ", "S'enregistrer", "Se loguer", "Vélo", "Mes recherches", "Changer mot de passe", "Ajouter vélo", "Mes vélos", "Mon compte", "Admin"),
-                'en' => array("Start", "Create account", "Login EN", "Bike", "My queries", "Change password", "Add bike", "My bikes", "My account", "Admin")
+                'en' => array("Start", "Create account", "Login EN", "Bike", "My queries", "Change password", "fike", "My bikes", "My account", "Admin")
             ));
         return $titles[$key][$language][$id] ?? "[$key][$language][$id]";
     }
