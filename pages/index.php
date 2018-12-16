@@ -48,6 +48,6 @@
 
 
 </div><!--end main-->
-<div class="footer">footer</div>
+<div class="footer"></div>
 </body>
 </html>
