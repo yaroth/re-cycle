@@ -6,6 +6,7 @@
         $user = User::getUserByLogin($login);
         echo "<p>You are already logged in $user->fname $user->lname!</p>";
         echo '<p> Do you want to <a href="logout.php">logout?</a>';
+        echo '<p> <a href="index.php?lang=' . getLang() . '&id=0">View my matchings </a>';
     } else {
         if ($_POST) {
             $success = true;

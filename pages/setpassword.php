@@ -34,7 +34,7 @@
             } elseif (Account::checklogin($login, $pw)) {
                 $account = Account::getAccountByLogin($login);
                 $account->setProperties($login, $newpw1, $account->admin);
-                $updatedAccountInDB = $account->updateAccountInDB($account);
+                $updatedAccountInDB = $account->updateAccountInDB($account, true);
                 if ($updatedAccountInDB) echo "<h3>Successfully updated password of $login in DB.</h3>";
                 else echo "<h3>Could NOT update password of $login. Please try again!</h3>";
             } else {

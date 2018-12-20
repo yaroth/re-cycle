@@ -27,8 +27,8 @@
         echo '<div class="account admin">';
         echo '<input type="checkbox" name="isAdmin" ' . $checked . ' >admin';
         echo '</div>';
+        echo '<button onclick="saveAccount(' . $account->id . ');" type="button" value="' . $account->id . '">Save</button>';
         echo '</form>';
-        echo '<button onclick="saveAccount(this);" name="saveAccount" type="button" value="' . $account->id . '">Save</button>';
         echo '</div>';
 
     }

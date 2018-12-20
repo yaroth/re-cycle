@@ -18,7 +18,8 @@
                 $newAccount = Account::getAccountByID($oldAccountID);
                 $userLoginToUpdate = $newAccount->login;
                 $newAccount->setProperties($newLogin, $newPw, $newAdmin);
-                $accountUpdateSuccess = $newAccount->updateAccountInDB($newAccount);
+                if (!empty($newPw))$accountUpdateSuccess = $newAccount->updateAccountInDB($newAccount, true);
+                elseif (empty($newPw))$accountUpdateSuccess = $newAccount->updateAccountInDB($newAccount, false);
                 if ($accountUpdateSuccess) {
                     $userID = User::getUserIDByLogin($userLoginToUpdate);
                     $userLoginUpdated = User::updateUserLoginByIDInDB($newLogin, $userID);

@@ -72,6 +72,9 @@ body {
       margin-bottom: 10px;
       padding: 10px;
       border: 1px solid black; }
+      body .main .accountsList .account-wrapper form {
+        display: flex;
+        width: 100%; }
       body .main .accountsList .account-wrapper .account {
         width: 17%; }
         body .main .accountsList .account-wrapper .account.id {

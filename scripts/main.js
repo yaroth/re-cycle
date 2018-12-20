@@ -128,8 +128,8 @@ function editUser(el) {
 
 }
 
-function saveAccount(el) {
-    let accountID = $(el).val();
+function saveAccount(value) {
+    let accountID = value;
     let form = document.forms["account" + accountID];
     let loginName = form["login"].value;
     let pw1 = form["pw1"].value;
@@ -137,7 +137,7 @@ function saveAccount(el) {
     let passwordsMatch = (pw1 === pw2);
     // TODO: validate pw1 with pw2
     let isAdmin = form["isAdmin"].checked ? "1" : "";
-    console.log(loginName, pw1, pw2, isAdmin);
+    // console.log(loginName, pw1, pw2, isAdmin);
     if (passwordsMatch) {
         $.post("updateAccount.php", {
                 accountID: accountID,
@@ -151,5 +151,5 @@ function saveAccount(el) {
                     alert("Successfully saved account with id: " + accountID)
                 } else alert("Could not save account with id: " + accountID);
             });
-    } else alert("Passwords don't match. Try again!")
+    } else alert("New passwords don't match. Try again!")
 }

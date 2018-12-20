@@ -164,8 +164,9 @@
             $this->admin = $db->escape_string($account->admin);
         }
 
-        public function updateAccountInDB($account){
-            $ADD_STATEMENT = "UPDATE accounts SET login=?, pw_hash=?, admin=? WHERE accounts.id = ?;";
+        public function updateAccountInDB($account, $hasNewPassword){
+            if ($hasNewPassword) $ADD_STATEMENT = "UPDATE accounts SET login=?, pw_hash=?, admin=? WHERE accounts.id = ?;";
+            elseif (!$hasNewPassword) $ADD_STATEMENT = "UPDATE accounts SET login=?, admin=? WHERE accounts.id = ?;";
             $db = DB::getInstance();
             $stmt = $db->prepare($ADD_STATEMENT);
             if (!$stmt) {
@@ -173,7 +174,8 @@
                 exit;
             }
             $this->setAccount($account);
-            $stmt->bind_param('ssii', $this->login, $this->pw_hash, $this->admin, $this->id);
+            if ($hasNewPassword) $stmt->bind_param('ssii', $this->login, $this->pw_hash, $this->admin, $this->id);
+            elseif (!$hasNewPassword) $stmt->bind_param('sii', $this->login, $this->admin, $this->id);
             if (!$stmt) {
                 echo "bind_param failed";
                 exit;
