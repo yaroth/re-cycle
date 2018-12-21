@@ -80,12 +80,12 @@
                 exit;
             }
             $stmt->execute();
-            if (!$stmt) {
+            $deletionSuccess = $stmt->execute();
+            if (!$deletionSuccess) {
                 echo "execute failed";
                 exit;
             }
-            $result = $stmt->get_result();
-            return $result;
+            return $deletionSuccess;
         }
 
         public static function deleteAccountByLogin($login) {

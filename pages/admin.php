@@ -9,7 +9,7 @@
         $login = $_SESSION["user"];
         $userFullName = User::getUserByLogin($login)->getUserFullName();
         if (Account::isAdminByLogin($login)){
-            echo "<h3>Welcome $userFullName!</h3>";
+            echo "<h3>Welcome to the admin area, $userFullName!</h3>";
             include "adminChoice.php";
             echo "<div id=admin-content></div>";
         }

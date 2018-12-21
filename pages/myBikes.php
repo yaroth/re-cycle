@@ -1,17 +1,11 @@
 <h2><?php echo translate("myBikes"); ?></h2>
 <?php include '../data/bikes.php'; ?>
-<div class="items">
     <?php
         if (isset($_SESSION["user"])) {
             $login = $_SESSION["user"];
-            // calling the one bike to edit -> takes DB data
-            if (isset($_POST["bikeID"]) || isset($_GET["bikeID"])) {
-                if (isset($_POST["bikeID"])) $bikeID = $_POST["bikeID"];
-                elseif ((isset($_GET["bikeID"]))) $bikeID = $_GET["bikeID"];
-                listBikeByID($bikeID);
-            }
+            $user = User::getUserByLogin($login);
             // checking on submitted data
-            elseif (isset($_POST["saveBikeID"])) {
+            if (isset($_POST["saveBikeID"])) {
                 $bikeID = $_POST["saveBikeID"];
                 // creates an array AND updates COOKIES
                 $bikeArray = bikeArrayFromPost();
@@ -23,29 +17,51 @@
                     if ($updatedBikeInDB) {
                         echo '<h2>' . translate("success") . '</h2>';
                         echo "<h3>Successfully updated your bicycle data.</h3>";
-                    }
-                    // TODO: should show POST data!
+                        echo '<div class="items">';
+                        listBikesByUser($user);
+                    } // TODO: should show POST data! Why????
                     else {
                         echo '<h2>' . translate("error") . '</h2>';
                         echo "<h3>Could NOT update bicycle data!</h3>";
+                        echo '<div class="items">';
                         include 'bikeForm.php';
                     }
-                }
-                // TODO: should show POST data!
+                } // TODO: should show POST data!
                 else {
                     echo '<h2>' . translate("error") . '</h2>';
                     // TODO: Fix error handling! write to log file!
-                    echo "<h3>Could NOT update bicycle data! (bikeArray is false)</h3>";
+                    echo "<h3>Could NOT update bicycle data! </h3>";
+                    echo '<div class="items">';
                     include 'bikeForm.php';
                 }
+
+            } else if (isset($_POST["bikeID"])) {
+                $bikeID = $_POST["bikeID"];
+                $action = $_POST['action'];
+                if ($action == 'editBike') {
+                    echo '<div class="items">';
+                    listBikeByID($bikeID);
+                } elseif ($action == 'deleteBike') {
+                    //TODO: check if bikeByID exists!
+                    $deleteBikeSuccess = Bicycle::deleteBikeByID($bikeID);
+                    if ($deleteBikeSuccess) {
+                        echo 'Successfully deleted your bicycle!';
+                    } else {
+                        echo 'Sorry, could not delete your bicycle.';
+                    }
+                    echo '<div class="items">';
+                    listBikesByUser($user);
+                }
+
             } else {
-                $user = User::getUserByLogin($login);
+                echo '<div class="items">';
                 listBikesByUser($user);
             }
         } else {
             $lang = getLang();
             echo '<h2>' . translate("error") . '</h2>';
             echo '<h3>' . translate("sorry") . ', to view your bicycles you first need to <a href="index.php?lang=' . $lang . '&id=2">login</a>!</h3>';
+            echo '<div class="items">';
         }
     ?>
 </div>

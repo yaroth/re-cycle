@@ -217,7 +217,22 @@ body {
         border: 1px solid black;
 
         .item {
-          margin-right: 20px;
+          margin-right: 10px;
+          &.id {
+            width: 20px;
+          }
+          &.title {
+            width: 150px;
+          }
+          &.price {
+            width: 120px;
+          }
+          &.weight {
+            width: 120px;
+          }
+          &.edit {
+            width: 100px;
+          }
         }
       }
     }

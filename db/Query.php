@@ -151,4 +151,25 @@
                 $_COOKIE[$key] = $value;
             }
         }
+
+        public static function deleteQueryByID($queryID) {
+            $ADD_STATEMENT = "DELETE FROM queries  WHERE queries.id = ?";
+            $dbInstance = DB::getInstance();
+            $stmt = $dbInstance->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed";
+                exit;
+            }
+            $stmt->bind_param('i', $queryID);
+            if (!$stmt) {
+                echo "bind_param failed";
+                exit;
+            }
+            $deletionSuccess = $stmt->execute();
+            if (!$deletionSuccess) {
+                echo "execute failed";
+                exit;
+            }
+            return $deletionSuccess;
+        }
     }

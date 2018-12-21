@@ -281,8 +281,6 @@
 
     function queryArrayFromPost() {
         $queryArray = array();
-        $success = true;
-        // DECISION: since none of the search conditions are required, no false success is possible!
         if (!empty(strip_tags($_POST['title']))) {
             $title = strip_tags($_POST['title']);
             $_COOKIE['title'] = $title;
@@ -328,7 +326,7 @@
             $_COOKIE['brakeTypeID'] = $brakeType;
             $queryArray['brakeTypeID'] = $brakeType;
         }
-        else return $queryArray;
+        return $queryArray;
     }
 
     function userArrayFromPost() {

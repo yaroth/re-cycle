@@ -6,12 +6,18 @@
         if (isset($_SESSION["user"])) {
             $login = $_SESSION["user"];
             $userID = User::getUserIDByLogin($login);
-            // calling the one bike to edit -> takes DB data
             // TODO: get language navigation to work when editing ONE query
-            if (isset($_POST["queryID"]) || isset($_GET["queryID"])) {
-                if (isset($_POST["queryID"])) $queryID = $_POST["queryID"];
-                elseif ((isset($_GET["queryID"]))) $queryID = $_GET["queryID"];
-                listQueryByID($queryID);
+            if (isset($_POST["queryID"])) {
+                $queryID = $_POST["queryID"];
+                $action = $_POST['action'];
+                if ($action == 'deleteQuery') {
+                    $deletionSuccess = Query::deleteQueryByID($queryID);
+                    if ($deletionSuccess) echo 'Query successfully deleted!';
+                    else echo 'Sorry, could not delete query!';
+                    listQueriesByUserID($userID);
+                } else if ($action == 'editQuery') {
+                    listQueryByID($queryID);
+                }
             }
             // checking on submitted data
             elseif (isset($_POST["saveQueryID"])) {
@@ -27,22 +33,22 @@
                     if ($updatedQueryInDB) {
                         echo '<h2>' . translate("success") . '</h2>';
                         echo "<h3>Successfully updated your query data.</h3>";
+                        listQueriesByUserID($userID);
                     }
-                    // TODO: should show POST data!
                     else {
                         echo '<h2>' . translate("error") . '</h2>';
                         echo "<h3>Could NOT update query data!</h3>";
                         include 'queryForm.php';
                     }
-                }
-                // TODO: should show POST data!
+                } // TODO: should show POST data!
                 else {
                     echo '<h2>' . translate("error") . '</h2>';
                     // TODO: Fix error handling! write to log file!
                     echo "<h3>Could NOT update query data! (queryArray is false)</h3>";
                     include 'queryForm.php';
                 }
-            } else {
+            } // No POST > list all queries by userID
+            else {
                 listQueriesByUserID($userID);
             }
         } else {

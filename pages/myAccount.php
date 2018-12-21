@@ -6,13 +6,17 @@
             if (isset($_POST["userID"])) {
                 $userID = $_POST["userID"];
                 $userArray = userArrayFromPost();
-                // check that user array returns a correct value!
+                // checks that user array returns a correct value!
                 if ($userArray !== false) {
+                    // id and login need to be added manually!
                     $userArray["id"] = $userID;
-                    $userArray["login"] = $login;
+                    $userArray["login"] = $login; //thus, login is NOT changed!
                     $pw = strip_tags($_POST["pw"]);
                     $updatedUserInDB = false;
-                    if (Account::checklogin($login, $pw)) $updatedUserInDB = User::updateUserInDB($userArray);
+                    if (Account::checklogin($login, $pw)) {
+                        $updatedUserInDB = User::updateUserInDB($userArray);
+                    }
+                    // TODO: update account login too (if needed!)
                     if ($updatedUserInDB) {
                         echo '<h3>' . translate("success") . '</h3>';
                         echo "<p>Successfully updated your personal data.</p>";

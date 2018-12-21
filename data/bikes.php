@@ -75,7 +75,8 @@
     function listEditableBike($bike) {
         $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
         $targetURL = add_param($targetURL, "id", getId());
-        $targetURL = add_param($targetURL, "bikeID", $bike->id);
+        // TODO: check if GET is needed here!
+//        $targetURL = add_param($targetURL, "bikeID", $bike->id);
         $item = '<div class="item wrapper">
             <div class="title">
             <h3>' . $bike->title . '</h3>
@@ -96,10 +97,10 @@
                 <p>Owner: ' . $bike->getOwnerName() . '</p>
             </div>
             <div class="edit">
-                <form action="' . $targetURL . '" method="post" name="editBike" >
+                <form action="' . $targetURL . '" method="post" >
                 <input type="hidden" name="bikeID" value="' . $bike->id . '" required><br>
-                <input type="submit" value="Edit">
-                <input type="submit" value="Delete">
+                <button type="submit" name="action" value="editBike">Edit</button>
+                <button type="submit" name="action" value="deleteBike">Delete</button>
                 </form>
             </div>
         </div>';
@@ -114,4 +115,12 @@
         }
     }
 
-
+    function listMatchingBicycles($userLogin) {
+        $userID = User::getUserIDByLogin($userLogin);
+        $userMatchings = Matching::getMatchingsByUserID($userID);
+        foreach ($userMatchings as $matching){
+            $bikeID = $matching->bikeID;
+            $bike = Bicycle::getBicycleByID($bikeID);
+            listBike($bike);
+        }
+    }

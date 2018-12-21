@@ -18,6 +18,13 @@
 
     function listQueriesByUserID($userID) {
         $userQueries = Query::getQueriesByUserID($userID);
+        echo '<div class="query wrapper">
+                <div class="item id">ID</div>
+                <div class="item title">Title</div>
+                <div class="item price">Max. price [CHF]</div>
+                <div class="item weight">Max. weight [kg]</div>
+                <div class="item edit"></div>
+            </div>';
         foreach ($userQueries as $query) {
             listEditableQuery($query);
         }
@@ -45,16 +52,17 @@
     function listEditableQuery($query) {
         $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
         $targetURL = add_param($targetURL, "id", getId());
-        $targetURL = add_param($targetURL, "queryID", $query->id);
+        // TODO: maybe remove the next line? Is GET necessary?
+//        $targetURL = add_param($targetURL, "queryID", $query->id);
         $user = USER::getUserByID($query->userID);
         $userName = $user->getUserFullName();
         $item = '<div class="query wrapper">
+            <div class="item id">' . $query->id . '</div>
             <div class="item title">' . $query->title . '</div>
-            <div class="item price">' . $query->price . '.-</div>
-            <div class="item weight">Weight: ' . $query->weight . ' kg</div>
-            <div class="item user">Owner: ' . $userName . '</div>
+            <div class="item price">' . $query->price . '.- CHF</div>
+            <div class="item weight">' . $query->weight . ' kg</div>
             <div class="item edit">
-                <form action="' . $targetURL . '" method="post" name="editQuery" >
+                <form action="' . $targetURL . '" method="post" >
                     <input type="hidden" name="queryID" value="' . $query->id . '" required>
                     <button type="submit" name="action" value="editQuery">Edit</button>
                     <button type="submit" name="action" value="deleteQuery">Delete</button>

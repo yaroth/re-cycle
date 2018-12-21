@@ -72,15 +72,6 @@ function validateNewPassword() {
     return true;
 }
 
-function getPersonData() {
-    // post(url [, data, success-cb, data-type])
-    $.post("../pages/getperson.php", $('#nicknameform').serialize(), function (person) {
-        $('#persondata').html(
-            "<div class='pink'>" + person.fname + " " + person.lname + ", Age: " + person.age + "</div>"
-        );
-    }, "json");
-}
-
 function adminSelection(element) {
     let buttonValue = $(element).val();
     if (buttonValue == "users") {
@@ -108,7 +99,6 @@ function adminSelection(element) {
 
 function deleteUser(el) {
     let userID = $(el).val();
-    // TODO: add security message 'do you really want to delete user x'?
     var reallyDelete = confirm("Do you really want to delete this user ?");
     if (reallyDelete) {
         $.post("deleteUser.php", {deleteUser: userID}, function (data, status) {
@@ -125,6 +115,9 @@ function deleteUser(el) {
 // TODO: finalize editing user
 function editUser(el) {
     let userID = $(el).val();
+    $.get("editUser.php", { userID: userID }, function (data) {
+        $("#admin-content").html(data);
+    })
 
 }
 
@@ -135,9 +128,7 @@ function saveAccount(value) {
     let pw1 = form["pw1"].value;
     let pw2 = form["pw2"].value;
     let passwordsMatch = (pw1 === pw2);
-    // TODO: validate pw1 with pw2
     let isAdmin = form["isAdmin"].checked ? "1" : "";
-    // console.log(loginName, pw1, pw2, isAdmin);
     if (passwordsMatch) {
         $.post("updateAccount.php", {
                 accountID: accountID,
@@ -152,4 +143,12 @@ function saveAccount(value) {
                 } else alert("Could not save account with id: " + accountID);
             });
     } else alert("New passwords don't match. Try again!")
+}
+
+function listBikes(element) {
+    let btnValue = $(element).val();
+    $.post("getListOfBikes.php", {allOrMatching : btnValue},
+        function (bikesHTML) {
+            $("#items-wrapper").html(bikesHTML)
+        });
 }

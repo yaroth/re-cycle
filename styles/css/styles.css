@@ -130,7 +130,17 @@ body {
         padding: 10px;
         border: 1px solid black; }
         body .main .items .query.wrapper .item, body .main .bikesList .query.wrapper .item {
-          margin-right: 20px; }
+          margin-right: 10px; }
+          body .main .items .query.wrapper .item.id, body .main .bikesList .query.wrapper .item.id {
+            width: 20px; }
+          body .main .items .query.wrapper .item.title, body .main .bikesList .query.wrapper .item.title {
+            width: 150px; }
+          body .main .items .query.wrapper .item.price, body .main .bikesList .query.wrapper .item.price {
+            width: 120px; }
+          body .main .items .query.wrapper .item.weight, body .main .bikesList .query.wrapper .item.weight {
+            width: 120px; }
+          body .main .items .query.wrapper .item.edit, body .main .bikesList .query.wrapper .item.edit {
+            width: 100px; }
   body .footer {
     clear: both;
     padding: 10px;

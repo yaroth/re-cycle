@@ -32,15 +32,16 @@
             return $matchings;
         }
 
-        public static function getMatchingByID($id) {
+        // get matching by matchingID
+        public static function getMatchingByID($matchingID) {
             $ADD_STATEMENT = "SELECT * FROM matchings WHERE matchings.id = ?";
             $stmt = DB::getInstance()->prepare($ADD_STATEMENT);
             if (!$stmt) {
                 echo "Prepare failed";
                 exit;
             }
-            $id = (int)$id;
-            $stmt->bind_param('i', $id);
+            $matchingID = (int)$matchingID;
+            $stmt->bind_param('i', $matchingID);
             if (!$stmt) {
                 echo "bind_param failed";
                 exit;

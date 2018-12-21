@@ -129,4 +129,26 @@
                 $_COOKIE[$key] = $value;
             }
         }
+
+        public static function deleteBikeByID($bikeID) {
+            $ADD_STATEMENT = "DELETE FROM bicycles WHERE bicycles.id = ?";
+            $dbInstance = DB::getInstance();
+            $stmt = $dbInstance->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed";
+                exit;
+            }
+            $stmt->bind_param('i', $bikeID);
+            if (!$stmt) {
+                echo "bind_param failed";
+                exit;
+            }
+            $stmt->execute();
+            $deletionSuccess = $stmt->execute();
+            if (!$deletionSuccess) {
+                echo "execute failed";
+                exit;
+            }
+            return $deletionSuccess;
+        }
     }
