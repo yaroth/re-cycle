@@ -50,9 +50,7 @@
             <p class="weight">Weight: ' . $bike->weight . ' kg</p>
             </div>
             <div class="image">
-                <a href="../functions.php">
-                    <img src="../../img/uploads/' . $bike->imageName . '">
-                </a>
+                <img src="../../img/uploads/' . $bike->imageName . '">
             </div>
             <div class="specs">
                 <p>' . $bike->description . '</p>
@@ -77,6 +75,7 @@
         $targetURL = add_param($targetURL, "id", getId());
         // TODO: check if GET is needed here!
 //        $targetURL = add_param($targetURL, "bikeID", $bike->id);
+            // TODO: why is there a link in the image here???
         $item = '<div class="item wrapper">
             <div class="title">
             <h3>' . $bike->title . '</h3>
@@ -84,9 +83,7 @@
             <p class="weight">Weight: ' . $bike->weight . ' kg</p>
             </div>
             <div class="image">
-                <a href="../functions.php">
-                    <img src="../../img/uploads/' . $bike->imageName . '">
-                </a>
+                <img src="../../img/uploads/' . $bike->imageName . '">
             </div>
             <div class="specs">
                 <p>' . $bike->description . '</p>

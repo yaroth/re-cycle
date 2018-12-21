@@ -44,6 +44,44 @@ function validateCreateAccount() {
     return true;
 }
 
+function validateEditUser() {
+    //TODO: remove commenting out, update to validate user edited data
+    /*var form = document.forms["create-account"];
+    var name = form["name"].value;
+    if (!name) {
+        alert("No valid name!");
+        return false;
+    }
+
+
+    var surname = form["surname"].value;
+    if (!surname) {
+        alert("No valid surname!");
+        return false;
+    }
+
+    var username = form["username"].value;
+    if (!username) {
+        alert("No valid username!");
+        return false;
+    }
+
+    var password = form["password"].value;
+    if (!password) {
+        alert("No valid password!");
+        return false;
+    }
+
+
+    var email = form["email"].value;
+    var regex = /\S+@\S+\.\S+/;
+    if (!regex.test(email)) {
+        alert("No valid e-mail address!");
+        return false;
+    }*/
+    return true;
+}
+
 function validateLogin() {
     // TODO: update code, once it is clear what needs to be verified
     /*var form = document.forms["login"];
@@ -106,16 +144,42 @@ function deleteUser(el) {
                 $.get("usersList.php", function (data) {
                     $("#admin-content").html(data);
                 });
+                // TODO: update message with first and last name of user
                 alert("Successfully deleted user with id: " + userID)
             } else alert("Could not delete user with id: " + userID);
         });
     }
 }
 
+function deleteBike(el) {
+    let bikeID = $(el).val();
+    var reallyDelete = confirm("Do you really want to delete this bicycle ?");
+    if (reallyDelete) {
+        alert("Successfully deleted bike with id: " + bikeID)
+        /*$.post("deleteBike.php", {deleteUser: bikeID}, function (data, status) {
+            if (status) {
+                $.get("usersList.php", function (data) {
+                    $("#admin-content").html(data);
+                });
+                // TODO: update message with bike data like title
+                alert("Successfully deleted bike with id: " + bikeID)
+            } else alert("Could not delete bike with id: " + bikeID);
+        });*/
+    }
+}
+
 // TODO: finalize editing user
 function editUser(el) {
     let userID = $(el).val();
-    $.get("editUser.php", { userID: userID }, function (data) {
+    $.get("editUser.php", {userToEditID: userID}, function (data) {
+        $("#admin-content").html(data);
+    })
+
+}
+
+function editBike(el) {
+    let bikeID = $(el).val();
+    $.get("editBike.php", {userToEditID: bikeID}, function (data) {
         $("#admin-content").html(data);
     })
 
@@ -145,9 +209,28 @@ function saveAccount(value) {
     } else alert("New passwords don't match. Try again!")
 }
 
+function saveUser(id) {
+    let userID = id;
+    let form = document.forms["editUser"];
+    let fname = form["fname"].value;
+    let lname = form["lname"].value;
+    let genderID = form["genderID"].value;
+    let email = form["email"].value;
+    let dob = form["dob"].value;
+    $.post("updateUser.php", {userID: userID, fname: fname, lname: lname, genderID: genderID, email: email, dob: dob},
+        function (data, status) {
+            if (status) {
+                $.get("usersList.php", function (data) {
+                    $("#admin-content").html(data);
+                })
+                alert("Successfully saved user " + fname + " " + lname + " with id: " + userID)
+            } else alert("Could not save user " + fname + " " + lname + " with id: " + userID);
+        });
+}
+
 function listBikes(element) {
     let btnValue = $(element).val();
-    $.post("getListOfBikes.php", {allOrMatching : btnValue},
+    $.post("getListOfBikes.php", {allOrMatching: btnValue},
         function (bikesHTML) {
             $("#items-wrapper").html(bikesHTML)
         });

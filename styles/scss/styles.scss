@@ -118,21 +118,38 @@ body {
         margin-bottom: 10px;
         padding: 10px;
         border: 1px solid black;
-
         form {
           display: flex;
           width: 100%;
         }
-
         .account {
           width: 17%;
-
           &.id {
             width: 6%;
           }
-
           &.admin {
             width: 10%;
+          }
+        }
+      }
+    }
+
+    .bikesList {
+      .bike-wrapper {
+        display: flex;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid black;
+        .bike {
+          margin-right: 10px;
+          &.id {
+            width: 3%;
+          }
+          &.title {
+            width: 100px;
+          }
+          &.description {
+            width: 200px;
           }
         }
       }

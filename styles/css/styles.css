@@ -81,6 +81,19 @@ body {
           width: 6%; }
         body .main .accountsList .account-wrapper .account.admin {
           width: 10%; }
+    body .main .bikesList .bike-wrapper {
+      display: flex;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid black; }
+      body .main .bikesList .bike-wrapper .bike {
+        margin-right: 10px; }
+        body .main .bikesList .bike-wrapper .bike.id {
+          width: 3%; }
+        body .main .bikesList .bike-wrapper .bike.title {
+          width: 100px; }
+        body .main .bikesList .bike-wrapper .bike.description {
+          width: 200px; }
     body .main .user-wrapper {
       display: flex;
       margin-bottom: 10px;

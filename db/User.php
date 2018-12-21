@@ -186,6 +186,27 @@
             return $stmt != null;
         }
 
+        public function saveUserInDB(){
+            $ADD_STATEMENT = "UPDATE users SET fname=?, lname=?, login=?, dob=?, email=?, genderID=? WHERE users.id = ?;";
+            $db = DB::getInstance();
+            $stmt = $db->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed";
+                exit;
+            }
+            $stmt->bind_param('sssssii', $this->fname, $this->lname, $this->login, $this->dob, $this->email, $this->genderID, $this->id);
+            if (!$stmt) {
+                echo "bind_param failed";
+                exit;
+            }
+            $stmt->execute();
+            if (!$stmt) {
+                echo "execute failed";
+                exit;
+            }
+            return $stmt != null;
+        }
+
         public static function updateUserLoginByIDInDB($login, $userID) {
             $ADD_STATEMENT = "UPDATE users SET login=? WHERE users.id = ?;";
             $db = DB::getInstance();
