@@ -82,6 +82,44 @@ function validateEditUser() {
     return true;
 }
 
+function validateEditBike() {
+    //TODO: remove commenting out, update to validate user edited data
+    /*var form = document.forms["create-account"];
+    var name = form["name"].value;
+    if (!name) {
+        alert("No valid name!");
+        return false;
+    }
+
+
+    var surname = form["surname"].value;
+    if (!surname) {
+        alert("No valid surname!");
+        return false;
+    }
+
+    var username = form["username"].value;
+    if (!username) {
+        alert("No valid username!");
+        return false;
+    }
+
+    var password = form["password"].value;
+    if (!password) {
+        alert("No valid password!");
+        return false;
+    }
+
+
+    var email = form["email"].value;
+    var regex = /\S+@\S+\.\S+/;
+    if (!regex.test(email)) {
+        alert("No valid e-mail address!");
+        return false;
+    }*/
+    return true;
+}
+
 function validateLogin() {
     // TODO: update code, once it is clear what needs to be verified
     /*var form = document.forms["login"];
@@ -139,7 +177,7 @@ function deleteUser(el) {
     let userID = $(el).val();
     var reallyDelete = confirm("Do you really want to delete this user ?");
     if (reallyDelete) {
-        $.post("deleteUser.php", {deleteUser: userID}, function (data, status) {
+        $.post("deleteUser.php", {deleteUserID: userID}, function (data, status) {
             if (status) {
                 $.get("usersList.php", function (data) {
                     $("#admin-content").html(data);
@@ -153,22 +191,21 @@ function deleteUser(el) {
 
 function deleteBike(el) {
     let bikeID = $(el).val();
-    var reallyDelete = confirm("Do you really want to delete this bicycle ?");
+    // TODO: add details to delete message
+    var reallyDelete = confirm("Do you really want to delete this bicycle (title: , description: ) ?");
     if (reallyDelete) {
-        alert("Successfully deleted bike with id: " + bikeID)
-        /*$.post("deleteBike.php", {deleteUser: bikeID}, function (data, status) {
+        $.post("deleteBike.php", {deleteBikeID: bikeID}, function (data, status) {
             if (status) {
-                $.get("usersList.php", function (data) {
+                $.get("bikesList.php", function (data) {
                     $("#admin-content").html(data);
                 });
                 // TODO: update message with bike data like title
                 alert("Successfully deleted bike with id: " + bikeID)
             } else alert("Could not delete bike with id: " + bikeID);
-        });*/
+        });
     }
 }
 
-// TODO: finalize editing user
 function editUser(el) {
     let userID = $(el).val();
     $.get("editUser.php", {userToEditID: userID}, function (data) {
@@ -179,7 +216,7 @@ function editUser(el) {
 
 function editBike(el) {
     let bikeID = $(el).val();
-    $.get("editBike.php", {userToEditID: bikeID}, function (data) {
+    $.get("editBike.php", {bikeToEditID: bikeID}, function (data) {
         $("#admin-content").html(data);
     })
 
@@ -226,6 +263,78 @@ function saveUser(id) {
                 alert("Successfully saved user " + fname + " " + lname + " with id: " + userID)
             } else alert("Could not save user " + fname + " " + lname + " with id: " + userID);
         });
+}
+
+function saveBike(id) {
+    let bikeID = id;
+    let form = document.forms["editBike"];
+    let title = form.title.value;
+    let description = form.description.value;
+    let weight = form.weight.value;
+    let price = form.price.value;
+    let hasLights = form.hasLights.value;
+    let hasGears = form.hasGears.value;
+    let gearTypeID = form.gearTypeID.value;
+    let nbOfGears = form.nbOfGears.value;
+    let wheelSize = form.wheelSize.value;
+    let brakeTypeID = form.brakeTypeID.value;
+    let ownerID = form.ownerID.value;
+    let file = form.upload.files[0];
+    let formData = new FormData();
+    formData.append('files', file);
+    formData.append('bikeID', bikeID);
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('weight', weight);
+    formData.append('price', price);
+    formData.append('hasLights', hasLights);
+    formData.append('hasGears', hasGears);
+    formData.append('gearTypeID', gearTypeID);
+    formData.append('nbOfGears', nbOfGears);
+    formData.append('wheelSize', wheelSize);
+    formData.append('brakeTypeID', brakeTypeID);
+    formData.append('ownerID', ownerID);
+
+   /* $.post("updateBike.php", {
+            bikeID: bikeID,
+            title: title,
+            description: description,
+            weight: weight,
+            price: price,
+            hasLights: hasLights,
+            hasGears: hasGears,
+            gearTypeID: gearTypeID,
+            nbOfGears: nbOfGears,
+            wheelSize: wheelSize,
+            brakeTypeID: brakeTypeID,
+            ownerID: ownerID
+        },
+        function (data, status) {
+            if (status) {
+                $.get("bikesList.php", function (data) {
+                    $("#admin-content").html(data);
+                });
+                // TODO: update message with more data of bike
+                alert("Successfully saved bike with id: " + bikeID)
+            } else alert("Could not save bike with id: " + bikeID);
+        });*/
+    $.ajax({
+        url: 'updateBike.php',
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        method: 'POST',
+        success: function(data){
+            alert("Successfully saved bike with id: " + bikeID);
+            $.get("bikesList.php", function (data) {
+                $("#admin-content").html(data);
+            });
+        },
+        error: function(){
+            alert("Could not save bike with id: " + bikeID);
+        }
+    });
 }
 
 function listBikes(element) {

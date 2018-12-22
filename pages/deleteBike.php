@@ -8,12 +8,11 @@
         $login = $_SESSION["user"];
         $account = Account::getAccountByLogin($login);
         if ($account->isAdminAccount()){
-            /*TODO: check if admin wants to delete his/her own account/user -> not allowed!*/
-            if (isset($_POST["deleteUserID"])){
-                $deleteUserID = $_POST["deleteUserID"];
-                $userToDelete = User::getUserByID($deleteUserID);
-                Account::deleteAccountByLogin($userToDelete->login);
-                User::deleteUserByID($deleteUserID);
+            if (isset($_POST["deleteBikeID"])){
+                $deleteBikeID = $_POST["deleteBikeID"];
+                $bikeToDelete = Bicycle::getBicycleByID($deleteBikeID);
+                if ($bikeToDelete !== false) return $bikeDeletionSuccess = Bicycle::deleteBikeByID($deleteBikeID);
+                else return false;
             }
         }
         else echo "You are not an admin, sorry!";

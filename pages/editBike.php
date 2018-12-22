@@ -9,7 +9,11 @@
         $login = $_SESSION["user"];
         $account = Account::getAccountByLogin($login);
         if ($account->isAdminAccount()) {
-            echo 'edit bike';
+            $bikeID = $_GET["bikeToEditID"];
+            $bike = Bicycle::getBicycleByID($bikeID);
+            $bike->setCookiesForBike();
+            $language = getLang();
+            include "editBikeForm.php";
 
         } else echo "You are not an admin, sorry!";
     } else echo "session cookie 'user' not set!";

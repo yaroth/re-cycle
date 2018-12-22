@@ -151,4 +151,41 @@
             }
             return $deletionSuccess;
         }
+
+        public function setProperties($title, $description, $imageName, $weight, $price, $hasLights, $hasGears, $gearTypeID , $nbOfGears, $wheelSize, $brakeTypeID , $ownerID) {
+            $db = DB::getInstance();
+            $this->title = $db->escape_string($title);
+            $this->description = $db->escape_string($description);
+            $this->imageName = $db->escape_string($imageName);
+            $this->weight = $db->escape_string($weight);
+            $this->price = $db->escape_string($price);
+            $this->hasLights = $db->escape_string($hasLights);
+            $this->hasGears = $db->escape_string($hasGears);
+            $this->gearTypeID = $db->escape_string($gearTypeID); //referencing to the gear type table
+            $this->nbOfGears = $db->escape_string($nbOfGears);
+            $this->wheelSize = $db->escape_string($wheelSize);
+            $this->brakeTypeID = $db->escape_string($brakeTypeID); //referencing to the brake type table
+            $this->ownerID = $db->escape_string($ownerID);
+        }
+        
+        public function saveBikeInDB(){
+            $ADD_STATEMENT = "UPDATE bicycles SET title=?, description=?, imageName=?, weight=?, price=?, hasLights=?, hasGears=?, wheelSize=?, brakeTypeID=?, nbOfGears=?, gearTypeID=?, ownerID=? WHERE bicycles.id = ?;";
+            $db = DB::getInstance();
+            $stmt = $db->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed";
+                exit;
+            }
+            $stmt->bind_param('sssdiiiiiiiii', $this->title, $this->description, $this->imageName, $this->weight, $this->price, $this->hasLights, $this->hasGears, $this->wheelSize, $this->brakeTypeID, $this->nbOfGears, $this->gearTypeID, $this->ownerID, $this->id);
+            if (!$stmt) {
+                echo "bind_param failed";
+                exit;
+            }
+            $stmt->execute();
+            if (!$stmt) {
+                echo "execute failed";
+                exit;
+            }
+            return $stmt != null;
+        }
     }
