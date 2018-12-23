@@ -2,7 +2,7 @@
     $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
     $targetURL = add_param($targetURL, "id", getId());
 ?>
-<form action="<?php echo $targetURL ?>" method="post" name="create-account" onsubmit="return validateCreateAccount();">
+<form id="kontoerstellen" action="<?php echo $targetURL ?>" method="post" name="create-account" onsubmit="return validateCreateAccount();">
     <fieldset class="fieldset" id="meinkonto">
         <legend><?php echo translate("personal-info") ?> :</legend>
         First Name : <br><input type="text" name="fname" placeholder="Bob" value="<?php echo $_COOKIE["fname"] ?? "";?>" autofocus required><br>

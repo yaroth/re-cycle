@@ -1,187 +1,252 @@
-body {
-  margin: 0; }
-  body .header {
-    background-color: rgba(0, 0, 0, 0.26);
-    padding: 10px; }
-    body .header .logo {
-      width: 10%;
-      display: inline-block;
-      vertical-align: top;
-      margin-right: 20px; }
-      body .header .logo img {
-        width: 100%;
-        height: 100%; }
-    body .header .page.title {
-      display: inline-block;
-      width: 50%; }
-    body .header .nav {
-      display: inline-block;
-      margin-top: 0em;
-      margin-right: 0px;
-      background-color: #e4e8a0;
-      padding: 16px;
-      text-align: center;
-      vertical-align: top;
-      float: right;
-      border-radius: 5px; }
-      body .header .nav ul {
-        font-size: 20px;
-        margin: 0px;
-        padding-right: 19px;
-        list-style: none;
-        margin-top: 20px; }
-        body .header .nav ul:first-child {
-          margin-top: 0; }
-        body .header .nav ul li {
-          border: 1px solid;
-          padding: 5px;
-          margin: 7px;
-          background-color: rgba(52, 128, 125, 0.95);
-          border-radius: 5px;
-          font-size: 14px; }
-          body .header .nav ul li.nav-item {
-            display: block; }
-          body .header .nav ul li.lang {
-            display: inline; }
-          body .header .nav ul li .active {
-            color: darkorange; }
-            body .header .nav ul li .active:hover {
-              color: darkorange; }
-          body .header .nav ul li a {
-            color: #1e1e1e;
-            margin: 5px;
-            padding: 8px;
-            text-decoration: none; }
-            body .header .nav ul li a:hover {
-              color: blue; }
-      body .header .nav .userInfo {
+@media (max-width: 569px) {
+  div.header div.logo a img {
+    width: 11em;
+    height: 11em;
+    padding-left: 5em; }
+  div.header div.page.title h1 {
+    width: 300px;
+    text-align: center; }
+  div.item.wrapper div.title h3 {
+    width: 300px;
+    text-align: center; }
+  div.main h2 {
+    width: 300px;
+    text-align: center; }
+  div.header div.page.title h2 {
+    width: 300px;
+    text-align: center; }
+  div.header div.page.title h2 {
+    text-align: center; }
+  div.header div.nav {
+    border: 1px solid #c0ff74;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center; }
+  div.header div.nav ul li.nav-item a.inactive {
+    text-decoration: none; }
+  div.header div.nav ul li.lang a.inactive {
+    text-decoration: none; }
+  div.header div.nav ul li.lang a.active {
+    text-decoration: none; }
+  div.main div.items div.item.wrapper {
+    width: 300px;
+    height: 600px;
+    border: 1px solid black;
+    margin-top: 2em;
+    margin-left: 1.5em;
+    background-color: #a4e061;
+    border-radius: 5px; }
+  div.main div.items div.item.wrapper div.image a img#img {
+    width: 150px;
+    height: 200px;
+    border: 1px solid black; }
+  div.header div.nav ul li.nav-item {
+    border: 1px solid black;
+    margin-top: 8px;
+    padding: 3px;
+    border-radius: 3px;
+    width: 250px;
+    background-color: #5E740B;
+    list-style: none; }
+  div.header div.nav ul li.nav-item a {
+    color: black; }
+  div.header div.nav ul li.lang {
+    list-style: none;
+    display: inline-block;
+    border: 1px solid black;
+    margin-right: 18px; }
+  div.header div.nav ul li {
+    width: 80px; }
+  div.main div items p {
+    text-align: center; }
+  .active {
+    color: darkorange; }
+    .active:hover {
+      color: darkorange; }
+  div a img#img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
+  .buy {
+    text-align: center; }
+  div.main div.items div.item.wrapper div.image a img {
+    border: 1px solid black;
+    width: 150px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
+  body {
+    background-color: #fff069; } }
+
+@media (min-width: 570px) {
+  div.header div.logo a img {
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    margin-right: 12em; }
+  div.header div.nav {
+    border: 1px solid black;
+    margin-top: 400px;
+    position: absolute;
+    width: 100%; }
+  div.header div.nav ul {
+    display: flex; }
+  div.header div.nav ul a.inactive {
+    text-decoration: none; }
+  div.header div.nav ul a.active {
+    text-decoration: none; }
+  div .header div.nav div.userInfo a {
+    text-decoration: none; }
+  div.header div.nav ul {
+    list-style-type: none;
+    margin-left: 10%; }
+  div.header div.nav ul a {
+    border: 1px solid black;
+    margin-left: 10px; }
+  div.header {
+    display: flex;
+    width: 100%;
+    height: 500px; }
+  div .header div.page.title {
+    text-align: center;
+    vertical-align: top; }
+  body {
+    background-color: #c0a54b; } }
+
+/*
+      .nav {
         display: inline-block;
-        margin-top: 20px; }
-        body .header .nav .userInfo p {
-          margin: 0 5px;
-          padding: 1px 5px; }
-  body .inpagenav {
-    width: 25%;
-    background-color: yellowgreen;
-    float: left;
-    padding: 10px; }
-  body .main {
-    padding: 10px;
-    overflow: hidden; }
-    body .main form {
-      display: inline; }
-      body .main form fieldset {
-        display: inline;
-        vertical-align: top; }
-    body .main input:focus {
-      background-color: yellow; }
-    body .main .user-wrapper {
-      display: flex;
-      margin-bottom: 10px;
+        margin-top: 0em;
+        margin-right: 0px;
+        background-color: rgb(228, 232, 160);
+        padding: 16px;
+        text-align: center;
+        vertical-align: top;
+
+        border-radius: 5px;
+
+
+          li {
+            border:1px solid;
+            padding:5px;
+            margin :7px;
+            background-color: rgba(52, 128, 125, 0.95);
+            border-radius: 5px;
+            font-size: 14px;
+
+
+            .active {
+              color: darkorange;
+
+              &:hover {
+                color: darkorange;
+              }
+            }
+
+
+          }
+
+
+        .userInfo {
+          display: inline-block;
+          margin-top: 20px;
+
+          p {
+            margin: 0 5px;
+            padding: 1px 5px;
+          }
+        }
+
+      }
+*/
+/*
+    .inpagenav {
+      width: 25%;
+      background-color: yellowgreen;
+      float: left;
       padding: 10px;
-      border: 1px solid black; }
-      body .main .user-wrapper .user {
-        margin-right: 20px; }
-      body .main .user-wrapper .item {
-        margin-right: 20px; }
-    body .main .items, body .main .bikesList {
-      margin: 20px 0; }
-      body .main .items .item.wrapper, body .main .bikesList .item.wrapper {
-        display: inline-block;
-        margin-right: 5px;
-        margin-bottom: 5px;
-        margin-left: 5px;
-        padding: 10px;
-        width: 272px;
-        height: 570px;
-        min-width: 200px;
-        max-width: 300px;
-        border: 1px crimson solid;
-        border-radius: 3px;
-        overflow: hidden; }
-        body .main .items .item.wrapper .title, body .main .bikesList .item.wrapper .title {
-          text-align: center; }
-        body .main .items .item.wrapper .image, body .main .bikesList .item.wrapper .image {
-          width: 100%;
-          overflow: hidden; }
-          body .main .items .item.wrapper .image img, body .main .bikesList .item.wrapper .image img {
-            width: 100%; }
-        body .main .items .item.wrapper .specs, body .main .bikesList .item.wrapper .specs {
-          color: darkblue;
-          line-height: .9em; }
-      body .main .items form .current-img, body .main .bikesList form .current-img {
-        width: 200px; }
-        body .main .items form .current-img img, body .main .bikesList form .current-img img {
-          width: 100%; }
-      body .main .items .query.wrapper, body .main .bikesList .query.wrapper {
+    }
+
+    .main {
+
+      padding: 10px;
+      overflow: hidden;
+
+      form {
+        display: inline;
+
+        fieldset {
+          display: inline;
+          vertical-align: top;
+        }
+      }
+
+      input:focus {
+        background-color: yellow;
+      }
+
+      .user-wrapper {
         display: flex;
         margin-bottom: 10px;
         padding: 10px;
-        border: 1px solid black; }
-        body .main .items .query.wrapper .item, body .main .bikesList .query.wrapper .item {
-          margin-right: 20px; }
-  body .footer {
-    clear: both;
-    padding: 10px;
-    background-color: #a1cdcd; }
+        border: 1px solid black;
 
-body {
-  background-color: #a1cdcd; }
+        .user {
+          margin-right: 20px;
+        }
 
-#img {
-  padding-left: 3.0em;
-  width: 165px;
-  height: 200px; }
+        .item {
+          margin-right: 20px;
+        }
+      }
 
-@media (max-width: 569px) {
-  .items {
-    position: absolute;
-    top: 42em; }
-  div.main h2 {
-    position: absolute;
-    top: 30em; }
-  .login {
-    position: absolute;
-    top: 49em;
-    left: 1.5em; }
-  .fieldset {
-    position: absolute;
-    top: 49em;
-    left: 1.5em; }
-  #AddBicycle {
-    position: absolute;
-    top: 43.5em;
-    left: 1.5em; }
-  .nav {
-    position: absolute;
-    top: 10em;
-    left: 1.5em; }
-  div.main div.account {
-    position: absolute;
-    top: 42em;
-    left: 1.5em; }
-  #neuesveloerfassen {
-    position: absolute;
-    top: 38em;
-    left: 1.5em; }
-  .form {
-    position: absolute;
-    top: 48em;
-    left: 1.5em; }
-  #meinkonto {
-    position: absolute;
-    top: 8em;
-    left: 1.5em; }
-  h2 {
-    left: 1em; }
-  .message {
-    position: absolute;
-    top: 43em;
-    left: 1.5em; }
-  #createaccount {
-    position: absolute;
-    top: 47em; }
-  .query.items {
-    position: absolute;
-    top: 49em;
-    left: 1.5em; } }
+      .items, .bikesList {
+        margin: 20px 0;
+
+        .item.wrapper {
+
+
+          display: inline-block;
+          margin-right: 5px;
+          margin-bottom: 5px;
+          margin-left: 5px;
+          padding: 10px;
+          width: 272px;
+          height: 570px;
+          min-width: 200px;
+          max-width: 300px;
+          border: 1px crimson solid;
+          border-radius: 3px;
+          overflow: hidden;
+
+          .title {
+            text-align: center;
+          }
+
+
+
+          .specs {
+            color: darkblue;
+            line-height: .9em;
+          }
+        }
+
+
+
+        .query.wrapper {
+          display: flex;
+          margin-bottom: 10px;
+          padding: 10px;
+          border: 1px solid black;
+
+
+        }
+      }
+
+    }
+
+
+
+
+*/
