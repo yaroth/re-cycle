@@ -295,29 +295,6 @@ function saveBike(id) {
     formData.append('brakeTypeID', brakeTypeID);
     formData.append('ownerID', ownerID);
 
-   /* $.post("updateBike.php", {
-            bikeID: bikeID,
-            title: title,
-            description: description,
-            weight: weight,
-            price: price,
-            hasLights: hasLights,
-            hasGears: hasGears,
-            gearTypeID: gearTypeID,
-            nbOfGears: nbOfGears,
-            wheelSize: wheelSize,
-            brakeTypeID: brakeTypeID,
-            ownerID: ownerID
-        },
-        function (data, status) {
-            if (status) {
-                $.get("bikesList.php", function (data) {
-                    $("#admin-content").html(data);
-                });
-                // TODO: update message with more data of bike
-                alert("Successfully saved bike with id: " + bikeID)
-            } else alert("Could not save bike with id: " + bikeID);
-        });*/
     $.ajax({
         url: 'updateBike.php',
         data: formData,
