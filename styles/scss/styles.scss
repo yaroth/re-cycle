@@ -1,4 +1,6 @@
 @media (max-width: 569px) {
+
+
   div.header div.logo a img {
 
     width: 11em;
@@ -52,6 +54,7 @@
   div.header div.nav ul li.lang a.active {
     text-decoration: none;
 
+
   }
 
 
@@ -103,7 +106,7 @@
 
 
 
-  div.main div items p {
+  div.main div.items p {
     text-align: center;
   }
   .active {
@@ -136,29 +139,37 @@
 }
 
 
+
+
+
+
+
+
+
+
+
 @media (min-width: 570px) {
 
   div.header div.logo a img {
     width: 300px;
     height: 300px;
     display: inline-block;
-    margin-right: 12em;
+    margin-right: 9em;
 
 
   }
-  div .header {
 
-  }
   div.header div.nav {
     border: 1px solid black;
-    margin-top: 400px;
+    width: 340px;
+    height: 550px;
+    background-color: #52c3b5;
     position: absolute;
-    width: 100%;
+    right: 8em;
 
 
   }
   div.header div.nav ul {
-    display: flex;
 
   }
   div.header div.nav ul a.inactive {
@@ -173,12 +184,12 @@
   }
   div.header div.nav ul {
     list-style-type: none;
-    margin-left: 10%;
+
 
   }
   div.header div.nav ul a {
-    border: 1px solid black;
-    margin-left: 10px;
+    margin-left: 20px;
+
 
 
   }
@@ -197,147 +208,152 @@
 
   }
   body {
-    background-color: #c0a54b;
+    background-color: #cb5162;
   }
 
 
+  div.header div.nav ul li.nav-item {
+
+    border: 1px solid black;
+    margin-top: 8px;
+    padding: 3px;
+    border-radius: 3px;
+    width: 250px;
+    background-color: #5E740B;
+    list-style: none;
+
+  }
+
+  div.header div.nav ul li.lang {
+    list-style: none;
+    display: inline-block;
+
+    margin-right: 18px;
+    padding-left: 13px;
+
+  }
+
+  div.main div.items div.item.wrapper {
+    width: 300px;
+    height: 600px;
+    border: 1px solid black;
+    margin-top: 2em;
+    margin-left: 1.5em;
+    background-color: #5E740B;
+    border-radius: 5px;
+
+
+  }
+  div.main div.items div.item.wrapper div.image a img {
+    border: 1px solid black;
+    width: 150px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  div.main div.items div.item.wrapper div.image a img#img {
+
+    width: 150px;
+    height: 200px;
+
+    border: 1px solid black;
+  }
+
+
+
+
+
+
+  .items, .bikesList {
+    margin: 20px 0;
+
+    .item.wrapper {
+
+
+      display: inline-block;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      margin-left: 5px;
+      padding: 10px;
+      width: 272px;
+      height: 570px;
+      min-width: 200px;
+      max-width: 300px;
+      border: 1px crimson solid;
+      border-radius: 3px;
+      overflow: hidden;
+
+      .title {
+        text-align: center;
+      }
+
+      .image {
+        width: 100%;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .specs {
+        color: darkblue;
+        line-height: .9em;
+      }
+    }
+
+    form {
+      .current-img {
+        width: 200px;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .query.wrapper {
+      display: flex;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid black;
+
+      .item {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  div.main  form fieldset.fieldset {
+    width:400px;
+  }
+  form#bikeformform{
+    width:400px;
+  }
+
+  div.nav div.userInfo a{
+    margin-left: 41px;
+    padding: 2px;
+    text-decoration: none;
+    background-color: #5E740B;
+    border: 1px solid black;
+    border-radius: 3px;
+
+  }
+}
+/*    common CSS*/
+
+
+input:focus {
+  background-color: yellow;
+}
+.active {
+  color: darkorange;
+
+  &:hover {
+    color: darkorange;
+  }
 }
 
 
-  /*
-      .nav {
-        display: inline-block;
-        margin-top: 0em;
-        margin-right: 0px;
-        background-color: rgb(228, 232, 160);
-        padding: 16px;
-        text-align: center;
-        vertical-align: top;
-
-        border-radius: 5px;
-
-
-          li {
-            border:1px solid;
-            padding:5px;
-            margin :7px;
-            background-color: rgba(52, 128, 125, 0.95);
-            border-radius: 5px;
-            font-size: 14px;
-
-
-            .active {
-              color: darkorange;
-
-              &:hover {
-                color: darkorange;
-              }
-            }
-
-
-          }
-
-
-        .userInfo {
-          display: inline-block;
-          margin-top: 20px;
-
-          p {
-            margin: 0 5px;
-            padding: 1px 5px;
-          }
-        }
-
-      }
-*/
-
-/*
-    .inpagenav {
-      width: 25%;
-      background-color: yellowgreen;
-      float: left;
-      padding: 10px;
-    }
-
-    .main {
-
-      padding: 10px;
-      overflow: hidden;
-
-      form {
-        display: inline;
-
-        fieldset {
-          display: inline;
-          vertical-align: top;
-        }
-      }
-
-      input:focus {
-        background-color: yellow;
-      }
-
-      .user-wrapper {
-        display: flex;
-        margin-bottom: 10px;
-        padding: 10px;
-        border: 1px solid black;
-
-        .user {
-          margin-right: 20px;
-        }
-
-        .item {
-          margin-right: 20px;
-        }
-      }
-
-      .items, .bikesList {
-        margin: 20px 0;
-
-        .item.wrapper {
-
-
-          display: inline-block;
-          margin-right: 5px;
-          margin-bottom: 5px;
-          margin-left: 5px;
-          padding: 10px;
-          width: 272px;
-          height: 570px;
-          min-width: 200px;
-          max-width: 300px;
-          border: 1px crimson solid;
-          border-radius: 3px;
-          overflow: hidden;
-
-          .title {
-            text-align: center;
-          }
-
-
-
-          .specs {
-            color: darkblue;
-            line-height: .9em;
-          }
-        }
-
-
-
-        .query.wrapper {
-          display: flex;
-          margin-bottom: 10px;
-          padding: 10px;
-          border: 1px solid black;
-
-
-        }
-      }
-
-    }
-
-
-
-
-*/
