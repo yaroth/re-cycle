@@ -1,5 +1,5 @@
 
-@media (min-width: 570px) {
+
 
   div.header div.logo a img {
     width: 300px;
@@ -206,7 +206,7 @@
   }
 
 
-}
+
 
 
 
@@ -293,6 +293,13 @@
 
   @media(max-width: 774px){
 
+    div.header div.nav ul li.lang {
+      list-style: none;
+      display: inline;
+      margin-right: 1px;
+      padding-left: 1px;
+    }
+
 
     div.header div.nav {
       border: 1px solid black;
@@ -332,9 +339,68 @@
 
 
 
+@media (max-width: 569px){
+
+  div.header div.logo a img{
+    height: 10em;
+    width: 10em;
+  }
+
+  div.header div.nav ul li.lang {
+    list-style: none;
+    display: inline;
+    margin-right: 1px;
+    padding-left: 1px;
+  }
+  div.header div.page.title {
+    text-align: left;
+
+
+    left: 0.5em;
+    width: 18em;
+  }
+
+  div.header div.nav {
+
+    width: 180px;
+    height: 500px;
+    background-color: #52c3b5;
+    margin-right: 0em;
+    margin-left: 0em;
+    position: absolute;
+    top: 1em;
+    right: 0.5em;
+
+    ul{
+
+        padding-left: 22px;
+
+    }
+
+  }
+  div.main div.items div.item.wrapper {
+    margin-left: .5em;
+
+  }
+
+  div.main form fieldset.fieldset {
+    width: 200px;
+  }
+fieldset#bikeform{
+  width: 200px;
+}
+}
 
 
 
+
+
+
+
+
+
+
+/*
 
 
 
@@ -347,11 +413,7 @@
     height: 11em;
     padding-left: 5em;
   }
-  div.header div.page.title h1 {
-    width:300px;
 
-    text-align: center;
-  }
   div.item.wrapper  div.title h3{
     width:300px;
 
@@ -369,19 +431,34 @@
 
   }
 
-  div.header div.page.title h2 {
 
-    text-align: center;
+
+  div.header{
+    height: 40em;
+  }
+  div.header div.nav {
+    border: 1px solid black;
+    width: 200px;
+    height: 500px;
+    background-color: #52c3b5;
+    margin-right: 0em;
+    margin-left: 0em;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+
+
   }
 
-  div.header div.nav {
-    border: 1px solid #c0ff74;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    text-align: center;
-
-
-
+  div.header div.nav ul li.nav-item {
+    border: 1px solid black;
+    margin-top: 8px;
+    padding: 3px;
+    border-radius: 3px;
+    width: 130px;
+    background-color: #5E740B;
+    list-style: none;
+    margin-right: 10px;
   }
   div.header div.nav ul li.nav-item a.inactive {
     text-decoration: none;
@@ -484,7 +561,7 @@
 
 
 
-
+*/
 
 
 

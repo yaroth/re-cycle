@@ -1,122 +1,139 @@
-@media (min-width: 570px) {
-  div.header div.logo a img {
-    width: 300px;
-    height: 300px;
+div.header div.logo a img {
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  margin-right: 9em; }
+
+div.header div.nav {
+  border: 1px solid black;
+  width: 340px;
+  height: 500px;
+  background-color: #52c3b5;
+  margin-right: 2em;
+  margin-left: 2em;
+  position: absolute;
+  top: 1em;
+  right: 3em; }
+
+div.header div.nav ul a.inactive {
+  text-decoration: none; }
+
+div.header div.nav ul a.active {
+  text-decoration: none; }
+
+div .header div.nav div.userInfo a {
+  text-decoration: none; }
+
+div.header div.nav ul {
+  list-style-type: none;
+  padding-right: 2em; }
+
+div.header div.nav ul a {
+  margin-left: 20px; }
+
+div.header {
+  width: 100%;
+  height: 500px;
+  display: inline-block; }
+
+div.header div.page.title {
+  text-align: center;
+  vertical-align: top;
+  position: absolute;
+  top: 4em;
+  left: 30em;
+  width: 18em; }
+
+body {
+  background-color: #cb5162; }
+
+div.header div.nav ul li.nav-item {
+  border: 1px solid black;
+  margin-top: 8px;
+  padding: 3px;
+  border-radius: 3px;
+  width: 250px;
+  background-color: #5E740B;
+  list-style: none; }
+
+div.header div.nav ul li.lang {
+  list-style: none;
+  display: inline-block;
+  margin-right: 18px;
+  padding-left: 13px; }
+
+div.main div.items div.item.wrapper {
+  width: 300px;
+  height: 600px;
+  border: 1px solid black;
+  margin-top: 2em;
+  margin-left: 1.5em;
+  background-color: #5E740B;
+  border-radius: 5px; }
+
+div.main div.items div.item.wrapper div.image a img {
+  border: 1px solid black;
+  width: 150px;
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+div.main div.items div.item.wrapper div.image a img#img {
+  width: 150px;
+  height: 200px;
+  border: 1px solid black; }
+
+.items, .bikesList {
+  margin: 20px 0; }
+  .items .item.wrapper, .bikesList .item.wrapper {
     display: inline-block;
-    margin-right: 9em; }
-  div.header div.nav {
-    border: 1px solid black;
-    width: 340px;
-    height: 500px;
-    background-color: #52c3b5;
-    margin-right: 2em;
-    margin-left: 2em;
-    position: absolute;
-    top: 1em;
-    right: 3em; }
-  div.header div.nav ul a.inactive {
-    text-decoration: none; }
-  div.header div.nav ul a.active {
-    text-decoration: none; }
-  div .header div.nav div.userInfo a {
-    text-decoration: none; }
-  div.header div.nav ul {
-    list-style-type: none;
-    padding-right: 2em; }
-  div.header div.nav ul a {
-    margin-left: 20px; }
-  div.header {
-    width: 100%;
-    height: 500px;
-    display: inline-block; }
-  div.header div.page.title {
-    text-align: center;
-    vertical-align: top;
-    position: absolute;
-    top: 4em;
-    left: 30em;
-    width: 18em; }
-  body {
-    background-color: #cb5162; }
-  div.header div.nav ul li.nav-item {
-    border: 1px solid black;
-    margin-top: 8px;
-    padding: 3px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    padding: 10px;
+    width: 272px;
+    height: 570px;
+    min-width: 200px;
+    max-width: 300px;
+    border: 1px crimson solid;
     border-radius: 3px;
-    width: 250px;
-    background-color: #5E740B;
-    list-style: none; }
-  div.header div.nav ul li.lang {
-    list-style: none;
-    display: inline-block;
-    margin-right: 18px;
-    padding-left: 13px; }
-  div.main div.items div.item.wrapper {
-    width: 300px;
-    height: 600px;
-    border: 1px solid black;
-    margin-top: 2em;
-    margin-left: 1.5em;
-    background-color: #5E740B;
-    border-radius: 5px; }
-  div.main div.items div.item.wrapper div.image a img {
-    border: 1px solid black;
-    width: 150px;
-    height: 200px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto; }
-  div.main div.items div.item.wrapper div.image a img#img {
-    width: 150px;
-    height: 200px;
-    border: 1px solid black; }
-  .items, .bikesList {
-    margin: 20px 0; }
-    .items .item.wrapper, .bikesList .item.wrapper {
-      display: inline-block;
-      margin-right: 5px;
-      margin-bottom: 5px;
-      margin-left: 5px;
-      padding: 10px;
-      width: 272px;
-      height: 570px;
-      min-width: 200px;
-      max-width: 300px;
-      border: 1px crimson solid;
-      border-radius: 3px;
+    overflow: hidden; }
+    .items .item.wrapper .title, .bikesList .item.wrapper .title {
+      text-align: center; }
+    .items .item.wrapper .image, .bikesList .item.wrapper .image {
+      width: 100%;
       overflow: hidden; }
-      .items .item.wrapper .title, .bikesList .item.wrapper .title {
-        text-align: center; }
-      .items .item.wrapper .image, .bikesList .item.wrapper .image {
-        width: 100%;
-        overflow: hidden; }
-        .items .item.wrapper .image img, .bikesList .item.wrapper .image img {
-          width: 100%; }
-      .items .item.wrapper .specs, .bikesList .item.wrapper .specs {
-        color: darkblue;
-        line-height: .9em; }
-    .items form .current-img, .bikesList form .current-img {
-      width: 200px; }
-      .items form .current-img img, .bikesList form .current-img img {
+      .items .item.wrapper .image img, .bikesList .item.wrapper .image img {
         width: 100%; }
-    .items .query.wrapper, .bikesList .query.wrapper {
-      display: flex;
-      margin-bottom: 10px;
-      padding: 10px;
-      border: 1px solid black; }
-      .items .query.wrapper .item, .bikesList .query.wrapper .item {
-        margin-right: 20px; }
-  div.main form fieldset.fieldset {
-    width: 400px; }
-  form#bikeformform {
-    width: 400px; }
-  div.nav div.userInfo a {
-    margin-left: 41px;
-    padding: 2px;
-    text-decoration: none;
-    background-color: #5E740B;
-    border: 1px solid black;
-    border-radius: 3px; } }
+    .items .item.wrapper .specs, .bikesList .item.wrapper .specs {
+      color: darkblue;
+      line-height: .9em; }
+  .items form .current-img, .bikesList form .current-img {
+    width: 200px; }
+    .items form .current-img img, .bikesList form .current-img img {
+      width: 100%; }
+  .items .query.wrapper, .bikesList .query.wrapper {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid black; }
+    .items .query.wrapper .item, .bikesList .query.wrapper .item {
+      margin-right: 20px; }
+
+div.main form fieldset.fieldset {
+  width: 400px; }
+
+form#bikeformform {
+  width: 400px; }
+
+div.nav div.userInfo a {
+  margin-left: 41px;
+  padding: 2px;
+  text-decoration: none;
+  background-color: #5E740B;
+  border: 1px solid black;
+  border-radius: 3px; }
 
 @media (max-width: 1295px) {
   div.header div.page.title {
@@ -157,6 +174,11 @@
     right: 3.5em; } }
 
 @media (max-width: 774px) {
+  div.header div.nav ul li.lang {
+    list-style: none;
+    display: inline;
+    margin-right: 1px;
+    padding-left: 1px; }
   div.header div.nav {
     border: 1px solid black;
     width: 200px;
@@ -179,34 +201,111 @@
 
 @media (max-width: 569px) {
   div.header div.logo a img {
+    height: 10em;
+    width: 10em; }
+  div.header div.nav ul li.lang {
+    list-style: none;
+    display: inline;
+    margin-right: 1px;
+    padding-left: 1px; }
+  div.header div.page.title {
+    text-align: left;
+    left: 0.5em;
+    width: 18em; }
+  div.header div.nav {
+    width: 180px;
+    height: 500px;
+    background-color: #52c3b5;
+    margin-right: 0em;
+    margin-left: 0em;
+    position: absolute;
+    top: 1em;
+    right: 0.5em; }
+    div.header div.nav ul {
+      padding-left: 22px; }
+  div.main div.items div.item.wrapper {
+    margin-left: .5em; }
+  div.main form fieldset.fieldset {
+    width: 200px; }
+  fieldset#bikeform {
+    width: 200px; } }
+
+/*
+
+
+
+@media (max-width: 569px) {
+
+
+  div.header div.logo a img {
+
     width: 11em;
     height: 11em;
-    padding-left: 5em; }
-  div.header div.page.title h1 {
-    width: 300px;
-    text-align: center; }
-  div.item.wrapper div.title h3 {
-    width: 300px;
-    text-align: center; }
-  div.main h2 {
-    width: 300px;
-    text-align: center; }
+    padding-left: 5em;
+  }
+
+  div.item.wrapper  div.title h3{
+    width:300px;
+
+    text-align: center;
+  }
+  div.main h2{
+    width:300px;
+
+    text-align: center;
+  }
   div.header div.page.title h2 {
-    width: 300px;
-    text-align: center; }
-  div.header div.page.title h2 {
-    text-align: center; }
+    width:300px;
+
+    text-align: center;
+
+  }
+
+
+
+  div.header{
+    height: 40em;
+  }
   div.header div.nav {
-    border: 1px solid #c0ff74;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    text-align: center; }
+    border: 1px solid black;
+    width: 200px;
+    height: 500px;
+    background-color: #52c3b5;
+    margin-right: 0em;
+    margin-left: 0em;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+
+
+  }
+
+  div.header div.nav ul li.nav-item {
+    border: 1px solid black;
+    margin-top: 8px;
+    padding: 3px;
+    border-radius: 3px;
+    width: 130px;
+    background-color: #5E740B;
+    list-style: none;
+    margin-right: 10px;
+  }
   div.header div.nav ul li.nav-item a.inactive {
-    text-decoration: none; }
+    text-decoration: none;
+
+  }
   div.header div.nav ul li.lang a.inactive {
-    text-decoration: none; }
+
+    text-decoration: none;
+
+  }
   div.header div.nav ul li.lang a.active {
-    text-decoration: none; }
+    text-decoration: none;
+
+
+  }
+
+
   div.main div.items div.item.wrapper {
     width: 300px;
     height: 600px;
@@ -214,11 +313,18 @@
     margin-top: 2em;
     margin-left: 1.5em;
     background-color: #a4e061;
-    border-radius: 5px; }
+    border-radius: 5px;
+
+
+  }
   div.main div.items div.item.wrapper div.image a img#img {
+
     width: 150px;
     height: 200px;
-    border: 1px solid black; }
+
+    border: 1px solid black;
+  }
+
   div.header div.nav ul li.nav-item {
     border: 1px solid black;
     margin-top: 8px;
@@ -226,38 +332,66 @@
     border-radius: 3px;
     width: 250px;
     background-color: #5E740B;
-    list-style: none; }
+    list-style: none;
+
+  }
   div.header div.nav ul li.nav-item a {
-    color: black; }
+    color: black;
+  }
+
   div.header div.nav ul li.lang {
     list-style: none;
     display: inline-block;
     border: 1px solid black;
-    margin-right: 18px; }
+    margin-right: 18px;
+
+  }
+
   div.header div.nav ul li {
-    width: 80px; }
+    width: 80px;
+
+  }
+
+
+
   div.main div.items p {
-    text-align: center; }
+
+    text-align: center;
+  }
   .active {
-    color: darkorange; }
-    .active:hover {
-      color: darkorange; }
+    color: darkorange;
+
+    &:hover {
+      color: darkorange;
+    }
+  }
   div a img#img {
     display: block;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+  }
   .buy {
-    text-align: center; }
+    text-align: center;
+  }
   div.main div.items div.item.wrapper div.image a img {
     border: 1px solid black;
     width: 150px;
     height: 200px;
     display: block;
     margin-left: auto;
-    margin-right: auto; }
-  body {
-    background-color: #fff069; } }
+    margin-right: auto;
+  }
 
+  body {
+    background-color: #fff069;
+  }
+}
+
+
+
+
+
+*/
 /*    common CSS*/
 input:focus {
   background-color: yellow; }
