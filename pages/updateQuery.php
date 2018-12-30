@@ -25,7 +25,7 @@
                 // will escape all the necessary properties > save to use!
                 $query->setProperties($title, $weight, $price, $hasLights, $hasGears, $gearTypeID, $nbOfGears, $wheelSize, $brakeTypeID, $userID);
                 $queryUpdateSuccess = $query->saveQueryInDB();
-            } else return false;
+            }
 
 
         } else echo "You are not an admin, sorry!";

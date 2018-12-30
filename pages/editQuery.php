@@ -9,7 +9,7 @@
         $login = $_SESSION["user"];
         $account = Account::getAccountByLogin($login);
         if ($account->isAdminAccount()) {
-            $queryID = $_GET["queryToEditID"];
+            $queryID = $_GET["queryID"];
             $query = Query::getQueryByID($queryID);
             $query->setCookiesForQuery();
             $language = getLang();

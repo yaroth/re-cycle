@@ -38,7 +38,7 @@
             return $query;
         }
 
-        public function setProperties($title, $weight, $price, $hasLights, $hasGears, $gearTypeID , $nbOfGears, $wheelSize, $brakeTypeID , $userID) {
+        public function setProperties($title, $weight, $price, $hasLights, $hasGears, $gearTypeID, $nbOfGears, $wheelSize, $brakeTypeID, $userID) {
             $db = DB::getInstance();
             $this->title = $db->escape_string($title);
             $this->weight = $db->escape_string($weight);
@@ -55,6 +55,7 @@
         public function __toString() {
             return sprintf("query %d: '%s' owned by: %s", $this->id, $this->title, $this->userID);
         }
+
         // returns a queries array
         public static function getQueries() {
             $queries = array();
@@ -159,7 +160,7 @@
             }
             return $stmt != null;
         }
-        
+
         public function saveQueryInDB() {
             $ADD_STATEMENT = "UPDATE queries SET title=?, userID=?, weight=?, price=?, hasLights=?, hasGears=?, wheelSize=?, brakeTypeID=?, nbOfGears=?, gearTypeID=? WHERE queries.id = ?;";
             $db = DB::getInstance();

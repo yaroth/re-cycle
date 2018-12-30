@@ -113,11 +113,8 @@
     }
 
     function listMatchingBicycles($userLogin) {
-        $userID = User::getUserIDByLogin($userLogin);
-        $userMatchings = Matching::getMatchingsByUserID($userID);
-        foreach ($userMatchings as $matching){
-            $bikeID = $matching->bikeID;
-            $bike = Bicycle::getBicycleByID($bikeID);
+        $matchingBikes = Matching::getMatchingBikesForUser($userLogin);
+        foreach ($matchingBikes as $bike){
             listBike($bike);
         }
     }

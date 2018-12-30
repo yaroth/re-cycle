@@ -110,4 +110,38 @@
             return $queries;
         }
 
+        // TODO: complete matching conditions
+        public static function getMatchingBikesForUser($userLogin) {
+            $bikes = Bicycle::getBicycles();
+            $tempArray = array();
+            $userID = User::getUserIDByLogin($userLogin);
+            $queries = Query::getQueriesByUserID($userID);
+            foreach ($bikes as $bike) {
+                foreach ($queries as $query) {
+                    if ($bike->gearTypeID == $query->gearTypeID) {
+                        $tempArray[] = $bike;
+                    }
+                }
+
+            }
+            $foundBikes = array_unique($tempArray);
+            return $foundBikes;
+
+        }
+
+        // TODO: complete matching conditions
+        public static function getMatchingBikesByQuery($query) {
+            $bikes = Bicycle::getBicycles();
+            $tempArray = array();
+            foreach ($bikes as $bike) {
+                if ($bike->gearTypeID == $query->gearTypeID) {
+                    $tempArray[] = $bike;
+                }
+
+            }
+            $foundBikes = array_unique($tempArray);
+            return $foundBikes;
+
+        }
+
     }
