@@ -383,3 +383,15 @@ function listBikes(element) {
             $("#items-wrapper").html(bikesHTML)
         });
 }
+
+function buyBike(el) {
+    let bikeID = $(el).val();
+    var reallyBuy = confirm("Do you really want to buy this bicycle?");
+    if (reallyBuy) {
+        $.post("purchaseConfirmation.php", {bikeID: bikeID},
+            function (bikesHTML) {
+                $("#items-wrapper").html(bikesHTML)
+            });
+    }
+
+}

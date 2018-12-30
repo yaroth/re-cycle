@@ -39,10 +39,8 @@
         }
     }
 
+    // TODO: make sure 'buy' button will only call buyBike if user is logged in, elsewise inform user to log in or create account
     function listBike($bike) {
-        $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
-        $targetURL = add_param($targetURL, "id", getId());
-        $targetURL = add_param($targetURL, "bikeID", $bike->id);
         $item = '<div class="item wrapper">
             <div class="title">
             <h3>' . $bike->title . '</h3>
@@ -58,15 +56,18 @@
                 <p>Speeds: ' . $bike->nbOfGears . '</p>
                 <p>Brakes: ' . translate($bike->getBrakeTypeName()) . '</p>
                 <p>Wheel size: ' . $bike->wheelSize . '"</p>
+                <p>Has lights: ' . ($bike->hasLights ? "yes" : "no") . '"</p>
+                <p>Has gears: ' . ($bike->hasGears ? "yes" : "no") . '"</p>
                 <p>Owner: ' . $bike->getOwnerName() . '</p>
-            </div>
-            <div class="buy">
-                <form action="' . $targetURL . '" method="post" name="buyBike" >
-                <input type="hidden" name="bikeID" value="' . $bike->id . '" required><br>
-                <button type="submit" value="buyBike">Buy!</button>
-                </form>
-            </div>
-        </div>';
+            </div>';
+        if (isset($_SESSION["user"])) {
+            $item .= '<div class="buy">
+                <input type="hidden" name="title" value="' . $bike->title . '">
+                <input type="hidden" name="price" value="' . $bike->price . '">
+                <button type="button" name="buyBike" onclick="buyBike(this);" value="' . $bike->id . '">Buy!</button>
+            </div>';
+        }
+        $item .= '</div>';
         echo $item;
     }
 
@@ -75,7 +76,7 @@
         $targetURL = add_param($targetURL, "id", getId());
         // TODO: check if GET is needed here!
 //        $targetURL = add_param($targetURL, "bikeID", $bike->id);
-            // TODO: why is there a link in the image here???
+        // TODO: why is there a link in the image here???
         $item = '<div class="item wrapper">
             <div class="title">
             <h3>' . $bike->title . '</h3>
@@ -112,15 +113,19 @@
         }
     }
 
-    function listMatchingBicycles($userLogin) {
+    function listMatchingBicyclesByLogin($userLogin) {
         $userID = User::getUserIDByLogin($userLogin);
         $queries = Query::getQueriesByUserID($userID);
-        foreach ($queries as $query){
+        foreach ($queries as $query) {
             $matchingBikes = Matching::getMatchingBikesByQuery($query);
             echo "<div><h4>Your query: </h4></div>";
-            echo "<div>" . $query . '</div>>';
-            foreach ($matchingBikes as $bike){
-                listBike($bike);
+            echo "<div>" . $query . '</div>';
+            if ($matchingBikes == null) {
+                echo "<div>Sorry, no matching bicycles found!";
+            } else {
+                foreach ($matchingBikes as $bike) {
+                    listBike($bike);
+                }
             }
         }
 

@@ -11,7 +11,7 @@
         if (isset($_POST["allOrMatching"])) {
             $allOrMatchingBikes = $_POST["allOrMatching"];
             if ($allOrMatchingBikes == "all") listBicycles();
-            elseif ($allOrMatchingBikes == "matching") listMatchingBicycles($login);
+            elseif ($allOrMatchingBikes == "matching") listMatchingBicyclesByLogin($login);
 
         } else echo "You are not an admin, sorry!";
     } else echo "session cookie 'user' not set!";

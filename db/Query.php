@@ -20,10 +20,10 @@
         public $price;
         public $hasLights;
         public $hasGears;
-        public $wheelSize;
-        public $brakeTypeID;
-        public $nbOfGears;
         public $gearTypeID;
+        public $wheelSize;
+        public $nbOfGears;
+        public $brakeTypeID;
 
 
         function __construct() {

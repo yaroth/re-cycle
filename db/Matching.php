@@ -111,29 +111,6 @@
         }
 
         // TODO: complete matching conditions
-        public static function getMatchingBikesForUser($userLogin) {
-            $foundBikes = Bicycle::getBicycles();
-            $userID = User::getUserIDByLogin($userLogin);
-            $queries = Query::getQueriesByUserID($userID);
-//            echo "QUERIES length: " . count($queries) . '<br>';
-            foreach ($queries as $query) {
-                $foundBikesByQuery = array();
-//                echo '***************************************************<br>';
-//                echo $query . '<br>';
-//                echo '***************************************************<br>';
-//                echo '<br>';
-                foreach (Matching::getMatchingBikesByQuery($query) as $matchingBike) {
-                    $foundBikesByQuery[] = $matchingBike;
-                }
-                $foundBikes = array_intersect($foundBikes, $foundBikesByQuery);
-            }
-//            echo '<br>';
-//            echo '<br>';
-            return $foundBikes;
-
-        }
-
-        // TODO: complete matching conditions
         public static function getMatchingBikesByQuery($query) {
             $bikes = Bicycle::getBicycles();
             $foundBikesArray = Bicycle::getBicycles();
@@ -152,8 +129,23 @@
                 if ($query->price !== 0 && ($bike->price <= $query->price)) {
                     $priceBikesArray[] = $bike;
                 }
+                if (($query->hasLights && $bike->hasLights) || (!$query->hasLights && !$bike->hasLights)) {
+                    $hasLightsBikesArray[] = $bike;
+                }
+                if (($query->hasGears && $bike->hasGears) || (!$query->hasGears && !$bike->hasGears)) {
+                    $hasGearsBikesArray[] = $bike;
+                }
                 if ($query->gearTypeID !== 4 && ($bike->gearTypeID == $query->gearTypeID)) {
                     $gearTypeBikesArray[] = $bike;
+                }
+                if ($query->nbOfGears !== 0 && ($bike->nbOfGears >= $query->nbOfGears)) {
+                    $nbOfGearsBikesArray[] = $bike;
+                }
+                if ($query->wheelSize !== 0 && ($bike->wheelSize == $query->wheelSize)) {
+                    $wheelSizeBikesArray[] = $bike;
+                }
+                if ($query->brakeTypeID !== 5 && ($bike->brakeTypeID == $query->brakeTypeID)) {
+                    $brakeTypeBikesArray[] = $bike;
                 }
             }
             if ($query->weight !== 0) {
@@ -164,8 +156,25 @@
             if ($query->price !== 0) {
                 $foundBikesArray = array_intersect($foundBikesArray, $priceBikesArray);
             }
+            /*// TODO: Fix the hasLights condition
+            if (($query->hasLights && $bike->hasLights) || (!$query->hasLights && !$bike->hasLights)) {
+                $hasLightsBikesArray[] = $bike;
+            }
+            // TODO: Fix the hasGears condition
+            if (($query->hasGears && $bike->hasGears) || (!$query->hasGears && !$bike->hasGears)) {
+                $hasGearsBikesArray[] = $bike;
+            }*/
             if ($query->gearTypeID !== 4) {
                 $foundBikesArray = array_intersect($foundBikesArray, $gearTypeBikesArray);
+            }
+            if ($query->nbOfGears !== 0) {
+                $foundBikesArray = array_intersect($foundBikesArray, $nbOfGearsBikesArray);
+            }
+            if ($query->wheelSize !== 0) {
+                $foundBikesArray = array_intersect($foundBikesArray, $wheelSizeBikesArray);
+            }
+            if ($query->brakeTypeID !== 5) {
+                $foundBikesArray = array_intersect($foundBikesArray, $brakeTypeBikesArray);
             }
 
             return $foundBikesArray;
