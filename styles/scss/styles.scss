@@ -105,6 +105,12 @@ body {
       fieldset {
         display: inline;
         vertical-align: top;
+        .current-img {
+          width: 200px;
+          img {
+            width: 100%;
+          }
+        }
       }
     }
 
@@ -118,15 +124,19 @@ body {
         margin-bottom: 10px;
         padding: 10px;
         border: 1px solid black;
+
         form {
           display: flex;
           width: 100%;
         }
+
         .account {
           width: 17%;
+
           &.id {
             width: 6%;
           }
+
           &.admin {
             width: 10%;
           }
@@ -135,23 +145,66 @@ body {
     }
 
     .bikesList {
+      display: flex;
+      flex-wrap: wrap;
+
       .bike-wrapper {
-        display: flex;
         margin-bottom: 10px;
+        margin-right: 10px;
         padding: 10px;
         border: 1px solid black;
+        min-width: 200px;
+        max-width: 250px;
         .bike {
-          margin-right: 10px;
+          padding-bottom: 10px;
+          desc {
+            color: gray;
+          }
+
+          p {
+            margin: 5px 0;
+          }
+          &.img {
+            width: 100%;
+            img {
+              width: 70%;
+            }
+          }
           &.id {
-            width: 3%;
-          }
-          &.title {
-            width: 100px;
-          }
-          &.description {
-            width: 200px;
+            margin-bottom: 10px;
           }
         }
+
+      }
+    }
+
+    .queriesList {
+      display: flex;
+      flex-wrap: wrap;
+
+      .query-wrapper {
+        margin-bottom: 10px;
+        margin-right: 10px;
+        padding: 10px;
+        border: 1px solid black;
+        width: 200px;
+
+        .query {
+          padding-bottom: 10px;
+
+          desc {
+            color: gray;
+          }
+
+          &.title p {
+            margin: 5px 0;
+          }
+
+          &.id {
+            margin-bottom: 10px;
+          }
+        }
+
       }
     }
 
@@ -162,19 +215,30 @@ body {
       border: 1px solid black;
 
       .user {
-        margin-right: 20px;
+        margin-right: 10px;
 
         &.id {
-          width: 3%;
-          margin-right: 5px;
+          width: 30px;
         }
 
         &.name {
-          width: 17%;
+          width: 170px;
         }
 
         &.login {
-          width: 10%;
+          width: 80px;
+        }
+
+        &.dob {
+          width: 120px;
+        }
+
+        &.email {
+          width: 170px;
+        }
+
+        &.gender {
+          width: 60px;
         }
       }
 
@@ -183,7 +247,7 @@ body {
       }
     }
 
-    .items, .bikesList {
+    .items {
       margin: 20px 0;
 
       .item.wrapper {
@@ -227,31 +291,6 @@ body {
         }
       }
 
-      .query.wrapper {
-        display: flex;
-        margin-bottom: 10px;
-        padding: 10px;
-        border: 1px solid black;
-
-        .item {
-          margin-right: 10px;
-          &.id {
-            width: 20px;
-          }
-          &.title {
-            width: 150px;
-          }
-          &.price {
-            width: 120px;
-          }
-          &.weight {
-            width: 120px;
-          }
-          &.edit {
-            width: 100px;
-          }
-        }
-      }
     }
 
   }

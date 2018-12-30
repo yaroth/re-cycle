@@ -65,6 +65,10 @@ body {
       body .main form fieldset {
         display: inline;
         vertical-align: top; }
+        body .main form fieldset .current-img {
+          width: 200px; }
+          body .main form fieldset .current-img img {
+            width: 100%; }
     body .main input:focus {
       background-color: yellow; }
     body .main .accountsList .account-wrapper {
@@ -81,38 +85,69 @@ body {
           width: 6%; }
         body .main .accountsList .account-wrapper .account.admin {
           width: 10%; }
-    body .main .bikesList .bike-wrapper {
+    body .main .bikesList {
       display: flex;
-      margin-bottom: 10px;
-      padding: 10px;
-      border: 1px solid black; }
-      body .main .bikesList .bike-wrapper .bike {
-        margin-right: 10px; }
-        body .main .bikesList .bike-wrapper .bike.id {
-          width: 3%; }
-        body .main .bikesList .bike-wrapper .bike.title {
-          width: 100px; }
-        body .main .bikesList .bike-wrapper .bike.description {
-          width: 200px; }
+      flex-wrap: wrap; }
+      body .main .bikesList .bike-wrapper {
+        margin-bottom: 10px;
+        margin-right: 10px;
+        padding: 10px;
+        border: 1px solid black;
+        min-width: 200px;
+        max-width: 250px; }
+        body .main .bikesList .bike-wrapper .bike {
+          padding-bottom: 10px; }
+          body .main .bikesList .bike-wrapper .bike desc {
+            color: gray; }
+          body .main .bikesList .bike-wrapper .bike p {
+            margin: 5px 0; }
+          body .main .bikesList .bike-wrapper .bike.img {
+            width: 100%; }
+            body .main .bikesList .bike-wrapper .bike.img img {
+              width: 70%; }
+          body .main .bikesList .bike-wrapper .bike.id {
+            margin-bottom: 10px; }
+    body .main .queriesList {
+      display: flex;
+      flex-wrap: wrap; }
+      body .main .queriesList .query-wrapper {
+        margin-bottom: 10px;
+        margin-right: 10px;
+        padding: 10px;
+        border: 1px solid black;
+        width: 200px; }
+        body .main .queriesList .query-wrapper .query {
+          padding-bottom: 10px; }
+          body .main .queriesList .query-wrapper .query desc {
+            color: gray; }
+          body .main .queriesList .query-wrapper .query.title p {
+            margin: 5px 0; }
+          body .main .queriesList .query-wrapper .query.id {
+            margin-bottom: 10px; }
     body .main .user-wrapper {
       display: flex;
       margin-bottom: 10px;
       padding: 10px;
       border: 1px solid black; }
       body .main .user-wrapper .user {
-        margin-right: 20px; }
+        margin-right: 10px; }
         body .main .user-wrapper .user.id {
-          width: 3%;
-          margin-right: 5px; }
+          width: 30px; }
         body .main .user-wrapper .user.name {
-          width: 17%; }
+          width: 170px; }
         body .main .user-wrapper .user.login {
-          width: 10%; }
+          width: 80px; }
+        body .main .user-wrapper .user.dob {
+          width: 120px; }
+        body .main .user-wrapper .user.email {
+          width: 170px; }
+        body .main .user-wrapper .user.gender {
+          width: 60px; }
       body .main .user-wrapper .item {
         margin-right: 20px; }
-    body .main .items, body .main .bikesList {
+    body .main .items {
       margin: 20px 0; }
-      body .main .items .item.wrapper, body .main .bikesList .item.wrapper {
+      body .main .items .item.wrapper {
         display: inline-block;
         margin-right: 5px;
         margin-bottom: 5px;
@@ -123,37 +158,20 @@ body {
         border: 1px crimson solid;
         border-radius: 3px;
         overflow: hidden; }
-        body .main .items .item.wrapper .title, body .main .bikesList .item.wrapper .title {
+        body .main .items .item.wrapper .title {
           text-align: center; }
-        body .main .items .item.wrapper .image, body .main .bikesList .item.wrapper .image {
+        body .main .items .item.wrapper .image {
           width: 100%;
           overflow: hidden; }
-          body .main .items .item.wrapper .image img, body .main .bikesList .item.wrapper .image img {
+          body .main .items .item.wrapper .image img {
             width: 100%; }
-        body .main .items .item.wrapper .specs, body .main .bikesList .item.wrapper .specs {
+        body .main .items .item.wrapper .specs {
           color: darkblue;
           line-height: .3em; }
-      body .main .items form .current-img, body .main .bikesList form .current-img {
+      body .main .items form .current-img {
         width: 200px; }
-        body .main .items form .current-img img, body .main .bikesList form .current-img img {
+        body .main .items form .current-img img {
           width: 100%; }
-      body .main .items .query.wrapper, body .main .bikesList .query.wrapper {
-        display: flex;
-        margin-bottom: 10px;
-        padding: 10px;
-        border: 1px solid black; }
-        body .main .items .query.wrapper .item, body .main .bikesList .query.wrapper .item {
-          margin-right: 10px; }
-          body .main .items .query.wrapper .item.id, body .main .bikesList .query.wrapper .item.id {
-            width: 20px; }
-          body .main .items .query.wrapper .item.title, body .main .bikesList .query.wrapper .item.title {
-            width: 150px; }
-          body .main .items .query.wrapper .item.price, body .main .bikesList .query.wrapper .item.price {
-            width: 120px; }
-          body .main .items .query.wrapper .item.weight, body .main .bikesList .query.wrapper .item.weight {
-            width: 120px; }
-          body .main .items .query.wrapper .item.edit, body .main .bikesList .query.wrapper .item.edit {
-            width: 100px; }
   body .footer {
     clear: both;
     padding: 10px;

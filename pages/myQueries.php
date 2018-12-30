@@ -1,7 +1,7 @@
 <!--Will first list all user specific queries, then make it possible to edit a single query-->
 <h2><?php echo translate("myQueries"); ?></h2>
 <?php include '../data/queries.php'; ?>
-<div class="query items">
+<div class="queriesList">
     <?php
         if (isset($_SESSION["user"])) {
             $login = $_SESSION["user"];

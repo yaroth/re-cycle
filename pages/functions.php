@@ -184,6 +184,16 @@
         return $checked;
     }
 
+    function getSelected($name, $value) {
+        $selected = NULL;
+        if (isset($_COOKIE[$name]))
+            if ($_COOKIE[$name] == $value) {
+                $selected = 'selected="selected"';
+                //TODO: this is not valid for all cases -> update!
+            } elseif ($value == 1) $selected = 'selected="selected"';
+        return $selected;
+    }
+
     function bikeArrayFromPost() {
         $bikeArray = array();
         $success = true;

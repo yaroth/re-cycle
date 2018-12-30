@@ -38,6 +38,20 @@
             return $query;
         }
 
+        public function setProperties($title, $weight, $price, $hasLights, $hasGears, $gearTypeID , $nbOfGears, $wheelSize, $brakeTypeID , $userID) {
+            $db = DB::getInstance();
+            $this->title = $db->escape_string($title);
+            $this->weight = $db->escape_string($weight);
+            $this->price = $db->escape_string($price);
+            $this->hasLights = $db->escape_string($hasLights);
+            $this->hasGears = $db->escape_string($hasGears);
+            $this->gearTypeID = $db->escape_string($gearTypeID); //referencing to the gear type table
+            $this->nbOfGears = $db->escape_string($nbOfGears);
+            $this->wheelSize = $db->escape_string($wheelSize);
+            $this->brakeTypeID = $db->escape_string($brakeTypeID); //referencing to the brake type table
+            $this->userID = $db->escape_string($userID);
+        }
+
         public function __toString() {
             return sprintf("query %d: '%s' owned by: %s", $this->id, $this->title, $this->userID);
         }
@@ -145,6 +159,27 @@
             }
             return $stmt != null;
         }
+        
+        public function saveQueryInDB() {
+            $ADD_STATEMENT = "UPDATE queries SET title=?, userID=?, weight=?, price=?, hasLights=?, hasGears=?, wheelSize=?, brakeTypeID=?, nbOfGears=?, gearTypeID=? WHERE queries.id = ?;";
+            $db = DB::getInstance();
+            $stmt = $db->prepare($ADD_STATEMENT);
+            if (!$stmt) {
+                echo "Prepare failed";
+                exit;
+            }
+            $stmt->bind_param('sidiiiiiiii', $this->title, $this->userID, $this->weight, $this->price, $this->hasLights, $this->hasGears, $this->wheelSize, $this->brakeTypeID, $this->nbOfGears, $this->gearTypeID, $this->id);
+            if (!$stmt) {
+                echo "bind_param failed";
+                exit;
+            }
+            $stmt->execute();
+            if (!$stmt) {
+                echo "execute failed";
+                exit;
+            }
+            return $stmt != null;
+        }
 
         public function setCookiesForQuery() {
             foreach ($this as $key => $value) {
@@ -171,5 +206,15 @@
                 exit;
             }
             return $deletionSuccess;
+        }
+
+        public function getBrakeTypeName() {
+            $brakeType = BrakeType::getBrakeTypeByID($this->brakeTypeID);
+            return $brakeType->name;
+        }
+
+        public function getGearTypeName() {
+            $gearType = GearType::getGearTypeByID($this->gearTypeID);
+            return $gearType->name;
         }
     }

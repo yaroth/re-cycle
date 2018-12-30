@@ -162,10 +162,6 @@ function adminSelection(element) {
         $.get("queriesList.php", function (data) {
             $("#admin-content").html(data);
         })
-    } else if (buttonValue == "matches") {
-        $.get("matchesList.php", function (data) {
-            $("#admin-content").html(data);
-        })
     } else if (buttonValue == "accounts") {
         $.get("accountsList.php", function (data) {
             $("#admin-content").html(data);
@@ -206,9 +202,34 @@ function deleteBike(el) {
     }
 }
 
+function deleteQuery(el) {
+    let queryID = $(el).val();
+    // TODO: add details to delete message
+    var reallyDelete = confirm("Do you really want to delete this query (title: , description: ) ?");
+    if (reallyDelete) {
+        $.post("deleteQuery.php", {deleteQueryID: queryID}, function (data, status) {
+            if (status) {
+                $.get("queriesList.php", function (data) {
+                    $("#admin-content").html(data);
+                });
+                // TODO: update message with bike data like title
+                alert("Successfully deleted query with id: " + queryID)
+            } else alert("Could not delete query with id: " + queryID);
+        });
+    }
+}
+
 function editUser(el) {
     let userID = $(el).val();
     $.get("editUser.php", {userToEditID: userID}, function (data) {
+        $("#admin-content").html(data);
+    })
+
+}
+
+function editQuery(el) {
+    let queryID = $(el).val();
+    $.get("editQuery.php", {queryToEditID: queryID}, function (data) {
         $("#admin-content").html(data);
     })
 
@@ -246,6 +267,7 @@ function saveAccount(value) {
     } else alert("New passwords don't match. Try again!")
 }
 
+
 function saveUser(id) {
     let userID = id;
     let form = document.forms["editUser"];
@@ -259,7 +281,7 @@ function saveUser(id) {
             if (status) {
                 $.get("usersList.php", function (data) {
                     $("#admin-content").html(data);
-                })
+                });
                 alert("Successfully saved user " + fname + " " + lname + " with id: " + userID)
             } else alert("Could not save user " + fname + " " + lname + " with id: " + userID);
         });
@@ -302,16 +324,55 @@ function saveBike(id) {
         contentType: false,
         processData: false,
         method: 'POST',
-        success: function(data){
+        success: function (data) {
             alert("Successfully saved bike with id: " + bikeID);
             $.get("bikesList.php", function (data) {
                 $("#admin-content").html(data);
             });
         },
-        error: function(){
+        error: function () {
             alert("Could not save bike with id: " + bikeID);
         }
     });
+}
+
+function saveQuery(el) {
+    let queryID = $(el).val();
+    let form = document.forms["editQuery"];
+    let title = form.title.value;
+    let weight = form.weight.value;
+    let price = form.price.value;
+    let hasLights = form.hasLights.value;
+    if (hasLights === 'no') hasLights = 0;
+    let hasGears = form.hasGears.value;
+    if (hasGears === 'no') hasGears = 0;
+    let gearTypeID = form.gearTypeID.value;
+    let nbOfGears = form.nbOfGears.value;
+    let wheelSize = form.wheelSize.value;
+    let brakeTypeID = form.brakeTypeID.value;
+    let userID = form.userID.value;
+    alert("queryID: " +  queryID + "\ntitle: " +  title + "\nweight: " +  weight + "\nprice: " +  price + "\nhasLights: " +  hasLights + "\nhasGears: " +  hasGears + "\ngearTypeID: " +  gearTypeID + "\nnbOfGears: " +  nbOfGears + "\nwheelSize: " +  wheelSize + "\nbrakeTypeID: " +  brakeTypeID + "\nuserID: " +  userID);
+
+    $.post("updateQuery.php", {
+            queryID: queryID, title: title, weight: weight,
+            price: price, hasLights: hasLights, hasGears: hasGears, gearTypeID: gearTypeID,
+            nbOfGears: nbOfGears, wheelSize: wheelSize, brakeTypeID: brakeTypeID, userID: userID
+        },
+        function (data, status) {
+            if (status) {
+                $.get("queriesList.php", function (data) {
+                    $("#admin-content").html(data);
+                });
+                alert("Successfully saved query with id: " + queryID);
+            } else {
+                alert("Could not save query with id: " + queryID);
+                $.get("queriesList.php", function (data) {
+                    $("#admin-content").html(data);
+                });
+            }
+        });
+
+
 }
 
 function listBikes(element) {

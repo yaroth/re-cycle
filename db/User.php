@@ -247,4 +247,5 @@
             $account = Account::getAccountByLogin($this->login);
             return $account->isAdminAccount();
         }
+
     }
