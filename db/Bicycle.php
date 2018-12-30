@@ -36,7 +36,7 @@
         }
 
         public function __toString() {
-            return sprintf("%d) weight: %0.3f kg, wheel size: %d ", $this->id, $this->weight, $this->wheelSize);
+            return sprintf("%d) weight: %0.3f kg, price: %d.- , gear: %s", $this->id, $this->weight, $this->price, $this->getGearTypeName());
         }
 
         public static function getBicycles() {

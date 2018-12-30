@@ -112,19 +112,23 @@
 
         // TODO: complete matching conditions
         public static function getMatchingBikesForUser($userLogin) {
-            $bikes = Bicycle::getBicycles();
-            $tempArray = array();
+            $foundBikes = Bicycle::getBicycles();
             $userID = User::getUserIDByLogin($userLogin);
             $queries = Query::getQueriesByUserID($userID);
-            foreach ($bikes as $bike) {
-                foreach ($queries as $query) {
-                    if ($bike->gearTypeID == $query->gearTypeID) {
-                        $tempArray[] = $bike;
-                    }
+//            echo "QUERIES length: " . count($queries) . '<br>';
+            foreach ($queries as $query) {
+                $foundBikesByQuery = array();
+//                echo '***************************************************<br>';
+//                echo $query . '<br>';
+//                echo '***************************************************<br>';
+//                echo '<br>';
+                foreach (Matching::getMatchingBikesByQuery($query) as $matchingBike) {
+                    $foundBikesByQuery[] = $matchingBike;
                 }
-
+                $foundBikes = array_intersect($foundBikes, $foundBikesByQuery);
             }
-            $foundBikes = array_unique($tempArray);
+//            echo '<br>';
+//            echo '<br>';
             return $foundBikes;
 
         }
@@ -132,15 +136,39 @@
         // TODO: complete matching conditions
         public static function getMatchingBikesByQuery($query) {
             $bikes = Bicycle::getBicycles();
-            $tempArray = array();
+            $foundBikesArray = Bicycle::getBicycles();
+            $weightBikesArray = array();
+            $priceBikesArray = array();
+            $hasLightsBikesArray = array();
+            $hasGearsBikesArray = array();
+            $gearTypeBikesArray = array();
+            $nbOfGearsBikesArray = array();
+            $wheelSizeBikesArray = array();
+            $brakeTypeBikesArray = array();
             foreach ($bikes as $bike) {
-                if ($bike->gearTypeID == $query->gearTypeID) {
-                    $tempArray[] = $bike;
+                if ($query->weight !== 0 && ($bike->weight <= $query->weight)) {
+                    $weightBikesArray[] = $bike;
                 }
-
+                if ($query->price !== 0 && ($bike->price <= $query->price)) {
+                    $priceBikesArray[] = $bike;
+                }
+                if ($query->gearTypeID !== 4 && ($bike->gearTypeID == $query->gearTypeID)) {
+                    $gearTypeBikesArray[] = $bike;
+                }
             }
-            $foundBikes = array_unique($tempArray);
-            return $foundBikes;
+            if ($query->weight !== 0) {
+//                foreach ($foundBikesArray as $bike) echo "WEIGHT before: " . $bike . '<br>';
+//                echo '<br>';
+                $foundBikesArray = array_intersect($foundBikesArray, $weightBikesArray);
+            }
+            if ($query->price !== 0) {
+                $foundBikesArray = array_intersect($foundBikesArray, $priceBikesArray);
+            }
+            if ($query->gearTypeID !== 4) {
+                $foundBikesArray = array_intersect($foundBikesArray, $gearTypeBikesArray);
+            }
+
+            return $foundBikesArray;
 
         }
 
