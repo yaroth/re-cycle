@@ -18,9 +18,9 @@
         $urlbase = add_param($_SERVER['PHP_SELF'], "lang", $language);
         $navItemsIndex = 2;
         if (isset($_SESSION["user"])) {
-            $navItemsIndex = 7;
+            $navItemsIndex = 8;
             $login = $_SESSION["user"];
-            if (Account::isAdminByLogin($login)) $navItemsIndex = 9;
+            if (Account::isAdminByLogin($login)) $navItemsIndex = 10;
         }
         for ($i = 0; $i <= $navItemsIndex; $i++) {
             $url = add_param($urlbase, "id", $i);
@@ -153,9 +153,9 @@
         global $language;
         $titles = array(
             'page' => array(
-                'de' => array("Start", "Konto erstellen", "Login", "Meine Suchen", "Passwort ändern", "Velo hinzufügen", "Meine Velos", "Mein Konto", "Admin", "MVC"),
-                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Mes recherches", "Changer mot de passe", "Ajouter vélo", "Mes vélos", "Mon compte", "Admin", "MVC"),
-                'en' => array("Start", "Create account", "Login EN", "My queries", "Change password", "Add bike", "My bikes", "My account", "Admin", "MVC")
+                'de' => array("Start", "Konto erstellen", "Login", "Meine Suchen", "Passwort ändern", "Velo +", "Suche +", "Meine Velos", "Mein Konto", "Admin", "MVC"),
+                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Mes recherches", "Changer mot de passe", "vélo +", "Recherche+",  "Mes vélos", "Mon compte", "Admin", "MVC"),
+                'en' => array("Start", "Create account", "Login EN", "My queries", "Change password", "bike +", "Query+",  "My bikes", "My account", "Admin", "MVC")
             ));
         return $titles[$key][$language][$id] ?? "[$key][$language][$id]";
     }

@@ -22,6 +22,7 @@
                 $wheelSize = $_POST["wheelSize"];
                 $brakeTypeID = $_POST["brakeTypeID"];
                 $userID = $_POST["userID"];
+
                 // will escape all the necessary properties > save to use!
                 $query->setProperties($title, $weight, $price, $hasLights, $hasGears, $gearTypeID, $nbOfGears, $wheelSize, $brakeTypeID, $userID);
                 $queryUpdateSuccess = $query->saveQueryInDB();

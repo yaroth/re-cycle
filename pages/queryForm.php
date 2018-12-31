@@ -6,8 +6,7 @@
 <form action="<?php echo $targetURL ?>" method="post" enctype="multipart/form-data">
     <fieldset>
         Title : <br>
-        <input type="text" name="title" placeholder="lightweight racing bike"
-               value="<?php echo $_COOKIE["title"] ?? ""; ?>" autofocus required><br>
+        <input type="text" name="title" placeholder="lightweight racing bike" value="<?php echo $_COOKIE["title"] ?? ""; ?>" autofocus required><br>
         Max. weight :<br>
         <input type="number" step="0.1" name="weight" placeholder="9.750"
                value="<?php echo $_COOKIE["weight"] ?? ""; ?>"><br>

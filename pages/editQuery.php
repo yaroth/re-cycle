@@ -9,9 +9,9 @@
         $login = $_SESSION["user"];
         $account = Account::getAccountByLogin($login);
         if ($account->isAdminAccount()) {
+            // TODO: filter_input
             $queryID = $_GET["queryID"];
             $query = Query::getQueryByID($queryID);
-            $query->setCookiesForQuery();
             $language = getLang();
             include "adminQueryForm.php";
 

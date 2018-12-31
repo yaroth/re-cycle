@@ -32,12 +32,14 @@
         } elseif (getId() == 5) {
             include 'addBike.php';
         } elseif (getId() == 6) {
-            include 'myBikes.php';
+            include 'addQuery.php';
         } elseif (getId() == 7) {
-            include 'myAccount.php';
+            include 'myBikes.php';
         } elseif (getId() == 8) {
-            include 'admin.php';
+            include 'myAccount.php';
         } elseif (getId() == 9) {
+            include 'admin.php';
+        } elseif (getId() == 10) {
             include 'mvc.php';
         }
 

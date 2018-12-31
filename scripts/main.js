@@ -336,10 +336,11 @@ function saveBike(id) {
     });
 }
 
-// TODO: make sure feedback works properly! As of now: 'updateQuery.php' exits without error!
-function saveQuery(el) {
-    let queryID = $(el).val();
+function saveQuery( event ) {
+    event.preventDefault();
+    // event.stopPropagation();
     let form = document.forms["editQuery"];
+    let queryID = form.queryID.value;
     let title = form.title.value;
     let weight = form.weight.value;
     let price = form.price.value;
@@ -352,7 +353,7 @@ function saveQuery(el) {
     let wheelSize = form.wheelSize.value;
     let brakeTypeID = form.brakeTypeID.value;
     let userID = form.userID.value;
-    // alert("queryID: " +  queryID + "\ntitle: " +  title + "\nweight: " +  weight + "\nprice: " +  price + "\nhasLights: " +  hasLights + "\nhasGears: " +  hasGears + "\ngearTypeID: " +  gearTypeID + "\nnbOfGears: " +  nbOfGears + "\nwheelSize: " +  wheelSize + "\nbrakeTypeID: " +  brakeTypeID + "\nuserID: " +  userID);
+    // console.log("queryID: " +  queryID + "\ntitle: " +  title + "\nweight: " +  weight + "\nprice: " +  price + "\nhasLights: " +  hasLights + "\nhasGears: " +  hasGears + "\ngearTypeID: " +  gearTypeID + "\nnbOfGears: " +  nbOfGears + "\nwheelSize: " +  wheelSize + "\nbrakeTypeID: " +  brakeTypeID + "\nuserID: " +  userID);
 
     $.post("updateQuery.php", {
             queryID: queryID, title: title, weight: weight,

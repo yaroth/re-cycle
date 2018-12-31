@@ -1,4 +1,5 @@
 <!--Will first list all user specific queries, then make it possible to edit a single query-->
+<!--TODO: fix styling and output!-->
 <h2><?php echo translate("myQueries"); ?></h2>
 <?php include '../data/queries.php'; ?>
 <div class="queriesList">
