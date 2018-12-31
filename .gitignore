@@ -8,6 +8,8 @@
 .idea/
 
 package-lock.json
+composer.json
+composer.lock
 
 #confidential stuff
 /data/conf.php
