@@ -1,10 +1,3 @@
-$(document).ready(function () {
-
-    $.get("test.php", function (data) {
-        $("#time").html(data);
-    });
-
-});
 
 function validateCreateAccount() {
     //TODO: remove commenting out
@@ -377,6 +370,42 @@ function saveQuery( event ) {
 
 }
 
+function addQuery( event ) {
+    event.preventDefault();
+    // event.stopPropagation();
+    let form = document.forms["add-Query"];
+    let title = form.title.value;
+    let weight = form.weight.value;
+    let price = form.price.value;
+    let hasLights = form.hasLights.value;
+    if (hasLights === 'no') hasLights = 0;
+    let hasGears = form.hasGears.value;
+    if (hasGears === 'no') hasGears = 0;
+    let gearTypeID = form.gearTypeID.value;
+    let nbOfGears = form.nbOfGears.value;
+    let wheelSize = form.wheelSize.value;
+    let brakeTypeID = form.brakeTypeID.value;
+    // console.log("queryID: " +  queryID + "\ntitle: " +  title + "\nweight: " +  weight + "\nprice: " +  price + "\nhasLights: " +  hasLights + "\nhasGears: " +  hasGears + "\ngearTypeID: " +  gearTypeID + "\nnbOfGears: " +  nbOfGears + "\nwheelSize: " +  wheelSize + "\nbrakeTypeID: " +  brakeTypeID + "\nuserID: " +  userID);
+
+    $.post("addQueryToDB.php", {
+            title: title, weight: weight,
+            price: price, hasLights: hasLights, hasGears: hasGears, gearTypeID: gearTypeID,
+            nbOfGears: nbOfGears, wheelSize: wheelSize, brakeTypeID: brakeTypeID
+        },
+        function (data, status) {
+            if (status) {
+                alert("Successfully added query. ");
+                let urlParams = new URLSearchParams(window.location.search);
+                let lang = urlParams.get('lang');
+                location.href = "index.php?lang=" + lang + "&id=3";
+            } else {
+                alert("Could not add query. Sorry. ");
+            }
+        });
+
+
+}
+
 function listBikes(element) {
     let btnValue = $(element).val();
     $.post("getListOfBikes.php", {allOrMatching: btnValue},
@@ -390,8 +419,8 @@ function buyBike(el) {
     var reallyBuy = confirm("Do you really want to buy this bicycle?");
     if (reallyBuy) {
         $.post("purchaseConfirmation.php", {bikeID: bikeID},
-            function (bikesHTML) {
-                $("#items-wrapper").html(bikesHTML)
+            function (data) {
+                $("#items-wrapper").html(data)
             });
     }
 

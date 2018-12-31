@@ -53,7 +53,7 @@
         }
 
         public function __toString() {
-            return sprintf("Query ID %d) max. weight: %0.1f kg, max. price: %d.- , gearType: %s", $this->id, $this->weight, $this->price, $this->getGearTypeName());
+            return sprintf("Query ID %d) with title '%s' max. weight: %0.1f kg, max. price: %d.- , gearType: %s", $this->id, $this->title, $this->weight, $this->price, $this->getGearTypeName());
         }
 
         // returns a queries array

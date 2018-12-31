@@ -3,10 +3,8 @@
         if (isset($_SESSION["user"])) {
             $login = $_SESSION["user"];
             $user = User::getUserByLogin($login);
-            echo '<p>' . $user->fname . " " . $user->lname . " (ID: " . $user->id . ")" . '</p>';
-            echo '<p>DoB: ' . date("d.m.Y", strtotime($user->dob)) . '</p>';
+            echo '<p>' . $user->fname . " " . $user->lname . '</p>';
             echo '<p><a href="logout.php?lang='. getLang() .'">Logout</a></p>';
-            echo '<p id="time"></p>';
         } else {
             $lang = getLang();
             echo '<a href="index.php?lang=' . $lang . '&id=2">Log in</a>.';

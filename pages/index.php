@@ -11,12 +11,11 @@
     <link rel="stylesheet" href="../styles/css/styles.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="../scripts/main.js"></script>
-    <!--TODO: what is that line?-->
-    <?php $pageTitle = "homYe" ?>
     <title>Re-cycle</title>
 </head>
 <body>
 <?php include 'header.php'; ?>
+<?php include 'navigation.php'; ?>
 <div class="main">
     <?php
         if (getId() == 0) {
@@ -28,15 +27,15 @@
         } elseif (getId() == 3) {
             include 'myQueries.php';
         } elseif (getId() == 4) {
-            include 'setpassword.php';
-        } elseif (getId() == 5) {
-            include 'addBike.php';
-        } elseif (getId() == 6) {
-            include 'addQuery.php';
-        } elseif (getId() == 7) {
             include 'myBikes.php';
-        } elseif (getId() == 8) {
+        } elseif (getId() == 5) {
             include 'myAccount.php';
+        } elseif (getId() == 6) {
+            include 'setpassword.php';
+        } elseif (getId() == 7) {
+            include 'addBike.php';
+        } elseif (getId() == 8) {
+            include 'addQuery.php';
         } elseif (getId() == 9) {
             include 'admin.php';
         } elseif (getId() == 10) {
@@ -48,6 +47,14 @@
 
 
 </div><!--end main-->
-<div class="footer">footer</div>
+<div class="footer">
+    <div class="logo"><a href="index.php"><img src="../img/logo.png"></a></div>
+    <div class="impressum">
+        <p>recycle.ch</p>
+        <p>Wasserweg 7</p>
+        <p>3012 Bern</p>
+    </div>
+</div>
+
 </body>
 </html>

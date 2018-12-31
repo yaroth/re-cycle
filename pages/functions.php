@@ -153,9 +153,9 @@
         global $language;
         $titles = array(
             'page' => array(
-                'de' => array("Start", "Konto erstellen", "Login", "Meine Suchen", "Passwort ändern", "Velo +", "Suche +", "Meine Velos", "Mein Konto", "Admin", "MVC"),
-                'fr' => array("Départ", "S'enregistrer", "Se loguer", "Mes recherches", "Changer mot de passe", "vélo +", "Recherche+",  "Mes vélos", "Mon compte", "Admin", "MVC"),
-                'en' => array("Start", "Create account", "Login EN", "My queries", "Change password", "bike +", "Query+",  "My bikes", "My account", "Admin", "MVC")
+                'de' => array("Start", "Konto+", "Login", "Suchen", "Velos", "Konto", "Passwort", "Velo+", "Suche+", "Admin", "MVC"),
+                'fr' => array("Départ", "Compte+", "Se loguer", "Recherches", "Vélos", "Compte", "Mot de passe", "Vélo+", "Recherche+",  "Admin", "MVC"),
+                'en' => array("Start", "Account+", "Login", "Queries", "Bikes", "Account", "Password", "Bike+", "Query+",  "Admin", "MVC")
             ));
         return $titles[$key][$language][$id] ?? "[$key][$language][$id]";
     }

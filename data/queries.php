@@ -18,13 +18,6 @@
 
     function listQueriesByUserID($userID) {
         $userQueries = Query::getQueriesByUserID($userID);
-        echo '<div class="query-wrapper">
-                <div class="query id">ID</div>
-                <div class="query title">Title</div>
-                <div class="query price">Max. price [CHF]</div>
-                <div class="query weight">Max. weight [kg]</div>
-                <div class="query edit"></div>
-            </div>';
         foreach ($userQueries as $query) {
             listEditableQuery($query);
         }
@@ -55,27 +48,35 @@
         // TODO: maybe remove the next line? Is GET necessary?
 //        $targetURL = add_param($targetURL, "queryID", $query->id);
         $user = USER::getUserByID($query->userID);
-        $userName = $user->getUserFullName();
         $item = '<div class="query-wrapper">
-            <div class="query id">' . $query->id . '</div>
-            <div class="query title">' . $query->title . '</div>
-            <div class="query price">' . $query->price . '.- CHF</div>
-            <div class="query weight">' . $query->weight . ' kg</div>
-            <div class="query edit">
-                <form action="' . $targetURL . '" method="post" >
-                    <input type="hidden" name="queryID" value="' . $query->id . '" required>
-                    <button type="submit" name="action" value="editQuery">Edit</button>
-                    <button type="submit" name="action" value="deleteQuery">Delete</button>
-                </form>
-            </div>
-        </div>';
+                    <div class="query title"><p>' . $query->title . '</p></div>
+                    <div class="query weight"><desc>Max. weight:</desc> ' . $query->weight . '</div>
+                    <div class="query price"><desc>Max. price:</desc> ' . $query->price . '.-</div>
+                    <div class="query hasLights"><desc>Has lights?</desc> ' . ($query->hasLights ? "yes" : ($query->hasLights === null ? "N/A" : "no")) . '</div>
+                    <div class="query hasGears"><desc>Has gears?</desc> ' . ($query->hasGears ? "yes" : ($query->hasGears === null ? "N/A" : "no")) . '</div>
+                    <div class="query gearType"><desc>Required gear type:</desc> ' . $query->getGearTypeName() . '</div>
+                    <div class="query nbOfGears"><desc>Min. # gears:</desc> ' . $query->nbOfGears . '</div>
+                    <div class="query wheelSize"><desc>Required wheel size:</desc> ' . $query->wheelSize . '</div>
+                    <div class="query brakeType"><desc>Required brake type:</desc> ' . $query->getBrakeTypeName() . '</div>
+                    <div class="query owner"><desc>Query owner:</desc> ' . $user->getUserFullName() . '</div>
+                    <div class="query id"><desc>ID:</desc> ' . $query->id . '</div>
+                    <div class="query edit">
+                        <form action="' . $targetURL . '" method="post" >
+                            <input type="hidden" name="queryID" value="' . $query->id . '" required>
+                            <button type="submit" name="action" value="editQuery">Edit</button>
+                            <button type="submit" name="action" value="deleteQuery">Delete</button>
+                        </form>
+                    </div>
+                </div>';
         echo $item;
+
     }
 
     function listQueryByID($queryID) {
         $query = Query::getQueryByID($queryID);
         if ($query !== null) {
             $query->setCookiesForQuery();
+//            include '../pages/adminQueryForm.php';
             include '../pages/queryForm.php';
         }
     }

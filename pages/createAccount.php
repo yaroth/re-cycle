@@ -18,9 +18,7 @@
                 if ($addedUserToDB) {
                     echo '<h3>' . translate("success") . '</h3>';
                     echo '<h3>' . translate("welcome") . " " . $user->fname . " " . $user->lname . '!</h3>';
-                    echo "<p>Successfully added $login to DB.</p>";
                     include_once "authentication.inc.php";
-                    echo "<p>Login for '$login' successful!</p>";
                     echo '<p> Do you want to <a href="logout.php?lang=' . getLang() . '">logout?</a>';
                 } else {
                     echo '<h3>' . translate("error") . '</h3>';
@@ -28,7 +26,7 @@
                 }
             } else {
                 echo '<h3>' . translate("error") . '</h3>';
-                echo "<p>Login $login already exists. Please choose another login!</p>";
+                echo "<p>Either 'login' is empty or login $login already exists. Please choose another login!</p>";
                 include 'createAccountForm.php';
             }
         } else {

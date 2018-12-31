@@ -2,7 +2,7 @@
 <!--TODO: fix styling and output!-->
 <h2><?php echo translate("myQueries"); ?></h2>
 <?php include '../data/queries.php'; ?>
-<div class="queriesList">
+
     <?php
         if (isset($_SESSION["user"])) {
             $login = $_SESSION["user"];
@@ -15,8 +15,10 @@
                     $deletionSuccess = Query::deleteQueryByID($queryID);
                     if ($deletionSuccess) echo 'Query successfully deleted!';
                     else echo 'Sorry, could not delete query!';
+                    echo '<div class="queriesList">';
                     listQueriesByUserID($userID);
                 } else if ($action == 'editQuery') {
+                    echo '<div class="queriesList">';
                     listQueryByID($queryID);
                 }
             }
@@ -32,30 +34,35 @@
                     $queryObj->userID = $userID;
                     $updatedQueryInDB = Query::updateQueryInDB($queryObj);
                     if ($updatedQueryInDB) {
-                        echo '<h2>' . translate("success") . '</h2>';
-                        echo "<h3>Successfully updated your query data.</h3>";
+                        echo '<h3>' . translate("success") . '</h3>';
+                        echo "<p>Successfully updated your query data.</p>";
+                        echo '<div class="queriesList">';
                         listQueriesByUserID($userID);
                     }
                     else {
-                        echo '<h2>' . translate("error") . '</h2>';
-                        echo "<h3>Could NOT update query data!</h3>";
+                        echo '<h3>' . translate("error") . '</h3>';
+                        echo "<p>Could NOT update query data!</p>";
+                        echo '<div class="queriesList">';
                         include 'queryForm.php';
                     }
                 } // TODO: should show POST data!
                 else {
-                    echo '<h2>' . translate("error") . '</h2>';
+                    echo '<h3>' . translate("error") . '</h3>';
                     // TODO: Fix error handling! write to log file!
-                    echo "<h3>Could NOT update query data! (queryArray is false)</h3>";
+                    echo "<p>Could NOT update query data! (queryArray is false)</p>";
+                    echo '<div class="queriesList">';
                     include 'queryForm.php';
                 }
             } // No POST > list all queries by userID
             else {
+                echo '<div class="queriesList">';
                 listQueriesByUserID($userID);
             }
         } else {
             $lang = getLang();
             echo '<h2>' . translate("error") . '</h2>';
             echo '<h3>' . translate("sorry") . ', to view your queries you first need to <a href="index.php?lang=' . $lang . '&id=2">login</a>!</h3>';
+            echo '<div class="queriesList">';
         }
     ?>
 </div>

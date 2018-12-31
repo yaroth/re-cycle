@@ -4,5 +4,5 @@
     if (isset($_SESSION["user"])) {
         $login = $_SESSION["user"];
         $language = getLang();
-        include "adminQueryForm.php";
+        include "addQueryForm.php";
     } else echo "session cookie 'user' not set!";

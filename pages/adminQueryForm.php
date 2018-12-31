@@ -30,7 +30,7 @@
 <form name="editQuery" onsubmit="return saveQuery(event)">
     <input type="hidden" name="queryID" value="<?php echo $queryID; ?>">
     <fieldset>
-        <label>Query</label>
+        <legend>Query</legend>
         Title : <br>
         <input type="text" name="title" placeholder="lightweight racing bike" value="<?php echo $query->title ?? ""; ?>"
                autofocus required><br>

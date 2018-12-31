@@ -1,8 +1,47 @@
 body {
-  margin: 0; }
+  margin: 0;
+  background-color: lightblue; }
   body .header {
-    background-color: #aaffaa;
-    padding: 10px; }
+    background-color: lightblue;
+    padding: 10px;
+    display: flex; }
+    body .header .meta ul {
+      display: flex;
+      font-size: 20px;
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+      margin-top: 20px; }
+      body .header .meta ul:first-child {
+        margin-top: 0; }
+      body .header .meta ul li.nav-item {
+        display: block;
+        padding: 5px;
+        margin-top: 2px;
+        margin-right: 5px;
+        background-color: #c0bfbd;
+        border-radius: 3px; }
+        body .header .meta ul li.nav-item:first-child {
+          margin-left: 5px; }
+      body .header .meta ul li.lang {
+        display: inline; }
+      body .header .meta ul li .active {
+        color: #1e17ff; }
+        body .header .meta ul li .active:hover {
+          color: darkorange; }
+      body .header .meta ul li a {
+        color: darkblue;
+        margin: 0px;
+        padding: 5px;
+        text-decoration: none; }
+        body .header .meta ul li a:hover {
+          color: blue; }
+    body .header .meta .userInfo {
+      display: inline-block;
+      margin-top: 20px; }
+      body .header .meta .userInfo p {
+        margin: 0 5px;
+        padding: 1px 5px; }
     body .header .logo {
       width: 10%;
       display: inline-block;
@@ -14,43 +53,39 @@ body {
     body .header .page.title {
       display: inline-block;
       width: 50%; }
-    body .header .nav {
-      display: inline-block;
-      background-color: #009926;
-      padding: 10px;
-      text-align: center;
-      vertical-align: top;
-      float: right;
-      border-radius: 3px; }
-      body .header .nav ul {
-        font-size: 20px;
-        margin: 0px;
-        padding: 0px;
-        list-style: none;
-        margin-top: 20px; }
-        body .header .nav ul:first-child {
-          margin-top: 0; }
-        body .header .nav ul li.nav-item {
-          display: block; }
-        body .header .nav ul li.lang {
-          display: inline; }
-        body .header .nav ul li .active {
+  body .nav {
+    text-align: center; }
+    body .nav ul {
+      display: flex;
+      font-size: 20px;
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+      margin-top: 20px; }
+      body .nav ul:first-child {
+        margin-top: 0; }
+      body .nav ul li.nav-item {
+        display: block;
+        padding: 5px;
+        margin-top: 2px;
+        margin-right: 5px;
+        background-color: #c0bfbd;
+        border-radius: 3px; }
+        body .nav ul li.nav-item:first-child {
+          margin-left: 5px; }
+      body .nav ul li.lang {
+        display: inline; }
+      body .nav ul li .active {
+        color: #1e17ff; }
+        body .nav ul li .active:hover {
           color: darkorange; }
-          body .header .nav ul li .active:hover {
-            color: darkorange; }
-        body .header .nav ul li a {
-          color: darkblue;
-          margin: 0px;
-          padding: 5px;
-          text-decoration: none; }
-          body .header .nav ul li a:hover {
-            color: blue; }
-      body .header .nav .userInfo {
-        display: inline-block;
-        margin-top: 20px; }
-        body .header .nav .userInfo p {
-          margin: 0 5px;
-          padding: 1px 5px; }
+      body .nav ul li a {
+        color: darkblue;
+        margin: 0px;
+        padding: 5px;
+        text-decoration: none; }
+        body .nav ul li a:hover {
+          color: blue; }
   body .inpagenav {
     width: 25%;
     background-color: yellowgreen;
@@ -173,6 +208,17 @@ body {
         body .main .items form .current-img img {
           width: 100%; }
   body .footer {
-    clear: both;
+    display: flex;
+    flex-wrap: wrap;
     padding: 10px;
-    background-color: #ffdddd; }
+    background-color: #c7dde8; }
+    body .footer .logo {
+      width: 80px;
+      margin-right: 20px; }
+      body .footer .logo img {
+        width: 100%; }
+    body .footer .impressum {
+      width: 100px;
+      padding: 10px; }
+      body .footer .impressum p {
+        margin: 0; }

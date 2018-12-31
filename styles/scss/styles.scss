@@ -1,38 +1,16 @@
 
 body {
   margin: 0;
+  background-color: lightblue;
 
   .header {
-    background-color: #aaffaa;
+    background-color: lightblue;
     padding: 10px;
+    display: flex;
 
-    .logo {
-      width: 10%;
-      display: inline-block;
-      vertical-align: top;
-      margin-right: 20px;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    .page.title {
-      display: inline-block;
-      width: 50%;
-    }
-
-    .nav {
-      display: inline-block;
-      background-color: #009926;
-      padding: 10px;
-      text-align: center;
-      vertical-align: top;
-      float: right;
-      border-radius: 3px;
-
+    .meta {
       ul {
+        display: flex;
         font-size: 20px;
         margin: 0px;
         padding: 0px;
@@ -47,6 +25,15 @@ body {
         li {
           &.nav-item {
             display: block;
+            padding: 5px;
+            margin-top: 2px;
+            margin-right: 5px;
+            background-color: rgb(192, 191, 189);
+            border-radius: 3px;
+
+            &:first-child {
+              margin-left: 5px;
+            }
           }
 
           &.lang {
@@ -54,7 +41,7 @@ body {
           }
 
           .active {
-            color: darkorange;
+            color: rgb(30, 23, 255);
 
             &:hover {
               color: darkorange;
@@ -83,8 +70,81 @@ body {
           padding: 1px 5px;
         }
       }
-
     }
+
+    .logo {
+      width: 10%;
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 20px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .page.title {
+      display: inline-block;
+      width: 50%;
+    }
+  }
+
+  .nav {
+    text-align: center;
+
+    ul {
+      display: flex;
+      font-size: 20px;
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      margin-top: 20px;
+
+      li {
+        &.nav-item {
+          display: block;
+          padding: 5px;
+          margin-top: 2px;
+          margin-right: 5px;
+          background-color: rgb(192, 191, 189);
+          border-radius: 3px;
+
+          &:first-child {
+            margin-left: 5px;
+          }
+        }
+
+        &.lang {
+          display: inline;
+        }
+
+        .active {
+          color: rgb(30, 23, 255);
+
+          &:hover {
+            color: darkorange;
+          }
+        }
+
+        a {
+          color: darkblue;
+          margin: 0px;
+          padding: 5px;
+          text-decoration: none;
+
+          &:hover {
+            color: blue;
+          }
+        }
+      }
+    }
+
   }
 
   .inpagenav {
@@ -105,8 +165,10 @@ body {
       fieldset {
         display: inline;
         vertical-align: top;
+
         .current-img {
           width: 200px;
+
           img {
             width: 100%;
           }
@@ -155,8 +217,10 @@ body {
         border: 1px solid black;
         min-width: 200px;
         max-width: 250px;
+
         .bike {
           padding-bottom: 10px;
+
           desc {
             color: gray;
           }
@@ -164,12 +228,15 @@ body {
           p {
             margin: 5px 0;
           }
+
           &.img {
             width: 100%;
+
             img {
               width: 70%;
             }
           }
+
           &.id {
             margin-bottom: 10px;
           }
@@ -296,8 +363,27 @@ body {
   }
 
   .footer {
-    clear: both;
+    display: flex;
+    flex-wrap: wrap;
     padding: 10px;
-    background-color: #ffdddd;
+    background-color: #c7dde8;
+
+    .logo {
+      width: 80px;
+      margin-right: 20px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .impressum {
+      width: 100px;
+      padding: 10px;
+
+      p {
+        margin: 0;
+      }
+    }
   }
 }

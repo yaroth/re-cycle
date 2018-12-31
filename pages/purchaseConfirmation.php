@@ -37,14 +37,16 @@
                     $mail->Port = 587;                                    // TCP port to connect to
 
                     //Recipients
-                    $mail->setFrom('yann.roth@gmx.net', 'Re-cycle info');
+                    $mail->setFrom('recycle@gmx.ch', 'Re-cycle info');
                     $mail->addAddress('yann.roth@gmx.net', 'Yann Roth');     // Add a recipient
-                    $mail->addReplyTo('yann.roth@gmx.net', 'Yann Roth');
+                    $mail->addReplyTo('recycle@gmx.ch', 'Re-cycle info');
+
+                    $mail->addCC('yannkristen.roth@students.bfh.ch', 'Yann Roth BFH');
 
 
                     //Content
                     $mail->isHTML(true);                                  // Set email format to HTML
-                    $mail->Subject = 'Here is the subject';
+                    $mail->Subject = 'recycle.ch: Ihr neues Secondhand Velo!';
                     $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
                     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 

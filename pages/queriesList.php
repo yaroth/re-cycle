@@ -6,8 +6,7 @@
     echo '<div class="queriesList">';
     foreach (Query::getQueries() as $query) {
         $user = User::getUserByID($query->userID);
-        echo
-            '<div class="query-wrapper">
+        echo '<div class="query-wrapper">
                 <div class="query title"><p>' . $query->title . '</p></div>
                 <div class="query weight"><desc>Max. weight:</desc> ' . $query->weight . '</div>
                 <div class="query price"><desc>Max. price:</desc> ' . $query->price . '.-</div>
