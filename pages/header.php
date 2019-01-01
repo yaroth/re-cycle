@@ -1,4 +1,4 @@
-<div class="header">
+<header class="header">
     <div class="logo"><a href="index.php"><img src="../img/logo.png"></a></div>
     <div class="page title">
         <h1>Re-cycle</h1>
@@ -18,4 +18,4 @@
                 $_SESSION["user"] = $login;
         }
         include 'metaUser.php' ?>
-</div>
+</header>

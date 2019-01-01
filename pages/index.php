@@ -47,17 +47,17 @@
     ?>
 
 
-</div><!--end main-->
-<div class="footer">
-<div class="general">
-    <div class="logo"><a href="index.php"><img src="../img/logo.png"></a></div>
-    <div class="impressum">
-        <p>recycle.ch</p>
-        <p>Wasserweg 7</p>
-        <p>3012 Bern</p>
+    </div><!--end main-->
+    <div class="footer">
+        <div class="general">
+            <div class="logo"><a href="index.php"><img src="../img/logo.png"></a></div>
+            <div class="impressum">
+                <p>recycle.ch</p>
+                <p>Wasserweg 7</p>
+                <p>3012 Bern</p>
+            </div>
+        </div>
     </div>
-</div>
-</div>
 </div>
 
 </body>
