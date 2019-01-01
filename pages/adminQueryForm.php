@@ -3,6 +3,7 @@
      * @var Query $query
      */
     function setChecked($propName, $value) {
+        // $query MUST be declared, since it is used IN the function scope!
         global $query;
         $checked = NULL;
         if (isset($query->$propName)) {
