@@ -18,8 +18,11 @@
 
     function listQueriesByUserID($userID) {
         $userQueries = Query::getQueriesByUserID($userID);
-        foreach ($userQueries as $query) {
-            listEditableQuery($query);
+        if ($userQueries == null) echo 'You have no query defined, so: &nbsp<a href="index.php?lang=' . getLang() . '&id=8">add a new query</a>';
+        else {
+            foreach ($userQueries as $query) {
+                listEditableQuery($query);
+            }
         }
     }
 

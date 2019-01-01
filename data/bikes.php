@@ -31,11 +31,14 @@
 
     function listBikesByUser($user) {
         $bikesToSell = Bicycle::getBicyclesByUser($user);
-        usort($bikesToSell, function ($bike1, $bike2) {
-            return $bike1->price <=> $bike2->price;
-        });
-        foreach ($bikesToSell as $bike) {
-            listEditableBike($bike);
+        if ($bikesToSell == null) echo 'You have no bicycle of your own defined, so: &nbsp<a href="index.php?lang=' . getLang() . '&id=7">add a new bicycle</a>';
+        else {
+            usort($bikesToSell, function ($bike1, $bike2) {
+                return $bike1->price <=> $bike2->price;
+            });
+            foreach ($bikesToSell as $bike) {
+                listEditableBike($bike);
+            }
         }
     }
 
@@ -116,15 +119,18 @@
     function listMatchingBicyclesByLogin($userLogin) {
         $userID = User::getUserIDByLogin($userLogin);
         $queries = Query::getQueriesByUserID($userID);
-        foreach ($queries as $query) {
-            $matchingBikes = Matching::getMatchingBikesByQuery($query);
-            echo "<div><h4>Your query: </h4></div>";
-            echo "<div>" . $query . '</div>';
-            if ($matchingBikes == null) {
-                echo "<div>Sorry, no matching bicycles found!";
-            } else {
-                foreach ($matchingBikes as $bike) {
-                    listBike($bike);
+        if ($queries == null) echo 'You have no query defined, so: <a href="index.php?lang=' . getLang() . '&id=8">add a new query</a>';
+        else {
+            foreach ($queries as $query) {
+                $matchingBikes = Matching::getMatchingBikesByQuery($query);
+                echo "<div><h4>Your query: </h4></div>";
+                echo "<div>" . $query . '</div>';
+                if ($matchingBikes == null) {
+                    echo "<div>Sorry, no matching bicycles found!";
+                } else {
+                    foreach ($matchingBikes as $bike) {
+                        listBike($bike);
+                    }
                 }
             }
         }
