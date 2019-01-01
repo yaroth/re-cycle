@@ -30,6 +30,7 @@
     }
 
     function languages($language, $pageId) {
+        echo '<ul>';
         $languages = ['de', 'fr', 'en'];
         $urlbase = add_param($_SERVER['PHP_SELF'], 'id', $pageId);
         if (isset($_GET["bikeID"])) {
@@ -40,6 +41,7 @@
             $class = $language == $l ? 'active' : 'inactive';
             echo '<li class="lang"><a class="' . $class . '" href="' . add_param($urlbase, 'lang', $l) . '">' . strtoupper($l) . '</a></li>';
         }
+        echo '</ul>';
     }
 
     function content($pageId) {

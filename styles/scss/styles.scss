@@ -1,14 +1,117 @@
 
 body {
+  font-family: "Helvetica Neue", SansSerif;
   margin: 0;
-  background-color: lightblue;
+  background-color: honeydew;
 
-  .header {
+  .content {
+    width: 94%;
+    margin: 0 auto;
     background-color: lightblue;
-    padding: 10px;
-    display: flex;
 
-    .meta {
+    .header {
+      background-color: lightblue;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      .meta {
+        font-size: 1em;
+
+        .lang {
+          display: inline-block;
+          vertical-align: top;
+          padding-top: 6px;
+
+          ul {
+            display: flex;
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+
+            &:first-child {
+              margin-top: 0;
+            }
+
+            margin-top: 20px;
+
+            li {
+
+              &.lang {
+                display: inline;
+              }
+
+              .active {
+                color: rgb(30, 23, 255);
+              }
+
+              a {
+                color: darkblue;
+                margin: 0px;
+                padding: 5px;
+                text-decoration: none;
+
+                &:hover {
+                  color: blue;
+                }
+              }
+            }
+          }
+        }
+
+
+        .userInfo {
+          display: inline-block;
+          margin-left: 10px;
+
+          &:hover .detail.hidden {
+            display: block;
+          }
+
+          .short {
+            border: 1px solid gray;
+            border-radius: 24px;
+            padding: 11px 10px;
+            display: inline-block;
+          }
+
+          p {
+            margin: 0 5px;
+            padding: 1px 5px;
+          }
+
+          > a {
+            border: 1px solid gray;
+            border-radius: 24px;
+            padding: 11px 10px;
+            display: inline-block;
+          }
+
+          .detail.hidden {
+            display: none;
+          }
+        }
+      }
+
+      .logo {
+        width: 130px;
+        height: 130px;
+        margin-right: 20px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .page.title {
+      }
+    }
+
+    .nav {
+      text-align: center;
+      padding: 10px;
+
       ul {
         display: flex;
         font-size: 20px;
@@ -43,9 +146,6 @@ body {
           .active {
             color: rgb(30, 23, 255);
 
-            &:hover {
-              color: darkorange;
-            }
           }
 
           a {
@@ -61,329 +161,251 @@ body {
         }
       }
 
-      .userInfo {
-        display: inline-block;
-        margin-top: 20px;
-
-        p {
-          margin: 0 5px;
-          padding: 1px 5px;
-        }
-      }
     }
 
-    .logo {
-      width: 10%;
-      display: inline-block;
-      vertical-align: top;
-      margin-right: 20px;
+    .main {
+      background-color: lightblue;
+      padding: 10px;
+      overflow: hidden;
 
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    .page.title {
-      display: inline-block;
-      width: 50%;
-    }
-  }
-
-  .nav {
-    text-align: center;
-
-    ul {
-      display: flex;
-      font-size: 20px;
-      margin: 0px;
-      padding: 0px;
-      list-style: none;
-
-      &:first-child {
-        margin-top: 0;
-      }
-
-      margin-top: 20px;
-
-      li {
-        &.nav-item {
-          display: block;
-          padding: 5px;
-          margin-top: 2px;
-          margin-right: 5px;
-          background-color: rgb(192, 191, 189);
-          border-radius: 3px;
-
-          &:first-child {
-            margin-left: 5px;
-          }
-        }
-
-        &.lang {
-          display: inline;
-        }
-
-        .active {
-          color: rgb(30, 23, 255);
-
-          &:hover {
-            color: darkorange;
-          }
-        }
-
-        a {
-          color: darkblue;
-          margin: 0px;
-          padding: 5px;
-          text-decoration: none;
-
-          &:hover {
-            color: blue;
-          }
-        }
-      }
-    }
-
-  }
-
-  .inpagenav {
-    width: 25%;
-    background-color: yellowgreen;
-    float: left;
-    padding: 10px;
-  }
-
-  .main {
-    background-color: lightblue;
-    padding: 10px;
-    overflow: hidden;
-
-    form {
-      display: inline;
-
-      fieldset {
+      form {
         display: inline;
-        vertical-align: top;
 
-        .current-img {
-          width: 200px;
+        fieldset {
+          display: inline;
+          vertical-align: top;
 
-          img {
+          .current-img {
+            width: 200px;
+
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      input:focus {
+        background-color: yellow;
+      }
+
+      .accountsList {
+        .account-wrapper {
+          display: flex;
+          margin-bottom: 10px;
+          padding: 10px;
+          border: 1px solid black;
+
+          form {
+            display: flex;
             width: 100%;
           }
+
+          .account {
+            width: 17%;
+
+            &.id {
+              width: 6%;
+            }
+
+            &.admin {
+              width: 10%;
+            }
+          }
         }
       }
-    }
 
-    input:focus {
-      background-color: yellow;
-    }
+      .bikesList {
+        display: flex;
+        flex-wrap: wrap;
 
-    .accountsList {
-      .account-wrapper {
+        .bike-wrapper {
+          margin-bottom: 10px;
+          margin-right: 10px;
+          padding: 10px;
+          border: 1px solid gray;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          border-radius: 3px;
+          min-width: 200px;
+          max-width: 250px;
+
+          .bike {
+            padding-bottom: 10px;
+
+            desc {
+              color: gray;
+            }
+
+            p {
+              margin: 5px 0;
+            }
+
+            &.img {
+              width: 100%;
+
+              img {
+                width: 70%;
+              }
+            }
+
+            &.id {
+              margin-bottom: 10px;
+            }
+          }
+
+        }
+      }
+
+      .queriesList {
+        display: flex;
+        flex-wrap: wrap;
+
+        .query-wrapper {
+          margin-bottom: 10px;
+          margin-right: 10px;
+          padding: 10px;
+          border: 1px solid black;
+          width: 200px;
+
+          .query {
+            padding-bottom: 10px;
+
+            desc {
+              color: gray;
+            }
+
+            &.title p {
+              margin: 5px 0;
+            }
+
+            &.id {
+              margin-bottom: 10px;
+            }
+          }
+
+        }
+      }
+
+      .user-wrapper {
         display: flex;
         margin-bottom: 10px;
         padding: 10px;
         border: 1px solid black;
 
-        form {
-          display: flex;
-          width: 100%;
-        }
-
-        .account {
-          width: 17%;
+        .user {
+          margin-right: 10px;
 
           &.id {
-            width: 6%;
+            width: 30px;
           }
 
-          &.admin {
-            width: 10%;
+          &.name {
+            width: 170px;
+          }
+
+          &.login {
+            width: 80px;
+          }
+
+          &.dob {
+            width: 120px;
+          }
+
+          &.email {
+            width: 170px;
+          }
+
+          &.gender {
+            width: 60px;
           }
         }
+
+        .item {
+          margin-right: 20px;
+        }
       }
-    }
 
-    .bikesList {
-      display: flex;
-      flex-wrap: wrap;
+      .items {
+        margin: 20px 0;
 
-      .bike-wrapper {
-        margin-bottom: 10px;
-        margin-right: 10px;
-        padding: 10px;
-        border: 1px solid black;
-        min-width: 200px;
-        max-width: 250px;
+        .item.wrapper {
+          display: inline-block;
+          margin-right: 5px;
+          margin-bottom: 5px;
+          padding: 10px;
+          width: 250px;
+          min-width: 200px;
+          max-width: 300px;
+          border: 1px gray solid;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          border-radius: 3px;
+          overflow: hidden;
 
-        .bike {
-          padding-bottom: 10px;
-
-          desc {
-            color: gray;
+          .title {
+            text-align: center;
           }
 
-          p {
-            margin: 5px 0;
-          }
-
-          &.img {
+          .image {
             width: 100%;
+            overflow: hidden;
 
             img {
-              width: 70%;
+              width: 100%;
             }
           }
 
-          &.id {
-            margin-bottom: 10px;
+          .specs {
+            color: darkblue;
+            line-height: .3em;
+          }
+        }
+
+        form {
+          .current-img {
+            width: 200px;
+
+            img {
+              width: 100%;
+            }
           }
         }
 
       }
+
     }
 
-    .queriesList {
+    .footer {
       display: flex;
       flex-wrap: wrap;
-
-      .query-wrapper {
-        margin-bottom: 10px;
-        margin-right: 10px;
-        padding: 10px;
-        border: 1px solid black;
-        width: 200px;
-
-        .query {
-          padding-bottom: 10px;
-
-          desc {
-            color: gray;
-          }
-
-          &.title p {
-            margin: 5px 0;
-          }
-
-          &.id {
-            margin-bottom: 10px;
-          }
-        }
-
-      }
-    }
-
-    .user-wrapper {
-      display: flex;
-      margin-bottom: 10px;
       padding: 10px;
-      border: 1px solid black;
+      background-color: #c7dde8;
 
-      .user {
-        margin-right: 10px;
-
-        &.id {
-          width: 30px;
-        }
-
-        &.name {
-          width: 170px;
-        }
-
-        &.login {
-          width: 80px;
-        }
-
-        &.dob {
-          width: 120px;
-        }
-
-        &.email {
-          width: 170px;
-        }
-
-        &.gender {
+      .general {
+        .logo {
           width: 60px;
-        }
-      }
-
-      .item {
-        margin-right: 20px;
-      }
-    }
-
-    .items {
-      margin: 20px 0;
-
-      .item.wrapper {
-        display: inline-block;
-        margin-right: 5px;
-        margin-bottom: 5px;
-        padding: 10px;
-        width: 250px;
-        min-width: 200px;
-        max-width: 300px;
-        border: 1px crimson solid;
-        border-radius: 3px;
-        overflow: hidden;
-
-        .title {
-          text-align: center;
-        }
-
-        .image {
-          width: 100%;
-          overflow: hidden;
+          margin-right: 20px;
+          display: inline-block;
 
           img {
             width: 100%;
           }
         }
 
-        .specs {
-          color: darkblue;
-          line-height: .3em;
-        }
-      }
+        .impressum {
+          width: 100px;
+          display: inline-block;
+          vertical-align: top;
 
-      form {
-        .current-img {
-          width: 200px;
-
-          img {
-            width: 100%;
+          p {
+            margin: 0;
           }
         }
       }
 
-    }
 
-  }
-
-  .footer {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-    background-color: #c7dde8;
-
-    .logo {
-      width: 80px;
-      margin-right: 20px;
-
-      img {
-        width: 100%;
-      }
-    }
-
-    .impressum {
-      width: 100px;
-      padding: 10px;
-
-      p {
-        margin: 0;
-      }
     }
   }
+
 }

@@ -44,20 +44,20 @@
         $item = '<div class="item wrapper">
             <div class="title">
             <h3>' . $bike->title . '</h3>
-            <p class="price">' . $bike->price . '.-</p>
-            <p class="weight">Weight: ' . $bike->weight . ' kg</p>
+                <p>' . $bike->description . '</p>
+                <p class="price">' . $bike->price . '.-</p>
             </div>
             <div class="image">
                 <img src="../../img/uploads/' . $bike->imageName . '">
             </div>
             <div class="specs">
-                <p>' . $bike->description . '</p>
                 <p>Gear type: ' . translate($bike->getGearTypeName()) . '</p>
                 <p>Speeds: ' . $bike->nbOfGears . '</p>
                 <p>Brakes: ' . translate($bike->getBrakeTypeName()) . '</p>
                 <p>Wheel size: ' . $bike->wheelSize . '"</p>
                 <p>Has lights: ' . ($bike->hasLights ? "yes" : "no") . '"</p>
                 <p>Has gears: ' . ($bike->hasGears ? "yes" : "no") . '"</p>
+                <p class="weight">Weight: ' . $bike->weight . ' kg</p>
                 <p>Owner: ' . $bike->getOwnerName() . '</p>
             </div>';
         if (isset($_SESSION["user"])) {

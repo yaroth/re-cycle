@@ -1,224 +1,235 @@
 body {
+  font-family: "Helvetica Neue", SansSerif;
   margin: 0;
-  background-color: lightblue; }
-  body .header {
-    background-color: lightblue;
-    padding: 10px;
-    display: flex; }
-    body .header .meta ul {
-      display: flex;
-      font-size: 20px;
-      margin: 0px;
-      padding: 0px;
-      list-style: none;
-      margin-top: 20px; }
-      body .header .meta ul:first-child {
-        margin-top: 0; }
-      body .header .meta ul li.nav-item {
-        display: block;
-        padding: 5px;
-        margin-top: 2px;
-        margin-right: 5px;
-        background-color: #c0bfbd;
-        border-radius: 3px; }
-        body .header .meta ul li.nav-item:first-child {
-          margin-left: 5px; }
-      body .header .meta ul li.lang {
-        display: inline; }
-      body .header .meta ul li .active {
-        color: #1e17ff; }
-        body .header .meta ul li .active:hover {
-          color: darkorange; }
-      body .header .meta ul li a {
-        color: darkblue;
-        margin: 0px;
-        padding: 5px;
-        text-decoration: none; }
-        body .header .meta ul li a:hover {
-          color: blue; }
-    body .header .meta .userInfo {
-      display: inline-block;
-      margin-top: 20px; }
-      body .header .meta .userInfo p {
-        margin: 0 5px;
-        padding: 1px 5px; }
-    body .header .logo {
-      width: 10%;
-      display: inline-block;
-      vertical-align: top;
-      margin-right: 20px; }
-      body .header .logo img {
-        width: 100%;
-        height: 100%; }
-    body .header .page.title {
-      display: inline-block;
-      width: 50%; }
-  body .nav {
-    text-align: center; }
-    body .nav ul {
-      display: flex;
-      font-size: 20px;
-      margin: 0px;
-      padding: 0px;
-      list-style: none;
-      margin-top: 20px; }
-      body .nav ul:first-child {
-        margin-top: 0; }
-      body .nav ul li.nav-item {
-        display: block;
-        padding: 5px;
-        margin-top: 2px;
-        margin-right: 5px;
-        background-color: #c0bfbd;
-        border-radius: 3px; }
-        body .nav ul li.nav-item:first-child {
-          margin-left: 5px; }
-      body .nav ul li.lang {
-        display: inline; }
-      body .nav ul li .active {
-        color: #1e17ff; }
-        body .nav ul li .active:hover {
-          color: darkorange; }
-      body .nav ul li a {
-        color: darkblue;
-        margin: 0px;
-        padding: 5px;
-        text-decoration: none; }
-        body .nav ul li a:hover {
-          color: blue; }
-  body .inpagenav {
-    width: 25%;
-    background-color: yellowgreen;
-    float: left;
-    padding: 10px; }
-  body .main {
-    background-color: lightblue;
-    padding: 10px;
-    overflow: hidden; }
-    body .main form {
-      display: inline; }
-      body .main form fieldset {
-        display: inline;
-        vertical-align: top; }
-        body .main form fieldset .current-img {
-          width: 200px; }
-          body .main form fieldset .current-img img {
-            width: 100%; }
-    body .main input:focus {
-      background-color: yellow; }
-    body .main .accountsList .account-wrapper {
-      display: flex;
-      margin-bottom: 10px;
+  background-color: honeydew; }
+  body .content {
+    width: 94%;
+    margin: 0 auto;
+    background-color: lightblue; }
+    body .content .header {
+      background-color: lightblue;
       padding: 10px;
-      border: 1px solid black; }
-      body .main .accountsList .account-wrapper form {
-        display: flex;
-        width: 100%; }
-      body .main .accountsList .account-wrapper .account {
-        width: 17%; }
-        body .main .accountsList .account-wrapper .account.id {
-          width: 6%; }
-        body .main .accountsList .account-wrapper .account.admin {
-          width: 10%; }
-    body .main .bikesList {
       display: flex;
-      flex-wrap: wrap; }
-      body .main .bikesList .bike-wrapper {
-        margin-bottom: 10px;
-        margin-right: 10px;
-        padding: 10px;
-        border: 1px solid black;
-        min-width: 200px;
-        max-width: 250px; }
-        body .main .bikesList .bike-wrapper .bike {
-          padding-bottom: 10px; }
-          body .main .bikesList .bike-wrapper .bike desc {
-            color: gray; }
-          body .main .bikesList .bike-wrapper .bike p {
-            margin: 5px 0; }
-          body .main .bikesList .bike-wrapper .bike.img {
-            width: 100%; }
-            body .main .bikesList .bike-wrapper .bike.img img {
-              width: 70%; }
-          body .main .bikesList .bike-wrapper .bike.id {
-            margin-bottom: 10px; }
-    body .main .queriesList {
-      display: flex;
-      flex-wrap: wrap; }
-      body .main .queriesList .query-wrapper {
-        margin-bottom: 10px;
-        margin-right: 10px;
-        padding: 10px;
-        border: 1px solid black;
-        width: 200px; }
-        body .main .queriesList .query-wrapper .query {
-          padding-bottom: 10px; }
-          body .main .queriesList .query-wrapper .query desc {
-            color: gray; }
-          body .main .queriesList .query-wrapper .query.title p {
-            margin: 5px 0; }
-          body .main .queriesList .query-wrapper .query.id {
-            margin-bottom: 10px; }
-    body .main .user-wrapper {
-      display: flex;
-      margin-bottom: 10px;
-      padding: 10px;
-      border: 1px solid black; }
-      body .main .user-wrapper .user {
-        margin-right: 10px; }
-        body .main .user-wrapper .user.id {
-          width: 30px; }
-        body .main .user-wrapper .user.name {
-          width: 170px; }
-        body .main .user-wrapper .user.login {
-          width: 80px; }
-        body .main .user-wrapper .user.dob {
-          width: 120px; }
-        body .main .user-wrapper .user.email {
-          width: 170px; }
-        body .main .user-wrapper .user.gender {
-          width: 60px; }
-      body .main .user-wrapper .item {
+      justify-content: space-between; }
+      body .content .header .meta {
+        font-size: 1em; }
+        body .content .header .meta .lang {
+          display: inline-block;
+          vertical-align: top;
+          padding-top: 6px; }
+          body .content .header .meta .lang ul {
+            display: flex;
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            margin-top: 20px; }
+            body .content .header .meta .lang ul:first-child {
+              margin-top: 0; }
+            body .content .header .meta .lang ul li.lang {
+              display: inline; }
+            body .content .header .meta .lang ul li .active {
+              color: #1e17ff; }
+            body .content .header .meta .lang ul li a {
+              color: darkblue;
+              margin: 0px;
+              padding: 5px;
+              text-decoration: none; }
+              body .content .header .meta .lang ul li a:hover {
+                color: blue; }
+        body .content .header .meta .userInfo {
+          display: inline-block;
+          margin-left: 10px; }
+          body .content .header .meta .userInfo:hover .detail.hidden {
+            display: block; }
+          body .content .header .meta .userInfo .short {
+            border: 1px solid gray;
+            border-radius: 24px;
+            padding: 11px 10px;
+            display: inline-block; }
+          body .content .header .meta .userInfo p {
+            margin: 0 5px;
+            padding: 1px 5px; }
+          body .content .header .meta .userInfo > a {
+            border: 1px solid gray;
+            border-radius: 24px;
+            padding: 11px 10px;
+            display: inline-block; }
+          body .content .header .meta .userInfo .detail.hidden {
+            display: none; }
+      body .content .header .logo {
+        width: 130px;
+        height: 130px;
         margin-right: 20px; }
-    body .main .items {
-      margin: 20px 0; }
-      body .main .items .item.wrapper {
-        display: inline-block;
-        margin-right: 5px;
-        margin-bottom: 5px;
-        padding: 10px;
-        width: 250px;
-        min-width: 200px;
-        max-width: 300px;
-        border: 1px crimson solid;
-        border-radius: 3px;
-        overflow: hidden; }
-        body .main .items .item.wrapper .title {
-          text-align: center; }
-        body .main .items .item.wrapper .image {
+        body .content .header .logo img {
           width: 100%;
-          overflow: hidden; }
-          body .main .items .item.wrapper .image img {
-            width: 100%; }
-        body .main .items .item.wrapper .specs {
-          color: darkblue;
-          line-height: .3em; }
-      body .main .items form .current-img {
-        width: 200px; }
-        body .main .items form .current-img img {
-          width: 100%; }
-  body .footer {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-    background-color: #c7dde8; }
-    body .footer .logo {
-      width: 80px;
-      margin-right: 20px; }
-      body .footer .logo img {
-        width: 100%; }
-    body .footer .impressum {
-      width: 100px;
+          height: 100%; }
+    body .content .nav {
+      text-align: center;
       padding: 10px; }
-      body .footer .impressum p {
-        margin: 0; }
+      body .content .nav ul {
+        display: flex;
+        font-size: 20px;
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        margin-top: 20px; }
+        body .content .nav ul:first-child {
+          margin-top: 0; }
+        body .content .nav ul li.nav-item {
+          display: block;
+          padding: 5px;
+          margin-top: 2px;
+          margin-right: 5px;
+          background-color: #c0bfbd;
+          border-radius: 3px; }
+          body .content .nav ul li.nav-item:first-child {
+            margin-left: 5px; }
+        body .content .nav ul li.lang {
+          display: inline; }
+        body .content .nav ul li .active {
+          color: #1e17ff; }
+        body .content .nav ul li a {
+          color: darkblue;
+          margin: 0px;
+          padding: 5px;
+          text-decoration: none; }
+          body .content .nav ul li a:hover {
+            color: blue; }
+    body .content .main {
+      background-color: lightblue;
+      padding: 10px;
+      overflow: hidden; }
+      body .content .main form {
+        display: inline; }
+        body .content .main form fieldset {
+          display: inline;
+          vertical-align: top; }
+          body .content .main form fieldset .current-img {
+            width: 200px; }
+            body .content .main form fieldset .current-img img {
+              width: 100%; }
+      body .content .main input:focus {
+        background-color: yellow; }
+      body .content .main .accountsList .account-wrapper {
+        display: flex;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid black; }
+        body .content .main .accountsList .account-wrapper form {
+          display: flex;
+          width: 100%; }
+        body .content .main .accountsList .account-wrapper .account {
+          width: 17%; }
+          body .content .main .accountsList .account-wrapper .account.id {
+            width: 6%; }
+          body .content .main .accountsList .account-wrapper .account.admin {
+            width: 10%; }
+      body .content .main .bikesList {
+        display: flex;
+        flex-wrap: wrap; }
+        body .content .main .bikesList .bike-wrapper {
+          margin-bottom: 10px;
+          margin-right: 10px;
+          padding: 10px;
+          border: 1px solid gray;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          border-radius: 3px;
+          min-width: 200px;
+          max-width: 250px; }
+          body .content .main .bikesList .bike-wrapper .bike {
+            padding-bottom: 10px; }
+            body .content .main .bikesList .bike-wrapper .bike desc {
+              color: gray; }
+            body .content .main .bikesList .bike-wrapper .bike p {
+              margin: 5px 0; }
+            body .content .main .bikesList .bike-wrapper .bike.img {
+              width: 100%; }
+              body .content .main .bikesList .bike-wrapper .bike.img img {
+                width: 70%; }
+            body .content .main .bikesList .bike-wrapper .bike.id {
+              margin-bottom: 10px; }
+      body .content .main .queriesList {
+        display: flex;
+        flex-wrap: wrap; }
+        body .content .main .queriesList .query-wrapper {
+          margin-bottom: 10px;
+          margin-right: 10px;
+          padding: 10px;
+          border: 1px solid black;
+          width: 200px; }
+          body .content .main .queriesList .query-wrapper .query {
+            padding-bottom: 10px; }
+            body .content .main .queriesList .query-wrapper .query desc {
+              color: gray; }
+            body .content .main .queriesList .query-wrapper .query.title p {
+              margin: 5px 0; }
+            body .content .main .queriesList .query-wrapper .query.id {
+              margin-bottom: 10px; }
+      body .content .main .user-wrapper {
+        display: flex;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid black; }
+        body .content .main .user-wrapper .user {
+          margin-right: 10px; }
+          body .content .main .user-wrapper .user.id {
+            width: 30px; }
+          body .content .main .user-wrapper .user.name {
+            width: 170px; }
+          body .content .main .user-wrapper .user.login {
+            width: 80px; }
+          body .content .main .user-wrapper .user.dob {
+            width: 120px; }
+          body .content .main .user-wrapper .user.email {
+            width: 170px; }
+          body .content .main .user-wrapper .user.gender {
+            width: 60px; }
+        body .content .main .user-wrapper .item {
+          margin-right: 20px; }
+      body .content .main .items {
+        margin: 20px 0; }
+        body .content .main .items .item.wrapper {
+          display: inline-block;
+          margin-right: 5px;
+          margin-bottom: 5px;
+          padding: 10px;
+          width: 250px;
+          min-width: 200px;
+          max-width: 300px;
+          border: 1px gray solid;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          border-radius: 3px;
+          overflow: hidden; }
+          body .content .main .items .item.wrapper .title {
+            text-align: center; }
+          body .content .main .items .item.wrapper .image {
+            width: 100%;
+            overflow: hidden; }
+            body .content .main .items .item.wrapper .image img {
+              width: 100%; }
+          body .content .main .items .item.wrapper .specs {
+            color: darkblue;
+            line-height: .3em; }
+        body .content .main .items form .current-img {
+          width: 200px; }
+          body .content .main .items form .current-img img {
+            width: 100%; }
+    body .content .footer {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px;
+      background-color: #c7dde8; }
+      body .content .footer .general .logo {
+        width: 60px;
+        margin-right: 20px;
+        display: inline-block; }
+        body .content .footer .general .logo img {
+          width: 100%; }
+      body .content .footer .general .impressum {
+        width: 100px;
+        display: inline-block;
+        vertical-align: top; }
+        body .content .footer .general .impressum p {
+          margin: 0; }
