@@ -15,36 +15,36 @@
 </head>
 <body>
 <div class="content">
-<?php include 'header.php'; ?>
-<?php include 'navigation.php'; ?>
-<div class="main">
-    <?php
-        if (getId() == 0) {
-            include 'start.php';
-        } elseif (getId() == 1) {
-            include 'createAccount.php';
-        } elseif (getId() == 2) {
-            include 'login.php';
-        } elseif (getId() == 3) {
-            include 'myQueries.php';
-        } elseif (getId() == 4) {
-            include 'myBikes.php';
-        } elseif (getId() == 5) {
-            include 'myAccount.php';
-        } elseif (getId() == 6) {
-            include 'setpassword.php';
-        } elseif (getId() == 7) {
-            include 'addBike.php';
-        } elseif (getId() == 8) {
-            include 'addQuery.php';
-        } elseif (getId() == 9) {
-            include 'admin.php';
-        } elseif (getId() == 10) {
-            include 'mvc.php';
-        }
+    <?php include 'header.php'; ?>
+    <?php include 'navigation.php'; ?>
+    <div class="main">
+        <?php
+            if (getId() == 0) {
+                include 'start.php';
+            } elseif (getId() == 1) {
+                include 'createAccount.php';
+            } elseif (getId() == 2) {
+                include 'login.php';
+            } elseif (getId() == 3) {
+                include 'myQueries.php';
+            } elseif (getId() == 4) {
+                include 'myBikes.php';
+            } elseif (getId() == 5) {
+                include 'myAccount.php';
+            } elseif (getId() == 6) {
+                include 'setpassword.php';
+            } elseif (getId() == 7) {
+                include 'addBike.php';
+            } elseif (getId() == 8) {
+                include 'addQuery.php';
+            } elseif (getId() == 9) {
+                include 'admin.php';
+            } elseif (getId() == 10) {
+                include 'mvc.php';
+            }
 
 
-    ?>
+        ?>
 
 
     </div><!--end main-->
