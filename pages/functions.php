@@ -23,9 +23,16 @@
             if (Account::isAdminByLogin($login)) $navItemsIndex = 10;
         }
         for ($i = 0; $i <= $navItemsIndex; $i++) {
-            $url = add_param($urlbase, "id", $i);
-            $class = $pageId == $i ? 'active' : 'inactive';
-            echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . navtitles('page', $i) . "</a></li>";
+            if (isset($_SESSION["user"]) && !($i == 1 || $i == 2)) {
+                $url = add_param($urlbase, "id", $i);
+                $class = $pageId == $i ? 'active' : 'inactive';
+                echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . navtitles('page', $i) . "</a></li>";
+            }
+            elseif (!isset($_SESSION["user"])) {
+                $url = add_param($urlbase, "id", $i);
+                $class = $pageId == $i ? 'active' : 'inactive';
+                echo '<li class="nav-item"><a class="' . $class . '" href="' . $url . '">' . navtitles('page', $i) . "</a></li>";
+            }
         }
     }
 
@@ -156,8 +163,8 @@
         $titles = array(
             'page' => array(
                 'de' => array("Start", "Konto+", "Login", "Suchen", "Velos", "Konto", "Passwort", "Velo+", "Suche+", "Admin", "MVC"),
-                'fr' => array("Départ", "Compte+", "Se loguer", "Recherches", "Vélos", "Compte", "Mot de passe", "Vélo+", "Recherche+",  "Admin", "MVC"),
-                'en' => array("Start", "Account+", "Login", "Queries", "Bikes", "Account", "Password", "Bike+", "Query+",  "Admin", "MVC")
+                'fr' => array("Départ", "Compte+", "Se loguer", "Recherches", "Vélos", "Compte", "Mot de passe", "Vélo+", "Recherche+", "Admin", "MVC"),
+                'en' => array("Start", "Account+", "Login", "Queries", "Bikes", "Account", "Password", "Bike+", "Query+", "Admin", "MVC")
             ));
         return $titles[$key][$language][$id] ?? "[$key][$language][$id]";
     }
