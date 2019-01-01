@@ -210,7 +210,6 @@ body {
             body .content .main .items .item.wrapper .image img {
               width: 100%; }
           body .content .main .items .item.wrapper .specs {
-            color: darkblue;
             line-height: .3em; }
         body .content .main .items form .current-img {
           width: 200px; }

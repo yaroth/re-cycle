@@ -10,8 +10,8 @@
                 <div class="query title"><p>' . $query->title . '</p></div>
                 <div class="query weight"><desc>Max. weight:</desc> ' . $query->weight . '</div>
                 <div class="query price"><desc>Max. price:</desc> ' . $query->price . '.-</div>
-                <div class="query hasLights"><desc>Has lights?</desc> ' . ($query->hasLights ? "yes" : ($query->hasLights === null ? "N/A" : "no")) . '</div>
-                <div class="query hasGears"><desc>Has gears?</desc> ' . ($query->hasGears ? "yes" : ($query->hasGears === null ? "N/A" : "no")) . '</div>
+                <div class="query hasLights"><desc>Requires lights?</desc> ' . ($query->hasLights ? "yes" : ($query->hasLights === null ? "N/A" : "no")) . '</div>
+                <div class="query hasGears"><desc>Requires gears?</desc> ' . ($query->hasGears ? "yes" : ($query->hasGears === null ? "N/A" : "no")) . '</div>
                 <div class="query gearType"><desc>Required gear type:</desc> ' . $query->getGearTypeName() . '</div>
                 <div class="query nbOfGears"><desc>Min. # gears:</desc> ' . $query->nbOfGears . '</div>
                 <div class="query wheelSize"><desc>Required wheel size:</desc> ' . $query->wheelSize . '</div>

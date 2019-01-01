@@ -14,6 +14,7 @@
                 <div class="bike description"><desc>Description: </desc><p>' . $bike->description . '</p></div>
                 <div class="bike weight"><desc>Weight: </desc>' . $bike->weight . '</div>
                 <div class="bike lights"><desc>Has lights? : </desc>' . ($bike->hasLights ? "yes" : "no") . '</div>
+                <div class="bike gears"><desc>Has gears? : </desc>' . ($bike->hasGears ? "yes" : "no") . '</div>
                 <div class="bike price"><desc>Price: </desc>' . $bike->price . '.-</div>
                 <div class="bike gearType"><desc>Gear type: </desc>' . $bike->getGearTypeName() . '</div>
                 <div class="bike nbGears"><desc># gears: </desc>' . $bike->nbOfGears . '</div>

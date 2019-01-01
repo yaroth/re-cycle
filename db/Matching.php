@@ -131,10 +131,10 @@
                     if ($query->price != 0 && ($bike->price <= $query->price)) {
                         $priceBikesArray[] = $bike;
                     }
-                    if (($query->hasLights && $bike->hasLights) || (!$query->hasLights && !$bike->hasLights)) {
+                    if (($query->hasLights && $bike->hasLights)) {
                         $hasLightsBikesArray[] = $bike;
                     }
-                    if (($query->hasGears && $bike->hasGears) || (!$query->hasGears && !$bike->hasGears)) {
+                    if (($query->hasGears && $bike->hasGears)) {
                         $hasGearsBikesArray[] = $bike;
                     }
                     if ($query->gearTypeID != 4 && ($bike->gearTypeID == $query->gearTypeID)) {
@@ -160,14 +160,16 @@
             if ($query->price != 0) {
                 $foundBikesArray = array_intersect($foundBikesArray, $priceBikesArray);
             }
-            /*// TODO: Fix the hasLights condition
-            if (($query->hasLights && $bike->hasLights) || (!$query->hasLights && !$bike->hasLights)) {
-                $hasLightsBikesArray[] = $bike;
+
+            // TODO: Fix the hasLights condition
+            if ($query->hasLights) {
+                $foundBikesArray = array_intersect($foundBikesArray, $hasLightsBikesArray);
             }
             // TODO: Fix the hasGears condition
-            if (($query->hasGears && $bike->hasGears) || (!$query->hasGears && !$bike->hasGears)) {
-                $hasGearsBikesArray[] = $bike;
-            }*/
+            if ($query->hasGears) {
+                $foundBikesArray = array_intersect($foundBikesArray, $hasGearsBikesArray);
+            }
+
             if ($query->gearTypeID != 4) {
                 $foundBikesArray = array_intersect($foundBikesArray, $gearTypeBikesArray);
             }

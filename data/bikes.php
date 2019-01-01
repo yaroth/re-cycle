@@ -42,7 +42,6 @@
         }
     }
 
-    // TODO: make sure 'buy' button will only call buyBike if user is logged in, elsewise inform user to log in or create account
     function listBike($bike) {
         $item = '<div class="item wrapper">
             <div class="title">
@@ -58,8 +57,8 @@
                 <p>Speeds: ' . $bike->nbOfGears . '</p>
                 <p>Brakes: ' . translate($bike->getBrakeTypeName()) . '</p>
                 <p>Wheel size: ' . $bike->wheelSize . '"</p>
-                <p>Has lights: ' . ($bike->hasLights ? "yes" : "no") . '"</p>
-                <p>Has gears: ' . ($bike->hasGears ? "yes" : "no") . '"</p>
+                <p>Has lights: ' . ($bike->hasLights ? "yes" : "no") . '</p>
+                <p>Has gears: ' . ($bike->hasGears ? "yes" : "no") . '</p>
                 <p class="weight">Weight: ' . $bike->weight . ' kg</p>
                 <p>Owner: ' . $bike->getOwnerName() . '</p>
             </div>';
