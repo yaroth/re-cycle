@@ -1,3 +1,19 @@
+$(document).ready(function () {
+    $("#close").hide();
+    $("#open").click(function () {
+        $("#open").hide();
+        $("#close").show();
+        $("#mobile").show();
+
+    });
+    $("#close").click(function () {
+        $("#close").hide();
+        $("#mobile").hide();
+        $("#open").show();
+    });
+});
+
+
 
 function validateCreateAccount() {
     //TODO: remove commenting out

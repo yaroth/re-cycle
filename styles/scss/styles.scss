@@ -7,10 +7,8 @@ error {
 body {
   font-family: Helvetica Neue, Arial, sans-serif;
   margin: 0;
-  background-color: whitesmoke;
 
   .content {
-    width: 94%;
     margin: 0 auto;
     background-color: lightblue;
 
@@ -23,7 +21,7 @@ body {
       .meta {
         font-size: 1em;
 
-        .lang {
+        .langs {
           display: inline-block;
           vertical-align: top;
           padding-top: 6px;
@@ -437,6 +435,7 @@ body {
   body {
     .content {
       width: 100%;
+
       nav {
         &#desktop {
           display: none;
@@ -444,31 +443,198 @@ body {
       }
 
       .header {
+        justify-content: start;
+
+        .logo {
+          width: 22vw;
+          height: 22vw;
+        }
+
         > .meta {
           display: none;
         }
 
+
+
         nav {
           &#mobile {
-            display: block;
+            display: none;
             position: absolute;
             right: 0;
             top: 0;
-            background-color: lightblue;
+            padding-right: 40px;
+            background-color: rgb(184, 229, 244);
+
+            .meta {
+              .langs {
+                display: block;
+                padding-top: 0;
+
+                a {
+                  padding: 0 5px;
+                }
+              }
+
+              .detail {
+                display: block;
+                margin-top: 12px;
+
+                p {
+                  margin: 0 0 5px 0;
+                }
+              }
+            }
           }
+
           ul {
             display: block;
+
+            li {
+              &.nav-item {
+                background-color: unset;
+                -webkit-border-radius: unset;
+                -moz-border-radius: unset;
+                border-radius: unset;
+                margin-top: 0;
+                margin-right: 0;
+                padding: 3px;
+              }
+            }
+          }
+        }
+      }
+
+      h1 {
+        font-size: 1.5em;
+        margin-top: 0;
+      }
+
+      h2 {
+        font-size: 1em;
+        margin-top: 0;
+      }
+    }
+  }
+}
+@media (min-width: 569px) {
+  body {
+    .content {
+      .header {
+        #mobNavIcon {
+          display: block;
+        }
+
+        nav {
+          &#mobile {
+            display: none;
           }
         }
       }
     }
   }
 }
+@media (max-width: 999px) {
+  body {
+    .content {
 
-@media (min-width: 569px) {
+      nav {
+        &#desktop {
+          display: none;
+        }
+      }
+
+      .header {
+        justify-content: start;
+
+        > .meta {
+          display: none;
+        }
+
+        #mobNavIcon {
+          z-index: 1;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+
+          #open {
+            background-image: url("../../img/open.png");
+            width: 30px;
+            height: 30px;
+            background-size: 30px 30px;
+            background-repeat: no-repeat;
+          }
+
+          #close {
+            background-image: url("../../img/close.png");
+            width: 30px;
+            height: 30px;
+            background-size: 30px 30px;
+            background-repeat: no-repeat;
+          }
+        }
+
+        nav {
+          &#mobile {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding-right: 40px;
+            background-color: rgb(184, 229, 244);
+
+            .meta {
+              .langs {
+                display: block;
+                padding-top: 0;
+
+                a {
+                  padding: 0 5px;
+                }
+              }
+
+              .detail {
+                display: block;
+                margin-top: 12px;
+
+                p {
+                  margin: 0 0 5px 0;
+                }
+              }
+            }
+          }
+
+          ul {
+            display: block;
+
+            li {
+              &.nav-item {
+                background-color: unset;
+                -webkit-border-radius: unset;
+                -moz-border-radius: unset;
+                border-radius: unset;
+                margin-top: 0;
+                margin-right: 0;
+                padding: 3px;
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
+
+@media (min-width: 1000px) {
   body {
     .content {
       .header {
+        #mobNavIcon {
+          display: none;
+        }
+
         nav {
           &#mobile {
             display: none;
