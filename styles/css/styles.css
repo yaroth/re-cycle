@@ -92,8 +92,6 @@ body {
           margin-right: 5px;
           background-color: #c0bfbd;
           border-radius: 3px; }
-          body .content .nav ul li.nav-item:first-child {
-            margin-left: 5px; }
         body .content .nav ul li.lang {
           display: inline; }
         body .content .nav ul li .active {
@@ -255,3 +253,23 @@ body {
         vertical-align: top; }
         body .content .footer .general .impressum p {
           margin: 0; }
+
+@media (max-width: 568px) {
+  body .content {
+    width: 100%; }
+    body .content nav#desktop {
+      display: none; }
+    body .content .header > .meta {
+      display: none; }
+    body .content .header nav#mobile {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      background-color: lightblue; }
+    body .content .header nav ul {
+      display: block; } }
+
+@media (min-width: 569px) {
+  body .content .header nav#mobile {
+    display: none; } }

@@ -7,6 +7,7 @@
      */
     include_once "functions.php";
     session_start();
+    $_SESSION["oldLogin"] = $_SESSION["lastLogin"];
     $_SESSION = [];
     // set cookie to null after 1 second := logout!
     setcookie(session_name(), '', 1);
