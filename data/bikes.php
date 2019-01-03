@@ -14,9 +14,11 @@
         usort($bikesToSell, function ($bike1, $bike2) {
             return $bike1->price <=> $bike2->price;
         });
+        echo '<div class="items">';
         foreach ($bikesToSell as $bike) {
             listBike($bike);
         }
+        echo '</div>';
     }
 
     function listEditableBicycles() {
@@ -83,18 +85,18 @@
             <div class="title">
             <h3>' . $bike->title . '</h3>
             <p class="price">' . $bike->price . '.-</p>
-            <p class="weight">Weight: ' . $bike->weight . ' kg</p>
+            <p class="weight"><desc>Weight: </desc>' . $bike->weight . ' kg</p>
             </div>
             <div class="image">
                 <img src="../../img/uploads/' . $bike->imageName . '">
             </div>
             <div class="specs">
                 <p>' . $bike->description . '</p>
-                <p>Gear type: ' . translate($bike->getGearTypeName()) . '</p>
-                <p>Speeds: ' . $bike->nbOfGears . '</p>
-                <p>Brakes: ' . translate($bike->getBrakeTypeName()) . '</p>
-                <p>Wheel size: ' . $bike->wheelSize . '"</p>
-                <p>Owner: ' . $bike->getOwnerName() . '</p>
+                <p><desc>Gear type: </desc>' . translate($bike->getGearTypeName()) . '</p>
+                <p><desc>Speeds: </desc>' . $bike->nbOfGears . '</p>
+                <p><desc>Brakes: </desc>' . translate($bike->getBrakeTypeName()) . '</p>
+                <p><desc>Wheel size: </desc>' . $bike->wheelSize . '"</p>
+                <p><desc>Owner: </desc>' . $bike->getOwnerName() . '</p>
             </div>
             <div class="edit">
                 <form action="' . $targetURL . '" method="post" >
@@ -122,14 +124,16 @@
         else {
             foreach ($queries as $query) {
                 $matchingBikes = Matching::getMatchingBikesByQuery($query);
-                echo "<div><h4>Your query: </h4></div>";
-                echo "<div>" . $query . '</div>';
+                echo "<div class='query'><h4>Query: '$query->title'</h4>";
                 if ($matchingBikes == null) {
-                    echo "<div>Sorry, no matching bicycles found!";
+                    echo "<div>Sorry, no matching bicycles found!</div></div>";
                 } else {
+                    echo "</div>";
+                    echo '<div class="items">';
                     foreach ($matchingBikes as $bike) {
                         listBike($bike);
                     }
+                    echo "</div><!--END class='items'-->";
                 }
             }
         }

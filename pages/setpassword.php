@@ -38,7 +38,7 @@
                 if ($updatedAccountInDB) echo "<h3>Successfully updated password of $login in DB.</h3>";
                 else echo "<h3>Could NOT update password of $login. Please try again!</h3>";
             } else {
-                echo 'Wrong password! Try again!<br>';
+                echo '<error>Wrong password! Try again!</error><br>';
                 include 'setPasswordForm.php';
             }
         }

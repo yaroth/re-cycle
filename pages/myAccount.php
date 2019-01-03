@@ -1,5 +1,5 @@
 <h2><?php echo translate("edit-account"); ?></h2>
-<div class="items">
+<div class="editAccount">
     <?php
         if (isset($_SESSION["user"])) {
             $login = $_SESSION["user"];
@@ -21,8 +21,8 @@
                         echo '<h3>' . translate("success") . '</h3>';
                         echo "<p>Successfully updated your personal data.</p>";
                     } else {
-                        echo '<h3>' . translate("error") . '</h3>';
-                        echo "<p>Could NOT update your personal data! Check your login and password!</p>";
+                        echo '<h3><error>' . translate("error") . '</error></h3>';
+                        echo "<p><error>Could NOT update your personal data! Check your login and password!</error></p>";
                         include 'createAccountForm.php';
                     }
                 } else {

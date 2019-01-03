@@ -410,7 +410,7 @@ function listBikes(element) {
     let btnValue = $(element).val();
     $.post("getListOfBikes.php", {allOrMatching: btnValue},
         function (bikesHTML) {
-            $("#items-wrapper").html(bikesHTML)
+            $("#bikes-wrapper").html(bikesHTML)
         });
 }
 

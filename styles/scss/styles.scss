@@ -1,8 +1,12 @@
 
+error {
+  color: red;
+}
+
 body {
   font-family: Helvetica Neue, Arial, sans-serif;
   margin: 0;
-  background-color: honeydew;
+  background-color: whitesmoke;
 
   .content {
     width: 94%;
@@ -63,6 +67,8 @@ body {
         .userInfo {
           display: inline-block;
           margin-left: 10px;
+          position: relative;
+          cursor: pointer;
 
           &:hover .detail.hidden {
             display: block;
@@ -76,8 +82,8 @@ body {
           }
 
           p {
-            margin: 0 5px;
-            padding: 1px 5px;
+            margin: 5px 0;
+            text-align: right;
           }
 
           > a {
@@ -90,6 +96,10 @@ body {
 
           .detail.hidden {
             display: none;
+            position: absolute;
+            right: 0;
+            overflow: hidden;
+            width: 300%;
           }
         }
       }
@@ -170,7 +180,7 @@ body {
       overflow: hidden;
 
       .login p a {
-        text-decoration:none;
+        text-decoration: none;
       }
 
       form {
@@ -228,15 +238,15 @@ body {
           margin-bottom: 10px;
           margin-right: 10px;
           padding: 10px;
-          border: 1px solid gray;
-          -webkit-border-radius: 3px;
-          -moz-border-radius: 3px;
-          border-radius: 3px;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          border-radius: 4px;
           min-width: 200px;
           max-width: 250px;
+          background-color: rgb(185, 230, 250);
 
           .bike {
-            padding-bottom: 10px;
+            margin-bottom: 10px;
 
             desc {
               color: gray;
@@ -247,10 +257,15 @@ body {
             }
 
             &.img {
-              width: 100%;
+              max-width: 200px;
+              max-height: 150px;
+              overflow: hidden;
+              -webkit-border-radius: 4px;
+              -moz-border-radius: 4px;
+              border-radius: 4px;
 
               img {
-                width: 70%;
+                width: 100%;
               }
             }
 
@@ -333,28 +348,35 @@ body {
 
       .items {
         margin: 20px 0;
+        display: flex;
+        flex-wrap: wrap;
 
         .item.wrapper {
-          display: inline-block;
           margin-right: 5px;
           margin-bottom: 5px;
           padding: 10px;
           width: 250px;
           min-width: 200px;
           max-width: 300px;
-          border: 1px gray solid;
-          -webkit-border-radius: 3px;
-          -moz-border-radius: 3px;
-          border-radius: 3px;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          border-radius: 4px;
           overflow: hidden;
+          background-color: rgb(185, 230, 250);
+
+          desc {
+            color: gray;
+          }
 
           .title {
             text-align: center;
           }
 
           .image {
-            width: 100%;
+            max-width: 300px;
+            max-height: 180px;
             overflow: hidden;
+            border-radius: 4px;
 
             img {
               width: 100%;

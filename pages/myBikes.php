@@ -39,7 +39,7 @@
                 $bikeID = $_POST["bikeID"];
                 $action = $_POST['action'];
                 if ($action == 'editBike') {
-                    echo '<div class="items">';
+                    echo '<div class="editBike">';
                     listBikeByID($bikeID);
                 } elseif ($action == 'deleteBike') {
                     //TODO: check if bikeByID exists!
@@ -47,7 +47,7 @@
                     if ($deleteBikeSuccess) {
                         echo 'Successfully deleted your bicycle!';
                     } else {
-                        echo 'Sorry, could not delete your bicycle.';
+                        echo '<error>Error, could not delete your bicycle.</error>';
                     }
                     echo '<div class="items">';
                     listBikesByUser($user);
