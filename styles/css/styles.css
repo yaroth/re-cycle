@@ -53,7 +53,8 @@ body {
             border: 1px solid gray;
             border-radius: 24px;
             padding: 11px 10px;
-            display: inline-block; }
+            display: inline-block;
+            text-decoration: none; }
           body .content .header .meta .userInfo .detail.hidden {
             display: none; }
       body .content .header .logo {
@@ -99,14 +100,18 @@ body {
       background-color: lightblue;
       padding: 10px;
       overflow: hidden; }
-      body .content .main form {
+      body .content .main .login
+form {
         display: inline; }
-        body .content .main form fieldset {
+        body .content .main .login
+form fieldset {
           display: inline;
           vertical-align: top; }
-          body .content .main form fieldset .current-img {
+          body .content .main .login
+form fieldset .current-img {
             width: 200px; }
-            body .content .main form fieldset .current-img img {
+            body .content .main .login
+form fieldset .current-img img {
               width: 100%; }
       body .content .main input:focus {
         background-color: yellow; }
@@ -209,8 +214,8 @@ body {
             overflow: hidden; }
             body .content .main .items .item.wrapper .image img {
               width: 100%; }
-          body .content .main .items .item.wrapper .specs {
-            line-height: .3em; }
+          body .content .main .items .item.wrapper p {
+            margin: .5em 0; }
         body .content .main .items form .current-img {
           width: 200px; }
           body .content .main .items form .current-img img {

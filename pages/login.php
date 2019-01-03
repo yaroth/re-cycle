@@ -28,8 +28,14 @@
             }
             if ($success) {
                 include_once "authentication.inc.php";
-                echo "<p>Login for '$login' successful!</p>";
-                echo '<p> Do you want to <a href="logout.php?lang=' . getLang() . '">logout?</a>';
+                if ($success) {
+                    echo "<p>Login for '$login' successful!</p>";
+                    echo '<p> Do you want to <a href="logout.php?lang=' . getLang() . '">logout?</a>';
+                }
+                else {
+                    $lang = getLang();
+                    echo '<p>Login failed. Please <a href="index.php?lang=' . $lang . '&id=2\">try again.</a></p>';
+                }
             }
 
         } else include "loginForm.php";

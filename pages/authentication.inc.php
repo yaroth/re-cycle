@@ -12,7 +12,5 @@
             $_SESSION["user"] = $login;
     }
     if (!isset($_SESSION["user"])) {
-        $lang = getLang();
-        echo '<a href="index.php?lang=' . $lang . '&id=2">Log in</a>.';
-        exit;
+        $success = false;
     }
