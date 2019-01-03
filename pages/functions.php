@@ -158,6 +158,57 @@
         return $texts[$key][$language] ?? "[?$key?][?$language?]";
     }
 
+    function subtitle($id) {
+        global $language;
+        $subtitles = array(
+            0 => array(
+                'de' => 'Finde dein neues Secondhand Velo hier!',
+                'fr' => "Ici tu trouveras ton vélo d'occase facilement!",
+                'en' => 'Easily find your second hand bicycle!'),
+            1 => array(
+                'de' => 'Erstelle dein Konto',
+                'fr' => 'Crées ton compte ',
+                'en' => 'Create your account '),
+            2 => array(
+                'de' => 'Melde dich an. ',
+                'fr' => 'Authentifies-toi ',
+                'en' => 'Login '),
+            3 => array(
+                'de' => 'Erstelle deine Suchaufträge ',
+                'fr' => 'Définis tes recherches ',
+                'en' => 'Set your queries '),
+            4 => array(
+                'de' => 'Deine zum Verkauf stehenden Velos ',
+                'fr' => 'Tes vélos à vendre ',
+                'en' => 'These are the bicycles you want to sell '),
+            5 => array(
+                'de' => 'Deine Kontoangaben ',
+                'fr' => 'Tes données ',
+                'en' => 'Your account data '),
+            6 => array(
+                'de' => 'Passe dein Passwort an ',
+                'fr' => 'Change ton mot de passe ',
+                'en' => 'Change your password '),
+            7 => array(
+                'de' => 'Erfasse dein zu verkaufendes Velo ',
+                'fr' => 'Saisis ton vélo à vendre ',
+                'en' => 'Set your to be sold bicycle data '),
+            8 => array(
+                'de' => 'Erfasse eine neue Suche. Du kannst mehrere Suchen erfassen. So kannst du gezielt nach mehreren Velos suchen. ',
+                'fr' => 'Saisis une recherche. Tu peux en saisir plusieurs, ainsi il est possible de rechercher plusieurs vélos à la fois.',
+                'en' => 'Set your query. It is possible to define several queries, so that you can search for several kinds of bicycles at the same time. '),
+            9 => array(
+                'de' => 'Administratorbereich. Du kannst hier alle Benutzer, Velos, Suchen und Kontos bearbeiten. ',
+                'fr' => 'Zone administrateur. Tu peux modifier tous les utilisateurs, vélo, recherches et comptes. ',
+                'en' => 'Admin area. You can modify all users, bicycles, queries and accounts! '),
+            10 => array(
+                'de' => 'MVC',
+                'fr' => 'MVC',
+                'en' => 'MVC'),
+        );
+        return $subtitles[$id][$language] ?? "[?$id?][?$language?]";
+    }
+
     function navtitles($key, $id) {
         global $language;
         $titles = array(

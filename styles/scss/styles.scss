@@ -20,6 +20,7 @@ body {
 
       .meta {
         font-size: 1em;
+        min-width: 150px;
 
         .langs {
           display: inline-block;
@@ -105,7 +106,9 @@ body {
 
       .logo {
         width: 130px;
+        min-width: 130px;
         height: 130px;
+        min-height: 130px;
         margin-right: 20px;
 
         img {
@@ -446,15 +449,14 @@ body {
         justify-content: start;
 
         .logo {
-          width: 22vw;
-          height: 22vw;
+          width: 50px;
+          min-width: 50px;
+          height: 50px;
+          min-height: 50px;
         }
-
         > .meta {
           display: none;
         }
-
-
 
         nav {
           &#mobile {
@@ -516,6 +518,7 @@ body {
     }
   }
 }
+
 @media (min-width: 569px) {
   body {
     .content {
@@ -533,6 +536,7 @@ body {
     }
   }
 }
+
 @media (max-width: 999px) {
   body {
     .content {
@@ -548,6 +552,13 @@ body {
 
         > .meta {
           display: none;
+        }
+
+        .logo {
+          width: 13vw;
+          min-width: 13vw;
+          height: 13vw;
+          min-height:13vw;
         }
 
         #mobNavIcon {

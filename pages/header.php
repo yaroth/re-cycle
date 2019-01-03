@@ -6,7 +6,7 @@
                 /*$language is used in 'translate(key)'*/
                 $language = getLang();
                 $id = getId();
-                echo translate("welcome") . $id;
+                echo subtitle($id) ;
             ?>
         </h2>
     </div>
