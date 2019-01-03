@@ -420,7 +420,7 @@ function buyBike(el) {
     if (reallyBuy) {
         $.post("purchaseConfirmation.php", {bikeID: bikeID},
             function (data) {
-                $("#items-wrapper").html(data)
+                $("#bikes-wrapper").html(data)
             });
     }
 

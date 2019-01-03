@@ -7,6 +7,10 @@
             $this->model = $model;
         }
 
+        /**
+         * Handle the click event in the VIEW
+         * then change data in the MODEL
+         */
         public function click() {
             $this->model->text = 'Hello World!';
         }

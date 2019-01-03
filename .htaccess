@@ -1,0 +1,4 @@
+
+# redirect root folder to start page /pages/index.php
+RewriteEngine On
+RedirectMatch ^/$ /pages/index.php

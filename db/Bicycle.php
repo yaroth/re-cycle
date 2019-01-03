@@ -188,4 +188,8 @@
             }
             return $stmt != null;
         }
+
+        public function render(){
+            echo "This bicycle has id: $this->id. <br>";
+        }
     }

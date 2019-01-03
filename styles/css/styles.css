@@ -230,7 +230,8 @@ body {
             overflow: hidden;
             border-radius: 4px; }
             body .content .main .items .item.wrapper .image img {
-              width: 100%; }
+              width: 100%;
+              border-radius: 4px; }
           body .content .main .items .item.wrapper p {
             margin: .5em 0; }
         body .content .main .items form .current-img {
