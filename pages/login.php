@@ -26,7 +26,7 @@
             if ($success) {
                 include_once "authentication.inc.php";
                 if (!$success) {
-                    echo '<p>Login failed. Please try again.</p>';
+                    echo '<p><error>Login failed. Please try again.</error></p>';
                     include "loginForm.php";
                 }
             }
