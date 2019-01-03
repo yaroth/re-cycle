@@ -100,18 +100,16 @@ body {
       background-color: lightblue;
       padding: 10px;
       overflow: hidden; }
-      body .content .main .login
-form {
+      body .content .main .login p a {
+        text-decoration: none; }
+      body .content .main form {
         display: inline; }
-        body .content .main .login
-form fieldset {
+        body .content .main form fieldset {
           display: inline;
           vertical-align: top; }
-          body .content .main .login
-form fieldset .current-img {
+          body .content .main form fieldset .current-img {
             width: 200px; }
-            body .content .main .login
-form fieldset .current-img img {
+            body .content .main form fieldset .current-img img {
               width: 100%; }
       body .content .main input:focus {
         background-color: yellow; }

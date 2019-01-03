@@ -2,11 +2,8 @@
 <?php
     echo '<div class="login">';
     if (isset($_SESSION["user"])) {
-        $login = $_SESSION["user"];
-        $user = User::getUserByLogin($login);
-        echo "<p>You are already logged in $user->fname $user->lname!</p>";
-        echo '<p> Do you want to <a href="logout.php">logout?</a>';
-        echo '<p> <a href="index.php?lang=' . getLang() . '&id=0">View my matchings </a>';
+        $redirect = "location:index.php?lang=" . getLang() . "&id=0";
+        header($redirect);
     } else {
         if ($_POST) {
             $success = true;
@@ -28,13 +25,9 @@
             }
             if ($success) {
                 include_once "authentication.inc.php";
-                if ($success) {
-                    echo "<p>Login for '$login' successful!</p>";
-                    echo '<p> Do you want to <a href="logout.php?lang=' . getLang() . '">logout?</a>';
-                }
-                else {
-                    $lang = getLang();
-                    echo '<p>Login failed. Please <a href="index.php?lang=' . $lang . '&id=2\">try again.</a></p>';
+                if (!$success) {
+                    echo '<p>Login failed. Please try again.</p>';
+                    include "loginForm.php";
                 }
             }
 
