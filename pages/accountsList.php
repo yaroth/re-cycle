@@ -3,7 +3,7 @@
     require_once("../db/autoloader.php");
     echo '<h4>Accounts list</h4>';
     echo '<div class="accountsList">';
-    echo '<div class="account-wrapper">';
+    echo '<div class="account-wrapper accountHeader">';
     echo '<div class="account id">ID </div>';
     echo '<div class="account login">Login</div>';
     echo '<div class="account pw">Password</div>';

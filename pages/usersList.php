@@ -3,7 +3,7 @@
     $users = User::getUsers();
     echo '<h4>Users list</h4>';
     echo '<div class="usersList">';
-    echo '<div class="user-wrapper">
+    echo '<div class="user-wrapper userHeader">
                 <div class="user id">ID</div>
                 <div class="user name">Name</div>
                 <div class="user login">Login</div>
