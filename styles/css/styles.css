@@ -1,12 +1,12 @@
-error {
-  color: red; }
-
+/*Mainly used for mobile navigation*/
 body {
   font-family: Helvetica Neue, Arial, sans-serif;
   margin: 0; }
   body .content {
     margin: 0 auto;
     background-color: lightblue; }
+    body .content error {
+      color: red; }
     body .content .header {
       background-color: lightblue;
       padding: 10px;

@@ -1,7 +1,10 @@
+$mobile: 568px;
 
-error {
-  color: red;
-}
+/*Mainly used for mobile navigation*/
+$mediumMin: $mobile + 1px; //569px
+$mediumMax: 900px;
+
+$desktopMin: $mediumMax + 1px; //901px
 
 
 body {
@@ -11,6 +14,10 @@ body {
   .content {
     margin: 0 auto;
     background-color: lightblue;
+
+    error {
+      color: red;
+    }
 
     .header {
       background-color: lightblue;
@@ -436,7 +443,7 @@ body {
 
 }
 
-@media (max-width: 568px) {
+@media (max-width: $mobile) {
   body {
     .content {
       width: 100%;
@@ -522,7 +529,7 @@ body {
   }
 }
 
-@media (min-width: 569px) {
+@media (min-width: $mediumMin) {
   body {
     .content {
       .header {
@@ -540,7 +547,7 @@ body {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: $mediumMax) {
   body {
     .content {
 
@@ -723,6 +730,7 @@ body {
               &[name=editUser] {
                 left: 9px;
               }
+
               &[name=deleteUser] {
                 left: 70px;
               }
@@ -744,7 +752,7 @@ body {
 }
 
 
-@media (min-width: 901px) {
+@media (min-width: $desktopMin) {
   body {
     .content {
       .header {
