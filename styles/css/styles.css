@@ -319,10 +319,10 @@ body {
     body .content .header > .meta {
       display: none; }
     body .content .header .logo {
-      width: 13vw;
-      min-width: 13vw;
-      height: 13vw;
-      min-height: 13vw; }
+      width: 14vw;
+      min-width: 14vw;
+      height: 14vw;
+      min-height: 14vw; }
     body .content .header #mobNavIcon {
       z-index: 1;
       position: absolute;
