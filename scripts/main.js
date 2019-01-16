@@ -159,23 +159,26 @@ function validateNewPassword() {
 
 function adminSelection(element) {
     let buttonValue = $(element).val();
+    let url = new URL(location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let language = searchParams.get('lang');
     if (buttonValue == "users") {
-        $.get("usersList.php", function (data) {
+        $.get("usersList.php", {language: language}, function (data) {
             $("#admin-content").html(data);
         })
     } else if (buttonValue == "bicycles") {
-        $.get("bikesList.php", function (data) {
+        $.get("bikesList.php", {language: language}, function (data) {
             $("#admin-content").html(data);
         })
     } else if (buttonValue == "queries") {
-        $.get("queriesList.php", function (data) {
+        $.get("queriesList.php", {language: language}, function (data) {
             $("#admin-content").html(data);
         })
     } else if (buttonValue == "accounts") {
-        $.get("accountsList.php", function (data) {
+        $.get("accountsList.php", {language: language}, function (data) {
             $("#admin-content").html(data);
         })
-    } else $("#admin-content").html("Something went wrong. Sorry. Please try again!");
+    } else $("#admin-content").html("<error>Something went wrong. Sorry. Please try again!</error>");
 }
 
 function deleteUser(el) {
@@ -238,7 +241,10 @@ function editUser(el) {
 
 function editQuery(el) {
     let queryID = $(el).val();
-    $.get("editQuery.php", {queryID: queryID}, function (data) {
+    let url = new URL(location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let language = searchParams.get('lang');
+    $.get("editQuery.php", {queryID: queryID, language: language}, function (data) {
         $("#admin-content").html(data);
     })
 

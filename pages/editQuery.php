@@ -12,7 +12,6 @@
             // TODO: filter_input
             $queryID = $_GET["queryID"];
             $query = Query::getQueryByID($queryID);
-            $language = getLang();
             include "adminQueryForm.php";
 
         } else echo "You are not an admin, sorry!";
