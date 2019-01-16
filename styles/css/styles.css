@@ -14,7 +14,7 @@ body {
       justify-content: space-between; }
       body .content .header .meta {
         font-size: 1em;
-        min-width: 150px; }
+        min-width: 170px; }
         body .content .header .meta .langs {
           display: inline-block;
           vertical-align: top;
@@ -166,6 +166,18 @@ body {
                 width: 100%; }
             body .content .main .bikesList .bike-wrapper .bike.id {
               margin-bottom: 10px; }
+      body .content .main #bikes-wrapper .query .no-match {
+        margin-right: 5px;
+        margin-bottom: 5px;
+        padding: 10px;
+        width: 250px;
+        min-width: 200px;
+        max-width: 300px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        overflow: hidden;
+        background-color: #b9e6fa; }
       body .content .main .queriesList {
         display: flex;
         flex-wrap: wrap; }

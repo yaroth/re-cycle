@@ -1,5 +1,5 @@
 <header class="header">
-    <div class="logo"><a href="index.php"><img src="../img/logo.png"></a></div>
+    <div class="logo"><a href="index.php?id=0&lang=<?php echo getLang() ?>"><img src="../img/logo.png"></a></div>
     <div class="page title">
         <h1>Re-cycle</h1>
         <h2><?php

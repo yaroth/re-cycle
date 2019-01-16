@@ -6,17 +6,16 @@
      * Time: 10:30
      */
 
-
 // TODO: NICE-TO-HAVE: create a function to sort by different keys
 
-    function listBicycles() {
+    function listBicycles($lang) {
         $bikesToSell = Bicycle::getBicycles();
         usort($bikesToSell, function ($bike1, $bike2) {
             return $bike1->price <=> $bike2->price;
         });
         echo '<div class="items">';
         foreach ($bikesToSell as $bike) {
-            listBike($bike);
+            listBike($bike, $lang);
         }
         echo '</div>';
     }
@@ -44,7 +43,8 @@
         }
     }
 
-    function listBike($bike) {
+    function listBike($bike, $lang) {
+        $language = $lang;
         $item = '<div class="item wrapper">
             <div class="title">
                 <h3>' . $bike->title . '</h3>
@@ -55,18 +55,18 @@
             </div>
             <div class="specs">
                 <p>' . $bike->description . '</p>
-                <p><desc>Gear type: </desc>' . translate($bike->getGearTypeName()) . '</p>
-                <p><desc>Speeds: </desc>' . $bike->nbOfGears . '</p>
-                <p><desc>Brakes: </desc>' . translate($bike->getBrakeTypeName()) . '</p>
-                <p><desc>Wheel size: </desc>' . $bike->wheelSize . '"</p>
-                <p><desc>Has lights: </desc>' . ($bike->hasLights ? "yes" : "no") . '</p>
-                <p><desc>Has gears: </desc>' . ($bike->hasGears ? "yes" : "no") . '</p>
-                <p class="weight"><desc>Weight: </desc>' . $bike->weight . ' kg</p>
-                <p><desc>Owner: </desc>' . $bike->getOwnerName() . '</p>
+                <p><desc>' . translate("gear-type") . ': </desc>' . translate($bike->getGearTypeName()) . '</p>
+                <p><desc>' . translate("speeds") . ': </desc>' . $bike->nbOfGears . '</p>
+                <p><desc>' . translate("brakes") . ': </desc>' . translate($bike->getBrakeTypeName()) . '</p>
+                <p><desc>' . translate("wheel-size") . ': </desc>' . $bike->wheelSize . '"</p>
+                <p><desc>' . translate("has-lights") . ': </desc>' . ($bike->hasLights ? translate("yes") : translate("no")) . '</p>
+                <p><desc>' . translate("has-gears") . ': </desc>' . ($bike->hasGears ? translate("yes") : translate("no")) . '</p>
+                <p class="weight"><desc>' . translate("weight") . ': </desc>' . $bike->weight . ' kg</p>
+                <p><desc>' . translate("owner") . ': </desc>' . $bike->getOwnerName() . '</p>
             </div>';
         if (isset($_SESSION["user"])) {
             $item .= '<div class="buy">
-                        <button type="button" name="buyBike" onclick="buyBike(this);" value="' . $bike->id . '">Buy!</button>
+                        <button type="button" name="buyBike" onclick="buyBike(this);" value="' . $bike->id . '">' . translate("buy") . '</button>
                     </div>';
         }
         $item .= '</div>';
@@ -112,7 +112,7 @@
         }
     }
 
-    function listMatchingBicyclesByLogin($userLogin) {
+    function listMatchingBicyclesByLogin($userLogin, $lang) {
         $userID = User::getUserIDByLogin($userLogin);
         $queries = Query::getQueriesByUserID($userID);
         if ($queries == null) echo 'You have no query defined, do you want to: <a href="index.php?lang=' . getLang() . '&id=8">add a new query?</a>';
@@ -121,12 +121,12 @@
                 $matchingBikes = Matching::getMatchingBikesByQuery($query);
                 echo "<div class='query'><h4>Query: '$query->title'</h4>";
                 if ($matchingBikes == null) {
-                    echo "<div>Sorry, no matching bicycles found!</div></div>";
+                    echo "<div class='no-match'>Sorry, no matching bicycles found!</div></div>";
                 } else {
                     echo "</div><!--END query-->";
                     echo '<div class="items">';
                     foreach ($matchingBikes as $bike) {
-                        listBike($bike);
+                        listBike($bike, $lang);
                     }
                     echo "</div><!--END items-->";
                 }

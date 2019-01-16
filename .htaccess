@@ -1,4 +1,4 @@
 
 # redirect root folder to start page /pages/index.php
 RewriteEngine On
-RedirectMatch ^/$ /pages/index.php
+RedirectMatch ^/$ /pages/index.php?id=0&lang=de

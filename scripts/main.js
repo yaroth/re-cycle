@@ -424,7 +424,10 @@ function addQuery( event ) {
 
 function listBikes(element) {
     let btnValue = $(element).val();
-    $.post("getListOfBikes.php", {allOrMatching: btnValue},
+    let url = new URL(location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let language = searchParams.get('lang');
+    $.post("getListOfBikes.php", {allOrMatching: btnValue, language: language},
         function (bikesHTML) {
             $("#bikes-wrapper").html(bikesHTML)
         });

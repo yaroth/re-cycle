@@ -45,16 +45,20 @@
 
                     $mail->isHTML(true);                                  // Set email format to HTML
                     $mail->Subject = "Re-cycle : Ihr neues Secondhand Velo!";
-                    $message = "Dear " . $buyer->getUserFullName(). ", <br> you bought a second hand biycle on recycle.ch. 
+                    $message = "Dear $buyer->getUserFullName(), <br> you bought a second hand biycle on recycle.ch. 
                         Congratulations! <br>
                         Please get in touch with the seller to organize the payment and handover.<br> 
-                        The email address is in the Cc. <br>
+                        The email address is in the Cc.<br>
+                        Seller: $seller->email. <br>
+                        Buyer: $buyer->email. <br>
                         Thanks for buying at recycle.ch. <br>
                         Regards<br>
                         The recycle team!";
                     $mail->Body = $message;
-                    $mail->AltBody = "Dear " . $buyer->getUserFullName() .", \n you bought a second hand biycle on recycle.ch.
+                    $mail->AltBody = "Dear $buyer->getUserFullName() , \n you bought a second hand biycle on recycle.ch.
                         Congratulations! Please get in touch with the seller to organize the payment and handover.\n
+                        Seller: $seller->email. \n
+                        Buyer: $buyer->email. \n
                         Thanks for buying at recycle.ch. \n
                         Regards\n
                         The recycle team!";

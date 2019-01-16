@@ -3,12 +3,12 @@
 
     <?php
         if (isset($_SESSION["user"])) {
-            echo '<button onclick="listBikes(this);" type="button" value="all">List all bikes</button>';
-            echo '<button onclick="listBikes(this);" type="button" value="matching">List matching bikes</button>';
+            echo '<button onclick="listBikes(this);" type="button" value="all">' . translate("all-bikes") . '</button>';
+            echo '<button onclick="listBikes(this);" type="button" value="matching">' . translate("matching-bikes") . '</button>';
             echo '<div id="bikes-wrapper" >';
         } else {
             echo '<div id="items-wrapper" class="items">';
-            listBicycles();
+            listBicycles(null);
         }
     ?>
 </div>

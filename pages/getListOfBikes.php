@@ -10,8 +10,10 @@
         $login = $_SESSION["user"];
         if (isset($_POST["allOrMatching"])) {
             $allOrMatchingBikes = $_POST["allOrMatching"];
-            if ($allOrMatchingBikes == "all") listBicycles();
-            elseif ($allOrMatchingBikes == "matching") listMatchingBicyclesByLogin($login);
+            $language = "";
+            if (isset($_POST["language"])) $language = $_POST["language"];
+            if ($allOrMatchingBikes == "all") listBicycles($language);
+            elseif ($allOrMatchingBikes == "matching") listMatchingBicyclesByLogin($login, $language);
 
         } else echo "You are not an admin, sorry!";
     } else echo "session cookie 'user' not set!";
