@@ -1,12 +1,9 @@
 <?php
-    $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
-    $targetURL = add_param($targetURL, "id", getId());
     $addOrEditBike = "";
     if (isset($_POST["bikeID"])) $addOrEditBike = "edit-bicycle";
     else $addOrEditBike = "add-bicycle";
 ?>
-<h3><?php echo translate($addOrEditBike); ?></h3>
-<form action="<?php echo $targetURL ?>" method="post"
+<form action="" method="post"
       name="<?php echo $addOrEditBike; ?>"
       enctype="multipart/form-data"
       onsubmit="return validateAddBicycle();">
@@ -57,6 +54,6 @@
         ?>
         Image : <br>
         <input type="file" name="upload"/><br>
-        <input type="submit" value="Save">
+        <input type="submit" value="<?php echo translate("save")?>">
     </fieldset>
 </form>

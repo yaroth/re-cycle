@@ -1,4 +1,3 @@
-<h2><?php echo translate("login"); ?></h2>
 <?php
     echo '<div class="login">';
     if (isset($_SESSION["user"])) {

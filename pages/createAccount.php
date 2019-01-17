@@ -1,4 +1,3 @@
-<h2><?php echo translate("create-account"); ?></h2>
 <?php
     $success = true;
     $login = $pw = '';

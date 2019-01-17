@@ -218,4 +218,25 @@
             $gearType = GearType::getGearTypeByID($this->gearTypeID);
             return $gearType->name;
         }
+        
+        public function render($lang){
+            $language = $lang;
+            $user = USER::getUserByID($this->userID);
+            echo '<div class="query title"><p>' . $this->title . '</p></div>
+                <div class="query weight"><desc>' . translate("max-weight") . ':</desc> ' . $this->weight . '</div>
+                <div class="query price"><desc>' . translate("max-price") . ':</desc> ' . $this->price . '.-</div>
+                <div class="query hasLights"><desc>' . translate("requires-lights") . '</desc> ' . ($this->hasLights ? translate("yes") : ($this->hasLights === null ? "N/A" : translate("no"))) . '</div>
+                <div class="query hasGears"><desc>' . translate("requires-gears") . '</desc> ' . ($this->hasGears ? translate("yes") : ($this->hasGears === null ? "N/A" : translate("no"))) . '</div>
+                <div class="query gearType"><desc>' . translate("required-gear-type") . ':</desc> ' . translate($this->getGearTypeName()) . '</div>
+                <div class="query nbOfGears"><desc>' . translate("min-speeds") . ':</desc> ' . $this->nbOfGears . '</div>
+                <div class="query wheelSize"><desc>' . translate("required-wheel-size") . ':</desc> ' . $this->wheelSize . '</div>
+                <div class="query brakeType"><desc>' . translate("required-brake-type") . ':</desc> ' . translate($this->getBrakeTypeName()) . '</div>
+                <div class="query owner"><desc>' . translate("owner") . ':</desc> ' . $user->getUserFullName() . '</div>
+                <div class="query id"><desc>ID:</desc> ' . $this->id . '</div>';
+        }
+
+        public function renderForm($lang){
+            $language = $lang;
+
+        }
     }

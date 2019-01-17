@@ -1,15 +1,9 @@
 <?php
     require_once("functions.php");
     require_once("../db/autoloader.php");
-    echo '<h4>Accounts list</h4>';
+    $language = $_GET["language"];
+    echo '<h4>'. translate("accounts") .'</h4>';
     echo '<div class="accountsList">';
-    echo '<div class="account-wrapper accountHeader">';
-    echo '<div class="account id">ID </div>';
-    echo '<div class="account login">Login</div>';
-    echo '<div class="account pw">Password</div>';
-    echo '<div class="account pw">Password confirm</div>';
-    echo '<div class="account admin">Is admin</div>';
-    echo '</div>';
     foreach (Account::getAccounts() as $account) {
         echo '<div class="account-wrapper">';
         echo '<form name="account' . $account->id . '" >';

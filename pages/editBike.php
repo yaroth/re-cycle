@@ -12,7 +12,7 @@
             $bikeID = $_GET["bikeToEditID"];
             $bike = Bicycle::getBicycleByID($bikeID);
             $bike->setCookiesForBike();
-            $language = getLang();
+            $language = $_GET["language"];
             include "editBikeForm.php";
 
         } else echo "You are not an admin, sorry!";

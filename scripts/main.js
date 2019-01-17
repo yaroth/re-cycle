@@ -233,7 +233,12 @@ function deleteQuery(el) {
 
 function editUser(el) {
     let userID = $(el).val();
-    $.get("editUser.php", {userToEditID: userID}, function (data) {
+
+    let url = new URL(location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let language = searchParams.get('lang');
+
+    $.get("editUser.php", {userToEditID: userID, language: language}, function (data) {
         $("#admin-content").html(data);
     })
 
@@ -252,7 +257,10 @@ function editQuery(el) {
 
 function editBike(el) {
     let bikeID = $(el).val();
-    $.get("editBike.php", {bikeToEditID: bikeID}, function (data) {
+    let url = new URL(location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let language = searchParams.get('lang');
+    $.get("editBike.php", {bikeToEditID: bikeID, language: language}, function (data) {
         $("#admin-content").html(data);
     })
 
@@ -260,6 +268,11 @@ function editBike(el) {
 
 function saveAccount(value) {
     let accountID = value;
+
+    let url = new URL(location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let language = searchParams.get('lang');
+
     let form = document.forms["account" + accountID];
     let loginName = form["login"].value;
     let pw1 = form["pw1"].value;
@@ -273,9 +286,9 @@ function saveAccount(value) {
             },
             function (data, status) {
                 if (status) {
-                    $.get("accountsList.php", function (data) {
+                    $.get("accountsList.php", {language: language}, function (data) {
                         $("#admin-content").html(data);
-                    });
+                    })
                     alert("Successfully saved account with id: " + accountID)
                 } else alert("Could not save account with id: " + accountID);
             });
@@ -291,10 +304,15 @@ function saveUser(id) {
     let genderID = form["genderID"].value;
     let email = form["email"].value;
     let dob = form["dob"].value;
+
+    let url = new URL(location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let language = searchParams.get('lang');
+
     $.post("updateUser.php", {userID: userID, fname: fname, lname: lname, genderID: genderID, email: email, dob: dob},
         function (data, status) {
             if (status) {
-                $.get("usersList.php", function (data) {
+                $.get("usersList.php", {language: language}, function (data) {
                     $("#admin-content").html(data);
                 });
                 alert("Successfully saved user " + fname + " " + lname + " with id: " + userID)
@@ -332,6 +350,10 @@ function saveBike(id) {
     formData.append('brakeTypeID', brakeTypeID);
     formData.append('ownerID', ownerID);
 
+    let url = new URL(location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let language = searchParams.get('lang');
+
     $.ajax({
         url: 'updateBike.php',
         data: formData,
@@ -341,9 +363,9 @@ function saveBike(id) {
         method: 'POST',
         success: function (data) {
             alert("Successfully saved bike with id: " + bikeID);
-            $.get("bikesList.php", function (data) {
+            $.get("bikesList.php", {language: language}, function (data) {
                 $("#admin-content").html(data);
-            });
+            })
         },
         error: function () {
             alert("Could not save bike with id: " + bikeID);
@@ -353,6 +375,11 @@ function saveBike(id) {
 
 function saveQuery( event ) {
     event.preventDefault();
+
+    let url = new URL(location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let language = searchParams.get('lang');
+
     // event.stopPropagation();
     let form = document.forms["editQuery"];
     let queryID = form.queryID.value;
@@ -377,15 +404,15 @@ function saveQuery( event ) {
         },
         function (data, status) {
             if (status) {
-                $.get("queriesList.php", function (data) {
+                $.get("queriesList.php", {language: language}, function (data) {
                     $("#admin-content").html(data);
-                });
+                })
                 alert("Successfully saved query with id: " + queryID);
             } else {
                 alert("Could not save query with id: " + queryID);
-                $.get("queriesList.php", function (data) {
+                $.get("queriesList.php", {language: language}, function (data) {
                     $("#admin-content").html(data);
-                });
+                })
             }
         });
 

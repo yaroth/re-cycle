@@ -6,11 +6,13 @@ $mediumMax: 900px;
 
 $desktopMin: $mediumMax + 1px; //901px
 
+$itemColor: #b9e6fa;
 
 body {
   font-family: Helvetica Neue, Arial, sans-serif;
   margin: 0;
-
+  color: darkblue;
+  
   .content {
     margin: 0 auto;
     background-color: lightblue;
@@ -214,22 +216,24 @@ body {
           display: flex;
           margin-bottom: 10px;
           padding: 10px;
-          border: 1px solid black;
+          border-radius: 4px;
+          overflow: hidden;
+          background-color: $itemColor;
 
           form {
             display: flex;
-            width: 100%;
+            justify-content: flex-start;
           }
 
           .account {
-            width: 17%;
+            margin-right: 10px;
 
             &.id {
-              width: 6%;
+              min-width: 20px;
             }
 
             &.admin {
-              width: 10%;
+              width:80px;
             }
           }
         }
@@ -262,8 +266,8 @@ body {
             }
 
             &.img {
-              max-width: 200px;
-              max-height: 150px;
+              max-width: 100%;
+              max-height: 200px;
               overflow: hidden;
               -webkit-border-radius: 4px;
               -moz-border-radius: 4px;
@@ -288,15 +292,32 @@ body {
             margin-right: 5px;
             margin-bottom: 5px;
             padding: 10px;
-            width: 250px;
-            min-width: 200px;
-            max-width: 300px;
+            min-width: 250px;
+            max-width: 500px;
             -webkit-border-radius: 4px;
             -moz-border-radius: 4px;
             border-radius: 4px;
             overflow: hidden;
-            background-color: #b9e6fa;
+            background-color: $itemColor;
           }
+        }
+      }
+
+      #admin-choice {
+        display: flex;
+        justify-content: center;
+        button {
+          font-size: 16px;
+          padding: 5px 10px;
+          border-radius: 5px;
+          border-width: 0px;
+          color: darkblue;
+        }
+      }
+
+      #admin-content {
+        h4 {
+          text-align: center;
         }
       }
 
@@ -310,7 +331,7 @@ body {
           padding: 10px;
           width: 200px;
           border-radius: 4px;
-          background-color: #b9e6fa;
+          background-color: $itemColor;
 
           .query {
             padding-bottom: 10px;
@@ -335,11 +356,13 @@ body {
         display: flex;
         margin-bottom: 10px;
         padding: 10px;
-        border: 1px solid black;
+        border-radius: 4px;
+        overflow: hidden;
+        background-color: #b9e6fa;
 
         .user {
           margin-right: 10px;
-
+          overflow: hidden;
           &.id {
             width: 30px;
           }
@@ -674,7 +697,7 @@ body {
             border-radius: 4px;
             border: unset;
             margin-right: 10px;
-            background-color: #b9e6fa;
+            background-color: $itemColor;
 
             form {
               flex-direction: column;
@@ -716,7 +739,7 @@ body {
             margin-right: 10px;
             flex-direction: column;
             width: 200px;
-            background-color: #b9e6fa;
+            background-color: $itemColor;
             overflow: hidden;
             position: relative;
             padding-bottom: 40px;
@@ -741,7 +764,7 @@ body {
             }
 
             button {
-              width: 50px;
+              width: auto;
               position: absolute;
               bottom: 6px;
 
@@ -760,7 +783,7 @@ body {
           .query-wrapper {
             border-radius: 4px;
             border: unset;
-            background-color: #b9e6fa;
+            background-color: $itemColor;
           }
         }
       }

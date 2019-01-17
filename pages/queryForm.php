@@ -1,44 +1,85 @@
 <?php
-    $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
-    $targetURL = add_param($targetURL, "id", getId());
-    $queryID = $_COOKIE["id"];
+    /*
+     * @var Query $query
+     */
+    function setChecked($query, $propName, $value) {
+        // $query MUST be declared, since it is used IN the function scope!
+//        global $query;
+        $checked = null;
+        if (isset($query->$propName)) {
+            if ($query->$propName == $value) {
+                $checked = 'checked="checked"';
+                //TODO: this is not valid for all cases -> update!
+            } elseif ($value == 1) $checked = 'checked="checked"';
+            return $checked;
+        }
+    }
+
+    function setSelected($propName, $value) {
+        global $query;
+        $selected = null;
+        if (isset($query->$propName)) {
+            if ($query->$propName == $value) {
+                $selected = 'selected="selected"';
+                //TODO: this is not valid for all cases -> update!
+            } elseif ($value == 1) $selected = 'selected="selected"';
+        }
+
+        return $selected;
+    }
+
+    $language = $_GET["lang"];
+
 ?>
-<form action="<?php echo $targetURL ?>" method="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="saveQueryID" value="<?php echo $query->id ?>" required>
     <fieldset>
-        Title : <br>
-        <input type="text" name="title" placeholder="lightweight racing bike" value="<?php echo $_COOKIE["title"] ?? ""; ?>" autofocus required><br>
-        Max. weight :<br>
-        <input type="number" step="0.1" name="weight" placeholder="9.750" value="<?php echo $_COOKIE["weight"] ?? ""; ?>"><br>
-        Max. price :<br>
-        <input type="number" name="price" placeholder="1540" value="<?php echo $_COOKIE["price"] ?? ""; ?>"><br>
-        Does it require lights? <br>
-        <input type="radio" name="hasLights" value="1" <?php echo getChecked("hasLights", "1") ?> >YES<br>
-        <input type="radio" name="hasLights" value="no" <?php echo getChecked("hasLights", "0") ?> >NO<br>
+        <legend><?php echo translate("query") ?></legend>
+        <?php echo translate("title") ?> : <br>
+        <input type="text" name="title" placeholder="lightweight racing bike" value="<?php echo $query->title ?? ""; ?>"
+               autofocus required><br>
+        <?php echo translate("max-weight") ?> :<br>
+        <input type="number" step="0.1" name="weight" placeholder="9.750"
+               value="<?php echo $query->weight ?? ""; ?>"><br>
 
-        Does it require gears? <br>
-        <input type="radio" name="hasGears" value="1" <?php echo getChecked("hasGears", "1") ?> >YES<br>
-        <input type="radio" name="hasGears" value="no" <?php echo getChecked("hasGears", "0") ?> >NO, single speed<br>
+        <?php echo translate("max-price") ?> :<br>
+        <input type="number" name="price" placeholder="1540" value="<?php echo $query->price ?? ""; ?>"><br>
 
-        What gear type?<br>
-        <input type="radio" name="gearTypeID" value="1" <?php echo getChecked("gearTypeID", "1") ?> >Nabenschaltung<br>
-        <input type="radio" name="gearTypeID" value="2" <?php echo getChecked("gearTypeID", "2") ?> >Kettenschaltung<br>
-        <input type="radio" name="gearTypeID" value="3" <?php echo getChecked("gearTypeID", "3") ?> >Rücktritt<br>
-        <input type="radio" name="gearTypeID" value="4" <?php echo getChecked("gearTypeID", "4") ?> >Andere<br>
+        <?php echo translate("requires-lights") ?> <br>
+        <input type="radio" name="hasLights"
+               value="1" <?php echo setChecked($query, "hasLights", "1") ?> ><?php echo translate("yes") ?><br>
+        <input type="radio" name="hasLights"
+               value="no" <?php echo setChecked($query, "hasLights", "0") ?> ><?php echo translate("no") ?><br>
 
-        How many gears? <br>
-        <input type="number" name="nbOfGears" placeholder="14" value="<?php echo $_COOKIE["nbOfGears"] ?? ""; ?>"><br>
+        <?php echo translate("requires-gears") ?> <br>
+        <input type="radio" name="hasGears"
+               value="1" <?php echo setChecked($query, "hasGears", "1") ?> ><?php echo translate("yes") ?><br>
+        <input type="radio" name="hasGears"
+               value="no" <?php echo setChecked($query, "hasGears", "0") ?> ><?php echo translate("no") ?><br>
 
-        What wheel size?<br>
-        <input type="number" name="wheelSize" placeholder="28" value="<?php echo $_COOKIE["wheelSize"] ?? ""; ?>"><br>
+        <?php echo translate("required-gear-type") ?><br>
+        <select name="gearTypeID">
+            <option value="1" <?php echo setSelected("gearTypeID", "1") ?> ><?php echo translate("naben") ?></option>
+            <option value="2" <?php echo setSelected("gearTypeID", "2") ?> ><?php echo translate("ketten") ?></option>
+            <option value="3" <?php echo setSelected("gearTypeID", "3") ?> ><?php echo translate("rücktritt") ?></option>
+            <option value="4" <?php echo setSelected("gearTypeID", "4") ?> ><?php echo translate("other") ?></option>
+        </select><br>
 
-        What brake type?<br>
-        <input type="radio" name="brakeTypeID" value="1" <?php echo getChecked("brakeTypeID", "1") ?> >Felgenbremsen<br>
-        <input type="radio" name="brakeTypeID" value="2" <?php echo getChecked("brakeTypeID", "2") ?> >Trommelbremsen<br>
-        <input type="radio" name="brakeTypeID" value="3" <?php echo getChecked("brakeTypeID", "3") ?> >Scheibenbremsen<br>
-        <input type="radio" name="brakeTypeID" value="4" <?php echo getChecked("brakeTypeID", "4") ?> >Rücktritt<br>
-        <input type="radio" name="brakeTypeID" value="5" <?php echo getChecked("brakeTypeID", "5") ?> >Andere<br>
+        <?php echo translate("min-speeds") ?> <br>
+        <input type="number" name="nbOfGears" placeholder="14" value="<?php echo $query->nbOfGears ?? ""; ?>"><br>
 
-        <input type="hidden" name="saveQueryID" value="<?php echo $queryID ?>" required>
-        <button type="submit" name="action" value="saveQuery">Save</button>
+        <?php echo translate("required-wheel-size") ?><br>
+        <input type="number" name="wheelSize" placeholder="28" value="<?php echo $query->wheelSize ?? ""; ?>"><br>
+
+        <?php echo translate("required-brake-type") ?><br>
+        <select name="brakeTypeID">
+            <option value="1" <?php echo setSelected("brakeTypeID", "1") ?> ><?php echo translate("felgen") ?></option>
+            <option value="2" <?php echo setSelected("brakeTypeID", "2") ?> ><?php echo translate("trommel") ?></option>
+            <option value="3" <?php echo setSelected("brakeTypeID", "3") ?> ><?php echo translate("scheiben") ?></option>
+            <option value="4" <?php echo setSelected("brakeTypeID", "4") ?> ><?php echo translate("rücktritt-bremse") ?></option>
+            <option value="5" <?php echo setSelected("brakeTypeID", "5") ?> ><?php echo translate("other") ?></option>
+        </select><br>
+
+        <button type="submit" name="action" value="saveQuery"><?php echo translate("save") ?></button>
     </fieldset>
 </form>

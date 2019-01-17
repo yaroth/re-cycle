@@ -1,4 +1,3 @@
-<h2><?php echo translate("results"); ?></h2>
 <?php include '../data/bikes.php'; ?>
 
     <?php

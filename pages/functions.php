@@ -126,10 +126,22 @@
                 'de' => 'Neues Velo erfassen',
                 'fr' => 'Ajouter un nouveau vélo',
                 'en' => 'Add a new bicycle'),
+            'add-query' => array(
+                'de' => 'Neue Suche erfassen',
+                'fr' => 'Ajouter une nouvelle recherche',
+                'en' => 'Add a new query'),
             'edit-bicycle' => array(
                 'de' => 'Velodaten ändern',
                 'fr' => 'Modifier vélo',
                 'en' => 'Modify bicycle'),
+            'delete-bike-success' => array(
+                'de' => 'Velo erfolgreich gelöscht.',
+                'fr' => 'Vélo supprimé.',
+                'en' => 'Bicycle successfully deleted.'),
+            'update-bike-success' => array(
+                'de' => 'Veloänderungen erfolgreich gespeichert.',
+                'fr' => 'Données sauvegardées.',
+                'en' => 'Bicycle successfully updated.'),
             'bike-info' => array(
                 'de' => 'Velo Daten',
                 'fr' => 'Données vélo',
@@ -198,6 +210,26 @@
                 'de' => 'Suche',
                 'fr' => 'Recherche',
                 'en' => 'Query'),
+            'queries' => array(
+                'de' => 'Suchen',
+                'fr' => 'Recherches',
+                'en' => 'Queries'),
+            'bicycles' => array(
+                'de' => 'Velos',
+                'fr' => 'Vélos',
+                'en' => 'Bicycles'),
+            'users' => array(
+                'de' => 'Benutzer',
+                'fr' => 'Utilisateurs',
+                'en' => 'Users'),
+            'accounts' => array(
+                'de' => 'Konten',
+                'fr' => 'Comptes',
+                'en' => 'Accounts'),
+            'no-matching-bike-found' => array(
+                'de' => 'Sorry, kein Velo gefunden, das diesen Suchkriterien entspricht.',
+                'fr' => 'Désolé, aucun vélo trouvé qui corresponde aux critères de recherche requis.',
+                'en' => 'Sorry, no matching bicycle found.'),
             'create-account' => array(
                 'de' => 'Konto erstellen ',
                 'fr' => 'Créer un compte ',
@@ -350,25 +382,25 @@
                 'fr' => 'Authentifies-toi ',
                 'en' => 'Login '),
             3 => array(
-                'de' => 'Erstelle deine Suchaufträge ',
-                'fr' => 'Définis tes recherches ',
-                'en' => 'Set your queries '),
+                'de' => 'Meine Suchaufträge ',
+                'fr' => 'Mes recherches ',
+                'en' => 'My queries '),
             4 => array(
-                'de' => 'Deine zum Verkauf stehenden Velos ',
-                'fr' => 'Tes vélos à vendre ',
-                'en' => 'These are the bicycles you want to sell '),
+                'de' => 'Meine zum Verkauf stehenden Velos ',
+                'fr' => 'Mes vélos à vendre ',
+                'en' => 'My bicycles to sell '),
             5 => array(
-                'de' => 'Deine Kontoangaben ',
-                'fr' => 'Tes données ',
-                'en' => 'Your account data '),
+                'de' => 'Meine Kontoangaben anpassen',
+                'fr' => 'Changer mes données ',
+                'en' => 'Change my account data '),
             6 => array(
-                'de' => 'Passe dein Passwort an ',
-                'fr' => 'Change ton mot de passe ',
-                'en' => 'Change your password '),
+                'de' => 'Mein Passwort anpassen ',
+                'fr' => 'Changer mon mot de passe ',
+                'en' => 'Change my password '),
             7 => array(
-                'de' => 'Erfasse dein zu verkaufendes Velo ',
-                'fr' => 'Saisis ton vélo à vendre ',
-                'en' => 'Set your to be sold bicycle data '),
+                'de' => 'Erfasse ein zu verkaufendes Velo',
+                'fr' => 'Saisir un vélo à vendre',
+                'en' => 'Add bicycle to sell'),
             8 => array(
                 'de' => 'Erfasse eine neue Suche. Du kannst mehrere Suchen erfassen. So kannst du gezielt nach mehreren Velos suchen. ',
                 'fr' => 'Saisis une recherche. Tu peux en saisir plusieurs, ainsi il est possible de rechercher plusieurs vélos à la fois.',
@@ -542,12 +574,12 @@
             $_COOKIE['price'] = $price;
             $queryArray['price'] = $price;
         }
-        if (!empty(strip_tags($_POST['hasLights']))) {
+        if (isset($_POST['hasLights']) && !empty(strip_tags($_POST['hasLights']))) {
             $hasLights = strip_tags($_POST['hasLights'] == 'no' ? '0' : '1');
             $_COOKIE['hasLights'] = $hasLights;
             $queryArray['hasLights'] = $hasLights;
         }
-        if (!empty(strip_tags($_POST['hasGears']))) {
+        if (isset($_POST['hasGears']) && !empty(strip_tags($_POST['hasGears']))) {
             $hasGears = strip_tags($_POST['hasGears'] == 'no' ? '0' : '1');
             $_COOKIE['hasGears'] = $hasGears;
             $queryArray['hasGears'] = $hasGears;

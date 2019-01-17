@@ -5,7 +5,7 @@
      * Date: 08.11.18
      * Time: 21:27
      */
-
+    require_once "../pages/functions.php";
 
     class User {
 
@@ -186,7 +186,7 @@
             return $stmt != null;
         }
 
-        public function saveUserInDB(){
+        public function saveUserInDB() {
             $ADD_STATEMENT = "UPDATE users SET fname=?, lname=?, login=?, dob=?, email=?, genderID=? WHERE users.id = ?;";
             $db = DB::getInstance();
             $stmt = $db->prepare($ADD_STATEMENT);
@@ -243,9 +243,24 @@
             return $gender->name;
         }
 
-        public function userIsAdmin(){
+        public function userIsAdmin() {
             $account = Account::getAccountByLogin($this->login);
             return $account->isAdminAccount();
+        }
+
+        public function render($lang) {
+            $language = $lang;
+            echo '<div class="user-wrapper">
+                    <div class="user id">' . $this->id . '</div>
+                    <div class="user name">' . $this->getUserFullName() . '</div>
+                    <div class="user login">' . $this->login . '</div>
+                    <div class="user dob">' . $this->dob . '</div>
+                    <div class="user email">' . $this->email . '</div>
+                    <div class="user gender">' . $this->getGenderName() . '</div>
+                    <button onclick="deleteUser(this);" name="deleteUser" type="button" value="2">' . translate("delete") . '</button>
+                    <button onclick="editUser(this);" name="editUser" type="button" value="2">' . translate("edit") . '</button>
+                </div>';
+
         }
 
     }

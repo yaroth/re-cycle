@@ -31,7 +31,8 @@
     $language = $_GET["language"];
 ?>
 <form name="editQuery" onsubmit="return saveQuery(event)">
-    <input type="hidden" name="queryID" value="<?php echo $queryID; ?>">
+    <input type="hidden" name="queryID" value="<?php echo $query->id; ?>">
+    <input type="hidden" name="userID" value="<?php echo $query->userID ?? ""; ?>" required>
     <fieldset>
         <legend><?php echo translate("query") ?></legend>
         <?php echo translate("title") ?> : <br>
@@ -73,7 +74,6 @@
             <option value="5" <?php echo setSelected("brakeTypeID", "5") ?> ><?php echo translate("other") ?></option>
         </select><br>
 
-        <input type="hidden" name="userID" value="<?php echo $query->userID ?? ""; ?>" required>
         <button type="submit"><?php echo translate("save") ?></button>
     </fieldset>
 </form>

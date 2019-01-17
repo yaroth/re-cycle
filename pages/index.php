@@ -50,7 +50,7 @@
     </div><!--end main-->
     <div class="footer">
         <div class="general">
-            <div class="logo"><a href="index.php"><img src="../img/logo.png"></a></div>
+            <div class="logo"><a href="index.php?id=0&lang=<?php echo getLang() ?>"><img src="../img/logo.png"></a></div>
             <div class="impressum">
                 <p>recycle.ch</p>
                 <p>Wasserweg 7</p>

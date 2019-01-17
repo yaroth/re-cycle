@@ -12,7 +12,7 @@
             $userID = $_GET["userToEditID"];
             $user = User::getUserByID($userID);
             $user->setCookiesForUser();
-            $language = getLang();
+            $language = $_GET["language"];
             include "editUserForm.php";
 
         } else echo "You are not an admin, sorry!";

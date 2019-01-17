@@ -3,9 +3,9 @@
     require_once ("functions.php");
     require_once("../db/autoloader.php");
     $bikes = Bicycle::getBicycles();
-    echo '<h4>Bicycles list</h4>';
+    $language = $_GET["language"];
+    echo '<h4>'. translate("bicycles") .'</h4>';
     echo '<div class="bikesList">';
-    $language = getLang();
     foreach ($bikes as $bike) {
         echo
             '<div class="bike-wrapper">
@@ -13,8 +13,8 @@
                 <div class="bike img"><img src="../img/uploads/' . $bike->imageName . '"></div>
                 <div class="bike description"><desc>' . translate("description") . ': </desc><p>' . $bike->description . '</p></div>
                 <div class="bike weight"><desc>' . translate("weight") . ': </desc>' . $bike->weight . '</div>
-                <div class="bike lights"><desc>' . translate("has-lights") . ' : </desc>' . ($bike->hasLights ? "yes" : "no") . '</div>
-                <div class="bike gears"><desc>' . translate("has-gears") . ' : </desc>' . ($bike->hasGears ? "yes" : "no") . '</div>
+                <div class="bike lights"><desc>' . translate("has-lights") . ' : </desc>' . ($bike->hasLights ? translate("yes") : translate("no")) . '</div>
+                <div class="bike gears"><desc>' . translate("has-gears") . ' : </desc>' . ($bike->hasGears ? translate("yes") : translate("no")) . '</div>
                 <div class="bike price"><desc>' . translate("price") . ': </desc>' . $bike->price . '.-</div>
                 <div class="bike gearType"><desc>' . translate("gear-type") . ': </desc>' . $bike->getGearTypeName() . '</div>
                 <div class="bike nbGears"><desc>' . translate("speeds") . ': </desc>' . $bike->nbOfGears . '</div>

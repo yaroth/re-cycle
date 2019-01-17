@@ -57,7 +57,7 @@
                 <p>' . $bike->description . '</p>
                 <p><desc>' . translate("gear-type") . ': </desc>' . translate($bike->getGearTypeName()) . '</p>
                 <p><desc>' . translate("speeds") . ': </desc>' . $bike->nbOfGears . '</p>
-                <p><desc>' . translate("brakes") . ': </desc>' . translate($bike->getBrakeTypeName()) . '</p>
+                <p><desc>' . translate("brake-type") . ': </desc>' . translate($bike->getBrakeTypeName()) . '</p>
                 <p><desc>' . translate("wheel-size") . ': </desc>' . $bike->wheelSize . '"</p>
                 <p><desc>' . translate("has-lights") . ': </desc>' . ($bike->hasLights ? translate("yes") : translate("no")) . '</p>
                 <p><desc>' . translate("has-gears") . ': </desc>' . ($bike->hasGears ? translate("yes") : translate("no")) . '</p>
@@ -74,30 +74,31 @@
     }
 
     function listEditableBike($bike) {
-        $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
-        $targetURL = add_param($targetURL, "id", getId());
+        $language = $_GET["lang"];
         $item = '<div class="item wrapper">
             <div class="title">
-            <h3>' . $bike->title . '</h3>
-            <p class="price">' . $bike->price . '.-</p>
-            <p class="weight"><desc>Weight: </desc>' . $bike->weight . ' kg</p>
+                <h3>' . $bike->title . '</h3>
+                <p class="price">' . $bike->price . '.-</p>
             </div>
             <div class="image">
                 <img src="../../img/uploads/' . $bike->imageName . '">
             </div>
             <div class="specs">
                 <p>' . $bike->description . '</p>
-                <p><desc>Gear type: </desc>' . translate($bike->getGearTypeName()) . '</p>
-                <p><desc>Speeds: </desc>' . $bike->nbOfGears . '</p>
-                <p><desc>Brakes: </desc>' . translate($bike->getBrakeTypeName()) . '</p>
-                <p><desc>Wheel size: </desc>' . $bike->wheelSize . '"</p>
-                <p><desc>Owner: </desc>' . $bike->getOwnerName() . '</p>
+                <p><desc>' . translate("gear-type") . ': </desc>' . translate($bike->getGearTypeName()) . '</p>
+                <p><desc>' . translate("speeds") . ': </desc>' . $bike->nbOfGears . '</p>
+                <p><desc>' . translate("brake-type") . ': </desc>' . translate($bike->getBrakeTypeName()) . '</p>
+                <p><desc>' . translate("wheel-size") . ': </desc>' . $bike->wheelSize . '"</p>
+                <p><desc>' . translate("has-lights") . ': </desc>' . ($bike->hasLights ? translate("yes") : translate("no")) . '</p>
+                <p><desc>' . translate("has-gears") . ': </desc>' . ($bike->hasGears ? translate("yes") : translate("no")) . '</p>
+                <p class="weight"><desc>' . translate("weight") . ': </desc>' . $bike->weight . ' kg</p>
+                <p><desc>' . translate("owner") . ': </desc>' . $bike->getOwnerName() . '</p>
             </div>
             <div class="edit">
-                <form action="' . $targetURL . '" method="post" >
+                <form action="" method="post" >
                 <input type="hidden" name="bikeID" value="' . $bike->id . '" required><br>
-                <button type="submit" name="action" value="editBike">Edit</button>
-                <button type="submit" name="action" value="deleteBike">Delete</button>
+                <button type="submit" name="action" value="deleteBike">' . translate("delete") . '</button>
+                <button type="submit" name="action" value="editBike">' . translate("edit") . '</button>
                 </form>
             </div>
         </div>';
@@ -119,9 +120,9 @@
         else {
             foreach ($queries as $query) {
                 $matchingBikes = Matching::getMatchingBikesByQuery($query);
-                echo "<div class='query'><h4>Query: '$query->title'</h4>";
+                echo "<div class='query'><h4>" . translate("query") .": '$query->title'</h4>";
                 if ($matchingBikes == null) {
-                    echo "<div class='no-match'>Sorry, no matching bicycles found!</div></div>";
+                    echo "<div class='no-match'>" . translate("no-matching-bike-found") ."</div></div>";
                 } else {
                     echo "</div><!--END query-->";
                     echo '<div class="items">';

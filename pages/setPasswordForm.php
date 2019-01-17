@@ -2,7 +2,6 @@
     $targetURL = add_param($_SERVER['PHP_SELF'], "lang", getLang());
     $targetURL = add_param($targetURL, "id", getId());
 ?>
-<h2><?php echo translate("set-password"); ?></h2>
 <form action="<?php echo $targetURL ?>" method="post" name="setNewPassword" onsubmit="return validateNewPassword();">
     <fieldset>
         <legend><?php echo translate("personal-info") ?> :</legend>

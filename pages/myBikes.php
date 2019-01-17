@@ -1,6 +1,6 @@
-<h2><?php echo translate("myBikes"); ?></h2>
 <?php include '../data/bikes.php'; ?>
     <?php
+        $language = getLang();
         if (isset($_SESSION["user"])) {
             $login = $_SESSION["user"];
             $user = User::getUserByLogin($login);
@@ -16,7 +16,7 @@
                     $updatedBikeInDB = Bicycle::updateBikeInDB($bikeArray);
                     if ($updatedBikeInDB) {
                         echo '<h2>' . translate("success") . '</h2>';
-                        echo "<h3>Successfully updated your bicycle data.</h3>";
+                        echo "<h3>" . translate("update-bike-success") . "</h3>";
                         echo '<div class="items">';
                         listBikesByUser($user);
                     } // TODO: should show POST data! Why????
@@ -45,7 +45,8 @@
                     //TODO: check if bikeByID exists!
                     $deleteBikeSuccess = Bicycle::deleteBikeByID($bikeID);
                     if ($deleteBikeSuccess) {
-                        echo 'Successfully deleted your bicycle!';
+                        echo '<h2>' . translate("success") . '</h2>';
+                        echo "<h3>" . translate("delete-bike-success") ."</h3>";
                     } else {
                         echo '<error>Error, could not delete your bicycle.</error>';
                     }
@@ -58,7 +59,7 @@
                 listBikesByUser($user);
             }
         } else {
-            $lang = getLang();
+
             echo '<h2>' . translate("error") . '</h2>';
             echo '<h3>' . translate("sorry") . ', to view your bicycles you first need to <a href="index.php?lang=' . $lang . '&id=2">login</a>!</h3>';
             echo '<div class="items">';

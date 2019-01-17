@@ -1,4 +1,3 @@
-<h2><?php echo translate("edit-account"); ?></h2>
 <div class="editAccount">
     <?php
         if (isset($_SESSION["user"])) {
