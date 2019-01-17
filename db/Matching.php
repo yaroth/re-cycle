@@ -110,7 +110,6 @@
             return $queries;
         }
 
-        // TODO: complete matching conditions
         public static function getMatchingBikesByQuery($query) {
             $bikes = Bicycle::getBicycles();
             $foundBikesArray = Bicycle::getBicycles();
@@ -152,33 +151,35 @@
                 }
 
             }
+            /*only intersect if QUERY required minimal weight is > 0*/
             if ($query->weight != 0) {
-//                foreach ($foundBikesArray as $bike) echo "WEIGHT before: " . $bike . '<br>';
-//                echo '<br>';
                 $foundBikesArray = array_intersect($foundBikesArray, $weightBikesArray);
             }
+            /*only intersect if QUERY required max price is > 0*/
             if ($query->price != 0) {
                 $foundBikesArray = array_intersect($foundBikesArray, $priceBikesArray);
             }
-
-            // TODO: Fix the hasLights condition
+            /*only intersect if QUERY lights are required*/
             if ($query->hasLights) {
                 $foundBikesArray = array_intersect($foundBikesArray, $hasLightsBikesArray);
             }
-            // TODO: Fix the hasGears condition
+            /*only intersect if QUERY gears are required*/
             if ($query->hasGears) {
                 $foundBikesArray = array_intersect($foundBikesArray, $hasGearsBikesArray);
             }
-
+            /*only intersect if QUERY required gear type is different from 'other'*/
             if ($query->gearTypeID != 4) {
                 $foundBikesArray = array_intersect($foundBikesArray, $gearTypeBikesArray);
             }
+            /*only intersect if QUERY required number of gears is > 0*/
             if ($query->nbOfGears != 0) {
                 $foundBikesArray = array_intersect($foundBikesArray, $nbOfGearsBikesArray);
             }
+            /*only intersect if QUERY required wheel size is > 0*/
             if ($query->wheelSize != 0) {
                 $foundBikesArray = array_intersect($foundBikesArray, $wheelSizeBikesArray);
             }
+            /*only intersect if QUERY required brake type is different from 'other'*/
             if ($query->brakeTypeID != 5) {
                 $foundBikesArray = array_intersect($foundBikesArray, $brakeTypeBikesArray);
             }
