@@ -40,9 +40,11 @@
                 $ownerID = $_POST["ownerID"];
                 // will escape all the necessary properties > save to use!
                 $bike->setProperties($title, $description, $imageName, $weight, $price, $hasLights, $hasGears, $gearTypeID, $nbOfGears, $wheelSize, $brakeTypeID, $ownerID);
-                $bike->saveBikeInDB();
-            } else return false;
+                $bikeUpdateSuccess = $bike->saveBikeInDB();
+                if ($bikeUpdateSuccess) echo "Successfully updated bicycle with ID '$bikeID'";
+                else echo "ERROR. Could not save bicycle with ID '$bikeID'";
+            } else echo "ERROR. Could not save bicycle with ID '$bikeID'";
 
 
-        } else echo "You are not an admin, sorry!";
+        } else echo "ERROR. You are not an admin, sorry!";
     } else echo "session cookie 'user' not set!";

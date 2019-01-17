@@ -27,7 +27,6 @@
                 echo '<input type="hidden" name="userID" value="'. USER::getUserIDByLogin($login) . '" ><br>';
             }
             elseif (isset($_POST["userID"])) {
-                //TODO: why is this empty????????
             }
         ?>
         Login:<br> <input type="text" name="login" placeholder="Enter your login..." value="<?php echo $_COOKIE["login"] ?? "";?>" required><br>

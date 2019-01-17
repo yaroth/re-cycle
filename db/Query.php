@@ -66,8 +66,6 @@
             return $queries;
         }
 
-        // returns all the queries set by an user.
-        // TODO: Check if this works!
         public static function getQueriesByUserID($userID) {
             $ADD_STATEMENT = "SELECT * FROM queries WHERE queries.userID = ?";
             $stmt = DB::getInstance()->prepare($ADD_STATEMENT);

@@ -12,7 +12,6 @@
             exit;
         }
         if ($success) {
-            /*TODO: make code concise*/
             $login = $_SESSION["user"];
             $user = User::getUserByLogin($login);
             $bikeArray["ownerID"] = $user->id;

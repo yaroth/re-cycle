@@ -20,7 +20,11 @@
                 $genderID = $_POST["genderID"];
                 // will escape all the necessary properties > save!
                 $user->setProperties($fname, $lname, $user->login, $dob, $email, $genderID);
-                $user->saveUserInDB();
+                $userUpdatedSuccess = $user->saveUserInDB();
+                if ($userUpdatedSuccess) {
+                    $userName = $user->getUserFullName();
+                    echo "Successfully updated user '$userName'";
+                } else echo "ERROR! Could not update user with ID '$userID'";
             }
-        } else echo "You are not an admin, sorry!";
+        } else echo "ERROR! You are not an admin, sorry!";
     } else echo "session cookie 'user' not set!";

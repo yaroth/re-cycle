@@ -12,7 +12,6 @@
             if (isset($_POST["accountID"]) && isset($_POST["login"]) && isset($_POST["pw"]) && isset($_POST["admin"])) {
                 $oldAccountID = $_POST["accountID"];
                 $newLogin = $_POST["login"];
-//                TODO: catch case where pw is left empty!
                 $newPw = $_POST["pw"];
                 $newAdmin = $_POST["admin"];
                 $newAccount = Account::getAccountByID($oldAccountID);
@@ -23,7 +22,8 @@
                 if ($accountUpdateSuccess) {
                     $userID = User::getUserIDByLogin($userLoginToUpdate);
                     $userLoginUpdated = User::updateUserLoginByIDInDB($newLogin, $userID);
-                }
+                    echo "Success. Updated account with ID '$oldAccountID'";
+                } else echo "ERROR. Could not update account with ID '$oldAccountID'";
             }
         } else echo "You are not an admin, sorry!";
     } else echo "session cookie 'user' not set!";

@@ -9,33 +9,6 @@
 
 // TODO: NICE-TO-HAVE: create a function to sort by different keys
 
-    // TODO: unused???
-    /*function listQueries() {
-        $queries = Query::getQueries();
-        foreach ($queries as $query) {
-            listQuery($query);
-        }
-    }*/
-
-    /*function listQuery($query) {
-        $item = '<div class="query wrapper">
-            <div class="title">
-            <h3>' . $query->title . '</h3>
-            <p class="price">' . $query->price . '.-</p>
-            <p class="weight">Weight: ' . $query->weight . ' kg</p>
-            </div>
-            <div class="specs">
-                <p>Gear type: ' . translate($query->getGearTypeName()) . '</p>
-                <p>Speeds: ' . $query->nbOfGears . '</p>
-                <p>Brakes: ' . translate($query->getBrakeTypeName()) . '</p>
-                <p>Wheel size: ' . $query->wheelSize . '"</p>
-                <p>Owner: ' . $query->getOwnerName() . '</p>
-            </div>
-            <div>  <a href="url">Buy Now</a> </div>
-        </div>';
-        echo $item;
-    }*/
-
     function listQueriesByUserID($userID) {
         $userQueries = Query::getQueriesByUserID($userID);
         if ($userQueries == null) echo '<h4>' . translate("no-query-defined") . '<a href="index.php?lang=' . getLang() . '&id=8">' . translate("add-query") . '?</a></h4>';

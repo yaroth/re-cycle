@@ -14,30 +14,28 @@ $(document).ready(function () {
 });
 
 
-
 function validateCreateAccount() {
     //TODO: remove commenting out
     /*var form = document.forms["create-account"];
-    var name = form["name"].value;
+    var name = form.lname.value;
     if (!name) {
         alert("No valid name!");
         return false;
     }
 
-
-    var surname = form["surname"].value;
+    var surname = form.fname.value;
     if (!surname) {
-        alert("No valid surname!");
+        alert("No valid first name!");
         return false;
     }
 
-    var username = form["username"].value;
+    var username = form.login.value;
     if (!username) {
-        alert("No valid username!");
+        alert("No valid login!");
         return false;
     }
 
-    var password = form["password"].value;
+    var password = form.pw.value;
     if (!password) {
         alert("No valid password!");
         return false;
@@ -184,32 +182,43 @@ function adminSelection(element) {
 
 function deleteUser(el) {
     let userID = $(el).val();
+
+    let url = new URL(location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let language = searchParams.get('lang');
+
     var reallyDelete = confirm("Do you really want to delete this user ?");
     if (reallyDelete) {
         $.post("deleteUser.php", {deleteUserID: userID}, function (data, status) {
             if (status) {
-                $.get("usersList.php", function (data) {
+                alert(data);
+                $.get("usersList.php", {language: language}, function (data) {
                     $("#admin-content").html(data);
                 });
-                // TODO: update message with first and last name of user
-                alert("Successfully deleted user with id: " + userID)
-            } else alert("Could not delete user with id: " + userID);
+            } else {
+                alert("Could not delete user with id: " + userID + "\nError message: " + data);
+            }
         });
     }
 }
 
 function deleteBike(el) {
     let bikeID = $(el).val();
+
+    let url = new URL(location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let language = searchParams.get('lang');
+
     // TODO: add details to delete message
-    var reallyDelete = confirm("Do you really want to delete this bicycle (title: , description: ) ?");
+    var reallyDelete = confirm("Do you really want to delete this bicycle (ID: " + bikeID + " ) ?");
     if (reallyDelete) {
         $.post("deleteBike.php", {deleteBikeID: bikeID}, function (data, status) {
             if (status) {
-                $.get("bikesList.php", function (data) {
+                $.get("bikesList.php", {language: language}, function (data) {
                     $("#admin-content").html(data);
                 });
                 // TODO: update message with bike data like title
-                alert("Successfully deleted bike with id: " + bikeID)
+                alert(data)
             } else alert("Could not delete bike with id: " + bikeID);
         });
     }
@@ -217,16 +226,21 @@ function deleteBike(el) {
 
 function deleteQuery(el) {
     let queryID = $(el).val();
+
+    let url = new URL(location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let language = searchParams.get('lang');
+
     // TODO: add details to delete message
-    var reallyDelete = confirm("Do you really want to delete this query (title: , description: ) ?");
+    var reallyDelete = confirm("Do you really want to delete this query (ID: " + queryID + ") ?");
     if (reallyDelete) {
         $.post("deleteQuery.php", {deleteQueryID: queryID}, function (data, status) {
             if (status) {
-                $.get("queriesList.php", function (data) {
+                $.get("queriesList.php", {language: language}, function (data) {
                     $("#admin-content").html(data);
                 });
                 // TODO: update message with bike data like title
-                alert("Successfully deleted query with id: " + queryID)
+                alert(data)
             } else alert("Could not delete query with id: " + queryID);
         });
     }
@@ -247,9 +261,11 @@ function editUser(el) {
 
 function editQuery(el) {
     let queryID = $(el).val();
+
     let url = new URL(location.href);
     let searchParams = new URLSearchParams(url.search);
     let language = searchParams.get('lang');
+
     $.get("editQuery.php", {queryID: queryID, language: language}, function (data) {
         $("#admin-content").html(data);
     })
@@ -258,9 +274,11 @@ function editQuery(el) {
 
 function editBike(el) {
     let bikeID = $(el).val();
+
     let url = new URL(location.href);
     let searchParams = new URLSearchParams(url.search);
     let language = searchParams.get('lang');
+
     $.get("editBike.php", {bikeToEditID: bikeID, language: language}, function (data) {
         $("#admin-content").html(data);
     })
@@ -289,8 +307,8 @@ function saveAccount(value) {
                 if (status) {
                     $.get("accountsList.php", {language: language}, function (data) {
                         $("#admin-content").html(data);
-                    })
-                    alert("Successfully saved account with id: " + accountID)
+                    });
+                    alert(data);
                 } else alert("Could not save account with id: " + accountID);
             });
     } else alert("New passwords don't match. Try again!")
@@ -316,7 +334,7 @@ function saveUser(id) {
                 $.get("usersList.php", {language: language}, function (data) {
                     $("#admin-content").html(data);
                 });
-                alert("Successfully saved user " + fname + " " + lname + " with id: " + userID)
+                alert(data)
             } else alert("Could not save user " + fname + " " + lname + " with id: " + userID);
         });
 }
@@ -363,7 +381,7 @@ function saveBike(id) {
         processData: false,
         method: 'POST',
         success: function (data) {
-            alert("Successfully saved bike with id: " + bikeID);
+            alert(data);
             $.get("bikesList.php", {language: language}, function (data) {
                 $("#admin-content").html(data);
             })
@@ -374,7 +392,7 @@ function saveBike(id) {
     });
 }
 
-function saveQuery( event ) {
+function saveQuery(event) {
     event.preventDefault();
 
     let url = new URL(location.href);
@@ -408,19 +426,16 @@ function saveQuery( event ) {
                 $.get("queriesList.php", {language: language}, function (data) {
                     $("#admin-content").html(data);
                 })
-                alert("Successfully saved query with id: " + queryID);
+                alert(data);
             } else {
                 alert("Could not save query with id: " + queryID);
-                $.get("queriesList.php", {language: language}, function (data) {
-                    $("#admin-content").html(data);
-                })
             }
         });
 
 
 }
 
-function addQuery( event ) {
+function addQuery(event) {
     event.preventDefault();
     // event.stopPropagation();
     let form = document.forms["add-Query"];
@@ -444,12 +459,12 @@ function addQuery( event ) {
         },
         function (data, status) {
             if (status) {
-                alert("Successfully added query. ");
+                alert(data);
                 let urlParams = new URLSearchParams(window.location.search);
                 let lang = urlParams.get('lang');
                 location.href = "index.php?lang=" + lang + "&id=3";
             } else {
-                alert("Could not add query. Sorry. ");
+                alert("ERROR. Could not add query. Sorry. ");
             }
         });
 
@@ -458,10 +473,12 @@ function addQuery( event ) {
 
 function listBikes(element) {
     let btnValue = $(element).val();
-    $(element).addClass("active").siblings().removeClass('active');;
+    $(element).addClass("active").siblings().removeClass('active');
+    ;
     let url = new URL(location.href);
     let searchParams = new URLSearchParams(url.search);
     let language = searchParams.get('lang');
+
     $.post("getListOfBikes.php", {allOrMatching: btnValue, language: language},
         function (bikesHTML) {
             $("#bikes-wrapper").html(bikesHTML)

@@ -26,8 +26,10 @@
                 // will escape all the necessary properties > save to use!
                 $query->setProperties($title, $weight, $price, $hasLights, $hasGears, $gearTypeID, $nbOfGears, $wheelSize, $brakeTypeID, $userID);
                 $queryUpdateSuccess = $query->saveQueryInDB();
-            }
+                if ($queryUpdateSuccess) echo "Successfully updated query with ID '$queryID'";
+                else echo "ERROR. Could not save query with ID '$queryID'";
+            } else echo "ERROR. Could not save query with ID '$queryID'";
 
 
-        } else echo "You are not an admin, sorry!";
+        } else echo "ERROR. You are not an admin, sorry!";
     } else echo "session cookie 'user' not set!";

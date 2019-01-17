@@ -21,5 +21,7 @@
         $query = new Query();
         $query->setProperties($title, $weight, $price, $hasLights, $hasGears, $gearTypeID, $nbOfGears, $wheelSize, $brakeTypeID, $userID);
         $addQuerySuccess = Query::addQueryToDB($query);
+        if ($addQuerySuccess) echo "Successfully added query!";
+        else echo "ERROR. Could not add query!";
 
     } else echo "session cookie 'user' not set!";
