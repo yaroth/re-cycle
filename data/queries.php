@@ -38,7 +38,7 @@
 
     function listQueriesByUserID($userID) {
         $userQueries = Query::getQueriesByUserID($userID);
-        if ($userQueries == null) echo 'You have no query defined, so: &nbsp<a href="index.php?lang=' . getLang() . '&id=8">add a new query</a>';
+        if ($userQueries == null) echo '<h4>' . translate("no-query-defined") . '<a href="index.php?lang=' . getLang() . '&id=8">' . translate("add-query") . '?</a></h4>';
         else {
             foreach ($userQueries as $query) {
                 renderEditableQuery($query);

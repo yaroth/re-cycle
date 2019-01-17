@@ -32,7 +32,7 @@
 
     function listBikesByUser($user) {
         $bikesToSell = Bicycle::getBicyclesByUser($user);
-        if ($bikesToSell == null) echo 'You have no bicycle of your own defined, so: &nbsp<a href="index.php?lang=' . getLang() . '&id=7">add a new bicycle</a>';
+        if ($bikesToSell == null) echo '<h4>'. translate("not-selling-bicycle") .'<a href="index.php?lang=' . getLang() . '&id=7">' . translate("sell-bicycle") .'?</a></h4>';
         else {
             usort($bikesToSell, function ($bike1, $bike2) {
                 return $bike1->price <=> $bike2->price;
@@ -116,7 +116,7 @@
     function listMatchingBicyclesByLogin($userLogin, $lang) {
         $userID = User::getUserIDByLogin($userLogin);
         $queries = Query::getQueriesByUserID($userID);
-        if ($queries == null) echo 'You have no query defined, do you want to: <a href="index.php?lang=' . getLang() . '&id=8">add a new query?</a>';
+        if ($queries == null) echo '<h4>' . translate("no-query-defined") . '<a href="index.php?lang=' . getLang() . '&id=8">' . translate("add-query") . '?</a></h4>';
         else {
             foreach ($queries as $query) {
                 $matchingBikes = Matching::getMatchingBikesByQuery($query);

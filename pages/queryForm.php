@@ -15,8 +15,7 @@
         }
     }
 
-    function setSelected($propName, $value) {
-        global $query;
+    function setSelected($query, $propName, $value) {
         $selected = null;
         if (isset($query->$propName)) {
             if ($query->$propName == $value) {
@@ -59,10 +58,10 @@
 
         <?php echo translate("required-gear-type") ?><br>
         <select name="gearTypeID">
-            <option value="1" <?php echo setSelected("gearTypeID", "1") ?> ><?php echo translate("naben") ?></option>
-            <option value="2" <?php echo setSelected("gearTypeID", "2") ?> ><?php echo translate("ketten") ?></option>
-            <option value="3" <?php echo setSelected("gearTypeID", "3") ?> ><?php echo translate("rücktritt") ?></option>
-            <option value="4" <?php echo setSelected("gearTypeID", "4") ?> ><?php echo translate("other") ?></option>
+            <option value="1" <?php echo setSelected($query, "gearTypeID", "1") ?> ><?php echo translate("naben") ?></option>
+            <option value="2" <?php echo setSelected($query, "gearTypeID", "2") ?> ><?php echo translate("ketten") ?></option>
+            <option value="3" <?php echo setSelected($query, "gearTypeID", "3") ?> ><?php echo translate("rücktritt") ?></option>
+            <option value="4" <?php echo setSelected($query, "gearTypeID", "4") ?> ><?php echo translate("other") ?></option>
         </select><br>
 
         <?php echo translate("min-speeds") ?> <br>
@@ -73,11 +72,11 @@
 
         <?php echo translate("required-brake-type") ?><br>
         <select name="brakeTypeID">
-            <option value="1" <?php echo setSelected("brakeTypeID", "1") ?> ><?php echo translate("felgen") ?></option>
-            <option value="2" <?php echo setSelected("brakeTypeID", "2") ?> ><?php echo translate("trommel") ?></option>
-            <option value="3" <?php echo setSelected("brakeTypeID", "3") ?> ><?php echo translate("scheiben") ?></option>
-            <option value="4" <?php echo setSelected("brakeTypeID", "4") ?> ><?php echo translate("rücktritt-bremse") ?></option>
-            <option value="5" <?php echo setSelected("brakeTypeID", "5") ?> ><?php echo translate("other") ?></option>
+            <option value="1" <?php echo setSelected($query, "brakeTypeID", "1") ?> ><?php echo translate("felgen") ?></option>
+            <option value="2" <?php echo setSelected($query, "brakeTypeID", "2") ?> ><?php echo translate("trommel") ?></option>
+            <option value="3" <?php echo setSelected($query, "brakeTypeID", "3") ?> ><?php echo translate("scheiben") ?></option>
+            <option value="4" <?php echo setSelected($query, "brakeTypeID", "4") ?> ><?php echo translate("rücktritt-bremse") ?></option>
+            <option value="5" <?php echo setSelected($query, "brakeTypeID", "5") ?> ><?php echo translate("other") ?></option>
         </select><br>
 
         <button type="submit" name="action" value="saveQuery"><?php echo translate("save") ?></button>

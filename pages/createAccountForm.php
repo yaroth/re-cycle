@@ -32,6 +32,6 @@
         ?>
         Login:<br> <input type="text" name="login" placeholder="Enter your login..." value="<?php echo $_COOKIE["login"] ?? "";?>" required><br>
         <?php echo translate("pw") ?>:<br> <input type="password" name="pw" placeholder="Enter your password..." required><br>
-        <input type="submit" value="<?php echo translate("save-account") ?>">
+        <input type="submit" value="<?php echo translate("save") ?>">
     </fieldset>
 </form>

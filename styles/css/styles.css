@@ -3,6 +3,8 @@ body {
   font-family: Helvetica Neue, Arial, sans-serif;
   margin: 0;
   color: darkblue; }
+  body a {
+    text-decoration: none; }
   body .content {
     margin: 0 auto;
     background-color: lightblue; }
@@ -189,6 +191,8 @@ body {
           border-radius: 5px;
           border-width: 0px;
           color: darkblue; }
+          body .content .main #admin-choice button.active {
+            color: blue; }
       body .content .main #admin-content h4 {
         text-align: center; }
       body .content .main .queriesList {
