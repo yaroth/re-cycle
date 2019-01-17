@@ -39,8 +39,6 @@
                 include 'addQuery.php';
             } elseif (getId() == 9) {
                 include 'admin.php';
-            } elseif (getId() == 10) {
-                include 'mvc.php';
             }
 
 

@@ -20,7 +20,7 @@
         if (isset($_SESSION["user"])) {
             $navItemsIndex = 8;
             $login = $_SESSION["user"];
-            if (Account::isAdminByLogin($login)) $navItemsIndex = 10;
+            if (Account::isAdminByLogin($login)) $navItemsIndex = 9;
         }
         for ($i = 0; $i <= $navItemsIndex; $i++) {
             if (isset($_SESSION["user"]) && !($i == 1 || $i == 2)) {

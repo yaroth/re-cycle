@@ -159,7 +159,7 @@ function validateNewPassword() {
 
 function adminSelection(element) {
     let buttonValue = $(element).val();
-    $(element).addClass("active").siblings().removeClass('active');;
+    $(element).addClass("active").siblings().removeClass('active');
     let url = new URL(location.href);
     let searchParams = new URLSearchParams(url.search);
     let language = searchParams.get('lang');
@@ -458,6 +458,7 @@ function addQuery( event ) {
 
 function listBikes(element) {
     let btnValue = $(element).val();
+    $(element).addClass("active").siblings().removeClass('active');;
     let url = new URL(location.href);
     let searchParams = new URLSearchParams(url.search);
     let language = searchParams.get('lang');

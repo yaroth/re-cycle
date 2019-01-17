@@ -343,7 +343,7 @@ body {
   body .content .header nav#mobile {
     display: none; } }
 
-@media (max-width: 900px) {
+@media (max-width: 850px) {
   body .content nav#desktop {
     display: none; }
   body .content .header {
@@ -459,7 +459,7 @@ body {
     border: unset;
     background-color: #b9e6fa; } }
 
-@media (min-width: 901px) {
+@media (min-width: 851px) {
   body .content .header #mobNavIcon {
     display: none; }
   body .content .header nav#mobile {
