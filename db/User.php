@@ -257,8 +257,8 @@
                     <div class="user dob">' . $this->dob . '</div>
                     <div class="user email">' . $this->email . '</div>
                     <div class="user gender">' . $this->getGenderName() . '</div>
-                    <button onclick="deleteUser(this);" name="deleteUser" type="button" value="2">' . translate("delete") . '</button>
-                    <button onclick="editUser(this);" name="editUser" type="button" value="2">' . translate("edit") . '</button>
+                    <button onclick="deleteUser(this);" name="deleteUser" type="button" value="' . $this->id . '">' . translate("delete") . '</button>
+                    <button onclick="editUser(this);" name="editUser" type="button" value="' . $this->id . '">' . translate("edit") . '</button>
                 </div>';
 
         }

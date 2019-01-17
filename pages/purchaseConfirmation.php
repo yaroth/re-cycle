@@ -45,7 +45,8 @@
 
                     $mail->isHTML(true);                                  // Set email format to HTML
                     $mail->Subject = "Re-cycle : Ihr neues Secondhand Velo!";
-                    $message = "Dear $buyer->getUserFullName(), <br> you bought a second hand biycle on recycle.ch. 
+                    $buyerName = $buyer->getUserFullName();
+                    $message = "Dear $buyerName, <br> you bought a second hand biycle on recycle.ch. 
                         Congratulations! <br>
                         Please get in touch with the seller to organize the payment and handover.<br> 
                         The email address is in the Cc.<br>
@@ -55,7 +56,7 @@
                         Regards<br>
                         The recycle team!";
                     $mail->Body = $message;
-                    $mail->AltBody = "Dear $buyer->getUserFullName() , \n you bought a second hand biycle on recycle.ch.
+                    $mail->AltBody = "Dear $buyerName , \n you bought a second hand biycle on recycle.ch.
                         Congratulations! Please get in touch with the seller to organize the payment and handover.\n
                         Seller: $seller->email. \n
                         Buyer: $buyer->email. \n
@@ -64,9 +65,11 @@
                         The recycle team!";
 
                     $mail->send();
-                    echo "Message sent to seller: " . $seller->getUserFullName() . " (" . $seller->email . ")<br>";
-                    echo "Message sent to buyer: " . $buyer->getUserFullName() . " (" . $buyer->email . ")<br>";
-                    echo "Sold bike: $bike->title<br>";
+                    $language = getLang();
+                    echo "<h4>" . translate("success") . "</h4>";
+                    echo translate("seller") . ": " . $seller->getUserFullName() . " (" . $seller->email . ")<br>";
+                    echo translate("buyer") . ": " . $buyer->getUserFullName() . " (" . $buyer->email . ")<br>";
+                    echo translate("bike-sold") . ": " . $bike->title ."<br>";
                 } catch (Exception $e) {
                     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
                     echo '<br>';
