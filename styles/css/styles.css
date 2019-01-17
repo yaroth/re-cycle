@@ -190,7 +190,8 @@ body {
           padding: 5px 10px;
           border-radius: 5px;
           border-width: 0px;
-          color: darkblue; }
+          color: darkblue;
+          margin: 2px; }
           body .content .main #admin-choice button.active {
             color: blue; }
       body .content .main #admin-content h4 {
